@@ -1,0 +1,7 @@
+{
+  "name": "workflow-engine-mobile",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

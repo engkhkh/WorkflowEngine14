@@ -1,0 +1,426 @@
+<div class="designer">
+  <!-- Top toolbar -->
+  <div class="toolbar">
+    <input class="flow-name" [(ngModel)]="definition.name" placeholder="Flow name" />
+    <span class="badge" [class.published]="definition.isPublished">{{ (definition.isPublished ? 'status.published' : 'status.draft') | translate }}</span>
+    <div class="spacer"></div>
+    <button [class.active]="linkMode" (click)="toggleLinkMode()">
+      {{ linkMode ? (linkSourceId ? 'Click target node…' : 'Click source node…') : ('designer.connect' | translate) }}
+    </button>
+    <button (click)="deleteSelected()" [disabled]="!selectedNodeId && !selectedEdgeId">{{ 'designer.delete' | translate }}</button>
+    <button (click)="save()">{{ 'designer.save' | translate }}</button>
+    <button class="success" (click)="publish()" [disabled]="definition.isPublished || !isAdmin"
+            [title]="!isAdmin ? 'Only admins can publish' : ''">{{ 'designer.publish' | translate }}</button>
+    <button class="primary" (click)="testRun()" [disabled]="!definition.isPublished">{{ 'designer.testRun' | translate }}</button>
+  </div>
+
+  <div class="body">
+    <!-- Left palette -->
+    <div class="palette">
+      <div class="palette-title">{{ 'designer.nodes' | translate }}</div>
+      <select class="category-select" [(ngModel)]="selectedCategory">
+        <option *ngFor="let c of categories" [value]="c">{{ c }}</option>
+      </select>
+      <div
+        *ngFor="let p of paletteInCategory"
+        class="palette-item"
+        [class.active]="placingType === p.type"
+        [style.borderColor]="p.color"
+        (click)="startPlacing(p.type)"
+        [title]="p.note">
+        <span class="icon" [style.color]="p.color">{{ p.icon }}</span>
+        <span class="palette-item-label">{{ p.label }}</span>
+        <span class="origin-badge" [style.color]="originColor(p.origin)" [style.borderColor]="originColor(p.origin)">{{ originLabel(p.origin) }}</span>
+      </div>
+      <p class="hint" *ngIf="placingType">Click on the canvas to place the node.</p>
+      <p class="hint" *ngIf="linkMode">Click a source node, then a target node, to connect them.</p>
+      <p class="hint origin-legend">Categories and icons follow Skelta Process Designer's own Activities panel. Badges show which product's design this node type is modeled after.</p>
+    </div>
+
+    <!-- Canvas -->
+    <svg
+      class="canvas"
+      (click)="onCanvasClick($event)"
+      (mousemove)="onCanvasMouseMove($event)"
+      (mouseup)="onCanvasMouseUp()"
+      (mouseleave)="onCanvasMouseUp()">
+
+      <defs>
+        <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+          <path d="M 0 0 L 10 5 L 0 10 z" fill="#5b8def" />
+        </marker>
+      </defs>
+
+      <!-- Edges -->
+      <g *ngFor="let e of definition.edges">
+        <path [attr.d]="edgePath(e)" class="edge" [class.selected]="e.id === selectedEdgeId"
+              marker-end="url(#arrow)" (click)="selectEdge(e.id); $event.stopPropagation()" />
+        <g [attr.transform]="'translate(' + edgeMidpoint(e).x + ',' + edgeMidpoint(e).y + ')'">
+          <rect x="-24" y="-10" width="48" height="18" rx="4" class="edge-label-bg"
+                [class.approve]="e.label === 'Approve' || e.label === 'True'"
+                [class.reject]="e.label === 'Reject' || e.label === 'False'" />
+          <text x="0" y="3" text-anchor="middle" class="edge-label">{{ e.label }}</text>
+        </g>
+      </g>
+
+      <!-- Nodes: circle for Start/End, diamond for gateways, rounded card for activities -
+           matches the real Skelta Process Designer's shape conventions. -->
+      <g *ngFor="let n of definition.nodes"
+         [attr.transform]="'translate(' + n.x + ',' + n.y + ')'"
+         class="node"
+         [class.selected]="n.id === selectedNodeId"
+         [class.link-source]="n.id === linkSourceId"
+         (mousedown)="startDrag($event, n)"
+         (click)="selectNode(n.id); $event.stopPropagation()">
+
+        <ng-container [ngSwitch]="shapeFor(n.type)">
+          <circle *ngSwitchCase="'circle'" cx="30" cy="30" r="30" [style.stroke]="colorFor(n.type)"
+                  [style.fill]="n.type === 'Start' ? 'rgba(55,194,111,.15)' : 'rgba(224,85,85,.15)'" class="node-box" />
+          <path *ngSwitchCase="'diamond'" d="M 70 0 L 140 40 L 70 80 L 0 40 Z" [style.stroke]="colorFor(n.type)" class="node-box" />
+          <rect *ngSwitchDefault width="140" height="60" rx="10" [style.stroke]="colorFor(n.type)" class="node-box" />
+        </ng-container>
+
+        <ng-container [ngSwitch]="shapeFor(n.type)">
+          <text *ngSwitchCase="'circle'" x="30" y="35" text-anchor="middle" class="node-icon-center" [style.fill]="colorFor(n.type)">{{ iconFor(n.type) }}</text>
+          <ng-container *ngSwitchCase="'diamond'">
+            <text x="70" y="35" text-anchor="middle" class="node-icon-center" [style.fill]="colorFor(n.type)">{{ iconFor(n.type) }}</text>
+            <text x="70" y="55" text-anchor="middle" class="node-name">{{ n.name.length > 14 ? (n.name | slice:0:14) + '…' : n.name }}</text>
+          </ng-container>
+          <ng-container *ngSwitchDefault>
+            <text x="14" y="24" class="node-icon" [style.fill]="colorFor(n.type)">{{ iconFor(n.type) }}</text>
+            <text x="38" y="24" class="node-type">{{ n.type }}</text>
+            <text x="14" y="44" class="node-name">{{ n.name.length > 16 ? (n.name | slice:0:16) + '…' : n.name }}</text>
+          </ng-container>
+        </ng-container>
+
+        <text *ngIf="shapeFor(n.type) === 'circle'" x="30" y="98" text-anchor="middle" class="node-name">{{ n.name.length > 14 ? (n.name | slice:0:14) + '…' : n.name }}</text>
+      </g>
+    </svg>
+
+    <!-- Right property panel -->
+    <div class="props" *ngIf="selectedNode as n">
+      <div class="props-title">{{ n.type }} Properties</div>
+
+      <label class="field-label">Name</label>
+      <input [(ngModel)]="n.name" />
+
+      <label class="field-label">{{ n.type === 'FormTask' || n.type === 'ApprovalTask' ? 'Instructions (shown to whoever gets this task)' : 'Description (designer notes only)' }}</label>
+      <textarea rows="2" [(ngModel)]="n.description" placeholder="What should happen here, or what should the assignee know?"></textarea>
+
+      <ng-container *ngIf="n.type === 'FormTask' || n.type === 'ApprovalTask'">
+        <label class="field-label">Assignees (select one or more)</label>
+        <select multiple size="6" (change)="onAssigneeChange(n, $event)">
+          <optgroup label="By Role (goes to everyone with that role)">
+            <option *ngFor="let r of roles" [value]="r" [selected]="isAssigned(n, r)">{{ r }}</option>
+          </optgroup>
+          <optgroup label="By Specific User">
+            <option *ngFor="let u of users" [value]="u.username" [selected]="isAssigned(n, u.username)">{{ u.displayName }} ({{ u.username }})</option>
+          </optgroup>
+        </select>
+        <p class="hint" *ngIf="assigneeArray(n).length > 1">Assigned to more than one target — whoever acts on it
+          first completes it for everyone else too (Skelta's multi-user work item model).</p>
+
+        <label class="field-label">Priority</label>
+        <select [(ngModel)]="n.priority">
+          <option *ngFor="let p of priorities" [value]="p">{{ p }}</option>
+        </select>
+
+        <div class="escalation-box">
+          <label class="field-label">Escalate after (minutes)</label>
+          <input type="number" [(ngModel)]="n.escalateAfterMinutes" placeholder="e.g. 1440 (1 day)" />
+
+          <label class="field-label">If it times out…</label>
+          <select [(ngModel)]="n.escalationMode">
+            <option value="Reassign">Reassign to someone else</option>
+            <option value="AutoComplete">Auto-complete with an outcome (Skelta "Timeout Warning - Action" style)</option>
+            <option value="Notify">Just send a reminder (task stays where it is)</option>
+          </select>
+
+          <label class="chk-label"><input type="checkbox" [(ngModel)]="n.useBusinessHours" style="width:auto;" /> Count business hours only</label>
+          <p class="hint" *ngIf="n.useBusinessHours">The countdown pauses nights and non-work days, so "480 minutes" means one working day rather than 8 raw hours that might land overnight or over a weekend. Work days and hours come from the <code>BusinessHours</code> section of appsettings.json (default Sun–Thu, 09:00–17:00 UTC).</p>
+
+          <ng-container *ngIf="n.escalationMode !== 'AutoComplete'">
+            <label class="field-label">Escalate to</label>
+            <select [(ngModel)]="n.escalateTo">
+              <option value="" disabled>Select…</option>
+              <optgroup label="By Role">
+                <option *ngFor="let r of roles" [value]="r">{{ r }}</option>
+              </optgroup>
+              <optgroup label="By Specific User">
+                <option *ngFor="let u of users" [value]="u.username">{{ u.displayName }} ({{ u.username }})</option>
+              </optgroup>
+            </select>
+            <p class="hint" *ngIf="n.escalationMode !== 'Notify'">If left pending past the deadline, the background escalation service reassigns the task and logs it in the instance history.</p>
+            <p class="hint" *ngIf="n.escalationMode === 'Notify'">If left pending past the deadline, a one-time reminder email goes to this user (or everyone in this role) and is logged as "Reminded" — the task is <b>not</b> reassigned and keeps waiting on its original assignee. Needs SMTP configured to actually send; the reminder is logged either way.</p>
+          </ng-container>
+
+          <ng-container *ngIf="n.escalationMode === 'AutoComplete'">
+            <label class="field-label">Outcome to auto-fire</label>
+            <input [(ngModel)]="n.timeoutDecision" placeholder="must match one of this node's outgoing edge labels" />
+            <p class="hint">If left pending past the deadline, the task completes itself with this outcome and follows the matching outgoing edge — no human needed.</p>
+          </ng-container>
+        </div>
+
+        <label class="field-label" style="margin-top:14px;">Form</label>
+        <app-form-editor *ngIf="n.form" [form]="n.form"></app-form-editor>
+
+        <p class="hint" *ngIf="n.type === 'ApprovalTask'">
+          The buttons shown to whoever owns this task are exactly the outgoing edge labels you connect below — not
+          fixed to Approve/Reject. New edges default to <b>Approve</b> then <b>Reject</b>; rename any edge's label
+          (click it) to add Skelta-style custom outcomes like "Suitable" or "Canceled".
+        </p>
+      </ng-container>
+
+      <ng-container *ngIf="n.type === 'Condition'">
+        <label class="field-label">Expression</label>
+        <input [(ngModel)]="n.conditionExpression" placeholder="e.g. days > 5 && leaveType == Annual" />
+        <p class="hint">Compares fields collected earlier in the flow. Supports ==, !=, &gt;, &lt;, &gt;=, &lt;=,
+          and chaining clauses with all <b>&amp;&amp;</b> or all <b>||</b> (not mixed).
+          Outgoing edges are labeled True / False automatically.</p>
+
+        <div class="test-condition-box">
+          <label class="field-label">Test with sample data (JSON)</label>
+          <textarea rows="4" [(ngModel)]="testDataJson" placeholder='{{ "{" }}"days": 6, "leaveType": "Annual"{{ "}" }}'></textarea>
+          <button (click)="testCondition()">▶ Test</button>
+
+          <p class="test-error" *ngIf="testError">{{ testError }}</p>
+
+          <div class="test-result" *ngIf="testResult">
+            <div class="test-overall" [class.pass]="testResult.result" [class.fail]="!testResult.result">
+              Result: {{ testResult.result ? 'True' : 'False' }}
+            </div>
+            <div class="test-clause" *ngFor="let c of testResult.clauses" [class.pass]="c.result" [class.fail]="!c.result">
+              {{ c.result ? '✓' : '✕' }} {{ c.clause }}
+            </div>
+          </div>
+        </div>
+      </ng-container>
+
+      <ng-container *ngIf="n.type === 'Switch'">
+        <label class="field-label">Field to branch on</label>
+        <input [(ngModel)]="n.switchField" placeholder="e.g. leaveType" />
+        <p class="hint">Takes the outgoing edge whose label matches this field's value exactly (case-insensitive) -
+          e.g. field "leaveType" with edges labeled "Annual" / "Sick" / "Unpaid". Add an edge labeled
+          <b>Default</b> to catch any value that doesn't match one of the named branches.</p>
+      </ng-container>
+
+      <ng-container *ngIf="n.type === 'SubWorkflow'">
+        <label class="field-label">Workflow to invoke</label>
+        <select [(ngModel)]="n.subWorkflowDefinitionId" (ngModelChange)="onSubWorkflowSelected(n, $event)">
+          <option value="" disabled>Select a published workflow…</option>
+          <option *ngFor="let d of publishedDefinitions" [value]="d.id">{{ d.name }}</option>
+        </select>
+        <label class="field-label">Outcome to take</label>
+        <input [(ngModel)]="n.defaultOutcome" placeholder="e.g. Default — must match an outgoing edge label" />
+        <p class="hint">Camunda-style Call Activity - references another workflow. This is currently a <b>stub</b>:
+          it records which workflow it would call but auto-completes along the edge above rather than actually
+          starting and waiting on a real nested instance. Ask to have this wired up live if you need it for real.</p>
+      </ng-container>
+
+      <ng-container *ngIf="n.type === 'DocumentGeneration'">
+        <label class="field-label">Template</label>
+        <input [(ngModel)]="n.documentTemplate" placeholder="e.g. offer-letter-template" />
+        <label class="field-label">Output document name</label>
+        <input [(ngModel)]="n.documentName" placeholder="e.g. {{ '{' }}{{ '{' }}employeeName{{ '}' }}{{ '}' }}-offer.pdf" />
+        <label class="field-label">Outcome to take</label>
+        <input [(ngModel)]="n.defaultOutcome" placeholder="e.g. Default — must match an outgoing edge label" />
+        <p class="hint">Stub, like Email/Automation - auto-completes along the edge above; wire a real document generator into this node type for production use.</p>
+      </ng-container>
+
+      <ng-container *ngIf="n.type === 'DatabaseActivity'">
+        <label class="field-label">Connection name</label>
+        <input [(ngModel)]="n.databaseConnectionName" placeholder="e.g. HRDatabase (a name you'd configure server-side, not a raw connection string)" />
+        <label class="field-label">Query</label>
+        <textarea rows="4" [(ngModel)]="n.databaseQuery" style="font-family:monospace;font-size:11px;" placeholder="SELECT ... — {{ '{' }}{{ '{' }}fieldName{{ '}' }}{{ '}' }} placeholders would be substituted"></textarea>
+        <label class="field-label">Outcome to take</label>
+        <input [(ngModel)]="n.defaultOutcome" placeholder="e.g. Default — must match an outgoing edge label" />
+        <p class="hint warning">⚠ Stub — not wired to actually run. Real arbitrary SQL execution against a
+          user-editable query is the same category of trust decision as the C# script option: whoever can
+          author this query could read or modify anything that connection can reach. If you need this for real,
+          the safer path is a fixed, parameterized query per connection (configured server-side) rather than a
+          freely-editable one here — ask and I'll build it that way.</p>
+      </ng-container>
+
+      <ng-container *ngIf="n.type === 'Logger'">
+        <label class="field-label">Message</label>
+        <textarea rows="3" [(ngModel)]="n.logMessage" placeholder="e.g. Leave request for {{ '{' }}{{ '{' }}employeeName{{ '}' }}{{ '}' }} reached HR review"></textarea>
+        <p class="hint">This really runs — {{ '{' }}{{ '{' }}fieldName{{ '}' }}{{ '}' }} placeholders are substituted from the request's
+          data, and the message is written straight into the instance's timeline (visible on the Process Map / instance
+          detail page). No external system involved, so unlike most other Integration/Engine activities there's nothing
+          left to "wire up for real" — it's always live.</p>
+      </ng-container>
+
+      <ng-container *ngIf="n.type === 'Notification'">
+        <label class="field-label">To</label>
+        <input [(ngModel)]="n.notificationTo" placeholder="e.g. {{ '{' }}{{ '{' }}employeeUsername{{ '}' }}{{ '}' }} or a fixed username" />
+        <label class="field-label">Message</label>
+        <textarea rows="3" [(ngModel)]="n.notificationMessage"></textarea>
+        <label class="field-label">Outcome to take</label>
+        <input [(ngModel)]="n.defaultOutcome" placeholder="e.g. Default — must match an outgoing edge label" />
+        <p class="hint">Stub, like Email was before it went live — auto-completes along the edge above; wire a real push provider into this node type for production use.</p>
+      </ng-container>
+
+      <ng-container *ngIf="n.type === 'SendSms'">
+        <label class="field-label">To (phone number)</label>
+        <input [(ngModel)]="n.smsTo" placeholder="e.g. {{ '{' }}{{ '{' }}employeePhone{{ '}' }}{{ '}' }}" />
+        <label class="field-label">Message</label>
+        <textarea rows="3" [(ngModel)]="n.smsMessage"></textarea>
+        <label class="field-label">Outcome to take</label>
+        <input [(ngModel)]="n.defaultOutcome" placeholder="e.g. Default — must match an outgoing edge label" />
+        <p class="hint">Stub — auto-completes along the edge above; wire a real SMS gateway (Twilio, etc) into this node type for production use.</p>
+      </ng-container>
+
+      <ng-container *ngIf="n.type === 'CancelWorkflow'">
+        <label class="field-label">Cancellation reason</label>
+        <textarea rows="2" [(ngModel)]="n.cancelReason" placeholder="e.g. Request superseded by a newer one"></textarea>
+        <p class="hint warning">⚠ This really cancels the request the moment the flow reaches this node — same effect
+          as a user clicking Cancel on the instance page, just triggered automatically (e.g. from a Condition branch).
+          Any other pending tasks on the request are closed out immediately, and nothing downstream of this node ever
+          runs. There's no outgoing edge to configure — this is always an end point.</p>
+      </ng-container>
+
+      <ng-container *ngIf="n.type === 'ParallelSplit'">
+        <p class="hint">Every outgoing edge fires at once — connect it to two or more nodes to fork the flow into concurrent branches. Pair with a Parallel Join to sync them back up.</p>
+      </ng-container>
+
+      <ng-container *ngIf="n.type === 'ParallelJoin'">
+        <p class="hint">Waits until every incoming branch has arrived (based on how many edges target this node) before continuing to its single outgoing edge.</p>
+      </ng-container>
+
+      <ng-container *ngIf="n.type === 'Timer'">
+        <label class="field-label">Duration (seconds)</label>
+        <input type="number" [(ngModel)]="n.durationSeconds" placeholder="e.g. 3600" />
+        <label class="field-label">Outcome when it fires</label>
+        <input [(ngModel)]="n.defaultOutcome" placeholder="e.g. TimeOutWarning1 — must match an outgoing edge label (optional if there's only one edge)" />
+        <p class="hint">This really waits: the instance genuinely pauses here for the configured duration (checked every ~15s), then takes the edge above - no human input needed. Watch it live on the instance's Process Map.</p>
+      </ng-container>
+
+      <ng-container *ngIf="n.type === 'Email'">
+        <label class="field-label">To</label>
+        <input [(ngModel)]="n.emailTo" placeholder="e.g. {{ '{' }}{{ '{' }}employeeEmail{{ '}' }}{{ '}' }} or a fixed address" />
+        <label class="field-label">Subject</label>
+        <input [(ngModel)]="n.emailSubject" placeholder="e.g. Hi {{ '{' }}{{ '{' }}employeeName{{ '}' }}{{ '}' }}, your request was approved" />
+        <label class="field-label">Body</label>
+        <textarea rows="4" [(ngModel)]="n.emailBody"></textarea>
+        <label class="chk-label"><input type="checkbox" [(ngModel)]="n.emailIsHtml" style="width:auto;" /> Body is HTML</label>
+        <p class="hint"><b>Really sends</b> via SMTP if configured (appsettings.json's <code>Smtp</code> section — see README).
+          <code>{{ '{' }}{{ '{' }}fieldName{{ '}' }}{{ '}' }}</code> placeholders in To/Subject/Body are substituted from
+          the request's collected data first. Falls back to the stub behavior (auto-complete along the edge above) if
+          SMTP isn't configured yet, so flows still test-run without a real mail server.</p>
+      </ng-container>
+
+      <ng-container *ngIf="n.type === 'WebhookCall'">
+        <label class="field-label">Method</label>
+        <select [(ngModel)]="n.webhookMethod">
+          <option>GET</option><option>POST</option><option>PUT</option><option>DELETE</option>
+        </select>
+        <label class="field-label">URL</label>
+        <input [(ngModel)]="n.webhookUrl" placeholder="https://example.com/api/hook" />
+        <label class="field-label">Store result in variable (optional)</label>
+        <input [(ngModel)]="n.resultVariable" placeholder="e.g. managerLookupResult" />
+        <label class="field-label">Fallback outcome (used only if the URL is blank)</label>
+        <input [(ngModel)]="n.defaultOutcome" placeholder="e.g. Successful — must match an outgoing edge label" />
+        <p class="hint">This really calls the URL: GET/DELETE go out as-is, POST/PUT send the request's collected data as the JSON body. The outcome (Successful / UnSuccessful / Error Encountered) comes from the real HTTP response. A JSON object response has its top-level fields merged directly into the request's data automatically; if you also set a variable name above, the entire raw response is additionally stored under that exact key — useful for binding straight onto a later Task's form field with a matching key, or reading from a Script node. Try <code>http://localhost:5000/api/demo/lookup/&#123;key&#125;</code> to test against the built-in demo service before wiring up your real API.</p>
+      </ng-container>
+
+      <ng-container *ngIf="n.type === 'InvokeSoapService'">
+        <label class="field-label">URL</label>
+        <input [(ngModel)]="n.webhookUrl" placeholder="https://example.com/service.asmx" />
+        <label class="field-label">SOAPAction header</label>
+        <input [(ngModel)]="n.soapAction" placeholder="e.g. http://tempuri.org/GetManager" />
+        <label class="field-label">SOAP envelope (XML)</label>
+        <textarea rows="8" [(ngModel)]="n.soapEnvelope" style="font-family:monospace;font-size:11px;"
+          placeholder="{{ '{' }}{{ '{' }}fieldName{{ '}' }}{{ '}' }} placeholders are substituted from the request's data before sending"></textarea>
+        <label class="field-label">Store raw XML response in variable</label>
+        <input [(ngModel)]="n.resultVariable" placeholder="defaults to 'soapResponse' if left blank" />
+        <label class="field-label">Fallback outcome (used only if the URL is blank)</label>
+        <input [(ngModel)]="n.defaultOutcome" placeholder="e.g. Successful — must match an outgoing edge label" />
+        <p class="hint">This really POSTs the envelope above (with placeholders substituted) to the URL, with the
+          SOAPAction header set. Unlike Invoke Web API, the raw XML response always goes into the named variable
+          rather than being auto-flattened — parsing an arbitrary WSDL shape generically isn't practical. Read it
+          apart downstream with an XML Action or Script node. A SOAP Fault in the response counts as UnSuccessful
+          even on HTTP 200. Try <code>http://localhost:5000/api/demo/soap</code> to test against the built-in
+          mock service before wiring up your real one.</p>
+      </ng-container>
+
+      <ng-container *ngIf="n.type === 'FileOperations'">
+        <label class="field-label">Operation</label>
+        <select [(ngModel)]="n.fileOperation">
+          <option value="Read">Read</option>
+          <option value="Write">Write</option>
+          <option value="Copy">Copy</option>
+          <option value="Move">Move</option>
+          <option value="Delete">Delete</option>
+        </select>
+        <label class="field-label">File path</label>
+        <input [(ngModel)]="n.filePath" placeholder="e.g. \\server\share\{{ '{' }}{{ '{' }}employeeName{{ '}' }}{{ '}' }}.pdf" />
+        <label class="field-label">Outcome to take</label>
+        <input [(ngModel)]="n.defaultOutcome" placeholder="e.g. Default — must match an outgoing edge label" />
+        <p class="hint">Stub, like Sub-Workflow — records the intended operation but doesn't touch a real file system yet. Ask to have this wired up live if you need it for real (it's a meaningful trust decision, same as the C# script option, since it would mean this server can read/write/delete arbitrary files).</p>
+      </ng-container>
+
+      <ng-container *ngIf="n.type === 'XmlAction'">
+        <label class="field-label">Source variable (XML to read)</label>
+        <input [(ngModel)]="n.xmlSourceVariable" placeholder="e.g. soapResponse" />
+        <label class="field-label">XPath</label>
+        <input [(ngModel)]="n.xmlXPath" placeholder="e.g. //LookupResponse/Value" />
+        <label class="field-label">Outcome to take</label>
+        <input [(ngModel)]="n.defaultOutcome" placeholder="e.g. Default — must match an outgoing edge label" />
+        <p class="hint">Stub — records which variable/XPath it would query but doesn't parse XML yet. Once wired up, the extracted value would be stored back into the request's data so later nodes can use it. For now, query a stored XML variable directly from a JavaScript Automation node's script instead.</p>
+      </ng-container>
+
+      <ng-container *ngIf="n.type === 'Automation'">
+        <label class="field-label">Action label</label>
+        <input [(ngModel)]="n.automationAction" placeholder="e.g. script.run" />
+
+        <label class="field-label">Language</label>
+        <select [(ngModel)]="n.scriptLanguage">
+          <option [ngValue]="undefined">— Not executed (stub, structural only) —</option>
+          <option value="JavaScript">JavaScript (recommended — sandboxed)</option>
+          <option value="CSharp">C# (⚠ full trust — see warning below)</option>
+        </select>
+
+        <label class="field-label">Script</label>
+        <textarea rows="6" [(ngModel)]="n.scriptBody"
+          placeholder="JS example:  outcome = data['days'] > 5 ? 'Long' : 'Short';&#10;C# example:  Outcome = (int)Data[&quot;days&quot;] > 5 ? &quot;Long&quot; : &quot;Short&quot;;"
+          style="font-family:monospace;font-size:11px;"></textarea>
+
+        <ng-container *ngIf="n.scriptLanguage === 'JavaScript'">
+          <p class="hint">Runs for real on Jint, a JS interpreter with <b>no</b> file system, network, or process
+            access by default — the script can only touch the plain values you give it. Read a field with
+            <code>data['fieldName']</code>, write one the same way, and set <code>outcome</code> (a string) to pick
+            the outgoing edge to follow. Hard 5-second timeout.</p>
+        </ng-container>
+        <ng-container *ngIf="n.scriptLanguage === 'CSharp'">
+          <p class="hint warning">⚠ <b>Not sandboxed.</b> This runs real C# with full access to the file system,
+            network, and everything else this server can do — treat authoring a C# script exactly like handing
+            someone shell access. The only real safeguard is that a workflow can't run until an <b>admin publishes
+            it</b>, so only enable this for scripts an admin has actually reviewed. Read/write data via
+            <code>Data["fieldName"]</code> and set <code>Outcome</code> (a string) to pick the outgoing edge.
+            Hard 5-second timeout.</p>
+        </ng-container>
+        <ng-container *ngIf="!n.scriptLanguage">
+          <label class="field-label">Outcome to take</label>
+          <input [(ngModel)]="n.defaultOutcome" placeholder="e.g. 1 — must match an outgoing edge label" />
+          <p class="hint">No language selected — stays a stub and auto-completes along the edge above without running anything.</p>
+        </ng-container>
+      </ng-container>
+    </div>
+
+    <div class="props" *ngIf="selectedEdge as e">
+      <div class="props-title">Edge Properties</div>
+      <label class="field-label">Label</label>
+      <select [(ngModel)]="e.label" *ngIf="selectedEdgeSourceType === 'Condition'">
+        <option value="True">True</option>
+        <option value="False">False</option>
+      </select>
+      <input [(ngModel)]="e.label" *ngIf="selectedEdgeSourceType !== 'Condition'" />
+      <p class="hint" *ngIf="selectedEdgeSourceType === 'ApprovalTask'">
+        This becomes a button on the task ("Approve", "Reject", or any custom outcome like "Suitable" or "Canceled").
+      </p>
+      <p class="hint" *ngIf="selectedEdgeSourceType === 'Timer' || selectedEdgeSourceType === 'WebhookCall' || selectedEdgeSourceType === 'InvokeSoapService' || selectedEdgeSourceType === 'Automation' || selectedEdgeSourceType === 'Email'">
+        Set this node's "Outcome to take" field to this exact label to make it the path taken.
+      </p>
+    </div>
+  </div>
+</div>
