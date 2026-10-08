@@ -104,12 +104,14 @@ public class UsersController : ControllerBase
     public async Task<ActionResult<PermissionCatalogDto>> Catalog()
     {
         var tenantId = await _tenant.TenantIdOf(User);
+        await RbacStore.EnsureFresh(_db);
         var roles = await _db.Users.Where(u => u.TenantId == tenantId).Select(u => u.Role).Distinct().ToListAsync();
-        roles.AddRange(Permissions.RoleDefaults.Keys);
+        var roleDefaults = RbacStore.RolesFor(tenantId);
+        roles.AddRange(roleDefaults.Keys);
         return Ok(new PermissionCatalogDto
         {
-            Groups = Permissions.Catalog.Select(g => new PermissionGroupDto { Group = g.Group, Keys = g.Keys }).ToList(),
-            RoleDefaults = Permissions.RoleDefaults.ToDictionary(k => k.Key, v => v.Value),
+            Groups = RbacStore.CatalogFor(tenantId).Select(g => new PermissionGroupDto { Group = g.Group, Keys = g.Keys }).ToList(),
+            RoleDefaults = roleDefaults,
             Roles = roles.Where(r => !string.IsNullOrWhiteSpace(r)).Distinct(StringComparer.OrdinalIgnoreCase).OrderBy(r => r).ToList()
         });
     }

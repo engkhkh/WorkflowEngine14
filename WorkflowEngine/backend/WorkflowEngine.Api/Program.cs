@@ -91,6 +91,7 @@ using (var scope = app.Services.CreateScope())
     // OrgCompanies / OrgBranches tables to an existing database - no migration needed. Idempotent.
     // See README "Admin module" / "SaaS workspaces".
     await SchemaUpgrade.Apply(db);
+    await RbacStore.Seed(db);   // privilege catalog + role defaults -> database (admin edits them from then on)
 
     // Both seed methods are idempotent (skip anything that already exists by name), so this
     // is safe to run on every startup - existing databases just pick up new templates/users.

@@ -64,6 +64,34 @@ public static class SchemaUpgrade
             "[RecordId] nvarchar(450) NOT NULL, [Code] nvarchar(max) NULL, [Action] nvarchar(max) NOT NULL, [UserName] nvarchar(max) NOT NULL, " +
             "[At] datetime2 NOT NULL, [Summary] nvarchar(max) NULL);",
         "IF NOT EXISTS (SELECT 1 FROM sys.indexes WHERE name = 'IX_FinAudits_TenantId_At') CREATE INDEX IX_FinAudits_TenantId_At ON dbo.FinAudits ([TenantId], [At]);",
+
+        // Point of sale: products, customers, promotions, shifts, sales, stock ... in one generic record table
+        "IF OBJECT_ID('dbo.PosRecords','U') IS NULL CREATE TABLE dbo.PosRecords (" +
+            "[Id] nvarchar(450) NOT NULL CONSTRAINT PK_PosRecords PRIMARY KEY, [TenantId] nvarchar(450) NOT NULL, [Kind] nvarchar(450) NOT NULL, " +
+            "[Code] nvarchar(450) NULL, [Company] nvarchar(450) NULL, [Branch] nvarchar(450) NULL, [Status] nvarchar(450) NULL, " +
+            "[Ref] nvarchar(450) NULL, [Parent] nvarchar(450) NULL, [Data] nvarchar(max) NOT NULL, " +
+            "[CreatedBy] nvarchar(450) NULL, [CreatedAt] datetime2 NOT NULL, [UpdatedAt] datetime2 NULL);",
+        "IF NOT EXISTS (SELECT 1 FROM sys.indexes WHERE name = 'IX_PosRecords_TenantId_Kind') CREATE INDEX IX_PosRecords_TenantId_Kind ON dbo.PosRecords ([TenantId], [Kind]);",
+        "IF NOT EXISTS (SELECT 1 FROM sys.indexes WHERE name = 'IX_PosRecords_Kind_Code') CREATE INDEX IX_PosRecords_Kind_Code ON dbo.PosRecords ([TenantId], [Kind], [Code]);",
+
+        // Manufacturing / Projects / CRM: one generic record table
+        "IF OBJECT_ID('dbo.ErpRecords','U') IS NULL CREATE TABLE dbo.ErpRecords (" +
+            "[Id] nvarchar(450) NOT NULL CONSTRAINT PK_ErpRecords PRIMARY KEY, [TenantId] nvarchar(450) NOT NULL, [Module] nvarchar(450) NOT NULL, [Kind] nvarchar(450) NOT NULL, " +
+            "[Code] nvarchar(450) NULL, [Company] nvarchar(450) NULL, [Branch] nvarchar(450) NULL, [Status] nvarchar(450) NULL, " +
+            "[Ref] nvarchar(450) NULL, [Parent] nvarchar(450) NULL, [Data] nvarchar(max) NOT NULL, " +
+            "[CreatedBy] nvarchar(450) NULL, [CreatedAt] datetime2 NOT NULL, [UpdatedAt] datetime2 NULL);",
+        "IF NOT EXISTS (SELECT 1 FROM sys.indexes WHERE name = 'IX_ErpRecords_Tenant_Module_Kind') CREATE INDEX IX_ErpRecords_Tenant_Module_Kind ON dbo.ErpRecords ([TenantId], [Module], [Kind]);",
+        "IF NOT EXISTS (SELECT 1 FROM sys.indexes WHERE name = 'IX_ErpRecords_Ref') CREATE INDEX IX_ErpRecords_Ref ON dbo.ErpRecords ([TenantId], [Ref]);",
+
+        // Admin module: privilege / page catalog and role defaults stored in the database
+        "IF OBJECT_ID('dbo.PermissionDefs','U') IS NULL CREATE TABLE dbo.PermissionDefs (" +
+            "[Id] nvarchar(450) NOT NULL CONSTRAINT PK_PermissionDefs PRIMARY KEY, [TenantId] nvarchar(450) NOT NULL, [Key] nvarchar(450) NOT NULL, " +
+            "[Group] nvarchar(450) NOT NULL, [Label] nvarchar(max) NULL, [Route] nvarchar(max) NULL, [SortOrder] int NOT NULL, [IsActive] bit NOT NULL, [IsCustom] bit NOT NULL);",
+        "IF NOT EXISTS (SELECT 1 FROM sys.indexes WHERE name = 'IX_PermissionDefs_TenantId_Key') CREATE UNIQUE INDEX IX_PermissionDefs_TenantId_Key ON dbo.PermissionDefs ([TenantId], [Key]);",
+        "IF OBJECT_ID('dbo.RoleDefs','U') IS NULL CREATE TABLE dbo.RoleDefs (" +
+            "[Id] nvarchar(450) NOT NULL CONSTRAINT PK_RoleDefs PRIMARY KEY, [TenantId] nvarchar(450) NOT NULL, [Role] nvarchar(450) NOT NULL, " +
+            "[Name] nvarchar(max) NULL, [Permissions] nvarchar(max) NOT NULL, [IsSystem] bit NOT NULL, [UpdatedAt] datetime2 NOT NULL);",
+        "IF NOT EXISTS (SELECT 1 FROM sys.indexes WHERE name = 'IX_RoleDefs_TenantId_Role') CREATE UNIQUE INDEX IX_RoleDefs_TenantId_Role ON dbo.RoleDefs ([TenantId], [Role]);",
     };
 
     public static async Task Apply(WorkflowDbContext db)

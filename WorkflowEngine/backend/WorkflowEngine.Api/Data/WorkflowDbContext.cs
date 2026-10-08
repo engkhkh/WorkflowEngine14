@@ -18,7 +18,11 @@ public class WorkflowDbContext : DbContext
     public DbSet<HrEmployee> HrEmployees => Set<HrEmployee>();
     public DbSet<HrRecord> HrRecords => Set<HrRecord>();
     public DbSet<FinRecord> FinRecords => Set<FinRecord>();
+    public DbSet<PosRecord> PosRecords => Set<PosRecord>();
     public DbSet<FinAudit> FinAudits => Set<FinAudit>();
+    public DbSet<ErpRecord> ErpRecords => Set<ErpRecord>();
+    public DbSet<PermissionDef> PermissionDefs => Set<PermissionDef>();
+    public DbSet<RoleDef> RoleDefs => Set<RoleDef>();
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -85,6 +89,11 @@ public class WorkflowDbContext : DbContext
         });
 
         // Finance (tables created by SchemaUpgrade on startup)
+        // Manufacturing / Projects / CRM records and the database-stored privilege catalog + roles (tables created by SchemaUpgrade)
+        modelBuilder.Entity<ErpRecord>(e => { e.HasKey(x => x.Id); e.HasIndex(x => new { x.TenantId, x.Module, x.Kind }); });
+        modelBuilder.Entity<PermissionDef>(e => { e.HasKey(x => x.Id); e.HasIndex(x => new { x.TenantId, x.Key }).IsUnique(); });
+        modelBuilder.Entity<RoleDef>(e => { e.HasKey(x => x.Id); e.HasIndex(x => new { x.TenantId, x.Role }).IsUnique(); });
+
         modelBuilder.Entity<FinRecord>(e =>
         {
             e.HasKey(x => x.Id);
@@ -94,6 +103,13 @@ public class WorkflowDbContext : DbContext
         {
             e.HasKey(x => x.Id);
             e.HasIndex(x => new { x.TenantId, x.At });
+        });
+
+        // Point of sale (table created by SchemaUpgrade on startup)
+        modelBuilder.Entity<PosRecord>(e =>
+        {
+            e.HasKey(x => x.Id);
+            e.HasIndex(x => new { x.TenantId, x.Kind });
         });
 
         // Plain relational columns, no JSON needed - this table is meant to be queried
