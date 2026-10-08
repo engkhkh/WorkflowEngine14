@@ -210,3 +210,6 @@ html[data-density="compact"] .card-head { padding: 10px 14px; }
 html[data-density="compact"] button:not(.icon-btn):not(.sw):not(.user) { padding-block: 5px; }
 html[data-density="compact"] input, html[data-density="compact"] select, html[data-density="compact"] textarea { padding-block: 5px; }
 html[data-density="compact"] main { padding-top: 16px; }
+
+/* Design studio: optional separate heading font */
+h1, h2, h3, .page-head h1 { font-family: var(--font-heading, var(--font)); }

@@ -15,7 +15,29 @@ export interface Look {
   density: Density;
   corners: Corners;
   sidebar: SidebarStyle;
+  /** Design studio: colour overrides per theme mode (hex only), custom Google font names, uploaded font file */
+  colors: { light: Record<string, string>; dark: Record<string, string> };
+  fontBody: string;
+  fontHeading: string;
+  fontFile: { name: string; data: string } | null;
 }
+
+export interface SavedTheme { name: string; look: Look; }
+
+/** Colours the Design studio can override. `derive` = other tokens that are recalculated from it. */
+export const TOKENS: { key: string; css: string; label: string }[] = [
+  { key: 'bg', css: '--bg', label: 'design.c.bg' },
+  { key: 'surface', css: '--surface', label: 'design.c.surface' },
+  { key: 'text', css: '--text', label: 'design.c.text' },
+  { key: 'border', css: '--border', label: 'design.c.border' },
+  { key: 'sideBg', css: '--side-bg', label: 'design.c.sideBg' },
+  { key: 'sideText', css: '--side-text', label: 'design.c.sideText' },
+  { key: 'ok', css: '--ok', label: 'design.c.ok' },
+  { key: 'warn', css: '--warn', label: 'design.c.warn' },
+  { key: 'bad', css: '--bad', label: 'design.c.bad' },
+];
+const HEX = /^#[0-9a-f]{6}$/i;
+const FAMILY = /^[A-Za-z0-9 ]{2,40}$/;
 
 export interface FontOption { id: string; label: string; stack: string; google?: string; }
 
@@ -43,9 +65,14 @@ export const ACCENTS = ['#4338ca', '#2563eb', '#0d9488', '#059669', '#ea580c', '
 const ZOOM: Record<TextSize, number> = { s: 0.92, m: 1, l: 1.1, xl: 1.22 };
 const RADIUS: Record<Corners, [string, string]> = { sharp: ['4px', '3px'], soft: ['12px', '8px'], round: ['18px', '12px'] };
 
-export const DEFAULT_LOOK: Look = { mode: 'dark', accent: '#5b7cf0', font: 'auto', size: 'm', density: 'comfortable', corners: 'soft', sidebar: 'dark' };
+export const DEFAULT_LOOK: Look = { mode: 'dark', accent: '#5b7cf0', font: 'auto', size: 'm', density: 'comfortable', corners: 'soft', sidebar: 'dark', colors: { light: {}, dark: {} }, fontBody: '', fontHeading: '', fontFile: null };
 
 const KEY = 'wfe_appearance';
+const THEMES_KEY = 'wfe_themes';
+/** Appearance is stored per signed-in user (so every user on this browser keeps their own design). */
+function userSuffix(): string {
+  try { const u = JSON.parse(localStorage.getItem('wfe_user') || 'null'); return u?.username ? ':' + String(u.username).toLowerCase() : ''; } catch { return ''; }
+}
 
 // ---- tiny colour helpers (hex only) ----
 const clamp = (n: number) => Math.max(0, Math.min(255, Math.round(n)));
@@ -71,6 +98,8 @@ function luminance(hex: string) {
 @Injectable({ providedIn: 'root' })
 export class AppearanceService {
   look = signal<Look>(this.load());
+  themes = signal<SavedTheme[]>(this.loadThemes());
+  studio = signal(false);
   open = signal(false);
   private systemDark = signal(typeof matchMedia === 'function' ? matchMedia('(prefers-color-scheme: dark)').matches : false);
   private loadedFonts = new Set<string>();
@@ -92,7 +121,7 @@ export class AppearanceService {
 
   update(patch: Partial<Look>) {
     this.look.set({ ...this.look(), ...patch });
-    try { localStorage.setItem(KEY, JSON.stringify(this.look())); } catch { /* ignore */ }
+    try { localStorage.setItem(KEY + userSuffix(), JSON.stringify(this.look())); } catch { /* ignore - e.g. an uploaded font that is too large */ }
   }
   setMode(mode: ThemeMode) { this.update({ mode }); }
   reset() { this.update({ ...DEFAULT_LOOK }); }
@@ -105,10 +134,63 @@ export class AppearanceService {
 
   private load(): Look {
     try {
-      const raw = localStorage.getItem(KEY);
-      if (raw) return { ...DEFAULT_LOOK, ...JSON.parse(raw) };
+      const raw = localStorage.getItem(KEY + userSuffix()) ?? (userSuffix() ? null : localStorage.getItem(KEY));
+      if (raw) return this.clean(JSON.parse(raw));
     } catch { /* ignore */ }
-    return { ...DEFAULT_LOOK };
+    return this.clean({});
+  }
+  /** Merge with defaults and drop anything that is not a safe value (hex colours, plain font names). */
+  clean(x: any): Look {
+    const l: Look = { ...DEFAULT_LOOK, ...(x && typeof x === 'object' ? x : {}) };
+    const col = (o: any) => Object.fromEntries(Object.entries(o && typeof o === 'object' ? o : {}).filter(([k, v]) => TOKENS.some(t => t.key === k) && HEX.test(String(v))).map(([k, v]) => [k, String(v)]));
+    l.colors = { light: col(l.colors?.light), dark: col(l.colors?.dark) };
+    l.fontBody = FAMILY.test(l.fontBody || '') ? l.fontBody : '';
+    l.fontHeading = FAMILY.test(l.fontHeading || '') ? l.fontHeading : '';
+    l.fontFile = l.fontFile && typeof l.fontFile.data === 'string' && l.fontFile.data.startsWith('data:') ? { name: String(l.fontFile.name || 'font').slice(0, 60), data: l.fontFile.data } : null;
+    if (!HEX.test(l.accent)) l.accent = DEFAULT_LOOK.accent;
+    return l;
+  }
+  /** Call after sign-in / user switch so the signed-in user's own design is applied. */
+  reloadForUser() { this.look.set(this.load()); this.themes.set(this.loadThemes()); }
+
+  // ---- Design studio: colours, fonts, saved themes
+  setColor(key: string, value: string | null) {
+    const mode = this.effective(); const cur = { ...this.look().colors[mode] };
+    if (value && HEX.test(value)) cur[key] = value; else delete cur[key];
+    this.update({ colors: { ...this.look().colors, [mode]: cur } });
+  }
+  resetColors() { this.update({ colors: { light: {}, dark: {} } }); }
+  setCustomFont(which: 'fontBody' | 'fontHeading', family: string) { this.update({ [which]: FAMILY.test(family.trim()) ? family.trim() : '' } as Partial<Look>); }
+  setFontFile(file: { name: string; data: string } | null) { this.update({ fontFile: file }); }
+
+  private loadThemes(): SavedTheme[] {
+    try { const a = JSON.parse(localStorage.getItem(THEMES_KEY + userSuffix()) || '[]'); return Array.isArray(a) ? a.filter(t => t?.name).map(t => ({ name: String(t.name).slice(0, 40), look: this.clean(t.look) })) : []; } catch { return []; }
+  }
+  private persistThemes() { try { localStorage.setItem(THEMES_KEY + userSuffix(), JSON.stringify(this.themes())); } catch { /* ignore */ } }
+  saveTheme(name: string) {
+    const n = name.trim().slice(0, 40); if (!n) return;
+    this.themes.set([...this.themes().filter(t => t.name !== n), { name: n, look: this.look() }]); this.persistThemes();
+  }
+  applyTheme(name: string) { const t = this.themes().find(x => x.name === name); if (t) this.update(this.clean(t.look)); }
+  deleteTheme(name: string) { this.themes.set(this.themes().filter(t => t.name !== name)); this.persistThemes(); }
+  exportJson(): string { return JSON.stringify({ app: 'erp-theme', version: 1, look: this.look() }, null, 2); }
+  /** Returns false when the text is not a theme file. */
+  importJson(text: string): boolean {
+    try { const o = JSON.parse(text); if (o?.app !== 'erp-theme' || !o.look) return false; this.update(this.clean(o.look)); return true; } catch { return false; }
+  }
+
+  private customFace = false;
+  private ensureFamily(name: string) {
+    if (!name || this.loadedFonts.has('g:' + name)) return;
+    this.loadedFonts.add('g:' + name);
+    const link = document.createElement('link'); link.rel = 'stylesheet';
+    link.href = `https://fonts.googleapis.com/css2?family=${encodeURIComponent(name).replace(/%20/g, '+')}:wght@400;500;600;700&display=swap`;
+    document.head.appendChild(link);
+  }
+  private ensureFile(f: { name: string; data: string }) {
+    const key = 'f:' + f.name + f.data.length;
+    if (this.loadedFonts.has(key)) return; this.loadedFonts.add(key);
+    try { const face = new FontFace('PortalCustom', `url(${f.data})`); face.load().then(x => { (document as any).fonts.add(x); this.customFace = true; }).catch(() => {}); } catch { /* unsupported */ }
   }
 
   private ensureFont(f: FontOption) {
@@ -167,6 +249,24 @@ export class AppearanceService {
     set('--font', f.stack);
     set('--ion-font-family', f.stack);
     root.setAttribute('data-font', f.id);
+
+    // Design studio: custom fonts
+    const heading = l.fontHeading;
+    let body = l.fontBody ? `'${l.fontBody}', ${f.stack}` : f.stack;
+    if (l.fontBody) this.ensureFamily(l.fontBody);
+    if (l.fontFile) { this.ensureFile(l.fontFile); body = `'PortalCustom', ${body}`; }
+    if (l.fontBody || l.fontFile) { set('--font', body); set('--ion-font-family', body); }
+    if (heading) { this.ensureFamily(heading); set('--font-heading', `'${heading}', ${f.stack}`); } else root.style.removeProperty('--font-heading');
+
+    // Design studio: colour overrides (current mode only), with the related tones recalculated
+    const custom = l.colors?.[theme] ?? {};
+    for (const t of TOKENS) root.style.removeProperty(t.css);
+    for (const k of ['--surface-2', '--surface-3', '--text-2', '--text-dim', '--border-strong', '--side-bg-2']) if (Object.keys(custom).length) root.style.removeProperty(k);
+    for (const t of TOKENS) if (custom[t.key]) set(t.css, custom[t.key]);
+    if (custom['surface']) { const tx = custom['text'] ?? (dark ? '#e8f0ff' : '#0f1b2d'); set('--surface-2', mix(custom['surface'], tx, 0.03)); set('--surface-3', mix(custom['surface'], tx, 0.08)); }
+    if (custom['text']) { const sf = custom['surface'] ?? (dark ? '#121a2e' : '#ffffff'); set('--text-2', mix(custom['text'], sf, 0.25)); set('--text-dim', mix(custom['text'], sf, 0.45)); }
+    if (custom['border']) set('--border-strong', mix(custom['border'], dark ? '#ffffff' : '#000000', 0.1));
+    if (custom['sideBg']) { set('--side-bg-2', mix(custom['sideBg'], '#ffffff', 0.1)); if (!custom['sideText']) set('--side-text', luminance(custom['sideBg']) > 0.45 ? '#2a3550' : '#dbe3f7'); }
 
     // text size: scales the whole UI (the app is laid out in px)
     set('--ui-zoom', String(ZOOM[l.size]));

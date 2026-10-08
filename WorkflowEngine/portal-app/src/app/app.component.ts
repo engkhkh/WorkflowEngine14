@@ -1,4 +1,4 @@
-import { inject, Component, HostListener, OnDestroy, OnInit, computed, effect } from '@angular/core';
+import { inject, Component, HostListener, OnDestroy, OnInit, computed, effect, untracked } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { NavigationEnd, Router, RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
@@ -261,6 +261,8 @@ export class AppComponent implements OnInit, OnDestroy {
     public ctx: ErpContextService, public data: ErpDataService, public ai: AssistantService,
     public org: OrgService, public look: AppearanceService
   ) {
+    // each user gets their own saved design (Design studio) as soon as they are signed in
+    effect(() => { if (this.auth.currentUser()) untracked(() => this.look.reloadForUser()); });
     // load once whenever someone is signed in (also right after login)
     effect(() => {
       if (this.auth.currentUser() && !this.data.loadedOnce()) {

@@ -4,12 +4,13 @@ import { AppearanceService, ThemeMode, TextSize, Density, Corners, SidebarStyle 
 import { I18nService } from '../core/i18n.service';
 import { TranslatePipe } from '../core/translate.pipe';
 import { IconComponent } from './ui';
+import { DesignStudioComponent } from './design-studio.component';
 
 /** Theme / accent colour / font / text size / density / corners / sidebar controls. */
 @Component({
   selector: 'app-appearance-panel',
   standalone: true,
-  imports: [CommonModule, TranslatePipe, IconComponent],
+  imports: [CommonModule, TranslatePipe, IconComponent, DesignStudioComponent],
   template: `
     <div class="body">
       <p class="sub">{{ 'appear.sub' | translate }}</p>
@@ -89,6 +90,8 @@ import { IconComponent } from './ui';
         </div>
       </section>
 
+      <button class="primary" (click)="a.studio.set(true)"><app-icon name="palette" [size]="14"></app-icon>{{ 'design.open' | translate }}</button>
+      <app-design-studio *ngIf="a.studio()"></app-design-studio>
       <button class="reset" (click)="a.reset()"><app-icon name="refresh" [size]="14"></app-icon>{{ 'appear.reset' | translate }}</button>
     </div>
   `,

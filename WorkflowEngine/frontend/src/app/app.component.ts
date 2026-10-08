@@ -106,7 +106,7 @@ export class AppComponent implements OnInit {
               public look: AppearanceService, private org: OrgService) {}
 
   ngOnInit() {
-    if (this.auth.isLoggedIn()) this.sync();
+    if (this.auth.isLoggedIn()) { this.look.reloadForUser(); this.sync(); }
   }
 
   /** Refresh the signed-in user's current privileges and load the workspace's companies/branches. */
