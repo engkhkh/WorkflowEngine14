@@ -4,12 +4,13 @@ import { IonHeader, IonToolbar, IonTitle, IonContent, IonButtons, IonBackButton,
 import { AppearanceService, ThemeMode, TextSize, Density, Corners } from '../core/appearance.service';
 import { I18nService } from '../core/i18n.service';
 import { TranslatePipe } from '../core/translate.pipe';
+import { DesignStudioComponent } from '../shared/design-studio.component';
 
 /** Theme, accent colour, font, text size, density and corners - saved on this device. */
 @Component({
   selector: 'app-appearance',
   standalone: true,
-  imports: [CommonModule, TranslatePipe, IonHeader, IonToolbar, IonTitle, IonContent, IonButtons, IonBackButton, IonButton],
+  imports: [CommonModule, TranslatePipe, DesignStudioComponent, IonHeader, IonToolbar, IonTitle, IonContent, IonButtons, IonBackButton, IonButton],
   template: `
     <ion-header><ion-toolbar>
       <ion-buttons slot="start"><ion-back-button defaultHref="/tabs/more"></ion-back-button></ion-buttons>
@@ -46,6 +47,10 @@ import { TranslatePipe } from '../core/translate.pipe';
 
       <h4>{{ 'appear.preview' | translate }}</h4>
       <div class="preview"><strong>{{ 'brand' | translate }}</strong><p>{{ 'appear.previewText' | translate }}</p><ion-button size="small">{{ 'common.view' | translate }}</ion-button></div>
+      <div class="erp-root studio-wrap">
+        <button class="primary" (click)="a.studio.set(true)">{{ 'design.open' | translate }}</button>
+        <app-design-studio *ngIf="a.studio()"></app-design-studio>
+      </div>
     </ion-content>
   `,
   styles: [`

@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit, effect, untracked } from '@angular/core';
 import { IonApp, IonRouterOutlet } from '@ionic/angular/standalone';
 import { Subscription, interval } from 'rxjs';
 import { ErpContextService } from './core/erp-context.service';
@@ -22,7 +22,10 @@ export class AppComponent implements OnInit, OnDestroy {
   private poll?: Subscription;
   // ErpContextService/I18nService are injected so theme + dir are applied on startup.
   constructor(private ctx: ErpContextService, private i18n: I18nService, private auth: AuthService, private data: ErpDataService,
-              private org: OrgService, private look: AppearanceService) {}
+              private org: OrgService, private look: AppearanceService) {
+    // each user gets their own saved design (Design studio) as soon as they are signed in
+    effect(() => { if (this.auth.currentUser()) untracked(() => this.look.reloadForUser()); });
+  }
 
   ngOnInit() {
     if (this.auth.isLoggedIn()) { this.org.load().subscribe(); this.auth.refreshMe().subscribe(); }

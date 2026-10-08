@@ -41,3 +41,5 @@ html[dir="rtl"] .field-label { text-align: right; }
 ion-app { zoom: var(--ui-zoom, 1); }
 html[data-density="compact"] ion-item { --min-height: 40px; --padding-top: 0; --padding-bottom: 0; }
 html[data-density="compact"] .section-title { margin-top: 12px; }
+
+@import "theme/erp-root";

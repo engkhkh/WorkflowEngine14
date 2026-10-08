@@ -154,3 +154,8 @@ export interface SignupPayload {
   currency: string;
   branchName?: string;
 }
+
+/** Admin module: privilege catalog and roles as stored in the database (api/admin/rbac). */
+export interface RbacPermission { key: string; group: string; label?: string | null; route?: string | null; sortOrder: number; isActive: boolean; isCustom: boolean; }
+export interface RbacRole { role: string; name?: string | null; permissions: string[]; isSystem: boolean; customised: boolean; users: number; }
+export interface RbacCatalog { permissions: RbacPermission[]; roles: RbacRole[]; }

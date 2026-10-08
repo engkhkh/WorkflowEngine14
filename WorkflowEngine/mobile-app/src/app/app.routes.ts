@@ -1,5 +1,6 @@
 import { Routes } from '@angular/router';
 import { authGuard, createGuard, permGuard } from './core/auth.guard';
+import { WORKSPACE_ROUTES } from './workspaces.routes';
 
 export const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'tabs/home' },
@@ -28,6 +29,8 @@ export const routes: Routes = [
   { path: 'assistant', canActivate: [authGuard, permGuard('assistant.use')], loadComponent: () => import('./assistant/assistant.page').then(m => m.AssistantPage) },
   { path: 'reports', canActivate: [authGuard, permGuard('reports.view')], loadComponent: () => import('./reports/reports.page').then(m => m.ReportsPage) },
   { path: 'appearance', canActivate: [authGuard], loadComponent: () => import('./appearance/appearance.page').then(m => m.AppearancePage) },
+  ...WORKSPACE_ROUTES,
+  { path: 'admin/roles', canActivate: [authGuard, permGuard('admin.users')], loadComponent: () => import('./erp/admin-roles.page').then(m => m.AdminRolesPage) },
   { path: 'admin', canActivate: [authGuard, permGuard('admin.users', 'org.manage')], loadComponent: () => import('./admin/admin.page').then(m => m.AdminPage) },
   { path: 'admin/user/:id', canActivate: [authGuard, permGuard('admin.users')], loadComponent: () => import('./admin/user-edit.page').then(m => m.UserEditPage) },
   { path: '**', redirectTo: 'tabs/home' },

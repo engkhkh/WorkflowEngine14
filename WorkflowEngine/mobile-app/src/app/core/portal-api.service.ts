@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { environment } from '../../environments/environment';
 import {
-  AdminUser, OrgSnapshot, PermissionCatalog, SaveUserPayload, WorkflowDefinitionSummary, WorkflowInstance, WorkflowTask
+  AdminUser, OrgSnapshot, PermissionCatalog, RbacCatalog, SaveUserPayload, WorkflowDefinitionSummary, WorkflowInstance, WorkflowTask
 } from './models';
 import { Branch, Company } from './erp.config';
 
@@ -43,6 +43,13 @@ export class PortalApiService {
 
   // ---------- Admin module: users & privileges ----------
   getPermissionCatalog(): Observable<PermissionCatalog> { return this.http.get<PermissionCatalog>(`${this.base}/users/permissions`); }
+  rbacGet(): Observable<RbacCatalog> { return this.http.get<RbacCatalog>(`${this.base}/admin/rbac`); }
+  rbacSaveRole(role: string, b: { name?: string; permissions: string[] }): Observable<RbacCatalog> { return this.http.put<RbacCatalog>(`${this.base}/admin/rbac/roles/${encodeURIComponent(role)}`, b); }
+  rbacCreateRole(b: { role: string; name?: string; copyFrom?: string }): Observable<RbacCatalog> { return this.http.post<RbacCatalog>(`${this.base}/admin/rbac/roles`, b); }
+  rbacDeleteRole(role: string): Observable<RbacCatalog> { return this.http.delete<RbacCatalog>(`${this.base}/admin/rbac/roles/${encodeURIComponent(role)}`); }
+  rbacAddPermission(b: { key: string; group?: string; label?: string; route?: string }): Observable<RbacCatalog> { return this.http.post<RbacCatalog>(`${this.base}/admin/rbac/permissions`, b); }
+  rbacSavePermission(key: string, b: { isActive?: boolean; label?: string; route?: string; group?: string }): Observable<RbacCatalog> { return this.http.put<RbacCatalog>(`${this.base}/admin/rbac/permissions/${encodeURIComponent(key)}`, b); }
+  rbacDeletePermission(key: string): Observable<RbacCatalog> { return this.http.delete<RbacCatalog>(`${this.base}/admin/rbac/permissions/${encodeURIComponent(key)}`); }
   adminListUsers(): Observable<AdminUser[]> { return this.http.get<AdminUser[]>(`${this.base}/users/admin`); }
   adminCreateUser(p: SaveUserPayload): Observable<AdminUser> { return this.http.post<AdminUser>(`${this.base}/users/admin`, p); }
   adminUpdateUser(id: string, p: SaveUserPayload): Observable<AdminUser> { return this.http.put<AdminUser>(`${this.base}/users/admin/${id}`, p); }

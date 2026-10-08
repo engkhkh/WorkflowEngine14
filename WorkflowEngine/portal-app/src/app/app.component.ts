@@ -13,6 +13,8 @@ import { MODULES } from './core/erp.config';
 import { OrgService } from './core/org.service';
 import { HR_ANY } from './core/hr.models';
 import { FIN_ANY } from './core/fin.models';
+import { POS_ANY } from './core/pos.models';
+import { ERP_MODULES } from './core/erp.models';
 import { LayoutService } from './core/layout.service';
 import { AppearanceService } from './core/appearance.service';
 import { LangPickerComponent } from './shared/lang-picker.component';
@@ -50,6 +52,13 @@ import { AssistantPanelComponent } from './assistant/assistant-panel.component';
           <a *ngFor="let m of visibleModules()" [routerLink]="linkFor(m.key)" routerLinkActive="on" [title]="('module.' + m.key) | translate">
             <app-icon [name]="m.icon"></app-icon><span>{{ ('module.' + m.key) | translate }}</span>
             <i class="dot" [style.background]="m.color"></i>
+          </a>
+          <a *ngIf="showPos()" routerLink="/pos" routerLinkActive="on" [title]="'module.pos' | translate">
+            <app-icon name="store"></app-icon><span>{{ 'module.pos' | translate }}</span><i class="dot" style="background:#f43f5e"></i>
+          </a>
+
+          <a *ngFor="let m of erpMods()" [routerLink]="m.route" routerLinkActive="on" [title]="m.titleKey | translate">
+            <app-icon [name]="m.icon"></app-icon><span>{{ m.titleKey | translate }}</span><i class="dot" [style.background]="m.color"></i>
           </a>
 
           <div class="sec">{{ 'nav.workspace' | translate }}</div>
@@ -248,6 +257,8 @@ export class AppComponent implements OnInit, OnDestroy {
   modules = MODULES;
   layout = inject(LayoutService);
   visibleModules = computed(() => MODULES.filter(m => !this.layout.isNavHidden(m.key)).filter(m => m.key === 'hr' ? this.auth.canAny(...HR_ANY) : m.key === 'finance' ? (this.auth.can('finance.view') || this.auth.canAny(...FIN_ANY)) : this.auth.can(m.key + '.view')));
+  erpMods = computed(() => Object.values(ERP_MODULES).filter(m => !this.layout.isNavHidden(m.id) && this.auth.canAny(...m.any)));
+  showPos = computed(() => !this.layout.isNavHidden('pos') && this.auth.canAny(...POS_ANY));
   linkFor(key: string): string[] { return key === 'hr' ? ['/hr'] : key === 'finance' && this.auth.canAny(...FIN_ANY) ? ['/finance'] : ['/m', key]; }
   q = '';
   bellOpen = false;

@@ -2,6 +2,8 @@ import { Routes } from '@angular/router';
 import { authGuard, createGuard, moduleGuard, permGuard } from './core/auth.guard';
 import { HR_ANY } from './core/hr.models';
 import { FIN_ANY } from './core/fin.models';
+import { ERP_ROUTES } from './erp/erp.routes';
+import { POS_ANY } from './core/pos.models';
 
 export const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'dashboard' },
@@ -32,6 +34,26 @@ export const routes: Routes = [
       { path: 'me', canActivate: [permGuard('hr.self')], loadComponent: () => import('./hr/hr-self.component').then(m => m.HrSelfComponent) },
     ]
   },
+
+  {
+    // Point of sale: every page is guarded by its own pos.* privilege (set per user in Admin > Users)
+    path: 'pos', canActivate: [authGuard, permGuard(...POS_ANY)],
+    loadComponent: () => import('./pos/pos-shell.component').then(m => m.PosShellComponent),
+    children: [
+      { path: '', pathMatch: 'full', loadComponent: () => import('./pos/pos-shell.component').then(m => m.PosHomeComponent) },
+      { path: 'terminal', canActivate: [permGuard('pos.sell')], loadComponent: () => import('./pos/pos-terminal.component').then(m => m.PosTerminalComponent) },
+      { path: 'shifts', canActivate: [permGuard('pos.sell', 'pos.shifts.manage')], loadComponent: () => import('./pos/pos-shifts.component').then(m => m.PosShiftsComponent) },
+      { path: 'sales', canActivate: [permGuard('pos.view')], loadComponent: () => import('./pos/pos-sales.component').then(m => m.PosSalesComponent) },
+      { path: 'products', canActivate: [permGuard('pos.products.manage', 'pos.view')], loadComponent: () => import('./pos/pos-catalog.component').then(m => m.PosProductsComponent) },
+      { path: 'customers', canActivate: [permGuard('pos.customers.manage', 'pos.view')], loadComponent: () => import('./pos/pos-catalog.component').then(m => m.PosCustomersComponent) },
+      { path: 'promotions', canActivate: [permGuard('pos.promotions.manage', 'pos.view')], loadComponent: () => import('./pos/pos-catalog.component').then(m => m.PosPromotionsComponent) },
+      { path: 'stock', canActivate: [permGuard('pos.stock.view')], loadComponent: () => import('./pos/pos-stock.component').then(m => m.PosStockComponent) },
+      { path: 'overview', canActivate: [permGuard('pos.reports.view')], loadComponent: () => import('./pos/pos-overview.component').then(m => m.PosOverviewComponent) },
+      { path: 'setup', canActivate: [permGuard('pos.setup')], loadComponent: () => import('./pos/pos-setup.component').then(m => m.PosSetupComponent) },
+    ]
+  },
+
+  ...ERP_ROUTES,
 
   {
     // Finance workspace: every page is guarded by its own finance.* privilege (set per user in Admin > Users)

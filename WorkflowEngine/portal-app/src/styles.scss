@@ -212,3 +212,10 @@ html[data-density="compact"] main { padding-top: 16px; }
 
 /* Design studio: optional separate heading font */
 h1, h2, h3, .page-head h1 { font-family: var(--font-heading, var(--font)); }
+
+/* POS receipt printing: only the receipt is printed */
+@media print {
+  body.pos-printing * { visibility: hidden !important; }
+  body.pos-printing .pos-receipt-print, body.pos-printing .pos-receipt-print * { visibility: visible !important; }
+  body.pos-printing .pos-receipt-print { position: absolute; left: 0; top: 0; width: 80mm; border: 0 !important; }
+}

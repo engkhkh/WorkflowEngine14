@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, computed, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 import {
@@ -7,7 +7,8 @@ import {
 import { addIcons } from 'ionicons';
 import {
   businessOutline, gitBranchOutline, globeOutline, moonOutline, barChartOutline, sparklesOutline, sendOutline, logOutOutline,
-  trendingUpOutline, cartOutline, cubeOutline, walletOutline, peopleOutline, settingsOutline, colorPaletteOutline, shieldCheckmarkOutline
+  trendingUpOutline, cartOutline, cubeOutline, walletOutline, peopleOutline, settingsOutline, colorPaletteOutline, shieldCheckmarkOutline,
+  constructOutline, briefcaseOutline, locateOutline, layersOutline, buildOutline, keyOutline, storefrontOutline, gitBranchOutline as gitBranch2
 } from 'ionicons/icons';
 import { AuthService } from '../core/auth.service';
 import { I18nService } from '../core/i18n.service';
@@ -17,6 +18,16 @@ import { AssistantService } from '../core/assistant.service';
 import { TranslatePipe } from '../core/translate.pipe';
 import { OrgService } from '../core/org.service';
 import { LangSelectComponent } from '../shared/lang-select.component';
+import { LayoutService } from '../core/layout.service';
+import { ERP_MODULES } from '../core/erp.models';
+import { HR_ANY } from '../core/hr.models';
+import { FIN_ANY } from '../core/fin.models';
+import { POS_ANY } from '../core/pos.models';
+
+/** portal icon name -> Ionicon */
+const ICONS: Record<string, string> = { factory: 'construct-outline', briefcase: 'briefcase-outline', target: 'locate-outline', cart: 'cart-outline', globe: 'globe-outline',
+  layers: 'layers-outline', wrench: 'build-outline', wallet: 'wallet-outline', 'trending-up': 'trending-up-outline', 'git-branch': 'git-branch-outline', key: 'key-outline',
+  sparkles: 'sparkles-outline', store: 'storefront-outline', users: 'people-outline' };
 
 @Component({
   selector: 'app-more',
@@ -31,6 +42,13 @@ import { LangSelectComponent } from '../shared/lang-select.component';
         <div><strong>{{ u.displayName }}</strong><small>{{ u.username }} · {{ u.role }}</small></div>
       </div>
 
+      <ion-list class="boxed" lines="full" *ngIf="modules().length">
+        <ion-list-header>{{ 'nav.modules' | translate }}</ion-list-header>
+        <ion-item button detail="true" *ngFor="let m of modules()" (click)="go(m.route)">
+          <ion-icon [name]="m.icon" slot="start"></ion-icon><ion-label>{{ m.title | translate }}</ion-label>
+        </ion-item>
+      </ion-list>
+
       <ion-list class="boxed" lines="full">
         <ion-list-header>{{ 'more.workspace' | translate }}</ion-list-header>
         <ion-item button detail="true" *ngIf="auth.can('reports.view')" (click)="go('/reports')"><ion-icon name="bar-chart-outline" slot="start"></ion-icon><ion-label>{{ 'nav.reports' | translate }}</ion-label></ion-item>
@@ -41,6 +59,7 @@ import { LangSelectComponent } from '../shared/lang-select.component';
       <ion-list class="boxed" lines="full" *ngIf="auth.canAny('admin.users', 'org.manage')">
         <ion-list-header>{{ 'nav.administration' | translate }}</ion-list-header>
         <ion-item button detail="true" (click)="go('/admin')"><ion-icon name="shield-checkmark-outline" slot="start"></ion-icon><ion-label>{{ 'nav.admin' | translate }}</ion-label></ion-item>
+        <ion-item button detail="true" *ngIf="auth.can('admin.users')" (click)="go('/admin/roles')"><ion-icon name="key-outline" slot="start"></ion-icon><ion-label>{{ 'admin.rolesTab' | translate }}</ion-label></ion-item>
       </ion-list>
 
       <ion-list class="boxed" lines="full">
@@ -84,10 +103,21 @@ import { LangSelectComponent } from '../shared/lang-select.component';
   `]
 })
 export class MorePage {
+  private layout = inject(LayoutService);
+  /** every workspace the signed-in user has a privilege for (same rules as the portal sidebar) */
+  modules = computed(() => {
+    const L = this.layout, a = this.auth, out: { route: string; title: string; icon: string }[] = [];
+    if (!L.isNavHidden('hr') && a.canAny(...HR_ANY)) out.push({ route: '/hr', title: 'module.hr', icon: 'people-outline' });
+    if (!L.isNavHidden('finance') && (a.can('finance.view') || a.canAny(...FIN_ANY))) out.push({ route: '/finance', title: 'module.finance', icon: 'wallet-outline' });
+    if (!L.isNavHidden('pos') && a.canAny(...POS_ANY)) out.push({ route: '/pos', title: 'module.pos', icon: ICONS['store'] });
+    for (const m of Object.values(ERP_MODULES)) if (!L.isNavHidden(m.id) && a.canAny(...m.any)) out.push({ route: m.route, title: m.titleKey, icon: ICONS[m.icon] ?? 'apps-outline' });
+    return out;
+  });
   constructor(public auth: AuthService, public i18n: I18nService, public ctx: ErpContextService, public data: ErpDataService,
               private ai: AssistantService, private router: Router, public org: OrgService) {
     addIcons({ businessOutline, gitBranchOutline, globeOutline, moonOutline, barChartOutline, sparklesOutline, sendOutline, logOutOutline,
-      trendingUpOutline, cartOutline, cubeOutline, walletOutline, peopleOutline, settingsOutline, colorPaletteOutline, shieldCheckmarkOutline });
+      trendingUpOutline, cartOutline, cubeOutline, walletOutline, peopleOutline, settingsOutline, colorPaletteOutline, shieldCheckmarkOutline,
+      constructOutline, briefcaseOutline, locateOutline, layersOutline, buildOutline, keyOutline, storefrontOutline });
   }
   initials(n: string) { return n.split(/\s+/).map(p => p[0]).slice(0, 2).join('').toUpperCase(); }
   go(path: string) { this.router.navigate([path]); }
