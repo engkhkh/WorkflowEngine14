@@ -4,7 +4,3 @@ node_modules/
 dist/
 .vs/
 *.user
-
-# logs & IDE state
-Logs/
-.vs/
