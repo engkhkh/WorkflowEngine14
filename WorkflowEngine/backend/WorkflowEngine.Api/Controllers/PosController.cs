@@ -773,7 +773,7 @@ public class PosController : ControllerBase
             foreach (var p in Arr(d, "payments")) pay[FinJson.S(p, "method")] = pay.GetValueOrDefault(FinJson.S(p, "method")) + FinJson.D(p, "amount");
             foreach (var l in FinJson.Lines(d))
             {
-                var k = FinJson.S(l, "sku"); var cur = top.GetValueOrDefault(k, (FinJson.S(l, "name"), 0m, 0m));
+                var k = FinJson.S(l, "sku"); (string name, decimal qty, decimal amount) cur = top.TryGetValue(k, out var c0) ? c0 : (FinJson.S(l, "name"), 0m, 0m);
                 top[k] = (cur.name, cur.qty + FinJson.D(l, "qty"), cur.amount + FinJson.D(l, "total"));
             }
         }

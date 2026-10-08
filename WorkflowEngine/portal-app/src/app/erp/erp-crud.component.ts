@@ -10,6 +10,10 @@ import { I18nService } from '../core/i18n.service';
 import { TranslatePipe } from '../core/translate.pipe';
 import { IconComponent, LocalDatePipe, NumPipe, StatusComponent } from '../shared/ui';
 import { errMsg } from '../hr/hr-util';
+import { ChatterComponent } from '../shared/chatter.component';
+import { SavedViewsComponent } from '../shared/saved-views.component';
+import { ReportColumn, ReportDesignerComponent } from '../shared/report-designer.component';
+import { CollabService } from '../core/collab.service';
 
 export interface LineCol { key: string; label: string; type?: 'text' | 'number' | 'select'; options?: () => { value: string; label: string }[]; def?: any; width?: string; }
 export interface ErpField {
@@ -39,7 +43,7 @@ export interface ErpAction { label: string; show: (r: ErpRec) => boolean; run: (
 @Component({
   selector: 'app-erp-crud',
   standalone: true,
-  imports: [CommonModule, FormsModule, TranslatePipe, IconComponent, NumPipe, LocalDatePipe, StatusComponent],
+  imports: [CommonModule, FormsModule, TranslatePipe, IconComponent, NumPipe, LocalDatePipe, StatusComponent, ChatterComponent, SavedViewsComponent, ReportDesignerComponent],
   template: `
     <div class="bar">
       <input class="search" [placeholder]="'common.search' | translate" [ngModel]="q()" (ngModelChange)="q.set($event)" />
@@ -47,8 +51,10 @@ export interface ErpAction { label: string; show: (r: ErpRec) => boolean; run: (
         <option value="">{{ 'erp.allStatus' | translate }}</option>
         <option *ngFor="let s of statusFilter" [value]="s">{{ stLabel(s) }}</option>
       </select>
+      <app-saved-views [view]="module + ':' + kind" [state]="filterState" (apply)="applyFilter($event)"></app-saved-views>
       <span class="grow"></span>
       <ng-content select="[bar]"></ng-content>
+      <button class="ghost" type="button" (click)="reportOpen = true" [title]="'collab.reportDesigner' | translate"><app-icon name="printer" [size]="15"></app-icon></button>
       <button class="primary" *ngIf="canManage" (click)="openForm(null)"><app-icon name="plus" [size]="15"></app-icon>{{ newLabel | translate }}</button>
     </div>
     <p class="flash good" *ngIf="msg">{{ msg }}</p>
@@ -113,10 +119,14 @@ export interface ErpAction { label: string; show: (r: ErpRec) => boolean; run: (
             </ng-container>
             <small class="dim" *ngIf="f.hint">{{ f.hint | translate }}</small>
           </div></ng-container>
-        </div><p class="flash bad" *ngIf="error">{{ error }}</p></div>
+        </div>
+        <app-chatter *ngIf="editing" [module]="module" [kind]="kind" [recordId]="editing.id"></app-chatter>
+        <p class="flash bad" *ngIf="error">{{ error }}</p></div>
         <div class="modal-foot"><button (click)="form = null">{{ 'common.cancel' | translate }}</button><button class="primary" *ngIf="!readOnly" (click)="save()" [disabled]="saving">{{ 'admin.save' | translate }}</button></div>
       </div>
     </div>
+
+    <app-report-designer *ngIf="reportOpen" [view]="module + ':' + kind" [title]="reportTitle()" [columns]="reportCols()" [rows]="reportRows()" [user]="auth.currentUser()?.displayName || ''" (close)="reportOpen = false"></app-report-designer>
 
     <div class="modal-scrim" *ngIf="deleting" (click)="deleting = null">
       <div class="modal sm" (click)="$event.stopPropagation()">
@@ -158,6 +168,7 @@ export class ErpCrudComponent implements OnInit, OnChanges {
   @Output() saved = new EventEmitter<ErpRec>();
 
   private erp = inject(ErpService);
+  private collab = inject(CollabService);
   private ctx = inject(ErpContextService);
   private i18n = inject(I18nService);
   private route = inject(ActivatedRoute);
@@ -170,7 +181,35 @@ export class ErpCrudComponent implements OnInit, OnChanges {
   editing: ErpRec | null = null;
   deleting: ErpRec | null = null;
   readOnly = false;
-  saving = false; error = ''; msg = '';
+  saving = false; error = ''; msg = ''; reportOpen = false;
+
+  filterState = () => ({ q: this.q(), status: this.st() });
+  applyFilter(f: { q: string; status: string }) { this.q.set(f.q ?? ''); this.st.set(f.status ?? ''); }
+  reportTitle = () => this.i18n.t('module.' + this.module) + ' · ' + this.kind;
+  reportCols = (): ReportColumn[] => this.cols().map(f => ({ key: f.key, label: this.i18n.t(f.label), numeric: f.type === 'number' || f.type === 'money' }));
+  /** the rows as currently filtered, formatted like the table; numbers keep their raw value under "<key>#" for totals */
+  reportRows = () => this.shown().map(r => {
+    const o: Record<string, any> = {};
+    for (const f of this.cols()) {
+      const v = this.val(r, f);
+      o[f.key] = f.type === 'status' ? this.stLabel(r.status) : f.type === 'select' ? this.optLabel(f, v) : f.type === 'bool' ? (v ? '✓' : '') : f.type === 'lines' ? (v || []).length
+        : f.type === 'number' || f.type === 'money' ? new Intl.NumberFormat(this.i18n.locale, { maximumFractionDigits: 2 }).format(Number(v) || 0) : f.type === 'date' && v ? String(v).slice(0, 10) : v ?? '';
+      if (f.type === 'number' || f.type === 'money') o[f.key + '#'] = Number(v) || 0;
+    }
+    return o;
+  });
+  /** activity log entry: which fields an edit changed */
+  private logChange(prev: ErpRec, body: Partial<ErpRec>) {
+    const diffs: string[] = [];
+    for (const x of this.fields) {
+      if (x.calc || x.type === 'lines') continue;
+      const w = this.where(x);
+      const before = w === 'code' ? prev.code : w === 'status' ? prev.status : w === 'ref' ? prev.ref : prev.data?.[x.key];
+      const after = w === 'code' ? body.code : w === 'status' ? body.status : w === 'ref' ? body.ref : (body.data as any)?.[x.key];
+      if (String(before ?? '') !== String(after ?? '')) diffs.push(`${this.i18n.t(x.label)}: ${String(before ?? '—')} → ${String(after ?? '—')}`);
+    }
+    if (diffs.length) this.collab.addNote(this.module, this.kind, prev.id, diffs.join('\n'), true).subscribe({ error: () => {} });
+  }
 
   get hasLines() { return this.fields.some(f => f.type === 'lines'); }
   cols = () => this.fields.filter(f => f.table);
@@ -256,7 +295,7 @@ export class ErpCrudComponent implements OnInit, OnChanges {
     this.saving = true; this.error = '';
     const req = this.editing ? this.erp.update(this.module, this.kind, this.editing.id, { ...body, data: { ...(this.editing.data ?? {}), ...(body.data as any) } }) : this.erp.create(this.module, this.kind, body);
     req.subscribe({
-      next: r => { this.saving = false; this.form = null; this.flash(this.i18n.t('hr.saved')); this.load(); this.erp.refresh(this.module, this.kind, this.company).subscribe(); this.saved.emit(r); },
+      next: r => { this.saving = false; if (this.editing) this.logChange(this.editing, body); else this.collab.addNote(this.module, this.kind, r.id, this.i18n.t('collab.created'), true).subscribe({ error: () => {} }); this.form = null; this.flash(this.i18n.t('hr.saved')); this.load(); this.erp.refresh(this.module, this.kind, this.company).subscribe(); this.saved.emit(r); },
       error: e => { this.saving = false; this.error = errMsg(e, this.i18n); }
     });
   }

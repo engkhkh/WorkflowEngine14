@@ -8,13 +8,14 @@ import { I18nService } from '../core/i18n.service';
 import { TranslatePipe } from '../core/translate.pipe';
 import { EMP_STATUSES, Employee, HrKind } from '../core/hr.models';
 import { IconComponent } from '../shared/ui';
+import { ChatterComponent } from '../shared/chatter.component';
 import { dateOnly, empName, errMsg, refLabel } from './hr-util';
 
 /** Add / edit one employee on screen (also used to hire a recruitment candidate). */
 @Component({
   selector: 'app-employee-form',
   standalone: true,
-  imports: [CommonModule, FormsModule, TranslatePipe, IconComponent],
+  imports: [CommonModule, FormsModule, TranslatePipe, IconComponent, ChatterComponent],
   template: `
     <div class="modal-scrim" (click)="closed.emit()">
       <div class="modal wide" (click)="$event.stopPropagation()">
@@ -71,6 +72,7 @@ import { dateOnly, empName, errMsg, refLabel } from './hr-util';
           <datalist *ngFor="let k of dlKinds" [id]="'dl-' + k"><option *ngFor="let r of hr.ref(k)" [value]="r.code || ''">{{ label(r) }}</option></datalist>
           <datalist id="dl-manager"><option *ngFor="let e of employees" [value]="e.empNo">{{ name(e) }}</option></datalist>
 
+          <app-chatter *ngIf="employee" module="hr" kind="employee" [recordId]="employee.id"></app-chatter>
           <p class="flash bad" *ngIf="error">{{ error }}</p>
         </div>
         <div class="modal-foot">

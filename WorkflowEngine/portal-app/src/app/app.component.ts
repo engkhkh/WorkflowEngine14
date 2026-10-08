@@ -20,13 +20,15 @@ import { AppearanceService } from './core/appearance.service';
 import { LangPickerComponent } from './shared/lang-picker.component';
 import { AppearancePanelComponent } from './shared/appearance-panel.component';
 import { IconComponent } from './shared/ui';
+import { ApiStatusComponent } from './core/api/api-status.component';
 import { AssistantPanelComponent } from './assistant/assistant-panel.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [CommonModule, FormsModule, RouterOutlet, RouterLink, RouterLinkActive, TranslatePipe, IconComponent, AssistantPanelComponent, LangPickerComponent, AppearancePanelComponent],
+  imports: [CommonModule, FormsModule, RouterOutlet, RouterLink, RouterLinkActive, TranslatePipe, IconComponent, AssistantPanelComponent, LangPickerComponent, AppearancePanelComponent, ApiStatusComponent],
   template: `
+    <app-api-status />
     <div class="shell" *ngIf="auth.currentUser() as user; else bare" [class.collapsed]="ctx.sidebarCollapsed()" [class.mobile-open]="mobileNav">
       <!-- ===== Sidebar ===== -->
       <aside class="side no-print">

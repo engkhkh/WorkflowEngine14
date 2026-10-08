@@ -6,7 +6,7 @@ namespace WorkflowEngine.Api.Models;
 /// projects, timesheets, costs, leads, opportunities, quotes ...). Module / Kind / Code / Company / Branch / Status are real
 /// columns so they can be filtered; the varying fields live in <see cref="Data"/> (JSON).
 /// </summary>
-public class ErpRecord
+public class ErpRecord : WorkflowEngine.Api.Security.ITenantOwned
 {
     public string Id { get; set; } = Guid.NewGuid().ToString("N");
     [JsonIgnore] public string TenantId { get; set; } = Tenant.DefaultId;

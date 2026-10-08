@@ -8,7 +8,7 @@ namespace WorkflowEngine.Api.Models;
 /// Kind / Code / Branch / Status / Ref / Parent are real columns so they can be filtered.
 /// Branch is empty when the company works without branches (a single store).
 /// </summary>
-public class PosRecord
+public class PosRecord : WorkflowEngine.Api.Security.ITenantOwned
 {
     public string Id { get; set; } = Guid.NewGuid().ToString("N");
     [JsonIgnore] public string TenantId { get; set; } = Tenant.DefaultId;

@@ -10,6 +10,10 @@ import { I18nService } from '../core/i18n.service';
 import { TranslatePipe } from '../core/translate.pipe';
 import { IconComponent, LocalDatePipe, NumPipe, StatusComponent } from '../shared/ui';
 import { errMsg } from '../hr/hr-util';
+import { ChatterComponent } from '../shared/chatter.component';
+import { SavedViewsComponent } from '../shared/saved-views.component';
+import { ReportColumn, ReportDesignerComponent } from '../shared/report-designer.component';
+import { CollabService } from '../core/collab.service';
 
 export interface CrudField {
   key: string;
@@ -34,12 +38,14 @@ export interface CrudAction { label: string; show: (r: PosRec) => boolean; run: 
 @Component({
   selector: 'app-pos-crud',
   standalone: true,
-  imports: [CommonModule, FormsModule, TranslatePipe, IconComponent, NumPipe, LocalDatePipe, StatusComponent],
+  imports: [CommonModule, FormsModule, TranslatePipe, IconComponent, NumPipe, LocalDatePipe, StatusComponent, ChatterComponent, SavedViewsComponent, ReportDesignerComponent],
   template: `
     <div class="bar">
       <input class="search" [placeholder]="'common.search' | translate" [ngModel]="q()" (ngModelChange)="q.set($event)" />
+      <app-saved-views [view]="'pos:' + kind" [state]="filterState" (apply)="applyFilter($event)"></app-saved-views>
       <span class="grow"></span>
       <ng-content select="[bar]"></ng-content>
+      <button class="ghost" type="button" (click)="reportOpen = true" [title]="'collab.reportDesigner' | translate"><app-icon name="printer" [size]="15"></app-icon></button>
       <button class="primary" *ngIf="canManage" (click)="openForm(null)"><app-icon name="plus" [size]="15"></app-icon>{{ newLabel | translate }}</button>
     </div>
     <p class="flash good" *ngIf="msg">{{ msg }}</p>
@@ -89,10 +95,14 @@ export interface CrudAction { label: string; show: (r: PosRec) => boolean; run: 
             </ng-container>
             <small class="dim" *ngIf="f.hint">{{ f.hint | translate }}</small>
           </div>
-        </div><p class="flash bad" *ngIf="error">{{ error }}</p></div>
+        </div>
+        <app-chatter *ngIf="editing" module="pos" [kind]="kind" [recordId]="editing.id"></app-chatter>
+        <p class="flash bad" *ngIf="error">{{ error }}</p></div>
         <div class="modal-foot"><button (click)="form = null">{{ 'common.cancel' | translate }}</button><button class="primary" (click)="save()" [disabled]="saving">{{ 'admin.save' | translate }}</button></div>
       </div>
     </div>
+
+    <app-report-designer *ngIf="reportOpen" [view]="'pos:' + kind" [title]="reportTitle()" [columns]="reportCols()" [rows]="reportRows()" [user]="auth.currentUser()?.displayName || ''" (close)="reportOpen = false"></app-report-designer>
 
     <div class="modal-scrim" *ngIf="deleting" (click)="deleting = null">
       <div class="modal sm" (click)="$event.stopPropagation()">
@@ -131,13 +141,39 @@ export class PosCrudComponent implements OnInit, OnChanges {
   private route = inject(ActivatedRoute);
   private router = inject(Router);
   auth = inject(AuthService);
+  private collab = inject(CollabService);
 
   all = signal<PosRec[]>([]);
   q = signal('');
   form: Record<string, any> | null = null;
   editing: PosRec | null = null;
   deleting: PosRec | null = null;
-  saving = false; error = ''; msg = '';
+  saving = false; error = ''; msg = ''; reportOpen = false;
+
+  filterState = () => ({ q: this.q(), status: '' });
+  applyFilter(f: { q: string; status: string }) { this.q.set(f.q ?? ''); }
+  reportTitle = () => this.i18n.t('pos.title') !== 'pos.title' ? this.i18n.t('pos.title') : this.kind;
+  reportCols = (): ReportColumn[] => this.cols().map(f => ({ key: f.key, label: this.i18n.t(f.label), numeric: f.type === 'number' }));
+  reportRows = () => this.shown().map(r => {
+    const o: Record<string, any> = {};
+    for (const f of this.cols()) {
+      const v = this.val(r, f);
+      o[f.key] = f.type === 'status' ? this.statusLabel(r.status) : f.type === 'select' ? this.optLabel(f, v) : f.type === 'bool' ? (v ? '✓' : '')
+        : f.type === 'number' ? new Intl.NumberFormat(this.i18n.locale, { maximumFractionDigits: 2 }).format(Number(v) || 0) : f.type === 'date' && v ? String(v).slice(0, 10) : v ?? '';
+      if (f.type === 'number') o[f.key + '#'] = Number(v) || 0;
+    }
+    return o;
+  });
+  private logChange(prev: PosRec, body: Partial<PosRec>) {
+    const diffs: string[] = [];
+    for (const x of this.fields) {
+      const w = x.store ?? (x.key === 'code' ? 'code' : x.key === 'status' ? 'status' : 'data');
+      const before = w === 'code' ? prev.code : w === 'status' ? prev.status : prev.data?.[x.key];
+      const after = w === 'code' ? body.code : w === 'status' ? body.status : (body.data as any)?.[x.key];
+      if (String(before ?? '') !== String(after ?? '')) diffs.push(`${this.i18n.t(x.label)}: ${String(before ?? '—')} → ${String(after ?? '—')}`);
+    }
+    if (diffs.length) this.collab.addNote('pos', this.kind, prev.id, diffs.join('\n'), true).subscribe({ error: () => {} });
+  }
 
   cols = () => this.fields.filter(f => f.table);
   shown = () => {
@@ -193,7 +229,7 @@ export class PosCrudComponent implements OnInit, OnChanges {
     this.saving = true; this.error = '';
     const req = this.editing ? this.pos.update(this.kind, this.editing.id, { ...body, data: { ...(this.editing.data ?? {}), ...(body.data as any) } }) : this.pos.create(this.kind, body);
     req.subscribe({
-      next: () => { this.saving = false; this.form = null; this.flash(this.i18n.t('hr.saved')); this.load(); this.pos.loadCatalog(this.company ?? '', this.ctx.branch()).subscribe(); },
+      next: r => { this.saving = false; if (this.editing) this.logChange(this.editing, body); else this.collab.addNote('pos', this.kind, (r as any).id, this.i18n.t('collab.created'), true).subscribe({ error: () => {} }); this.form = null; this.flash(this.i18n.t('hr.saved')); this.load(); this.pos.loadCatalog(this.company ?? '', this.ctx.branch()).subscribe(); },
       error: e => { this.saving = false; this.error = errMsg(e, this.i18n); }
     });
   }

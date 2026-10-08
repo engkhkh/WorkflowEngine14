@@ -242,7 +242,7 @@ public partial class ModulesController
             if (!Uri.TryCreate(url, UriKind.Absolute, out var uri) || (uri.Scheme != Uri.UriSchemeHttps && uri.Scheme != Uri.UriSchemeHttp)) throw new InvalidOperationException("Invalid URL");
             using var req = new HttpRequestMessage(HttpMethod.Post, uri) { Content = new StringContent(body, Encoding.UTF8, "application/json") };
             var secret = FinJson.S(hd, "secret");
-            if (secret != "") req.Headers.Add("X-Signature", "sha256=" + Convert.ToHexString(new HMACSHA256(Encoding.UTF8.GetBytes(secret)).ComputeHash(Encoding.UTF8.GetBytes(body))).ToLowerInvariant());
+            if (secret != "") req.Headers.Add("X-Signature", "sha256=" + System.Convert.ToHexString(new HMACSHA256(Encoding.UTF8.GetBytes(secret)).ComputeHash(Encoding.UTF8.GetBytes(body))).ToLowerInvariant());
             req.Headers.Add("X-Event", evt);
             using var resp = await Http.SendAsync(req);
             code = (int)resp.StatusCode; ok = resp.IsSuccessStatusCode; msg = ok ? "OK" : resp.ReasonPhrase ?? "Error";
@@ -272,8 +272,8 @@ public partial class ModulesController
         if (module != "int" || !await Has("int.keys.manage")) return Forbid();
         if (string.IsNullOrWhiteSpace(b.Name)) return Bad("Enter a name for the key.");
         var tenantId = await _tenant.TenantIdOf(User);
-        var secret = "wk_" + Convert.ToHexString(RandomNumberGenerator.GetBytes(20)).ToLowerInvariant();
-        var hash = Convert.ToHexString(SHA256.HashData(Encoding.UTF8.GetBytes(secret))).ToLowerInvariant();
+        var secret = "wk_" + System.Convert.ToHexString(RandomNumberGenerator.GetBytes(20)).ToLowerInvariant();
+        var hash = System.Convert.ToHexString(SHA256.HashData(Encoding.UTF8.GetBytes(secret))).ToLowerInvariant();
         var scopes = (b.Scopes ?? new()).Where(s => !string.IsNullOrWhiteSpace(s)).Select(s => s.Trim().ToLowerInvariant()).Distinct().ToList();
         if (scopes.Count == 0) scopes.Add("*");
         var rec = new ErpRecord { TenantId = tenantId, Module = "int", Kind = "apikey", Code = secret[..11], Ref = hash, Status = "Active", CreatedBy = Username,

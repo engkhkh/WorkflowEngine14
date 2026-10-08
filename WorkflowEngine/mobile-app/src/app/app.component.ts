@@ -7,13 +7,15 @@ import { AuthService } from './core/auth.service';
 import { ErpDataService } from './core/erp-data.service';
 import { OrgService } from './core/org.service';
 import { AppearanceService } from './core/appearance.service';
+import { ApiStatusComponent } from './core/api/api-status.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [IonApp, IonRouterOutlet],
+  imports: [IonApp, IonRouterOutlet, ApiStatusComponent],
   template: `
     <ion-app>
+      <app-api-status />
       <ion-router-outlet></ion-router-outlet>
     </ion-app>
   `

@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using WorkflowEngine.Api.Data;
+using WorkflowEngine.Api.Security;
 using WorkflowEngine.Api.Services;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -26,7 +27,8 @@ builder.Services.AddDbContext<WorkflowDbContext>(options =>
 builder.Services.AddScoped<IWorkflowEngineService, WorkflowEngineService>();
 builder.Services.AddScoped<IJwtTokenService, JwtTokenService>();
 builder.Services.AddScoped<IPermissionService, PermissionService>();
-builder.Services.AddScoped<ITenantScope, TenantScope>();   // SaaS workspaces (users/companies/branches/instances per tenant)
+builder.Services.AddScoped<ITenantScope, TenantScope>();
+builder.Services.AddSecurityLayer();   // access layer: ICurrentUser, ISecureData, [RequirePermission]   // SaaS workspaces (users/companies/branches/instances per tenant)
 builder.Services.AddSingleton<IEmailSender, SmtpEmailSender>();
 builder.Services.AddSingleton<IScriptRunner, ScriptRunner>();
 builder.Services.AddSingleton<IActivityFileLogger, ActivityFileLogger>();
@@ -101,9 +103,11 @@ using (var scope = app.Services.CreateScope())
     await ErpSeedData.SeedErpWorkflows(db); // ERP business flows used by portal-app / mobile-app
 }
 
+app.UseMiddleware<SecurityErrorMiddleware>();
 app.UseCors(AngularDevCors);
 app.UseHttpsRedirection();
 app.UseAuthentication();
+app.UseMiddleware<SessionValidationMiddleware>();   // token's user must still exist and be active
 app.UseAuthorization();
 app.MapControllers();
 
