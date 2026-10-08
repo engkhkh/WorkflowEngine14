@@ -540,3 +540,23 @@ Without `hr.employees.salary` salaries are removed from API responses, not just 
 
 Notes: run `npm install` in `portal-app` (adds `read-excel-file`, `write-excel-file`). Tables `HrEmployees` and `HrRecords` are created at startup by SchemaUpgrade.
 The backend HR code could not be compiled where it was written - build it once and report any compile error. Leave approval is done in the HR pages, not by the workflow engine.
+
+---
+
+## Finance module (portal-app: `/finance`)
+
+Modelled on the Dynamics 365 Finance / Oracle Fusion Financials comparison: general ledger, payables with 3-way matching, receivables with credit limits and ageing, cash & bank reconciliation, budgets vs actual, fixed assets with depreciation, project profitability, multi-company consolidation with intercompany elimination, multi-currency, tax codes, and a CFO dashboard. Every page is guarded by its own privilege (Admin > Users > Privileges > Finance):
+
+`finance.reports.view`, `finance.gl.view/manage/approve`, `finance.ap.view/manage/approve`, `finance.ar.view/manage`, `finance.bank.view/manage`, `finance.budget.view/manage`, `finance.assets.view/manage`, `finance.projects.view/manage`, `finance.setup`, `finance.audit.view`.
+
+Controls enforced on the **server** (`FinanceController`): balanced journals only; posting only into open periods; posted journals are immutable (reverse instead); duplicate supplier invoice (same supplier + invoice no.) rejected; 3-way match (invoice <= min(PO, received) + tolerance) before approval, with an explicit override; paid invoices are locked; accounts in use cannot be deleted; full audit trail (`/finance/audit`). Optional segregation of duties: Finance > Setup > Controls (creator cannot post/approve, approver cannot pay).
+
+First-time setup: Finance > General ledger > Chart of accounts > "Load starter chart", then Setup > Default accounts (receivables, payables, bank, revenue, expense, VAT, depreciation) so invoices/payments can create their journal drafts. Journal drafts still need `finance.gl.approve` before they post.
+
+Backend: new tables `FinRecords` and `FinAudits` are created by `SchemaUpgrade` on startup; new files `Models/Finance.cs`, `Controllers/FinanceController.cs`; `WorkflowDbContext.cs`, `SchemaUpgrade.cs`, `PermissionService.cs` were patched. **The backend was not compiled here (no .NET SDK in the sandbox) - build it once and tell me about any error.** Mobile app and designer were not extended with Finance.
+
+## AI assistant: customize screens and open edit screens
+
+Ask the assistant (any of the 7 languages), for example: "make it dark", "use teal", "bigger text", "compact tables", "round corners", "use Cairo font", "switch to French", "hide the KPI cards", "show the trend chart", "hide Operations from the menu", "undo", "reset the look". Layout choices are personal (stored in this browser) and need no privilege. To edit data: "edit employee E1003", "new journal entry", "new supplier invoice", "new budget", "new asset" - the assistant opens the screen; the screen still checks your privileges.
+
+Reminder: run `npm install` in `portal-app` once (adds `read-excel-file` and `write-excel-file`), then `npm start`.

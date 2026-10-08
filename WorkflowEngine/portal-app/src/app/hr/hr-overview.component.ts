@@ -1,4 +1,4 @@
-import { Component, OnInit, signal } from '@angular/core';
+import { inject, Component, OnInit, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AuthService } from '../core/auth.service';
 import { HrService } from '../core/hr.service';
@@ -7,6 +7,7 @@ import { TranslatePipe } from '../core/translate.pipe';
 import { HrCount, HrSummary } from '../core/hr.models';
 import { KpiCardComponent } from '../shared/erp-widgets';
 import { errMsg } from './hr-util';
+import { LayoutService } from '../core/layout.service';
 
 /** HR dashboard: headcount, hires, turnover, absence, vacancies, performance distribution (needs hr.reports.view). */
 @Component({
@@ -16,7 +17,7 @@ import { errMsg } from './hr-util';
   template: `
     <p class="flash bad" *ngIf="error">{{ error }}</p>
     <ng-container *ngIf="s() as d">
-      <div class="kpis">
+      <div class="kpis" *ngIf="!layout.isHidden('hr','kpis')">
         <app-kpi [label]="'hr.ov.total' | translate" [value]="d.total" icon="users" color="#ec4899" [hint]="('hr.ov.activeN' | translate: { n: d.active })"></app-kpi>
         <app-kpi [label]="'hr.ov.hires' | translate" [value]="d.newHires12m" icon="plus" color="#10b981" [hint]="'hr.ov.last12' | translate"></app-kpi>
         <app-kpi [label]="'hr.ov.turnover' | translate" [value]="d.turnoverPct + '%'" icon="refresh" color="#ef4444" [hint]="('hr.ov.leavers' | translate: { n: d.terminations12m })"></app-kpi>
@@ -27,13 +28,13 @@ import { errMsg } from './hr-util';
       </div>
 
       <div class="grid g2">
-        <div class="card"><div class="card-head"><h3>{{ 'hr.ov.hiresTrend' | translate }}</h3></div>
+        <div class="card" *ngIf="!layout.isHidden('hr','hires')"><div class="card-head"><h3>{{ 'hr.ov.hiresTrend' | translate }}</h3></div>
           <div class="card-body cols"><div class="c" *ngFor="let h of d.hires"><span class="v">{{ h.count || '' }}</span><div class="f" [style.height.%]="pct(h.count, d.hires)"></div><span class="l">{{ h.name.slice(5) }}</span></div></div></div>
-        <div class="card"><div class="card-head"><h3>{{ 'hr.ov.byUnit' | translate }}</h3></div><div class="card-body" [ngTemplateOutlet]="bars" [ngTemplateOutletContext]="{ list: d.byUnit }"></div></div>
-        <div class="card"><div class="card-head"><h3>{{ 'hr.ov.byNationality' | translate }}</h3></div><div class="card-body" [ngTemplateOutlet]="bars" [ngTemplateOutletContext]="{ list: d.byNationality }"></div></div>
-        <div class="card"><div class="card-head"><h3>{{ 'hr.ov.byLocation' | translate }}</h3></div><div class="card-body" [ngTemplateOutlet]="bars" [ngTemplateOutletContext]="{ list: d.byLocation }"></div></div>
-        <div class="card"><div class="card-head"><h3>{{ 'hr.ov.byGender' | translate }}</h3></div><div class="card-body" [ngTemplateOutlet]="bars" [ngTemplateOutletContext]="{ list: d.byGender, gender: true }"></div></div>
-        <div class="card"><div class="card-head"><h3>{{ 'hr.pf.distribution' | translate }}</h3></div>
+        <div class="card" *ngIf="!layout.isHidden('hr','byUnit')"><div class="card-head"><h3>{{ 'hr.ov.byUnit' | translate }}</h3></div><div class="card-body"><ng-container [ngTemplateOutlet]="bars" [ngTemplateOutletContext]="{ list: d.byUnit }"></ng-container></div></div>
+        <div class="card" *ngIf="!layout.isHidden('hr','byNationality')"><div class="card-head"><h3>{{ 'hr.ov.byNationality' | translate }}</h3></div><div class="card-body"><ng-container [ngTemplateOutlet]="bars" [ngTemplateOutletContext]="{ list: d.byNationality }"></ng-container></div></div>
+        <div class="card" *ngIf="!layout.isHidden('hr','byLocation')"><div class="card-head"><h3>{{ 'hr.ov.byLocation' | translate }}</h3></div><div class="card-body"><ng-container [ngTemplateOutlet]="bars" [ngTemplateOutletContext]="{ list: d.byLocation }"></ng-container></div></div>
+        <div class="card" *ngIf="!layout.isHidden('hr','byGender')"><div class="card-head"><h3>{{ 'hr.ov.byGender' | translate }}</h3></div><div class="card-body"><ng-container [ngTemplateOutlet]="bars" [ngTemplateOutletContext]="{ list: d.byGender, gender: true }"></ng-container></div></div>
+        <div class="card" *ngIf="!layout.isHidden('hr','ratings')"><div class="card-head"><h3>{{ 'hr.pf.distribution' | translate }}</h3></div>
           <div class="card-body"><ng-container [ngTemplateOutlet]="bars" [ngTemplateOutletContext]="{ list: d.ratings, star: true }"></ng-container>
             <p class="dim" *ngIf="!d.ratings.length">{{ 'common.noData' | translate }}</p></div></div>
       </div>
@@ -58,6 +59,7 @@ import { errMsg } from './hr-util';
   `]
 })
 export class HrOverviewComponent implements OnInit {
+  layout = inject(LayoutService);
   s = signal<HrSummary | null>(null);
   error = '';
   constructor(public auth: AuthService, private hr: HrService, private i18n: I18nService) {}

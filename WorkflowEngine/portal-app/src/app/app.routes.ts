@@ -1,6 +1,7 @@
 import { Routes } from '@angular/router';
 import { authGuard, createGuard, moduleGuard, permGuard } from './core/auth.guard';
 import { HR_ANY } from './core/hr.models';
+import { FIN_ANY } from './core/fin.models';
 
 export const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'dashboard' },
@@ -29,6 +30,25 @@ export const routes: Routes = [
       { path: 'performance', canActivate: [permGuard('hr.performance.view', 'hr.self')], loadComponent: () => import('./hr/hr-performance.component').then(m => m.HrPerformanceComponent) },
       { path: 'recruitment', canActivate: [permGuard('hr.recruitment.view')], loadComponent: () => import('./hr/hr-recruitment.component').then(m => m.HrRecruitmentComponent) },
       { path: 'me', canActivate: [permGuard('hr.self')], loadComponent: () => import('./hr/hr-self.component').then(m => m.HrSelfComponent) },
+    ]
+  },
+
+  {
+    // Finance workspace: every page is guarded by its own finance.* privilege (set per user in Admin > Users)
+    path: 'finance', canActivate: [authGuard, permGuard(...FIN_ANY)],
+    loadComponent: () => import('./finance/fin-shell.component').then(m => m.FinShellComponent),
+    children: [
+      { path: '', pathMatch: 'full', loadComponent: () => import('./finance/fin-shell.component').then(m => m.FinHomeComponent) },
+      { path: 'overview', canActivate: [permGuard('finance.reports.view')], loadComponent: () => import('./finance/fin-overview.component').then(m => m.FinOverviewComponent) },
+      { path: 'gl', canActivate: [permGuard('finance.gl.view')], loadComponent: () => import('./finance/fin-gl.component').then(m => m.FinGlComponent) },
+      { path: 'payables', canActivate: [permGuard('finance.ap.view')], loadComponent: () => import('./finance/fin-ap-ar.component').then(m => m.FinPayablesComponent) },
+      { path: 'receivables', canActivate: [permGuard('finance.ar.view')], loadComponent: () => import('./finance/fin-ap-ar.component').then(m => m.FinReceivablesComponent) },
+      { path: 'bank', canActivate: [permGuard('finance.bank.view')], loadComponent: () => import('./finance/fin-bank.component').then(m => m.FinBankComponent) },
+      { path: 'budgets', canActivate: [permGuard('finance.budget.view')], loadComponent: () => import('./finance/fin-budgets.component').then(m => m.FinBudgetsComponent) },
+      { path: 'assets', canActivate: [permGuard('finance.assets.view')], loadComponent: () => import('./finance/fin-assets.component').then(m => m.FinAssetsComponent) },
+      { path: 'projects', canActivate: [permGuard('finance.projects.view')], loadComponent: () => import('./finance/fin-projects.component').then(m => m.FinProjectsComponent) },
+      { path: 'setup', canActivate: [permGuard('finance.setup')], loadComponent: () => import('./finance/fin-setup.component').then(m => m.FinSetupComponent) },
+      { path: 'audit', canActivate: [permGuard('finance.audit.view')], loadComponent: () => import('./finance/fin-audit.component').then(m => m.FinAuditComponent) },
     ]
   },
 

@@ -1,7 +1,7 @@
 import { Component, OnInit, computed, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { RouterLink } from '@angular/router';
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { AuthService } from '../core/auth.service';
 import { HrService } from '../core/hr.service';
 import { I18nService } from '../core/i18n.service';
@@ -136,10 +136,22 @@ export class HrEmployeesComponent implements OnInit {
   formOpen = false; editing: Employee | null = null; importing = false; deleting: Employee | null = null;
   flashMsg = ''; flashBad = false; formError = '';
 
-  constructor(public auth: AuthService, private hr: HrService, private i18n: I18nService) {}
+  constructor(public auth: AuthService, private hr: HrService, private i18n: I18nService, private route: ActivatedRoute, private router: Router) {}
 
   ngOnInit() { this.load(); }
-  load() { this.hr.employees().subscribe({ next: l => this.all.set(l), error: e => this.flash(errMsg(e, this.i18n), true) }); this.hr.loadRefs(['unit', 'location']).subscribe(); }
+  /** ?new=1 / ?edit=E1003 / ?import=1 - used by the AI assistant to open the right dialog */
+  private fromQuery() {
+    const q = this.route.snapshot.queryParamMap;
+    if (!q.keys.length) return;
+    if (q.get('new') && this.auth.can('hr.employees.manage')) this.openForm(null);
+    else if (q.get('import') && this.auth.can('hr.employees.import')) this.importing = true;
+    else if (q.get('edit') && this.auth.can('hr.employees.manage')) {
+      const e = this.all().find(x => x.empNo.toLowerCase() === q.get('edit')!.toLowerCase());
+      if (e) this.openForm(e); else this.flash(this.i18n.t('hr.prof.notFound'), true);
+    }
+    this.router.navigate([], { queryParams: {}, replaceUrl: true });
+  }
+  load() { this.hr.employees().subscribe({ next: l => { this.all.set(l); this.fromQuery(); }, error: e => this.flash(errMsg(e, this.i18n), true) }); this.hr.loadRefs(['unit', 'location']).subscribe(); }
 
   name(e: Employee) { return empName(e, this.i18n); }
   ini(n: string) { return initials(n); }

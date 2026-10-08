@@ -3,6 +3,11 @@ import { ErpDataService, ErpDoc } from './erp-data.service';
 import { I18nService } from './i18n.service';
 import { ErpContextService } from './erp-context.service';
 import { DOC_TYPES } from './erp.config';
+import { Router } from '@angular/router';
+import { AppearanceService } from './appearance.service';
+import { LayoutService } from './layout.service';
+import { AuthService } from './auth.service';
+import { CustomizeEngine } from './assistant-customize';
 
 export interface AssistantAction { label: string; route: any[]; queryParams?: Record<string, string>; }
 export interface AssistantMessage { from: 'user' | 'ai'; text: string; actions?: AssistantAction[]; at: Date; }
@@ -52,10 +57,15 @@ export class AssistantService {
   messages = signal<AssistantMessage[]>([]);
   open = signal(false);
 
-  constructor(private data: ErpDataService, private i18n: I18nService, private ctx: ErpContextService) {}
+  private customizer: CustomizeEngine;
+
+  constructor(private data: ErpDataService, private i18n: I18nService, private ctx: ErpContextService,
+              router: Router, look: AppearanceService, layout: LayoutService, auth: AuthService) {
+    this.customizer = new CustomizeEngine(look, layout, i18n, router, auth);
+  }
 
   suggestions(): string[] {
-    return ['ai.s1', 'ai.s2', 'ai.s3', 'ai.s4', 'ai.s5'].map(k => this.i18n.t(k));
+    return ['ai.s1', 'ai.s2', 'ai.s3', 'ai.s4', 'ai.s5', 'ai.s6', 'ai.s7'].map(k => this.i18n.t(k));
   }
 
   ensureGreeting() {
@@ -98,6 +108,10 @@ export class AssistantService {
         actions: [{ label: doc.number, route: ['/documents', doc.id] }]
       };
     }
+
+    // 1b. Customize the screen / open an edit screen (theme, colours, fonts, hide sections, add or edit records)
+    const cz = this.customizer.handle(q);
+    if (cz) return cz;
 
     // 2. How-to / create
     if (has(KW.howTo)) {

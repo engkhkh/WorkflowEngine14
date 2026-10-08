@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit, computed, signal } from '@angular/core';
+import { inject, Component, OnDestroy, OnInit, computed, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { Subscription } from 'rxjs';
@@ -11,6 +11,7 @@ import { AuthService } from '../core/auth.service';
 import { DOC_TYPES, MODULES, ModuleKey, StageKey, moduleForWorkflowName } from '../core/erp.config';
 import { IconComponent, LocalDatePipe, MoneyPipe, NumPipe } from '../shared/ui';
 import { DocTableComponent, FlowComponent, KpiCardComponent } from '../shared/erp-widgets';
+import { LayoutService } from '../core/layout.service';
 
 @Component({
   selector: 'app-module',
@@ -30,18 +31,18 @@ import { DocTableComponent, FlowComponent, KpiCardComponent } from '../shared/er
       <a class="btn" *ngIf="!moduleDocTypes().length" routerLink="/services"><app-icon name="send" [size]="15"></app-icon>{{ 'nav.services' | translate }}</a>
     </div>
 
-    <div class="kpis">
+    <div class="kpis" *ngIf="!layout.isHidden('module','kpis')">
       <app-kpi *ngFor="let c of cards()" [label]="c.label" [value]="c.value" [icon]="c.icon" [color]="mod().color" [hint]="c.hint"></app-kpi>
     </div>
 
-    <section class="card" *ngIf="moduleDocTypes().length">
+    <section class="card" *ngIf="moduleDocTypes().length && !layout.isHidden('module','flow')">
       <div class="card-head"><h3>{{ 'dash.flow' | translate }}</h3></div>
       <div class="card-body">
         <app-flow [stages]="flowStages()" [counts]="stageCounts()" [active]="stage()" [currency]="cur()" (pick)="stage.set(stage() === $event ? null : $event)"></app-flow>
       </div>
     </section>
 
-    <section class="card">
+    <section class="card" *ngIf="!layout.isHidden('module','documents')">
       <div class="card-head">
         <h3>{{ 'mod.documents' | translate }} <span class="sub">({{ shown().length }})</span></h3>
         <div class="seg">
@@ -52,7 +53,7 @@ import { DocTableComponent, FlowComponent, KpiCardComponent } from '../shared/er
     </section>
 
     <!-- Inventory: item movement -->
-    <section class="card" *ngIf="key() === 'inventory' || key() === 'purchasing' || key() === 'sales'">
+    <section class="card" *ngIf="(key() === 'inventory' || key() === 'purchasing' || key() === 'sales') && !layout.isHidden('module','stock')">
       <div class="card-head"><h3>{{ 'mod.stock' | translate }}</h3></div>
       <div class="table-wrap">
         <table class="data">
@@ -67,7 +68,7 @@ import { DocTableComponent, FlowComponent, KpiCardComponent } from '../shared/er
     </section>
 
     <!-- Finance: GL postings written by the workflows -->
-    <section class="card" *ngIf="key() === 'finance'">
+    <section class="card" *ngIf="key() === 'finance' && !layout.isHidden('module','ledger')">
       <div class="card-head"><h3>{{ 'mod.ledger' | translate }}</h3></div>
       <div class="ledger">
         <div class="gl" *ngFor="let e of ledger()">
@@ -80,7 +81,7 @@ import { DocTableComponent, FlowComponent, KpiCardComponent } from '../shared/er
     </section>
 
     <!-- Other (non-ERP) workflows that belong to this module -->
-    <section class="card" *ngIf="otherFlows().length">
+    <section class="card" *ngIf="otherFlows().length && !layout.isHidden('module','otherFlows')">
       <div class="card-head"><h3>{{ 'mod.otherFlows' | translate }}</h3></div>
       <div class="flows">
         <a class="flow-card" *ngFor="let f of otherFlows()" routerLink="/services" [queryParams]="{ start: f.id }">
@@ -105,6 +106,7 @@ import { DocTableComponent, FlowComponent, KpiCardComponent } from '../shared/er
   `]
 })
 export class ModuleComponent implements OnInit, OnDestroy {
+  layout = inject(LayoutService);
   filters: ('all' | DocStatus)[] = ['all', 'pending', 'approved', 'rejected', 'canceled'];
   key = signal<ModuleKey>('sales');
   status = signal<'all' | DocStatus>('all');

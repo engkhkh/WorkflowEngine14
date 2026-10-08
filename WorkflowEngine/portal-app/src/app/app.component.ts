@@ -1,4 +1,4 @@
-import { Component, HostListener, OnDestroy, OnInit, computed, effect } from '@angular/core';
+import { inject, Component, HostListener, OnDestroy, OnInit, computed, effect } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { NavigationEnd, Router, RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
@@ -12,6 +12,8 @@ import { AssistantService } from './core/assistant.service';
 import { MODULES } from './core/erp.config';
 import { OrgService } from './core/org.service';
 import { HR_ANY } from './core/hr.models';
+import { FIN_ANY } from './core/fin.models';
+import { LayoutService } from './core/layout.service';
 import { AppearanceService } from './core/appearance.service';
 import { LangPickerComponent } from './shared/lang-picker.component';
 import { AppearancePanelComponent } from './shared/appearance-panel.component';
@@ -45,7 +47,7 @@ import { AssistantPanelComponent } from './assistant/assistant-panel.component';
           <a routerLink="/services" routerLinkActive="on" [title]="'nav.services' | translate"><app-icon name="send"></app-icon><span>{{ 'nav.services' | translate }}</span></a>
 
           <div class="sec">{{ 'nav.modules' | translate }}</div>
-          <a *ngFor="let m of visibleModules()" [routerLink]="m.key === 'hr' ? ['/hr'] : ['/m', m.key]" routerLinkActive="on" [title]="('module.' + m.key) | translate">
+          <a *ngFor="let m of visibleModules()" [routerLink]="linkFor(m.key)" routerLinkActive="on" [title]="('module.' + m.key) | translate">
             <app-icon [name]="m.icon"></app-icon><span>{{ ('module.' + m.key) | translate }}</span>
             <i class="dot" [style.background]="m.color"></i>
           </a>
@@ -244,7 +246,9 @@ import { AssistantPanelComponent } from './assistant/assistant-panel.component';
 })
 export class AppComponent implements OnInit, OnDestroy {
   modules = MODULES;
-  visibleModules = computed(() => MODULES.filter(m => m.key === 'hr' ? this.auth.canAny(...HR_ANY) : this.auth.can(m.key + '.view')));
+  layout = inject(LayoutService);
+  visibleModules = computed(() => MODULES.filter(m => !this.layout.isNavHidden(m.key)).filter(m => m.key === 'hr' ? this.auth.canAny(...HR_ANY) : m.key === 'finance' ? (this.auth.can('finance.view') || this.auth.canAny(...FIN_ANY)) : this.auth.can(m.key + '.view')));
+  linkFor(key: string): string[] { return key === 'hr' ? ['/hr'] : key === 'finance' && this.auth.canAny(...FIN_ANY) ? ['/finance'] : ['/m', key]; }
   q = '';
   bellOpen = false;
   userOpen = false;

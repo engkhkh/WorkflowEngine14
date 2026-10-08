@@ -1,4 +1,4 @@
-import { Component, OnInit, computed, signal } from '@angular/core';
+import { inject, Component, OnInit, computed, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router, RouterLink } from '@angular/router';
 import { ErpDataService, ErpDoc } from '../core/erp-data.service';
@@ -10,6 +10,7 @@ import { TranslatePipe } from '../core/translate.pipe';
 import { DOC_TYPES, MODULES, StageKey } from '../core/erp.config';
 import { IconComponent, LocalDatePipe, MoneyPipe, NumPipe } from '../shared/ui';
 import { DocTableComponent, FlowComponent, HBarsComponent, KpiCardComponent, TrendChartComponent } from '../shared/erp-widgets';
+import { LayoutService } from '../core/layout.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -26,7 +27,7 @@ import { DocTableComponent, FlowComponent, HBarsComponent, KpiCardComponent, Tre
     </div>
 
     <!-- KPI row -->
-    <div class="kpis">
+    <div class="kpis" *ngIf="!layout.isHidden('dashboard','kpis')">
       <app-kpi [label]="'kpi.sales' | translate" [value]="(k().salesMonth | money:cur():true)" icon="trending-up" color="#0ea5e9"
                [hint]="('kpi.pipeline' | translate) + ': ' + (k().pipeline | money:cur():true)" [clickable]="true" routerLink="/m/sales"></app-kpi>
       <app-kpi [label]="'kpi.purchases' | translate" [value]="(k().purchasesMonth | money:cur():true)" icon="cart" color="#8b5cf6"
@@ -40,7 +41,7 @@ import { DocTableComponent, FlowComponent, HBarsComponent, KpiCardComponent, Tre
     </div>
 
     <!-- End-to-end flow -->
-    <section class="card">
+    <section class="card" *ngIf="!layout.isHidden('dashboard','flow')">
       <div class="card-head">
         <h3>{{ 'dash.flow' | translate }} <div class="sub">{{ 'dash.flowSub' | translate }}</div></h3>
       </div>
@@ -53,14 +54,14 @@ import { DocTableComponent, FlowComponent, HBarsComponent, KpiCardComponent, Tre
     </section>
 
     <div class="two">
-      <section class="card">
+      <section class="card" *ngIf="!layout.isHidden('dashboard','trend')">
         <div class="card-head"><h3>{{ 'dash.trend' | translate }}</h3></div>
         <div class="card-body">
           <app-trend-chart [points]="trend()" [labelA]="'module.sales' | translate" [labelB]="'chart.purchases' | translate" [currency]="cur()"></app-trend-chart>
         </div>
       </section>
 
-      <section class="card insight">
+      <section class="card insight" *ngIf="!layout.isHidden('dashboard','insight')">
         <div class="card-head"><app-icon name="sparkles" [size]="16"></app-icon><h3>{{ 'dash.insight' | translate }}</h3>
           <button class="sm" (click)="ai.open.set(true)">{{ 'nav.assistant' | translate }}</button></div>
         <div class="card-body">
@@ -72,7 +73,7 @@ import { DocTableComponent, FlowComponent, HBarsComponent, KpiCardComponent, Tre
     </div>
 
     <div class="two">
-      <section class="card">
+      <section class="card" *ngIf="!layout.isHidden('dashboard','queue')">
         <div class="card-head"><h3>{{ 'dash.myQueue' | translate }}</h3><a routerLink="/approvals" class="sm-link">{{ 'dash.viewAll' | translate }}</a></div>
         <div class="queue">
           <a class="q" *ngFor="let t of data.tasks().slice(0, 6)" [routerLink]="['/approvals']" [queryParams]="{ task: t.id }">
@@ -87,7 +88,7 @@ import { DocTableComponent, FlowComponent, HBarsComponent, KpiCardComponent, Tre
         </div>
       </section>
 
-      <section class="card">
+      <section class="card" *ngIf="!layout.isHidden('dashboard','quick')">
         <div class="card-head"><h3>{{ 'dash.quick' | translate }}</h3></div>
         <div class="quick">
           <a class="qa" *ngFor="let dt of docTypes" [routerLink]="['/new', dt.key]">
@@ -102,7 +103,7 @@ import { DocTableComponent, FlowComponent, HBarsComponent, KpiCardComponent, Tre
       </section>
     </div>
 
-    <section class="card">
+    <section class="card" *ngIf="!layout.isHidden('dashboard','recent')">
       <div class="card-head"><h3>{{ 'dash.recent' | translate }}</h3><a routerLink="/documents" [queryParams]="{ scope: 'all' }" class="sm-link">{{ 'dash.viewAll' | translate }}</a></div>
       <app-doc-table [docs]="data.docs().slice(0, 8)" [showBranch]="ctx.branch() === 'ALL'"></app-doc-table>
     </section>
@@ -164,6 +165,7 @@ export class DashboardComponent implements OnInit {
     return this.data.docs().filter(d => d.status === 'pending' && d.stage === s).slice(0, 10);
   });
 
+  layout = inject(LayoutService);
   constructor(public data: ErpDataService, public ctx: ErpContextService, private auth: AuthService,
               public ai: AssistantService, public i18n: I18nService, private router: Router) {}
 
