@@ -25,6 +25,7 @@ import { IconComponent } from '../shared/ui';
             </div>
           </div>
         </div>
+        <div class="msg" *ngIf="ai.thinking()"><div class="avatar"><app-icon name="sparkles" [size]="15"></app-icon></div><div class="bubble">{{ 'ai.thinking' | translate }}</div></div>
       </div>
 
       <div class="sugs">
@@ -45,7 +46,7 @@ import { IconComponent } from '../shared/ui';
     .msg { display: flex; gap: 8px; align-items: flex-start; }
     .msg.me { justify-content: flex-end; }
     .avatar { width: 28px; height: 28px; border-radius: 8px; background: linear-gradient(135deg, var(--primary), #0ea5a4); color: #fff; display: grid; place-items: center; flex-shrink: 0; }
-    .bubble { background: var(--surface-2); border: 1px solid var(--border); border-radius: 12px; padding: 10px 12px; font-size: 13px; line-height: 1.55; max-width: 88%; }
+    .bubble { white-space: pre-line; background: var(--surface-2); border: 1px solid var(--border); border-radius: 12px; padding: 10px 12px; font-size: 13px; line-height: 1.55; max-width: 88%; }
     .me .bubble { background: var(--primary); color: var(--primary-contrast); border-color: var(--primary); }
     .acts { display: flex; gap: 6px; margin-top: 8px; flex-wrap: wrap; }
     .act { display: inline-flex; align-items: center; gap: 4px; font-size: 12px; font-weight: 600; padding: 4px 9px; border-radius: 7px; background: var(--primary-soft); color: var(--primary); }

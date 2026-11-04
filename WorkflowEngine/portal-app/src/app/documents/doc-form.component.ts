@@ -8,6 +8,7 @@ import { AuthService } from '../core/auth.service';
 import { I18nService } from '../core/i18n.service';
 import { PortalApiService } from '../core/portal-api.service';
 import { TranslatePipe } from '../core/translate.pipe';
+import { defaultCurrency } from '../core/region';
 import { CURRENCIES, DocTypeConfig, ITEM_CATALOG, PARTIES, VAT_RATE } from '../core/erp.config';
 import { OrgService } from '../core/org.service';
 import { DocLine } from '../core/models';
@@ -176,7 +177,7 @@ export class DocFormComponent implements OnInit {
   docDate = new Date().toISOString().slice(0, 10);
   dueDate = '';
   party = '';
-  currency = 'SAR';
+  currency = defaultCurrency();
   costCenter = '';
   notes = '';
   discountPct = 0;

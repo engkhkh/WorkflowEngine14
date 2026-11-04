@@ -219,3 +219,4 @@ h1, h2, h3, .page-head h1 { font-family: var(--font-heading, var(--font)); }
   body.pos-printing .pos-receipt-print, body.pos-printing .pos-receipt-print * { visibility: visible !important; }
   body.pos-printing .pos-receipt-print { position: absolute; left: 0; top: 0; width: 80mm; border: 0 !important; }
 }
+@font-face { font-family: 'Amiri Quran'; src: url('assets/quran/AmiriQuran-Regular.ttf') format('truetype'); font-display: swap; }

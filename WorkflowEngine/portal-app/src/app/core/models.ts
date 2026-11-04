@@ -83,6 +83,8 @@ export interface User {
   permissions?: string[];
   tenantId?: string;
   tenantName?: string;
+  /** branches the user is limited to; null / undefined = all */
+  branches?: string[] | null;
 }
 
 /** One line of an ERP document (purchase requisition, sales order, expense claim...). */
@@ -108,6 +110,8 @@ export interface Tenant {
   users: number;
   companies: number;
   branches: number;
+  /** false until the administrator finishes the first-run setup wizard */
+  setupDone?: boolean;
 }
 
 export interface OrgSnapshot {
@@ -127,6 +131,12 @@ export interface AdminUser {
   /** null = follows the role's default privileges */
   permissions: string[] | null;
   effectivePermissions: string[];
+  /** branches the user is limited to; null = all */
+  branches: string[] | null;
+  /** invited, has not chosen a password yet */
+  invitePending: boolean;
+  /** only in the answer to create / invite */
+  inviteToken?: string | null;
 }
 
 export interface SaveUserPayload {
@@ -137,6 +147,10 @@ export interface SaveUserPayload {
   isActive: boolean;
   password?: string;
   permissions: string[] | null;
+  branches?: string[] | null;
+  /** create without a password and get an invitation link */
+  invite?: boolean;
+  appUrl?: string;
 }
 
 export interface PermissionCatalog {
@@ -153,9 +167,23 @@ export interface SignupPayload {
   password: string;
   currency: string;
   branchName?: string;
+  country?: string;
+  taxNo?: string;
 }
 
 /** Admin module: privilege catalog and roles as stored in the database (api/admin/rbac). */
 export interface RbacPermission { key: string; group: string; label?: string | null; route?: string | null; sortOrder: number; isActive: boolean; isCustom: boolean; }
 export interface RbacRole { role: string; name?: string | null; permissions: string[]; isSystem: boolean; customised: boolean; users: number; }
 export interface RbacCatalog { permissions: RbacPermission[]; roles: RbacRole[]; }
+
+export interface BillingLine { branch: string; branchName: string; users: number; amount: number; }
+export interface BillingSummary {
+  users: number; unitPrice: number; estimate: number; currency: string; lines: BillingLine[];
+  pricePerUser: number; volumePrice: number; volumeFrom: number; sarPerUsd: number;
+  balance: number; openInvoices: number; provider: string; nextInvoice: string;
+}
+export interface Invoice {
+  id: string; number: string; period: string; issuedAt: string; dueAt: string; status: 'open' | 'paid' | 'void'; overdue: boolean;
+  currency: string; users: number; unitPrice: number; total: number; sarPerUsd: number; totalSar: number;
+  companyName: string; taxNo?: string; lines: BillingLine[]; method?: string; paidAt?: string;
+}

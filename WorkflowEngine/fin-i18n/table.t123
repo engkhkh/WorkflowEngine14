@@ -1,0 +1,421 @@
+ai.s6 || Make the dashboard dark and hide the KPI cards || اجعل لوحة القيادة داكنة وأخفِ بطاقات المؤشرات || Mets le tableau de bord en sombre et masque les cartes d'indicateurs || Pon el panel en oscuro y oculta las tarjetas de indicadores || ڈیش بورڈ کو ڈارک کریں اور KPI کارڈز چھپائیں || Dashboard dunkel machen und KPI-Karten ausblenden || Imposta la dashboard scura e nascondi le schede KPI
+ai.s7 || Open a new journal entry || افتح قيد يومية جديد || Ouvrir une nouvelle écriture comptable || Abrir un nuevo asiento contable || نئی جرنل انٹری کھولیں || Neuen Buchungssatz öffnen || Apri una nuova scrittura contabile
+ai.c.reset || Done - the screen layout and look are back to the defaults. || تم - عادت الواجهة والمظهر إلى الوضع الافتراضي. || C'est fait : la mise en page et l'apparence sont revenues aux valeurs par défaut. || Hecho: el diseño y el aspecto han vuelto a los valores predeterminados. || ہو گیا - اسکرین کی ترتیب اور شکل ڈیفالٹ پر واپس آ گئی ہے۔ || Erledigt - Layout und Aussehen sind wieder auf den Standardwerten. || Fatto: layout e aspetto sono tornati ai valori predefiniti.
+ai.c.lang || Language changed to {l}. || تم تغيير اللغة إلى {l}. || Langue changée en {l}. || Idioma cambiado a {l}. || زبان {l} میں تبدیل کر دی گئی۔ || Sprache auf {l} geändert. || Lingua cambiata in {l}.
+ai.c.navHid || Hidden from your menu: {m}. || تم إخفاؤها من قائمتك: {m}. || Masqué dans votre menu : {m}. || Oculto en tu menú: {m}. || آپ کے مینو سے چھپایا گیا: {m}۔ || In Ihrem Menü ausgeblendet: {m}. || Nascosto dal menu: {m}.
+ai.c.navShown || Shown again in your menu: {m}. || أُعيد إظهارها في قائمتك: {m}. || De nouveau visible dans votre menu : {m}. || Visible de nuevo en tu menú: {m}. || آپ کے مینو میں دوبارہ دکھایا گیا: {m}۔ || Wieder in Ihrem Menü sichtbar: {m}. || Di nuovo visibile nel menu: {m}.
+ai.c.w.sidebar || sidebar: {s} || الشريط الجانبي: {s} || barre latérale : {s} || barra lateral: {s} || سائیڈ بار: {s} || Seitenleiste: {s} || barra laterale: {s}
+ai.c.sb.dark || dark || داكن || sombre || oscuro || ڈارک || dunkel || scuro
+ai.c.sb.light || light || فاتح || clair || claro || ہلکا || hell || chiaro
+ai.c.sb.accent || accent colour || لون التمييز || couleur d'accent || color de acento || نمایاں رنگ || Akzentfarbe || colore d'accento
+ai.c.w.dark || dark mode || الوضع الداكن || mode sombre || modo oscuro || ڈارک موڈ || dunkler Modus || modalità scura
+ai.c.w.light || light mode || الوضع الفاتح || mode clair || modo claro || لائٹ موڈ || heller Modus || modalità chiara
+ai.c.w.system || follow the system theme || اتباع سمة النظام || thème du système || tema del sistema || سسٹم تھیم || Systemdesign || tema di sistema
+ai.c.w.accent || accent colour {c} || لون التمييز {c} || couleur d'accent {c} || color de acento {c} || نمایاں رنگ {c} || Akzentfarbe {c} || colore d'accento {c}
+ai.c.col.0 || indigo || نيلي || indigo || índigo || نیلا گہرا || Indigo || indaco
+ai.c.col.1 || blue || أزرق || bleu || azul || نیلا || Blau || blu
+ai.c.col.2 || teal || أخضر مزرق || sarcelle || verde azulado || سبز نیلا || Petrol || verde acqua
+ai.c.col.3 || green || أخضر || vert || verde || سبز || Grün || verde
+ai.c.col.4 || orange || برتقالي || orange || naranja || نارنجی || Orange || arancione
+ai.c.col.5 || red || أحمر || rouge || rojo || سرخ || Rot || rosso
+ai.c.col.6 || pink || وردي || rose || rosa || گلابی || Rosa || rosa
+ai.c.col.7 || purple || بنفسجي || violet || morado || جامنی || Violett || viola
+ai.c.w.font || font {f} || الخط {f} || police {f} || fuente {f} || فونٹ {f} || Schrift {f} || carattere {f}
+ai.c.w.fontAuto || automatic font || الخط التلقائي || police automatique || fuente automática || خودکار فونٹ || automatische Schrift || carattere automatico
+ai.c.w.size || text size {s} || حجم النص {s} || taille du texte {s} || tamaño de texto {s} || متن کا سائز {s} || Textgröße {s} || dimensione testo {s}
+ai.c.sz.s || small || صغير || petite || pequeño || چھوٹا || klein || piccola
+ai.c.sz.m || medium || متوسط || moyenne || mediano || درمیانہ || mittel || media
+ai.c.sz.l || large || كبير || grande || grande || بڑا || groß || grande
+ai.c.sz.xl || extra large || كبير جدًا || très grande || muy grande || بہت بڑا || sehr groß || molto grande
+ai.c.w.compact || compact density || كثافة مدمجة || densité compacte || densidad compacta || کمپیکٹ کثافت || kompakte Dichte || densità compatta
+ai.c.w.comfortable || comfortable density || كثافة مريحة || densité confortable || densidad cómoda || آرام دہ کثافت || komfortable Dichte || densità comoda
+ai.c.w.corners || {c} corners || زوايا {c} || coins {c} || esquinas {c} || {c} کنارے || {c} Ecken || angoli {c}
+ai.c.cr.sharp || sharp || حادة || droits || rectos || تیز || eckige || netti
+ai.c.cr.soft || soft || ناعمة || doux || suaves || نرم || weiche || morbidi
+ai.c.cr.round || round || مستديرة || arrondis || redondeadas || گول || runde || arrotondati
+ai.c.done || Done: {what}. || تم: {what}. || C'est fait : {what}. || Hecho: {what}. || ہو گیا: {what}۔ || Erledigt: {what}. || Fatto: {what}.
+ai.c.noPage || There is nothing on this screen that I can show or hide. Open the dashboard, a module page, HR overview or finance overview first. || لا يوجد في هذه الشاشة ما يمكنني إظهاره أو إخفاؤه. افتح لوحة القيادة أو صفحة وحدة أو نظرة الموارد البشرية أو المالية أولًا. || Il n'y a rien à afficher ou masquer sur cet écran. Ouvrez d'abord le tableau de bord, une page de module, l'aperçu RH ou finance. || No hay nada que pueda mostrar u ocultar en esta pantalla. Abre primero el panel, una página de módulo, el resumen de RR. HH. o de finanzas. || اس اسکرین پر ایسا کچھ نہیں جسے میں دکھا یا چھپا سکوں۔ پہلے ڈیش بورڈ، کوئی ماڈیول، ایچ آر یا فنانس کا جائزہ کھولیں۔ || Auf diesem Bildschirm gibt es nichts, was ich ein- oder ausblenden kann. Öffnen Sie zuerst das Dashboard, eine Modulseite, die HR- oder Finanzübersicht. || In questa schermata non c'è nulla che io possa mostrare o nascondere. Apri prima la dashboard, una pagina di modulo o la panoramica HR o finanza.
+ai.c.nothingHidden || Nothing is hidden on this screen. || لا يوجد شيء مخفي في هذه الشاشة. || Rien n'est masqué sur cet écran. || No hay nada oculto en esta pantalla. || اس اسکرین پر کچھ بھی چھپا ہوا نہیں ہے۔ || Auf diesem Bildschirm ist nichts ausgeblendet. || In questa schermata non c'è nulla di nascosto.
+ai.c.shownAll || All sections of "{p}" are visible again. || أُعيد إظهار جميع أقسام "{p}". || Toutes les sections de « {p} » sont de nouveau visibles. || Todas las secciones de «{p}» vuelven a ser visibles. || "{p}" کے تمام حصے دوبارہ نظر آ رہے ہیں۔ || Alle Bereiche von „{p}“ sind wieder sichtbar. || Tutte le sezioni di «{p}» sono di nuovo visibili.
+ai.c.noBlock || I could not tell which section you mean. On this screen you can hide or show: {list}. || لم أتمكن من تحديد القسم المقصود. في هذه الشاشة يمكنك إخفاء أو إظهار: {list}. || Je n'ai pas compris quelle section vous visez. Sur cet écran, vous pouvez masquer ou afficher : {list}. || No pude saber a qué sección te refieres. En esta pantalla puedes ocultar o mostrar: {list}. || میں سمجھ نہیں سکا کہ آپ کون سا حصہ چاہتے ہیں۔ اس اسکرین پر آپ یہ چھپا یا دکھا سکتے ہیں: {list}۔ || Ich konnte nicht erkennen, welchen Bereich Sie meinen. Auf diesem Bildschirm können Sie ein- oder ausblenden: {list}. || Non ho capito quale sezione intendi. In questa schermata puoi nascondere o mostrare: {list}.
+ai.c.hid || Hidden: {b}. Say "show {first}" or "undo" to bring it back. || تم الإخفاء: {b}. قل "أظهر {first}" أو "تراجع" لإعادته. || Masqué : {b}. Dites « afficher {first} » ou « annuler » pour le rétablir. || Oculto: {b}. Di «mostrar {first}» o «deshacer» para recuperarlo. || چھپا دیا گیا: {b}۔ واپس لانے کے لیے "{first} دکھاؤ" یا "undo" کہیں۔ || Ausgeblendet: {b}. Sagen Sie „{first} anzeigen“ oder „rückgängig“, um es zurückzuholen. || Nascosto: {b}. Di' «mostra {first}» o «annulla» per ripristinarlo.
+ai.c.shown || Shown: {b}. Say "hide {first}" or "undo" to revert. || تم الإظهار: {b}. قل "أخفِ {first}" أو "تراجع" للعودة. || Affiché : {b}. Dites « masquer {first} » ou « annuler » pour revenir en arrière. || Mostrado: {b}. Di «ocultar {first}» o «deshacer» para revertir. || دکھا دیا گیا: {b}۔ واپس کرنے کے لیے "{first} چھپاؤ" یا "undo" کہیں۔ || Eingeblendet: {b}. Sagen Sie „{first} ausblenden“ oder „rückgängig“. || Mostrato: {b}. Di' «nascondi {first}» o «annulla» per tornare indietro.
+ai.c.undone || Undone - your previous layout is back. || تم التراجع - عادت الواجهة السابقة. || Annulé : votre mise en page précédente est rétablie. || Deshecho: se ha recuperado tu diseño anterior. || واپس کر دیا - آپ کی پچھلی ترتیب بحال ہو گئی۔ || Rückgängig gemacht - Ihr vorheriges Layout ist zurück. || Annullato: il layout precedente è stato ripristinato.
+ai.c.nothingUndo || There is nothing to undo. || لا يوجد شيء للتراجع عنه. || Il n'y a rien à annuler. || No hay nada que deshacer. || واپس کرنے کے لیے کچھ نہیں ہے۔ || Es gibt nichts rückgängig zu machen. || Non c'è nulla da annullare.
+ai.c.noRight || You don't have the privilege to open that screen. Ask an administrator to grant it in Admin > Users. || ليست لديك صلاحية فتح هذه الشاشة. اطلب من المسؤول منحها من الإدارة > المستخدمون. || Vous n'avez pas le droit d'ouvrir cet écran. Demandez à un administrateur de l'accorder dans Admin > Utilisateurs. || No tienes el privilegio para abrir esa pantalla. Pide a un administrador que lo conceda en Admin > Usuarios. || آپ کو یہ اسکرین کھولنے کا استحقاق حاصل نہیں۔ ایڈمنسٹریٹر سے ایڈمن > صارفین میں دینے کو کہیں۔ || Sie haben keine Berechtigung, diesen Bildschirm zu öffnen. Bitten Sie einen Administrator, sie unter Admin > Benutzer zu erteilen. || Non hai il privilegio per aprire questa schermata. Chiedi a un amministratore di concederlo in Admin > Utenti.
+ai.c.target.employee || Employee record || سجل الموظف || Fiche employé || Ficha de empleado || ملازم کا ریکارڈ || Mitarbeiterdatensatz || Scheda dipendente
+ai.c.target.journal || Journal entry || قيد اليومية || Écriture comptable || Asiento contable || جرنل انٹری || Buchungssatz || Scrittura contabile
+ai.c.target.apinvoice || Supplier invoice || فاتورة مورد || Facture fournisseur || Factura de proveedor || سپلائر انوائس || Lieferantenrechnung || Fattura fornitore
+ai.c.target.arinvoice || Customer invoice || فاتورة عميل || Facture client || Factura de cliente || کسٹمر انوائس || Kundenrechnung || Fattura cliente
+ai.c.target.budget || Budget || الميزانية || Budget || Presupuesto || بجٹ || Budget || Budget
+ai.c.target.asset || Fixed asset || أصل ثابت || Immobilisation || Activo fijo || مستقل اثاثہ || Anlagegut || Immobilizzazione
+ai.c.open || Opening: {w}. || جارٍ فتح: {w}. || Ouverture : {w}. || Abriendo: {w}. || کھولا جا رہا ہے: {w}۔ || Öffne: {w}. || Apertura: {w}.
+ai.c.openEdit || Opening {w} {id} for editing. || جارٍ فتح {w} {id} للتعديل. || Ouverture de {w} {id} pour modification. || Abriendo {w} {id} para editar. || {w} {id} ترمیم کے لیے کھولا جا رہا ہے۔ || Öffne {w} {id} zum Bearbeiten. || Apertura di {w} {id} per la modifica.
+ai.c.needId || Which one? Open the list and pick the record, or tell me its number (for example "edit employee E1003"). || أي واحد؟ افتح القائمة واختر السجل، أو أخبرني برقمه (مثال: "عدّل الموظف E1003"). || Lequel ? Ouvrez la liste et choisissez la fiche, ou donnez-moi son numéro (par exemple « modifier employé E1003 »). || ¿Cuál? Abre la lista y elige el registro, o dime su número (por ejemplo «editar empleado E1003»). || کون سا؟ فہرست کھولیں اور ریکارڈ چنیں، یا مجھے اس کا نمبر بتائیں (مثلاً "ملازم E1003 میں ترمیم")۔ || Welchen? Öffnen Sie die Liste und wählen Sie den Datensatz oder nennen Sie mir die Nummer (z. B. „Mitarbeiter E1003 bearbeiten“). || Quale? Apri l'elenco e scegli il record, oppure dimmi il numero (ad esempio «modifica dipendente E1003»).
+blk.kpis || KPI cards || بطاقات المؤشرات || Cartes d'indicateurs || Tarjetas de indicadores || KPI کارڈز || KPI-Karten || Schede KPI
+blk.flow || Business flow || سير العمل التجاري || Flux d'activité || Flujo de negocio || کاروباری بہاؤ || Geschäftsablauf || Flusso aziendale
+blk.trend || Trend chart || مخطط الاتجاه || Graphique de tendance || Gráfico de tendencia || رجحان چارٹ || Trenddiagramm || Grafico di tendenza
+blk.insight || AI insight || رؤية الذكاء الاصطناعي || Aperçu IA || Análisis de IA || اے آئی بصیرت || KI-Einblick || Analisi IA
+blk.queue || My approvals queue || قائمة موافقاتي || Ma file d'approbations || Mi cola de aprobaciones || میری منظوریوں کی قطار || Meine Genehmigungswarteschlange || La mia coda di approvazioni
+blk.quick || Quick actions || إجراءات سريعة || Actions rapides || Acciones rápidas || فوری اقدامات || Schnellaktionen || Azioni rapide
+blk.recent || Recent documents || المستندات الأخيرة || Documents récents || Documentos recientes || حالیہ دستاویزات || Letzte Dokumente || Documenti recenti
+blk.documents || Documents || المستندات || Documents || Documentos || دستاویزات || Dokumente || Documenti
+blk.stock || Stock || المخزون || Stock || Existencias || اسٹاک || Bestand || Scorte
+blk.ledger || Ledger || دفتر الأستاذ || Grand livre || Libro mayor || کھاتہ || Hauptbuch || Libro mastro
+blk.otherFlows || Other flows || تدفقات أخرى || Autres flux || Otros flujos || دیگر بہاؤ || Weitere Abläufe || Altri flussi
+blk.hires || Hiring trend || اتجاه التوظيف || Tendance des embauches || Tendencia de contratación || بھرتی کا رجحان || Einstellungstrend || Andamento assunzioni
+blk.byUnit || By unit || حسب الوحدة || Par unité || Por unidad || یونٹ کے لحاظ سے || Nach Einheit || Per unità
+blk.byNationality || By nationality || حسب الجنسية || Par nationalité || Por nacionalidad || قومیت کے لحاظ سے || Nach Nationalität || Per nazionalità
+blk.byLocation || By location || حسب الموقع || Par site || Por ubicación || مقام کے لحاظ سے || Nach Standort || Per sede
+blk.byGender || By gender || حسب الجنس || Par genre || Por género || جنس کے لحاظ سے || Nach Geschlecht || Per genere
+blk.ratings || Performance ratings || تقييمات الأداء || Évaluations de performance || Calificaciones de desempeño || کارکردگی کی درجہ بندی || Leistungsbewertungen || Valutazioni delle performance
+blk.pnl || Revenue vs expense || الإيرادات مقابل المصروفات || Produits et charges || Ingresos y gastos || آمدنی بمقابلہ اخراجات || Erlöse und Aufwand || Ricavi e costi
+blk.cash || Cash by account || النقد حسب الحساب || Trésorerie par compte || Efectivo por cuenta || اکاؤنٹ کے لحاظ سے نقدی || Liquidität je Konto || Cassa per conto
+blk.arAging || Receivables ageing || تقادم الذمم المدينة || Balance âgée clients || Antigüedad de cuentas por cobrar || قابل وصول کی عمر || Forderungsalterung || Scadenzario crediti
+blk.apAging || Payables ageing || تقادم الذمم الدائنة || Balance âgée fournisseurs || Antigüedad de cuentas por pagar || قابل ادائیگی کی عمر || Verbindlichkeitenalterung || Scadenzario debiti
+blk.budget || Budget use || استخدام الميزانية || Consommation du budget || Uso del presupuesto || بجٹ کا استعمال || Budgetauslastung || Utilizzo budget
+blk.deptSpend || Spend by department || الإنفاق حسب القسم || Dépenses par service || Gasto por departamento || شعبے کے لحاظ سے اخراجات || Ausgaben je Abteilung || Spesa per reparto
+blk.apDue || Payments due || المدفوعات المستحقة || Paiements à échéance || Pagos vencidos o próximos || واجب الادا ادائیگیاں || Fällige Zahlungen || Pagamenti in scadenza
+fin.nav.overview || Overview || نظرة عامة || Vue d'ensemble || Resumen || جائزہ || Übersicht || Panoramica
+fin.nav.gl || General ledger || دفتر الأستاذ العام || Grand livre || Libro mayor || جنرل لیجر || Hauptbuch || Contabilità generale
+fin.nav.ap || Payables || الذمم الدائنة || Fournisseurs || Cuentas por pagar || قابل ادائیگی || Verbindlichkeiten || Debiti
+fin.nav.ar || Receivables || الذمم المدينة || Clients || Cuentas por cobrar || قابل وصول || Forderungen || Crediti
+fin.nav.bank || Cash & bank || النقد والبنوك || Trésorerie et banques || Efectivo y bancos || نقدی اور بینک || Liquidität & Bank || Cassa e banche
+fin.nav.budgets || Budgets || الميزانيات || Budgets || Presupuestos || بجٹ || Budgets || Budget
+fin.nav.assets || Fixed assets || الأصول الثابتة || Immobilisations || Activos fijos || مستقل اثاثے || Anlagen || Immobilizzazioni
+fin.nav.projects || Projects || المشاريع || Projets || Proyectos || منصوبے || Projekte || Progetti
+fin.nav.setup || Setup || الإعدادات || Paramétrage || Configuración || سیٹ اپ || Einrichtung || Impostazioni
+fin.nav.audit || Audit trail || سجل التدقيق || Piste d'audit || Pista de auditoría || آڈٹ ٹریل || Prüfpfad || Traccia di audit
+fin.requests || Requests & workflows || الطلبات وسير العمل || Demandes et workflows || Solicitudes y flujos || درخواستیں اور ورک فلو || Anträge & Workflows || Richieste e workflow
+fin.new || New || جديد || Nouveau || Nuevo || نیا || Neu || Nuovo
+fin.confirm || Confirm || تأكيد || Confirmer || Confirmar || تصدیق || Bestätigen || Conferma
+fin.deleteConfirm || Delete {name}? This cannot be undone. || حذف {name}؟ لا يمكن التراجع عن ذلك. || Supprimer {name} ? Cette action est irréversible. || ¿Eliminar {name}? No se puede deshacer. || {name} حذف کریں؟ یہ عمل واپس نہیں ہو سکتا۔ || {name} löschen? Das kann nicht rückgängig gemacht werden. || Eliminare {name}? L'operazione non è reversibile.
+fin.allStatus || All statuses || كل الحالات || Tous les statuts || Todos los estados || تمام حالتیں || Alle Status || Tutti gli stati
+fin.useDefault || Use default account || استخدم الحساب الافتراضي || Compte par défaut || Usar la cuenta predeterminada || ڈیفالٹ اکاؤنٹ استعمال کریں || Standardkonto verwenden || Usa il conto predefinito
+fin.needDefaults || Default GL accounts are missing. Set them in Finance > Setup > Default accounts first. || حسابات دفتر الأستاذ الافتراضية غير محددة. حددها أولًا في المالية > الإعدادات > الحسابات الافتراضية. || Les comptes comptables par défaut sont manquants. Définissez-les d'abord dans Finance > Paramétrage > Comptes par défaut. || Faltan las cuentas contables predeterminadas. Defínelas antes en Finanzas > Configuración > Cuentas predeterminadas. || ڈیفالٹ جی ایل اکاؤنٹس موجود نہیں۔ پہلے فنانس > سیٹ اپ > ڈیفالٹ اکاؤنٹس میں مقرر کریں۔ || Standard-Sachkonten fehlen. Legen Sie sie zuerst unter Finanzen > Einrichtung > Standardkonten fest. || Mancano i conti contabili predefiniti. Impostali prima in Finanza > Impostazioni > Conti predefiniti.
+fin.sub.invoices || Invoices || الفواتير || Factures || Facturas || انوائسز || Rechnungen || Fatture
+fin.sub.parties || Suppliers / customers || الموردون / العملاء || Fournisseurs / clients || Proveedores / clientes || سپلائرز / کسٹمرز || Lieferanten / Kunden || Fornitori / clienti
+fin.sub.aging || Ageing || التقادم || Balance âgée || Antigüedad || عمر کا تجزیہ || Altersanalyse || Scadenzario
+fin.st.Draft || Draft || مسودة || Brouillon || Borrador || مسودہ || Entwurf || Bozza
+fin.st.Submitted || Submitted || مُرسل || Soumis || Enviado || جمع شدہ || Eingereicht || Inviato
+fin.st.Posted || Posted || مُرحَّل || Comptabilisé || Contabilizado || پوسٹ شدہ || Gebucht || Registrato
+fin.st.Rejected || Rejected || مرفوض || Rejeté || Rechazado || مسترد || Abgelehnt || Rifiutato
+fin.st.Reversed || Reversed || معكوس || Contre-passé || Revertido || الٹا گیا || Storniert || Stornato
+fin.st.Approved || Approved || معتمد || Approuvé || Aprobado || منظور شدہ || Genehmigt || Approvato
+fin.st.Paid || Paid || مدفوع || Payé || Pagado || ادا شدہ || Bezahlt || Pagato
+fin.st.Held || On hold || معلّق || En attente || En espera || روکا گیا || Gesperrt || In sospeso
+fin.st.Issued || Issued || صادر || Émis || Emitido || جاری شدہ || Ausgestellt || Emessa
+fin.st.Cancelled || Cancelled || ملغى || Annulé || Cancelado || منسوخ || Storniert || Annullata
+fin.st.Open || Open || مفتوح || Ouvert || Abierto || کھلا || Offen || Aperto
+fin.st.Closed || Closed || مغلق || Clôturé || Cerrado || بند || Geschlossen || Chiuso
+fin.st.Active || Active || نشط || Actif || Activo || فعال || Aktiv || Attivo
+fin.st.Inactive || Inactive || غير نشط || Inactif || Inactivo || غیر فعال || Inaktiv || Inattivo
+fin.st.Disposed || Disposed || مستبعد || Cédé || Dado de baja || فروخت/خارج || Abgegangen || Dismesso
+fin.type.Asset || Asset || أصول || Actif || Activo || اثاثہ || Aktiva || Attività
+fin.type.Liability || Liability || خصوم || Passif || Pasivo || ذمہ داری || Verbindlichkeit || Passività
+fin.type.Equity || Equity || حقوق الملكية || Capitaux propres || Patrimonio || ایکویٹی || Eigenkapital || Patrimonio netto
+fin.type.Revenue || Revenue || إيرادات || Produits || Ingresos || آمدنی || Erlöse || Ricavi
+fin.type.Expense || Expense || مصروفات || Charges || Gastos || اخراجات || Aufwand || Costi
+fin.kind.journal || Journal entry || قيد يومية || Écriture || Asiento || جرنل انٹری || Buchungssatz || Scrittura
+fin.kind.apinvoice || Supplier invoice || فاتورة مورد || Facture fournisseur || Factura de proveedor || سپلائر انوائس || Lieferantenrechnung || Fattura fornitore
+fin.kind.arinvoice || Customer invoice || فاتورة عميل || Facture client || Factura de cliente || کسٹمر انوائس || Kundenrechnung || Fattura cliente
+fin.kind.period || Period || فترة || Période || Período || مدت || Periode || Periodo
+fin.kind.account || Account || حساب || Compte || Cuenta || اکاؤنٹ || Konto || Conto
+fin.kind.bankaccount || Bank account || حساب بنكي || Compte bancaire || Cuenta bancaria || بینک اکاؤنٹ || Bankkonto || Conto bancario
+fin.kind.banktxn || Bank transaction || حركة بنكية || Opération bancaire || Movimiento bancario || بینک لین دین || Bankbuchung || Movimento bancario
+fin.kind.budget || Budget || ميزانية || Budget || Presupuesto || بجٹ || Budget || Budget
+fin.kind.asset || Fixed asset || أصل ثابت || Immobilisation || Activo fijo || مستقل اثاثہ || Anlagegut || Immobilizzazione
+fin.kind.project || Project || مشروع || Projet || Proyecto || منصوبہ || Projekt || Progetto
+fin.kind.vendor || Supplier || مورد || Fournisseur || Proveedor || سپلائر || Lieferant || Fornitore
+fin.kind.customer || Customer || عميل || Client || Cliente || کسٹمر || Kunde || Cliente
+fin.kind.setting || Setting || إعداد || Paramètre || Ajuste || ترتیب || Einstellung || Impostazione
+fin.f.code || Code || الرمز || Code || Código || کوڈ || Code || Codice
+fin.f.name || Name || الاسم || Nom || Nombre || نام || Name || Nome
+fin.f.nameAr || Name (Arabic) || الاسم بالعربية || Nom (arabe) || Nombre (árabe) || نام (عربی) || Name (Arabisch) || Nome (arabo)
+fin.f.type || Type || النوع || Type || Tipo || قسم || Typ || Tipo
+fin.f.isHeader || Header (group) account || حساب رئيسي (تجميعي) || Compte de regroupement || Cuenta de grupo || گروپ اکاؤنٹ || Sammelkonto || Conto di raggruppamento
+fin.f.isHeaderHint || Header accounts group other accounts and cannot receive postings. || الحسابات الرئيسية تجمع حسابات أخرى ولا يمكن الترحيل إليها. || Les comptes de regroupement ne reçoivent pas d'écritures. || Las cuentas de grupo agrupan otras y no admiten asientos. || گروپ اکاؤنٹس دیگر اکاؤنٹس کو جمع کرتے ہیں اور ان میں اندراج نہیں ہو سکتا۔ || Sammelkonten fassen andere Konten zusammen und können nicht bebucht werden. || I conti di raggruppamento non ricevono registrazioni.
+fin.f.status || Status || الحالة || Statut || Estado || حالت || Status || Stato
+fin.f.number || Number || الرقم || Numéro || Número || نمبر || Nummer || Numero
+fin.f.date || Date || التاريخ || Date || Fecha || تاریخ || Datum || Data
+fin.f.dueDate || Due date || تاريخ الاستحقاق || Échéance || Vencimiento || آخری تاریخ || Fälligkeit || Scadenza
+fin.f.memo || Description || الوصف || Libellé || Descripción || تفصیل || Beschreibung || Descrizione
+fin.f.amount || Amount || المبلغ || Montant || Importe || رقم || Betrag || Importo
+fin.f.net || Net amount || المبلغ الصافي || Montant HT || Importe neto || خالص رقم || Nettobetrag || Importo netto
+fin.f.total || Total || الإجمالي || Total || Total || کل || Gesamt || Totale
+fin.f.createdBy || Created by || أنشأه || Créé par || Creado por || بنانے والا || Erstellt von || Creato da
+fin.f.approvedBy || Approved by || اعتمده || Approuvé par || Aprobado por || منظور کنندہ || Genehmigt von || Approvato da
+fin.f.reference || Reference || المرجع || Référence || Referencia || حوالہ || Referenz || Riferimento
+fin.f.currency || Currency || العملة || Devise || Moneda || کرنسی || Währung || Valuta
+fin.f.rate || Exchange rate || سعر الصرف || Taux de change || Tipo de cambio || شرح تبادلہ || Wechselkurs || Tasso di cambio
+fin.f.account || Account || الحساب || Compte || Cuenta || اکاؤنٹ || Konto || Conto
+fin.f.expenseAccount || Expense account || حساب المصروف || Compte de charge || Cuenta de gasto || اخراجات اکاؤنٹ || Aufwandskonto || Conto di costo
+fin.f.revenueAccount || Revenue account || حساب الإيراد || Compte de produit || Cuenta de ingreso || آمدنی اکاؤنٹ || Erlöskonto || Conto di ricavo
+fin.f.costCenter || Cost centre || مركز التكلفة || Centre de coûts || Centro de coste || لاگت مرکز || Kostenstelle || Centro di costo
+fin.f.project || Project || المشروع || Projet || Proyecto || منصوبہ || Projekt || Progetto
+fin.f.vendor || Supplier || المورد || Fournisseur || Proveedor || سپلائر || Lieferant || Fornitore
+fin.f.customer || Customer || العميل || Client || Cliente || کسٹمر || Kunde || Cliente
+fin.f.taxCode || Tax code || رمز الضريبة || Code de taxe || Código de impuesto || ٹیکس کوڈ || Steuerschlüssel || Codice imposta
+fin.f.taxAmount || Tax amount || مبلغ الضريبة || Montant de taxe || Importe de impuesto || ٹیکس کی رقم || Steuerbetrag || Importo imposta
+fin.f.taxNo || Tax / VAT number || الرقم الضريبي || N° de TVA || N.º de IVA || ٹیکس نمبر || USt-IdNr. || Partita IVA
+fin.f.email || Email || البريد الإلكتروني || E-mail || Correo electrónico || ای میل || E-Mail || Email
+fin.f.phone || Phone || الهاتف || Téléphone || Teléfono || فون || Telefon || Telefono
+fin.f.termsDays || Payment terms (days) || شروط الدفع (أيام) || Conditions de paiement (jours) || Condiciones de pago (días) || ادائیگی کی شرائط (دن) || Zahlungsziel (Tage) || Termini di pagamento (giorni)
+fin.f.creditLimit || Credit limit || الحد الائتماني || Limite de crédit || Límite de crédito || کریڈٹ حد || Kreditlimit || Fido
+fin.f.notes || Notes || ملاحظات || Notes || Notas || نوٹس || Notizen || Note
+fin.f.year || Year || السنة || Année || Año || سال || Jahr || Anno
+fin.aging.current || Not due || غير مستحق || Non échu || No vencido || غیر واجب || Nicht fällig || Non scaduto
+fin.aging.1-30 || 1-30 days || 1-30 يومًا || 1-30 jours || 1-30 días || 1-30 دن || 1-30 Tage || 1-30 giorni
+fin.aging.31-60 || 31-60 days || 31-60 يومًا || 31-60 jours || 31-60 días || 31-60 دن || 31-60 Tage || 31-60 giorni
+fin.aging.61-90 || 61-90 days || 61-90 يومًا || 61-90 jours || 61-90 días || 61-90 دن || 61-90 Tage || 61-90 giorni
+fin.aging.90+ || Over 90 days || أكثر من 90 يومًا || Plus de 90 jours || Más de 90 días || 90 دن سے زیادہ || Über 90 Tage || Oltre 90 giorni
+fin.aging.none || No open invoices to age. || لا توجد فواتير مفتوحة. || Aucune facture ouverte. || No hay facturas abiertas. || کوئی کھلی انوائس نہیں۔ || Keine offenen Rechnungen. || Nessuna fattura aperta.
+fin.match.Matched || Matched || مطابق || Rapproché || Conciliado || مماثل || Abgeglichen || Corrispondente
+fin.match.Mismatch || Mismatch || غير مطابق || Écart || Discrepancia || عدم مطابقت || Abweichung || Discrepanza
+fin.match.NoPO || No PO || بلا أمر شراء || Sans commande || Sin pedido || بغیر خریداری آرڈر || Ohne Bestellung || Senza ordine
+fin.gl.journals || Journals || القيود || Écritures || Asientos || جرنلز || Buchungen || Scritture
+fin.gl.accounts || Chart of accounts || دليل الحسابات || Plan comptable || Plan de cuentas || چارٹ آف اکاؤنٹس || Kontenplan || Piano dei conti
+fin.gl.periods || Periods || الفترات || Périodes || Períodos || مدتیں || Perioden || Periodi
+fin.gl.reports || Reports || التقارير || Rapports || Informes || رپورٹس || Berichte || Report
+fin.acc.hint || The chart of accounts is shared by all companies of the workspace. Header accounts group others. || دليل الحسابات مشترك بين كل شركات مساحة العمل. الحسابات الرئيسية تجمع غيرها. || Le plan comptable est commun à toutes les sociétés de l'espace. Les comptes de regroupement rassemblent les autres. || El plan de cuentas es común a todas las empresas del espacio. Las cuentas de grupo agrupan otras. || چارٹ آف اکاؤنٹس ورک اسپیس کی تمام کمپنیوں کے لیے مشترک ہے۔ گروپ اکاؤنٹس دوسروں کو جمع کرتے ہیں۔ || Der Kontenplan gilt für alle Gesellschaften des Arbeitsbereichs. Sammelkonten fassen andere zusammen. || Il piano dei conti è condiviso da tutte le società dello spazio. I conti di raggruppamento riuniscono gli altri.
+fin.acc.new || New account || حساب جديد || Nouveau compte || Nueva cuenta || نیا اکاؤنٹ || Neues Konto || Nuovo conto
+fin.acc.none || No accounts yet. Add one or load the starter chart. || لا توجد حسابات. أضف حسابًا أو حمّل الدليل المبدئي. || Aucun compte. Ajoutez-en un ou chargez le plan de départ. || Aún no hay cuentas. Añade una o carga el plan inicial. || ابھی کوئی اکاؤنٹ نہیں۔ ایک شامل کریں یا ابتدائی چارٹ لوڈ کریں۔ || Noch keine Konten. Fügen Sie eines hinzu oder laden Sie den Standardkontenplan. || Nessun conto. Aggiungine uno o carica il piano iniziale.
+fin.acc.seed || Load starter chart || تحميل الدليل المبدئي || Charger le plan de départ || Cargar plan inicial || ابتدائی چارٹ لوڈ کریں || Standardkontenplan laden || Carica piano iniziale
+fin.per.hint || Posting is only allowed into open periods. Closing a period locks it for everyone. || الترحيل مسموح فقط في الفترات المفتوحة. إغلاق الفترة يقفلها للجميع. || La comptabilisation n'est possible que dans les périodes ouvertes. Clôturer une période la verrouille pour tous. || Solo se puede contabilizar en períodos abiertos. Cerrar un período lo bloquea para todos. || صرف کھلی مدتوں میں پوسٹنگ ممکن ہے۔ مدت بند کرنے سے وہ سب کے لیے مقفل ہو جاتی ہے۔ || Buchungen sind nur in offenen Perioden möglich. Das Schließen einer Periode sperrt sie für alle. || Si può registrare solo in periodi aperti. Chiudere un periodo lo blocca per tutti.
+fin.per.code || Period (yyyy-mm) || الفترة (سنة-شهر) || Période (aaaa-mm) || Período (aaaa-mm) || مدت (سال-ماہ) || Periode (jjjj-mm) || Periodo (aaaa-mm)
+fin.per.codeHint || Format 2026-03 || الصيغة 2026-03 || Format 2026-03 || Formato 2026-03 || فارمیٹ 2026-03 || Format 2026-03 || Formato 2026-03
+fin.per.new || New period || فترة جديدة || Nouvelle période || Nuevo período || نئی مدت || Neue Periode || Nuovo periodo
+fin.per.none || No periods yet. Generate the year. || لا توجد فترات. أنشئ السنة. || Aucune période. Générez l'année. || Aún no hay períodos. Genera el año. || ابھی کوئی مدت نہیں۔ سال تیار کریں۔ || Noch keine Perioden. Jahr generieren. || Nessun periodo. Genera l'anno.
+fin.per.generate || Generate the year || إنشاء السنة || Générer l'année || Generar el año || سال تیار کریں || Jahr generieren || Genera l'anno
+fin.per.close || Close period || إغلاق الفترة || Clôturer la période || Cerrar período || مدت بند کریں || Periode schließen || Chiudi periodo
+fin.per.reopen || Reopen || إعادة فتح || Rouvrir || Reabrir || دوبارہ کھولیں || Wieder öffnen || Riapri
+fin.jv.new || New journal entry || قيد يومية جديد || Nouvelle écriture || Nuevo asiento || نئی جرنل انٹری || Neuer Buchungssatz || Nuova scrittura
+fin.jv.none || No journal entries yet. || لا توجد قيود. || Aucune écriture. || No hay asientos. || کوئی جرنل انٹری نہیں۔ || Keine Buchungssätze. || Nessuna scrittura.
+fin.jv.debit || Debit || مدين || Débit || Debe || ڈیبٹ || Soll || Dare
+fin.jv.credit || Credit || دائن || Crédit || Haber || کریڈٹ || Haben || Avere
+fin.jv.ic || Intercompany partner || الشركة الشقيقة || Partenaire intersociétés || Socio intercompañía || انٹر کمپنی پارٹنر || Intercompany-Partner || Partner intercompany
+fin.jv.addLine || Add line || إضافة سطر || Ajouter une ligne || Añadir línea || سطر شامل کریں || Zeile hinzufügen || Aggiungi riga
+fin.jv.balanced || Balanced || متوازن || Équilibrée || Cuadrado || متوازن || Ausgeglichen || Bilanciata
+fin.jv.diff || Out of balance by {n} || غير متوازن بفارق {n} || Déséquilibre de {n} || Descuadre de {n} || {n} کا فرق || Differenz {n} || Sbilanciata di {n}
+fin.jv.postedHint || Posted entries cannot be edited. Reverse the entry to correct it. || لا يمكن تعديل القيود المرحّلة. اعكس القيد لتصحيحه. || Les écritures comptabilisées ne sont pas modifiables. Contre-passez pour corriger. || Los asientos contabilizados no se editan. Revierte el asiento para corregirlo. || پوسٹ شدہ انٹریز میں ترمیم نہیں ہو سکتی۔ درست کرنے کے لیے انٹری الٹ دیں۔ || Gebuchte Sätze können nicht geändert werden. Stornieren Sie den Satz, um ihn zu korrigieren. || Le scritture registrate non si modificano. Storna la scrittura per correggerla.
+fin.jv.saveDraft || Save draft || حفظ كمسودة || Enregistrer le brouillon || Guardar borrador || مسودہ محفوظ کریں || Entwurf speichern || Salva bozza
+fin.jv.submit || Submit for approval || إرسال للاعتماد || Soumettre pour approbation || Enviar a aprobación || منظوری کے لیے بھیجیں || Zur Genehmigung einreichen || Invia per approvazione
+fin.jv.postNow || Post now || رحّل الآن || Comptabiliser maintenant || Contabilizar ahora || ابھی پوسٹ کریں || Jetzt buchen || Registra ora
+fin.jv.post || Approve & post || اعتماد وترحيل || Approuver et comptabiliser || Aprobar y contabilizar || منظور اور پوسٹ کریں || Genehmigen & buchen || Approva e registra
+fin.jv.reject || Reject || رفض || Rejeter || Rechazar || مسترد کریں || Ablehnen || Rifiuta
+fin.jv.reverse || Reverse || عكس || Contre-passer || Revertir || الٹ دیں || Stornieren || Storna
+fin.jv.posted || Journal posted. || تم ترحيل القيد. || Écriture comptabilisée. || Asiento contabilizado. || انٹری پوسٹ ہو گئی۔ || Buchungssatz gebucht. || Scrittura registrata.
+fin.jv.rejected || Journal rejected. || تم رفض القيد. || Écriture rejetée. || Asiento rechazado. || انٹری مسترد ہو گئی۔ || Buchungssatz abgelehnt. || Scrittura rifiutata.
+fin.jv.reversed || Reversal entry created. || تم إنشاء قيد العكس. || Contre-passation créée. || Asiento de reversión creado. || الٹ انٹری بن گئی۔ || Stornobuchung erstellt. || Storno creato.
+fin.jv.needDate || Choose the entry date and add at least two lines. || اختر تاريخ القيد وأضف سطرين على الأقل. || Choisissez la date et ajoutez au moins deux lignes. || Elige la fecha y añade al menos dos líneas. || انٹری کی تاریخ چنیں اور کم از کم دو سطریں شامل کریں۔ || Wählen Sie das Datum und fügen Sie mindestens zwei Zeilen hinzu. || Scegli la data e aggiungi almeno due righe.
+fin.jv.notBalanced || Debits must equal credits. || يجب أن يتساوى المدين مع الدائن. || Le débit doit égaler le crédit. || El debe debe ser igual al haber. || ڈیبٹ اور کریڈٹ برابر ہونے چاہییں۔ || Soll und Haben müssen übereinstimmen. || Dare e avere devono coincidere.
+fin.jv.reversalOf || Reversal of {n} || عكس القيد {n} || Contre-passation de {n} || Reversión de {n} || {n} کی الٹ انٹری || Storno von {n} || Storno di {n}
+fin.audit.history || History || السجل || Historique || Historial || تاریخ || Verlauf || Cronologia
+fin.audit.hint || Every create, change, status change and delete of a finance record is logged with the user and time. || يُسجَّل كل إنشاء وتعديل وتغيير حالة وحذف مع المستخدم والوقت. || Chaque création, modification, changement de statut et suppression est journalisé avec l'utilisateur et l'heure. || Toda creación, cambio, cambio de estado y eliminación se registra con el usuario y la hora. || ہر تخلیق، تبدیلی، حالت کی تبدیلی اور حذف صارف اور وقت کے ساتھ درج ہوتا ہے۔ || Jedes Anlegen, Ändern, Statuswechseln und Löschen wird mit Benutzer und Zeit protokolliert. || Ogni creazione, modifica, cambio di stato ed eliminazione viene registrata con utente e ora.
+fin.audit.allKinds || All record types || كل أنواع السجلات || Tous les types || Todos los tipos || تمام اقسام || Alle Datensatzarten || Tutti i tipi
+fin.audit.when || When || متى || Quand || Cuándo || کب || Wann || Quando
+fin.audit.who || User || المستخدم || Utilisateur || Usuario || صارف || Benutzer || Utente
+fin.audit.what || Action || الإجراء || Action || Acción || عمل || Aktion || Azione
+fin.audit.record || Record || السجل || Enregistrement || Registro || ریکارڈ || Datensatz || Record
+fin.audit.details || Details || التفاصيل || Détails || Detalles || تفصیلات || Details || Dettagli
+fin.audit.a.Created || Created || إنشاء || Création || Creado || بنایا گیا || Angelegt || Creato
+fin.audit.a.Updated || Updated || تعديل || Modification || Modificado || تبدیل کیا گیا || Geändert || Modificato
+fin.audit.a.StatusChanged || Status changed || تغيير الحالة || Statut modifié || Estado cambiado || حالت بدلی گئی || Status geändert || Stato cambiato
+fin.audit.a.Deleted || Deleted || حذف || Suppression || Eliminado || حذف کیا گیا || Gelöscht || Eliminato
+fin.rep.tb || Trial balance || ميزان المراجعة || Balance générale || Balance de comprobación || ٹرائل بیلنس || Saldenliste || Bilancio di verifica
+fin.rep.is || Income statement || قائمة الدخل || Compte de résultat || Estado de resultados || آمدنی کا گوشوارہ || Gewinn- und Verlustrechnung || Conto economico
+fin.rep.bs || Balance sheet || الميزانية العمومية || Bilan || Balance general || بیلنس شیٹ || Bilanz || Stato patrimoniale
+fin.rep.ledger || Account ledger || كشف حساب || Grand livre du compte || Mayor de cuenta || اکاؤنٹ لیجر || Kontoblatt || Mastrino del conto
+fin.rep.group || Group consolidation || التوحيد المجمّع || Consolidation du groupe || Consolidación del grupo || گروپ یکجائی || Konzernkonsolidierung || Consolidamento di gruppo
+fin.rep.from || From || من || Du || Desde || از || Von || Da
+fin.rep.to || To || إلى || Au || Hasta || تا || Bis || A
+fin.rep.allCompanies || All companies || كل الشركات || Toutes les sociétés || Todas las empresas || تمام کمپنیاں || Alle Gesellschaften || Tutte le società
+fin.rep.eliminate || Eliminate intercompany || استبعاد معاملات الشركات الشقيقة || Éliminer les opérations intersociétés || Eliminar operaciones intercompañía || انٹر کمپنی لین دین خارج کریں || Intercompany eliminieren || Elimina intercompany
+fin.rep.groupCur || Group currency || عملة المجموعة || Devise du groupe || Moneda del grupo || گروپ کرنسی || Konzernwährung || Valuta di gruppo
+fin.rep.groupNote || Amounts are converted to {c} using the rates in Setup > Currencies. || تُحوَّل المبالغ إلى {c} حسب الأسعار في الإعدادات > العملات. || Les montants sont convertis en {c} avec les taux de Paramétrage > Devises. || Los importes se convierten a {c} con los tipos de Configuración > Monedas. || رقوم کو سیٹ اپ > کرنسیاں کی شرحوں کے مطابق {c} میں تبدیل کیا گیا ہے۔ || Beträge werden mit den Kursen aus Einrichtung > Währungen in {c} umgerechnet. || Gli importi sono convertiti in {c} con i tassi di Impostazioni > Valute.
+fin.rep.noPosted || No posted journal lines in this selection. || لا توجد سطور مرحّلة في هذا الاختيار. || Aucune ligne comptabilisée pour cette sélection. || No hay líneas contabilizadas en esta selección. || اس انتخاب میں کوئی پوسٹ شدہ سطر نہیں۔ || Keine gebuchten Zeilen in dieser Auswahl. || Nessuna riga registrata in questa selezione.
+fin.rep.total || Total || المجموع || Total || Total || مجموعہ || Summe || Totale
+fin.rep.totalRevenue || Total revenue || إجمالي الإيرادات || Total des produits || Total ingresos || کل آمدنی || Summe Erlöse || Totale ricavi
+fin.rep.totalExpense || Total expenses || إجمالي المصروفات || Total des charges || Total gastos || کل اخراجات || Summe Aufwand || Totale costi
+fin.rep.netIncome || Net income || صافي الدخل || Résultat net || Resultado neto || خالص آمدنی || Jahresergebnis || Utile netto
+fin.rep.totalAssets || Total assets || إجمالي الأصول || Total actif || Total activos || کل اثاثے || Summe Aktiva || Totale attività
+fin.rep.totalLiabilities || Total liabilities || إجمالي الخصوم || Total passif || Total pasivos || کل ذمہ داریاں || Summe Verbindlichkeiten || Totale passività
+fin.rep.totalEquity || Total equity || إجمالي حقوق الملكية || Total capitaux propres || Total patrimonio || کل ایکویٹی || Summe Eigenkapital || Totale patrimonio netto
+fin.rep.check || Check (assets - liabilities - equity) || تحقق (أصول - خصوم - ملكية) || Contrôle (actif - passif - capitaux) || Control (activos - pasivos - patrimonio) || جانچ (اثاثے - ذمہ داریاں - ایکویٹی) || Kontrolle (Aktiva - Verbindlichkeiten - Eigenkapital) || Verifica (attività - passività - patrimonio)
+fin.rep.pickAccount || Choose an account to see its ledger. || اختر حسابًا لعرض كشفه. || Choisissez un compte pour voir son grand livre. || Elige una cuenta para ver su mayor. || لیجر دیکھنے کے لیے اکاؤنٹ چنیں۔ || Wählen Sie ein Konto, um das Kontoblatt zu sehen. || Scegli un conto per vederne il mastrino.
+fin.rep.running || Balance || الرصيد || Solde || Saldo || بیلنس || Saldo || Saldo
+fin.rep.consolidated || Consolidated || موحّد || Consolidé || Consolidado || یکجا || Konsolidiert || Consolidato
+fin.rep.export || Export CSV || تصدير CSV || Exporter en CSV || Exportar CSV || CSV برآمد کریں || CSV exportieren || Esporta CSV
+fin.ap.new || New supplier invoice || فاتورة مورد جديدة || Nouvelle facture fournisseur || Nueva factura de proveedor || نئی سپلائر انوائس || Neue Lieferantenrechnung || Nuova fattura fornitore
+fin.ap.none || No supplier invoices yet. || لا توجد فواتير موردين. || Aucune facture fournisseur. || No hay facturas de proveedor. || کوئی سپلائر انوائس نہیں۔ || Keine Lieferantenrechnungen. || Nessuna fattura fornitore.
+fin.ap.invNo || Supplier invoice no. || رقم فاتورة المورد || N° facture fournisseur || N.º factura proveedor || سپلائر انوائس نمبر || Lieferantenrechnungsnr. || N. fattura fornitore
+fin.ap.match || 3-way match || المطابقة الثلاثية || Rapprochement 3 points || Conciliación 3 vías || تھری وے میچ || 3-Wege-Abgleich || Riscontro a 3 vie
+fin.ap.mismatch || Mismatches || حالات عدم المطابقة || Écarts || Discrepancias || عدم مطابقت || Abweichungen || Discrepanze
+fin.ap.approve || Approve || اعتماد || Approuver || Aprobar || منظور کریں || Genehmigen || Approva
+fin.ap.hold || Hold || تعليق || Mettre en attente || Retener || روکیں || Sperren || Sospendi
+fin.ap.release || Release || إلغاء التعليق || Libérer || Liberar || چھوڑیں || Freigeben || Rilascia
+fin.ap.pay || Pay || سداد || Payer || Pagar || ادا کریں || Bezahlen || Paga
+fin.ap.paidOk || Invoice paid. || تم سداد الفاتورة. || Facture payée. || Factura pagada. || انوائس ادا ہو گئی۔ || Rechnung bezahlt. || Fattura pagata.
+fin.ap.threeWay || Purchase order / goods receipt matching || مطابقة أمر الشراء والاستلام || Rapprochement commande / réception || Conciliación pedido / recepción || خریداری آرڈر / وصولی کی مطابقت || Abgleich Bestellung / Wareneingang || Riscontro ordine / ricevimento
+fin.ap.poNo || PO number || رقم أمر الشراء || N° de commande || N.º de pedido || خریداری آرڈر نمبر || Bestellnummer || N. ordine
+fin.ap.poAmount || PO amount || قيمة أمر الشراء || Montant de la commande || Importe del pedido || آرڈر کی رقم || Bestellwert || Importo ordine
+fin.ap.received || Received value || قيمة المستلم || Valeur reçue || Valor recibido || موصول شدہ قیمت || Wareneingangswert || Valore ricevuto
+fin.ap.noPoHint || No purchase order entered - the invoice is not matched. || لم يُدخل أمر شراء - الفاتورة غير مطابَقة. || Aucune commande saisie : la facture n'est pas rapprochée. || Sin pedido: la factura no se concilia. || کوئی خریداری آرڈر درج نہیں - انوائس کا میچ نہیں ہوا۔ || Keine Bestellung erfasst - die Rechnung wird nicht abgeglichen. || Nessun ordine inserito: la fattura non viene riscontrata.
+fin.ap.noReceipt || Nothing has been received against this order yet. || لم يُستلم شيء على هذا الأمر بعد. || Rien n'a encore été reçu pour cette commande. || Aún no se ha recibido nada de este pedido. || اس آرڈر کے مقابل ابھی کچھ موصول نہیں ہوا۔ || Zu dieser Bestellung wurde noch nichts geliefert. || Per questo ordine non è stato ancora ricevuto nulla.
+fin.ap.over || Invoice {inv} is above what was ordered and received ({lim}). || الفاتورة {inv} أعلى مما طُلب واستُلم ({lim}). || La facture {inv} dépasse ce qui a été commandé et reçu ({lim}). || La factura {inv} supera lo pedido y recibido ({lim}). || انوائس {inv} آرڈر اور وصولی ({lim}) سے زیادہ ہے۔ || Rechnung {inv} liegt über dem Bestellten und Gelieferten ({lim}). || La fattura {inv} supera quanto ordinato e ricevuto ({lim}).
+fin.ap.override || Approve despite the mismatch (override) || اعتماد رغم عدم المطابقة (تجاوز) || Approuver malgré l'écart (dérogation) || Aprobar pese a la discrepancia (excepción) || عدم مطابقت کے باوجود منظور کریں (استثنا) || Trotz Abweichung genehmigen (Ausnahme) || Approva nonostante la discrepanza (deroga)
+fin.ar.new || New customer invoice || فاتورة عميل جديدة || Nouvelle facture client || Nueva factura de cliente || نئی کسٹمر انوائس || Neue Kundenrechnung || Nuova fattura cliente
+fin.ar.none || No customer invoices yet. || لا توجد فواتير عملاء. || Aucune facture client. || No hay facturas de cliente. || کوئی کسٹمر انوائس نہیں۔ || Keine Kundenrechnungen. || Nessuna fattura cliente.
+fin.ar.balance || Balance || المتبقي || Solde || Saldo || بقیہ || Offen || Saldo
+fin.ar.draftN || Drafts || المسودات || Brouillons || Borradores || مسودے || Entwürfe || Bozze
+fin.ar.issue || Issue invoice || إصدار الفاتورة || Émettre la facture || Emitir factura || انوائس جاری کریں || Rechnung ausstellen || Emetti fattura
+fin.ar.receive || Receive payment || استلام دفعة || Encaisser || Registrar cobro || ادائیگی وصول کریں || Zahlung erfassen || Registra incasso
+fin.ar.receivedOk || Payment recorded. || تم تسجيل الدفعة. || Paiement enregistré. || Cobro registrado. || ادائیگی درج ہو گئی۔ || Zahlung erfasst. || Incasso registrato.
+fin.ar.cancel || Cancel || إلغاء || Annuler || Cancelar || منسوخ کریں || Stornieren || Annulla
+fin.ar.creditOver || Customer credit limit is {limit}; with this invoice the open balance would be {now}. || الحد الائتماني للعميل {limit}؛ مع هذه الفاتورة يصبح الرصيد المفتوح {now}. || La limite de crédit du client est {limit} ; avec cette facture l'encours serait de {now}. || El límite de crédito del cliente es {limit}; con esta factura el saldo abierto sería {now}. || کسٹمر کی کریڈٹ حد {limit} ہے؛ اس انوائس کے ساتھ کھلا بیلنس {now} ہو جائے گا۔ || Das Kreditlimit des Kunden beträgt {limit}; mit dieser Rechnung wäre der offene Saldo {now}. || Il fido del cliente è {limit}; con questa fattura il saldo aperto sarebbe {now}.
+fin.ar.creditBlock || The customer's credit limit would be exceeded. Save as draft or raise the limit. || سيتجاوز العميل حده الائتماني. احفظ كمسودة أو ارفع الحد. || La limite de crédit du client serait dépassée. Enregistrez en brouillon ou relevez la limite. || Se superaría el límite de crédito del cliente. Guarda como borrador o aumenta el límite. || کسٹمر کی کریڈٹ حد سے تجاوز ہو جائے گا۔ مسودے کے طور پر محفوظ کریں یا حد بڑھائیں۔ || Das Kreditlimit des Kunden würde überschritten. Als Entwurf speichern oder Limit erhöhen. || Il fido del cliente verrebbe superato. Salva come bozza o aumenta il fido.
+fin.inv.outstanding || Outstanding || المستحق || En cours || Pendiente || بقایا || Offen || Aperto
+fin.inv.overdue || Overdue || متأخر || En retard || Vencido || تاخیر شدہ || Überfällig || Scaduto
+fin.inv.toApprove || Awaiting approval || بانتظار الاعتماد || En attente d'approbation || Pendiente de aprobación || منظوری کے منتظر || Warten auf Genehmigung || In attesa di approvazione
+fin.inv.toGl || Create the GL journal draft || إنشاء مسودة قيد دفتر الأستاذ || Créer le brouillon d'écriture || Crear borrador de asiento || جی ایل جرنل مسودہ بنائیں || Buchungsentwurf erstellen || Crea la bozza di scrittura
+fin.inv.glDone || Journal draft {n} created - it still needs GL approval. || أُنشئ مسودة القيد {n} - ما زال يحتاج اعتماد الدفتر. || Brouillon {n} créé : il doit encore être approuvé en comptabilité. || Borrador de asiento {n} creado: aún requiere aprobación contable. || جرنل مسودہ {n} بن گیا - ابھی جی ایل منظوری درکار ہے۔ || Buchungsentwurf {n} erstellt - er braucht noch die Freigabe im Hauptbuch. || Bozza {n} creata: serve ancora l'approvazione contabile.
+fin.vendor.new || New supplier || مورد جديد || Nouveau fournisseur || Nuevo proveedor || نیا سپلائر || Neuer Lieferant || Nuovo fornitore
+fin.customer.new || New customer || عميل جديد || Nouveau client || Nuevo cliente || نیا کسٹمر || Neuer Kunde || Nuovo cliente
+fin.party.none || Nothing here yet. || لا يوجد شيء بعد. || Rien pour l'instant. || Aún no hay nada. || ابھی کچھ نہیں۔ || Noch nichts vorhanden. || Ancora nulla.
+fin.bank.accounts || Bank accounts || الحسابات البنكية || Comptes bancaires || Cuentas bancarias || بینک اکاؤنٹس || Bankkonten || Conti bancari
+fin.bank.txns || Transactions & reconciliation || الحركات والتسوية || Opérations et rapprochement || Movimientos y conciliación || لین دین اور مصالحت || Buchungen & Abstimmung || Movimenti e riconciliazione
+fin.bank.new || New bank account || حساب بنكي جديد || Nouveau compte bancaire || Nueva cuenta bancaria || نیا بینک اکاؤنٹ || Neues Bankkonto || Nuovo conto bancario
+fin.bank.none || No bank accounts yet. || لا توجد حسابات بنكية. || Aucun compte bancaire. || No hay cuentas bancarias. || کوئی بینک اکاؤنٹ نہیں۔ || Keine Bankkonten. || Nessun conto bancario.
+fin.bank.bankName || Bank || البنك || Banque || Banco || بینک || Bank || Banca
+fin.bank.iban || IBAN / account no. || الآيبان / رقم الحساب || IBAN / n° de compte || IBAN / n.º de cuenta || IBAN / اکاؤنٹ نمبر || IBAN / Kontonr. || IBAN / n. conto
+fin.bank.glAccount || Ledger account || حساب الأستاذ || Compte comptable || Cuenta contable || لیجر اکاؤنٹ || Sachkonto || Conto contabile
+fin.bank.glHint || The asset account that this bank account posts to. || حساب الأصول الذي يُرحَّل إليه هذا الحساب البنكي. || Le compte d'actif sur lequel ce compte bancaire comptabilise. || La cuenta de activo a la que contabiliza esta cuenta bancaria. || وہ اثاثہ اکاؤنٹ جس میں یہ بینک اکاؤنٹ پوسٹ ہوتا ہے۔ || Das Aktivkonto, auf das dieses Bankkonto bucht. || Il conto attivo su cui registra questo conto bancario.
+fin.bank.opening || Opening balance || الرصيد الافتتاحي || Solde d'ouverture || Saldo inicial || ابتدائی بیلنس || Anfangssaldo || Saldo iniziale
+fin.bank.account || Bank account || الحساب البنكي || Compte bancaire || Cuenta bancaria || بینک اکاؤنٹ || Bankkonto || Conto bancario
+fin.bank.allAccounts || All bank accounts || كل الحسابات البنكية || Tous les comptes || Todas las cuentas || تمام بینک اکاؤنٹس || Alle Bankkonten || Tutti i conti
+fin.bank.book || Book balance || الرصيد الدفتري || Solde comptable || Saldo contable || کتابی بیلنس || Buchsaldo || Saldo contabile
+fin.bank.reconciled || Reconciled balance || الرصيد المسوّى || Solde rapproché || Saldo conciliado || مصالحت شدہ بیلنس || Abgestimmter Saldo || Saldo riconciliato
+fin.bank.unreconciled || Unreconciled lines || سطور غير مسوّاة || Lignes non rapprochées || Líneas sin conciliar || غیر مصالحت شدہ سطریں || Offene Posten || Righe da riconciliare
+fin.bank.newTxn || New transaction || حركة جديدة || Nouvelle opération || Nuevo movimiento || نیا لین دین || Neue Buchung || Nuovo movimento
+fin.bank.noTxn || No transactions yet. || لا توجد حركات. || Aucune opération. || No hay movimientos. || کوئی لین دین نہیں۔ || Keine Buchungen. || Nessun movimento.
+fin.bank.amountHint || Amount (+ in, - out) || المبلغ (+ وارد، - صادر) || Montant (+ entrée, - sortie) || Importe (+ entrada, - salida) || رقم (+ آمد، - اخراج) || Betrag (+ Eingang, - Ausgang) || Importo (+ entrata, - uscita)
+fin.bank.reconcile || Reconcile || تسوية || Rapprocher || Conciliar || مصالحت || Abstimmen || Riconcilia
+fin.bank.unreconcile || Undo || تراجع || Annuler || Deshacer || واپس || Rückgängig || Annulla
+fin.bud.new || New budget || ميزانية جديدة || Nouveau budget || Nuevo presupuesto || نیا بجٹ || Neues Budget || Nuovo budget
+fin.bud.none || No budgets yet. || لا توجد ميزانيات. || Aucun budget. || No hay presupuestos. || کوئی بجٹ نہیں۔ || Keine Budgets. || Nessun budget.
+fin.bud.vs || Budget vs actual || الميزانية مقابل الفعلي || Budget et réalisé || Presupuesto vs real || بجٹ بمقابلہ اصل || Budget und Ist || Budget e consuntivo
+fin.bud.budget || Budget || الميزانية || Budget || Presupuesto || بجٹ || Budget || Budget
+fin.bud.actual || Actual || الفعلي || Réalisé || Real || اصل || Ist || Consuntivo
+fin.bud.remaining || Remaining || المتبقي || Restant || Restante || باقی || Verbleibend || Residuo
+fin.bud.used || Used || المستخدم || Consommé || Usado || استعمال شدہ || Verbraucht || Utilizzato
+fin.bud.drill || Posted lines behind the selected budget || السطور المرحّلة خلف الميزانية المحددة || Lignes comptabilisées du budget sélectionné || Líneas contabilizadas del presupuesto seleccionado || منتخب بجٹ کی پوسٹ شدہ سطریں || Gebuchte Zeilen zum gewählten Budget || Righe registrate del budget selezionato
+fin.asset.tab.register || Register || السجل || Registre || Registro || رجسٹر || Anlagenspiegel || Registro
+fin.asset.tab.assets || Assets || الأصول || Immobilisations || Activos || اثاثے || Anlagen || Cespiti
+fin.asset.tab.classes || Classes || الفئات || Classes || Clases || کلاسز || Klassen || Classi
+fin.asset.tab.depr || Depreciation run || تشغيل الإهلاك || Calcul des amortissements || Ejecución de depreciación || فرسودگی چلائیں || Abschreibungslauf || Esecuzione ammortamenti
+fin.asset.m.SL || Straight-line || القسط الثابت || Linéaire || Lineal || سیدھی لکیر || Linear || Lineare
+fin.asset.m.DB || Declining balance || القسط المتناقص || Dégressif || Saldo decreciente || گھٹتا بیلنس || Degressiv || Decrescente
+fin.asset.new || New asset || أصل جديد || Nouvelle immobilisation || Nuevo activo || نیا اثاثہ || Neues Anlagegut || Nuovo cespite
+fin.asset.newClass || New asset class || فئة أصول جديدة || Nouvelle classe || Nueva clase de activo || نئی کلاس || Neue Anlagenklasse || Nuova classe
+fin.asset.none || No fixed assets yet. || لا توجد أصول ثابتة. || Aucune immobilisation. || No hay activos fijos. || کوئی مستقل اثاثہ نہیں۔ || Keine Anlagegüter. || Nessun cespite.
+fin.asset.noClass || No asset classes yet. || لا توجد فئات أصول. || Aucune classe. || No hay clases de activo. || کوئی کلاس نہیں۔ || Keine Anlagenklassen. || Nessuna classe.
+fin.asset.class || Class || الفئة || Classe || Clase || کلاس || Klasse || Classe
+fin.asset.cost || Cost || التكلفة || Coût || Coste || لاگت || Anschaffungskosten || Costo
+fin.asset.salvage || Salvage value || القيمة التخريدية || Valeur résiduelle || Valor residual || بقایا قیمت || Restwert || Valore residuo
+fin.asset.life || Useful life (months) || العمر الإنتاجي (أشهر) || Durée d'utilité (mois) || Vida útil (meses) || مفید عمر (مہینے) || Nutzungsdauer (Monate) || Vita utile (mesi)
+fin.asset.method || Depreciation method || طريقة الإهلاك || Méthode d'amortissement || Método de depreciación || فرسودگی کا طریقہ || Abschreibungsmethode || Metodo di ammortamento
+fin.asset.inService || In-service date || تاريخ بدء الاستخدام || Date de mise en service || Fecha de puesta en servicio || استعمال کی تاریخ || Inbetriebnahme || Data di entrata in uso
+fin.asset.accum || Accumulated depreciation || الإهلاك المتراكم || Amortissement cumulé || Depreciación acumulada || جمع شدہ فرسودگی || Kumulierte Abschreibung || Fondo ammortamento
+fin.asset.accumHint || Leave 0 for new assets; use the opening figure for assets already in use. || اتركه 0 للأصول الجديدة؛ استخدم الرقم الافتتاحي للأصول المستخدمة. || Laissez 0 pour un bien neuf ; saisissez le cumul d'ouverture pour un bien déjà utilisé. || Deja 0 para activos nuevos; usa la cifra inicial para activos en uso. || نئے اثاثوں کے لیے 0 رہنے دیں؛ استعمال شدہ کے لیے ابتدائی رقم لکھیں۔ || Bei neuen Anlagen 0 lassen; für bereits genutzte den Eröffnungswert eintragen. || Lascia 0 per i nuovi cespiti; usa il valore iniziale per quelli già in uso.
+fin.asset.location || Location || الموقع || Emplacement || Ubicación || مقام || Standort || Ubicazione
+fin.asset.nbv || Net book value || صافي القيمة الدفترية || Valeur nette comptable || Valor neto contable || خالص کتابی قیمت || Nettobuchwert || Valore netto contabile
+fin.asset.monthly || Monthly depreciation || الإهلاك الشهري || Amortissement mensuel || Depreciación mensual || ماہانہ فرسودگی || Monatliche Abschreibung || Ammortamento mensile
+fin.asset.schedule || Schedule || الجدول || Échéancier || Calendario || شیڈول || Plan || Piano
+fin.asset.upTo || Depreciate up to || الإهلاك حتى || Amortir jusqu'à || Depreciar hasta || تک فرسودگی || Abschreiben bis || Ammortizza fino a
+fin.asset.months || Months || الأشهر || Mois || Meses || مہینے || Monate || Mesi
+fin.asset.nothingDue || No depreciation is due for this month. || لا يوجد إهلاك مستحق لهذا الشهر. || Aucun amortissement dû pour ce mois. || No hay depreciación pendiente para este mes. || اس مہینے کوئی فرسودگی واجب نہیں۔ || Für diesen Monat ist keine Abschreibung fällig. || Nessun ammortamento dovuto per questo mese.
+fin.asset.run || Run depreciation (draft journal) || تشغيل الإهلاك (مسودة قيد) || Lancer l'amortissement (brouillon) || Ejecutar depreciación (borrador) || فرسودگی چلائیں (مسودہ انٹری) || Abschreibung ausführen (Entwurf) || Esegui ammortamento (bozza)
+fin.asset.runDone || Depreciation journal draft {n} created. || أُنشئ مسودة قيد الإهلاك {n}. || Brouillon d'amortissement {n} créé. || Borrador de depreciación {n} creado. || فرسودگی کا مسودہ {n} بن گیا۔ || Abschreibungsentwurf {n} erstellt. || Bozza di ammortamento {n} creata.
+fin.asset.deprMemo || Depreciation || إهلاك || Amortissement || Depreciación || فرسودگی || Abschreibung || Ammortamento
+fin.asset.needGl || You need the finance.gl.manage privilege to draft the depreciation journal. || تحتاج صلاحية finance.gl.manage لإنشاء قيد الإهلاك. || Il faut le droit finance.gl.manage pour créer l'écriture d'amortissement. || Necesitas el privilegio finance.gl.manage para crear el asiento de depreciación. || فرسودگی انٹری بنانے کے لیے finance.gl.manage استحقاق درکار ہے۔ || Für den Abschreibungsentwurf wird das Recht finance.gl.manage benötigt. || Serve il privilegio finance.gl.manage per creare la scrittura di ammortamento.
+fin.asset.dispose || Dispose || استبعاد || Céder || Dar de baja || خارج کریں || Ausbuchen || Dismetti
+fin.asset.proceeds || Sale proceeds || حصيلة البيع || Produit de cession || Importe de venta || فروخت کی رقم || Verkaufserlös || Ricavo di vendita
+fin.asset.disposeHint || The asset stops depreciating. Post the disposal gain or loss with a journal entry. || يتوقف إهلاك الأصل. رحّل ربح أو خسارة الاستبعاد بقيد يومية. || L'immobilisation n'est plus amortie. Comptabilisez la plus ou moins-value par une écriture. || El activo deja de depreciarse. Contabiliza la ganancia o pérdida con un asiento. || اثاثے کی فرسودگی رک جاتی ہے۔ فائدہ یا نقصان جرنل انٹری سے پوسٹ کریں۔ || Die Abschreibung endet. Buchen Sie Gewinn oder Verlust mit einem Buchungssatz. || Il cespite non viene più ammortizzato. Registra utile o perdita con una scrittura.
+fin.prj.profit || Project profitability || ربحية المشاريع || Rentabilité des projets || Rentabilidad de proyectos || منصوبوں کا منافع || Projektergebnis || Redditività progetti
+fin.prj.revenue || Revenue || الإيرادات || Produits || Ingresos || آمدنی || Erlöse || Ricavi
+fin.prj.cost || Cost || التكلفة || Coûts || Coste || لاگت || Kosten || Costi
+fin.prj.result || Result || النتيجة || Résultat || Resultado || نتیجہ || Ergebnis || Risultato
+fin.prj.margin || Margin || الهامش || Marge || Margen || مارجن || Marge || Margine
+fin.prj.hint || Choose the project on journal lines, supplier invoices and customer invoices; posted lines build this table. || اختر المشروع في سطور القيود وفواتير الموردين والعملاء؛ السطور المرحّلة تكوّن هذا الجدول. || Choisissez le projet sur les lignes d'écriture et les factures ; les lignes comptabilisées alimentent ce tableau. || Elige el proyecto en las líneas de asiento y en las facturas; las líneas contabilizadas forman esta tabla. || جرنل سطروں اور انوائسز پر منصوبہ چنیں؛ پوسٹ شدہ سطروں سے یہ جدول بنتا ہے۔ || Wählen Sie das Projekt in Buchungszeilen und Rechnungen; gebuchte Zeilen bilden diese Tabelle. || Scegli il progetto su righe di scrittura e fatture; le righe registrate alimentano questa tabella.
+fin.prj.new || New project || مشروع جديد || Nouveau projet || Nuevo proyecto || نیا منصوبہ || Neues Projekt || Nuovo progetto
+fin.prj.none || No projects yet. || لا توجد مشاريع. || Aucun projet. || No hay proyectos. || کوئی منصوبہ نہیں۔ || Keine Projekte. || Nessun progetto.
+fin.prj.start || Start date || تاريخ البدء || Date de début || Fecha de inicio || آغاز کی تاریخ || Startdatum || Data di inizio
+fin.prj.end || End date || تاريخ الانتهاء || Date de fin || Fecha de fin || اختتام کی تاریخ || Enddatum || Data di fine
+fin.setup.controls || Controls || الضوابط || Contrôles || Controles || کنٹرولز || Kontrollen || Controlli
+fin.setup.defaults || Default accounts || الحسابات الافتراضية || Comptes par défaut || Cuentas predeterminadas || ڈیفالٹ اکاؤنٹس || Standardkonten || Conti predefiniti
+fin.setup.currencies || Currencies || العملات || Devises || Monedas || کرنسیاں || Währungen || Valute
+fin.setup.tax || Tax codes || رموز الضريبة || Codes de taxe || Códigos de impuesto || ٹیکس کوڈز || Steuerschlüssel || Codici imposta
+fin.setup.cc || Cost centres || مراكز التكلفة || Centres de coûts || Centros de coste || لاگت مراکز || Kostenstellen || Centri di costo
+fin.setup.sod || Enforce segregation of duties || فرض الفصل بين المهام || Imposer la séparation des tâches || Exigir segregación de funciones || فرائض کی علیحدگی نافذ کریں || Funktionstrennung erzwingen || Imponi la separazione dei compiti
+fin.setup.sodHint || The person who created a journal or invoice cannot approve or post it, and the approver of an invoice cannot pay it. Enforced on the server. || من أنشأ قيدًا أو فاتورة لا يمكنه اعتمادها أو ترحيلها، ومن اعتمد فاتورة لا يمكنه دفعها. يُطبَّق على الخادم. || Le créateur d'une écriture ou facture ne peut ni l'approuver ni la comptabiliser, et l'approbateur d'une facture ne peut pas la payer. Appliqué côté serveur. || Quien crea un asiento o factura no puede aprobarlo ni contabilizarlo, y quien aprueba una factura no puede pagarla. Se aplica en el servidor. || جرنل یا انوائس بنانے والا اسے منظور یا پوسٹ نہیں کر سکتا، اور انوائس منظور کرنے والا اسے ادا نہیں کر سکتا۔ سرور پر نافذ ہوتا ہے۔ || Wer einen Buchungssatz oder eine Rechnung erstellt, kann sie weder freigeben noch buchen; wer eine Rechnung freigibt, kann sie nicht bezahlen. Wird serverseitig erzwungen. || Chi crea una scrittura o fattura non può approvarla né registrarla, e chi approva una fattura non può pagarla. Applicato dal server.
+fin.setup.tolerance || 3-way match tolerance (%) || هامش المطابقة الثلاثية (%) || Tolérance du rapprochement (%) || Tolerancia de conciliación (%) || تھری وے میچ رواداری (%) || Toleranz beim 3-Wege-Abgleich (%) || Tolleranza riscontro a 3 vie (%)
+fin.setup.toleranceHint || An invoice may exceed the lower of ordered and received value by this percentage. || يمكن أن تتجاوز الفاتورة الأقل من المطلوب والمستلم بهذه النسبة. || Une facture peut dépasser le plus faible du commandé et du reçu de ce pourcentage. || Una factura puede superar el menor entre lo pedido y lo recibido en este porcentaje. || انوائس آرڈر اور وصولی میں سے کم قدر سے اس فیصد تک زیادہ ہو سکتی ہے۔ || Eine Rechnung darf den niedrigeren Wert aus Bestellung und Lieferung um diesen Prozentsatz überschreiten. || Una fattura può superare il minore tra ordinato e ricevuto di questa percentuale.
+fin.setup.defaultsHint || Documents such as invoices and payments create journal drafts using these accounts. || المستندات مثل الفواتير والدفعات تنشئ مسودات قيود بهذه الحسابات. || Les factures et paiements créent des brouillons d'écriture avec ces comptes. || Facturas y pagos crean borradores de asiento con estas cuentas. || انوائسز اور ادائیگیاں ان اکاؤنٹس سے جرنل مسودے بناتی ہیں۔ || Rechnungen und Zahlungen erzeugen Buchungsentwürfe mit diesen Konten. || Fatture e pagamenti creano bozze di scrittura con questi conti.
+fin.def.arAccount || Receivables account || حساب الذمم المدينة || Compte clients || Cuenta de clientes || قابل وصول اکاؤنٹ || Forderungskonto || Conto crediti clienti
+fin.def.apAccount || Payables account || حساب الذمم الدائنة || Compte fournisseurs || Cuenta de proveedores || قابل ادائیگی اکاؤنٹ || Verbindlichkeitskonto || Conto debiti fornitori
+fin.def.bankAccount || Default bank / cash account || حساب البنك / الصندوق الافتراضي || Compte banque / caisse par défaut || Cuenta de banco / caja predeterminada || ڈیفالٹ بینک / نقد اکاؤنٹ || Standard-Bank-/Kassenkonto || Conto banca / cassa predefinito
+fin.def.revenueAccount || Default revenue account || حساب الإيراد الافتراضي || Compte de produit par défaut || Cuenta de ingresos predeterminada || ڈیفالٹ آمدنی اکاؤنٹ || Standard-Erlöskonto || Conto ricavi predefinito
+fin.def.expenseAccount || Default expense account || حساب المصروف الافتراضي || Compte de charge par défaut || Cuenta de gastos predeterminada || ڈیفالٹ اخراجات اکاؤنٹ || Standard-Aufwandskonto || Conto costi predefinito
+fin.def.vatInput || VAT input (recoverable) || ضريبة المدخلات || TVA déductible || IVA soportado || ان پٹ ٹیکس (قابل واپسی) || Vorsteuer || IVA a credito
+fin.def.vatOutput || VAT output (payable) || ضريبة المخرجات || TVA collectée || IVA repercutido || آؤٹ پٹ ٹیکس (قابل ادائیگی) || Umsatzsteuer || IVA a debito
+fin.def.deprExpense || Depreciation expense || مصروف الإهلاك || Dotation aux amortissements || Gasto por depreciación || فرسودگی کا خرچ || Abschreibungsaufwand || Costo ammortamento
+fin.def.deprAccum || Accumulated depreciation || الإهلاك المتراكم || Amortissements cumulés || Depreciación acumulada || جمع شدہ فرسودگی || Kumulierte Abschreibungen || Fondo ammortamento
+fin.cur.new || New currency || عملة جديدة || Nouvelle devise || Nueva moneda || نئی کرنسی || Neue Währung || Nuova valuta
+fin.cur.none || No currencies yet. || لا توجد عملات. || Aucune devise. || No hay monedas. || کوئی کرنسی نہیں۔ || Keine Währungen. || Nessuna valuta.
+fin.cur.codeHint || For example USD, EUR, SAR || مثل USD أو EUR أو SAR || Par exemple USD, EUR, SAR || Por ejemplo USD, EUR, SAR || مثلاً USD، EUR، SAR || Zum Beispiel USD, EUR, SAR || Ad esempio USD, EUR, SAR
+fin.cur.rate || Rate to group currency || السعر مقابل عملة المجموعة || Taux vers la devise du groupe || Tipo frente a la moneda del grupo || گروپ کرنسی کے مقابل شرح || Kurs zur Konzernwährung || Tasso verso la valuta di gruppo
+fin.cur.rateHint || Value of 1 unit of this currency in the group currency. || قيمة وحدة واحدة من هذه العملة بعملة المجموعة. || Valeur d'une unité de cette devise dans la devise du groupe. || Valor de 1 unidad de esta moneda en la moneda del grupo. || اس کرنسی کی 1 اکائی کی گروپ کرنسی میں قدر۔ || Wert einer Einheit dieser Währung in der Konzernwährung. || Valore di 1 unità di questa valuta nella valuta di gruppo.
+fin.tax.new || New tax code || رمز ضريبة جديد || Nouveau code de taxe || Nuevo código de impuesto || نیا ٹیکس کوڈ || Neuer Steuerschlüssel || Nuovo codice imposta
+fin.tax.none || No tax codes yet. || لا توجد رموز ضريبة. || Aucun code de taxe. || No hay códigos de impuesto. || کوئی ٹیکس کوڈ نہیں۔ || Keine Steuerschlüssel. || Nessun codice imposta.
+fin.tax.rate || Rate (%) || النسبة (%) || Taux (%) || Tasa (%) || شرح (%) || Satz (%) || Aliquota (%)
+fin.cc.new || New cost centre || مركز تكلفة جديد || Nouveau centre de coûts || Nuevo centro de coste || نیا لاگت مرکز || Neue Kostenstelle || Nuovo centro di costo
+fin.cc.none || No cost centres yet. || لا توجد مراكز تكلفة. || Aucun centre de coûts. || No hay centros de coste. || کوئی لاگت مرکز نہیں۔ || Keine Kostenstellen. || Nessun centro di costo.
+fin.ov.revenue || Revenue || الإيرادات || Produits || Ingresos || آمدنی || Erlöse || Ricavi
+fin.ov.expense || Expenses || المصروفات || Charges || Gastos || اخراجات || Aufwand || Costi
+fin.ov.profit || Profit || الربح || Résultat || Beneficio || منافع || Ergebnis || Utile
+fin.ov.ytd || Year to date || منذ بداية السنة || Cumul annuel || Acumulado del año || سال کے آغاز سے || Seit Jahresbeginn || Da inizio anno
+fin.ov.cash || Cash & bank || النقد والبنوك || Trésorerie || Efectivo y bancos || نقدی اور بینک || Liquidität || Cassa e banche
+fin.ov.ar || Receivables || الذمم المدينة || Créances clients || Cuentas por cobrar || قابل وصول || Forderungen || Crediti
+fin.ov.ap || Payables || الذمم الدائنة || Dettes fournisseurs || Cuentas por pagar || قابل ادائیگی || Verbindlichkeiten || Debiti
+fin.ov.overdueN || Overdue: {n} || متأخر: {n} || En retard : {n} || Vencido: {n} || تاخیر شدہ: {n} || Überfällig: {n} || Scaduto: {n}
+fin.ov.toApprove || Awaiting approval || بانتظار الاعتماد || À approuver || Pendiente de aprobar || منظوری کے منتظر || Zur Genehmigung || Da approvare
+fin.ov.approveSplit || {j} journals · {i} invoices || {j} قيود · {i} فواتير || {j} écritures · {i} factures || {j} asientos · {i} facturas || {j} جرنل · {i} انوائسز || {j} Buchungen · {i} Rechnungen || {j} scritture · {i} fatture
+fin.ov.assets || Fixed assets (net) || الأصول الثابتة (صافي) || Immobilisations (nettes) || Activos fijos (netos) || مستقل اثاثے (خالص) || Anlagevermögen (netto) || Immobilizzazioni (nette)
+fin.ov.assetN || {n} assets || {n} أصل || {n} immobilisations || {n} activos || {n} اثاثے || {n} Anlagen || {n} cespiti
+fin.ov.period || Current period || الفترة الحالية || Période en cours || Período actual || موجودہ مدت || Aktuelle Periode || Periodo corrente
+fin.ov.pnl || Revenue vs expenses by month || الإيرادات مقابل المصروفات شهريًا || Produits et charges par mois || Ingresos y gastos por mes || ماہانہ آمدنی بمقابلہ اخراجات || Erlöse und Aufwand je Monat || Ricavi e costi per mese
+fin.ov.cashBy || Cash by bank account || النقد حسب الحساب البنكي || Trésorerie par compte bancaire || Efectivo por cuenta bancaria || بینک اکاؤنٹ کے لحاظ سے نقدی || Liquidität je Bankkonto || Cassa per conto bancario
+fin.ov.arAging || Receivables ageing || تقادم الذمم المدينة || Balance âgée clients || Antigüedad de cuentas por cobrar || قابل وصول کی عمر || Forderungsalterung || Scadenzario crediti
+fin.ov.apAging || Payables ageing || تقادم الذمم الدائنة || Balance âgée fournisseurs || Antigüedad de cuentas por pagar || قابل ادائیگی کی عمر || Verbindlichkeitenalterung || Scadenzario debiti
+fin.ov.budget || Budget use || استخدام الميزانية || Consommation budgétaire || Uso del presupuesto || بجٹ کا استعمال || Budgetauslastung || Utilizzo budget
+fin.ov.dept || Spend by cost centre || الإنفاق حسب مركز التكلفة || Dépenses par centre de coûts || Gasto por centro de coste || لاگت مرکز کے لحاظ سے اخراجات || Ausgaben je Kostenstelle || Spesa per centro di costo
+fin.ov.apDue || Supplier payments due || مدفوعات الموردين المستحقة || Paiements fournisseurs à échéance || Pagos a proveedores por vencer || واجب الادا سپلائر ادائیگیاں || Fällige Lieferantenzahlungen || Pagamenti fornitori in scadenza
+perm.finance.reports.view || View finance dashboard & reports || عرض لوحة المالية والتقارير || Voir le tableau de bord et les rapports financiers || Ver panel e informes financieros || فنانس ڈیش بورڈ اور رپورٹس دیکھیں || Finanz-Dashboard & Berichte ansehen || Vedere dashboard e report finanziari
+perm.finance.gl.view || View general ledger || عرض دفتر الأستاذ || Voir le grand livre || Ver el libro mayor || جنرل لیجر دیکھیں || Hauptbuch ansehen || Vedere la contabilità generale
+perm.finance.gl.manage || Create & edit journals and accounts || إنشاء وتعديل القيود والحسابات || Créer et modifier écritures et comptes || Crear y editar asientos y cuentas || جرنلز اور اکاؤنٹس بنائیں اور ترمیم کریں || Buchungen und Konten anlegen & bearbeiten || Creare e modificare scritture e conti
+perm.finance.gl.approve || Approve & post journals, close periods || اعتماد القيود وترحيلها وإغلاق الفترات || Approuver et comptabiliser, clôturer les périodes || Aprobar y contabilizar asientos, cerrar períodos || جرنلز منظور اور پوسٹ کریں، مدتیں بند کریں || Buchungen freigeben & buchen, Perioden schließen || Approvare e registrare scritture, chiudere i periodi
+perm.finance.ap.view || View payables || عرض الذمم الدائنة || Voir les fournisseurs || Ver cuentas por pagar || قابل ادائیگی دیکھیں || Verbindlichkeiten ansehen || Vedere i debiti
+perm.finance.ap.manage || Create & edit supplier invoices || إنشاء وتعديل فواتير الموردين || Créer et modifier les factures fournisseur || Crear y editar facturas de proveedor || سپلائر انوائسز بنائیں اور ترمیم کریں || Lieferantenrechnungen anlegen & bearbeiten || Creare e modificare fatture fornitore
+perm.finance.ap.approve || Approve & pay supplier invoices || اعتماد وسداد فواتير الموردين || Approuver et payer les factures fournisseur || Aprobar y pagar facturas de proveedor || سپلائر انوائسز منظور اور ادا کریں || Lieferantenrechnungen freigeben & bezahlen || Approvare e pagare fatture fornitore
+perm.finance.ar.view || View receivables || عرض الذمم المدينة || Voir les clients || Ver cuentas por cobrar || قابل وصول دیکھیں || Forderungen ansehen || Vedere i crediti
+perm.finance.ar.manage || Create customer invoices & receive payments || إنشاء فواتير العملاء واستلام الدفعات || Créer les factures client et encaisser || Crear facturas de cliente y registrar cobros || کسٹمر انوائسز بنائیں اور ادائیگیاں وصول کریں || Kundenrechnungen anlegen & Zahlungen erfassen || Creare fatture cliente e registrare incassi
+perm.finance.bank.view || View cash & bank || عرض النقد والبنوك || Voir trésorerie et banques || Ver efectivo y bancos || نقدی اور بینک دیکھیں || Liquidität & Bank ansehen || Vedere cassa e banche
+perm.finance.bank.manage || Manage bank accounts & reconcile || إدارة الحسابات البنكية والتسوية || Gérer les comptes bancaires et rapprocher || Gestionar cuentas bancarias y conciliar || بینک اکاؤنٹس سنبھالیں اور مصالحت کریں || Bankkonten verwalten & abstimmen || Gestire conti bancari e riconciliare
+perm.finance.budget.view || View budgets || عرض الميزانيات || Voir les budgets || Ver presupuestos || بجٹ دیکھیں || Budgets ansehen || Vedere i budget
+perm.finance.budget.manage || Create & edit budgets || إنشاء وتعديل الميزانيات || Créer et modifier les budgets || Crear y editar presupuestos || بجٹ بنائیں اور ترمیم کریں || Budgets anlegen & bearbeiten || Creare e modificare budget
+perm.finance.assets.view || View fixed assets || عرض الأصول الثابتة || Voir les immobilisations || Ver activos fijos || مستقل اثاثے دیکھیں || Anlagen ansehen || Vedere le immobilizzazioni
+perm.finance.assets.manage || Manage fixed assets & run depreciation || إدارة الأصول الثابتة وتشغيل الإهلاك || Gérer les immobilisations et amortir || Gestionar activos fijos y ejecutar depreciación || مستقل اثاثے سنبھالیں اور فرسودگی چلائیں || Anlagen verwalten & Abschreibung ausführen || Gestire cespiti ed eseguire ammortamenti
+perm.finance.projects.view || View project finance || عرض مالية المشاريع || Voir la finance projet || Ver finanzas de proyectos || منصوبوں کی فنانس دیکھیں || Projektfinanzen ansehen || Vedere la finanza progetti
+perm.finance.projects.manage || Manage projects || إدارة المشاريع || Gérer les projets || Gestionar proyectos || منصوبے سنبھالیں || Projekte verwalten || Gestire i progetti
+perm.finance.setup || Finance setup & controls || إعدادات المالية والضوابط || Paramétrage et contrôles finance || Configuración y controles de finanzas || فنانس سیٹ اپ اور کنٹرولز || Finanz-Einrichtung & Kontrollen || Impostazioni e controlli finanza
+perm.finance.audit.view || View finance audit trail || عرض سجل تدقيق المالية || Voir la piste d'audit finance || Ver la pista de auditoría de finanzas || فنانس آڈٹ ٹریل دیکھیں || Finanz-Prüfpfad ansehen || Vedere la traccia di audit finanza

@@ -2,7 +2,7 @@
  * Manufacturing, Projects and CRM data model (mirrors backend/.../Models/Modules.cs and Controllers/ModulesController.cs).
  * Every row is an ErpRec: Module / Kind / Code / Company / Branch / Status / Ref are columns, the rest is in `data`.
  */
-export type ErpModule = 'mfg' | 'prj' | 'crm' | 'proc' | 'scm' | 'wh' | 'ast' | 'pay' | 'epm' | 'bpm' | 'int' | 'bi';
+export type ErpModule = 'mfg' | 'prj' | 'crm' | 'proc' | 'scm' | 'wh' | 'ast' | 'pay' | 'epm' | 'bpm' | 'int' | 'bi' | 'arc' | 're' | 'gov';
 
 export type ErpKind =
   | 'bom' | 'workcenter' | 'machine' | 'workorder' | 'inspection' | 'maintenance' | 'plan'
@@ -10,6 +10,9 @@ export type ErpKind =
   | 'lead' | 'account' | 'contact' | 'opportunity' | 'activity' | 'quote' | 'campaign'
   | 'requisition' | 'rfq' | 'po' | 'contract' | 'evaluation' | 'forecast' | 'shipment' | 'carrier' | 'location' | 'pick' | 'count'
   | 'asset' | 'meter' | 'element' | 'adjustment' | 'run' | 'payslip' | 'line' | 'process' | 'apikey' | 'webhook' | 'connector' | 'log' | 'report'
+  | 'category' | 'incoming' | 'outgoing' | 'document' | 'appointment' | 'visitor' | 'todo'
+  | 'property' | 'unit' | 'owner' | 'tenant' | 'lease' | 'installment' | 'sale' | 'request'
+  | 'audit' | 'rule' | 'approval' | 'delegation' | 'customfield' | 'lot' | 'trackrule'
   | 'setting';
 
 export interface ErpRec<D = Record<string, any>> {
@@ -46,6 +49,7 @@ export const ERP_MODULES: Record<ErpModule, ErpModuleDef> = {
     id: 'wh', route: '/warehouse', icon: 'layers', color: '#84cc16', titleKey: 'module.wh', subKey: 'wh.sub',
     nav: [
       n('overview', 'bar-chart', ['wh.reports.view'], 'wh'), n('stock', 'box', ['wh.view'], 'wh'), n('picks', 'clipboard', ['wh.view'], 'wh'), n('counts', 'check-square', ['wh.view'], 'wh'),
+      n('lots', 'layers', ['wh.view'], 'wh'), n('tracking', 'shield', ['wh.setup'], 'wh'),
       n('locations', 'store', ['wh.view'], 'wh'), n('setup', 'settings', ['wh.setup'], 'wh'),
     ],
     any: ['wh.view', 'wh.pick.manage', 'wh.count.manage', 'wh.reports.view', 'wh.setup'],
@@ -87,6 +91,33 @@ export const ERP_MODULES: Record<ErpModule, ErpModuleDef> = {
     id: 'bi', route: '/analytics', icon: 'sparkles', color: '#db2777', titleKey: 'module.bi', subKey: 'bi.sub',
     nav: [ n('overview', 'bar-chart', ['bi.view'], 'bi'), n('insights', 'sparkles', ['bi.ai.use', 'bi.view'], 'bi'), n('reports', 'file', ['bi.view'], 'bi') ],
     any: ['bi.view', 'bi.reports.manage', 'bi.ai.use'],
+  },
+  arc: {
+    id: 'arc', route: '/archive', icon: 'mail', color: '#0f766e', titleKey: 'module.arc', subKey: 'arc.sub',
+    nav: [
+      n('overview', 'bar-chart', ['arc.reports.view'], 'arc'), n('incoming', 'download', ['arc.view'], 'arc'), n('outgoing', 'upload', ['arc.view'], 'arc'),
+      n('documents', 'book', ['arc.view'], 'arc'), n('appointments', 'calendar', ['arc.view'], 'arc'), n('visitors', 'users', ['arc.view'], 'arc'),
+      n('todos', 'check-square', ['arc.view'], 'arc'), n('categories', 'layers', ['arc.view'], 'arc'),
+    ],
+    any: ['arc.view', 'arc.incoming.manage', 'arc.outgoing.manage', 'arc.docs.manage', 'arc.secretary.manage', 'arc.reports.view', 'arc.setup'],
+  },
+  re: {
+    id: 're', route: '/realestate', icon: 'building', color: '#b45309', titleKey: 'module.re', subKey: 're.sub',
+    nav: [
+      n('overview', 'bar-chart', ['re.reports.view'], 're'), n('properties', 'building', ['re.view'], 're'), n('units', 'grid', ['re.view'], 're'),
+      n('owners', 'users', ['re.view'], 're'), n('tenants', 'users', ['re.view'], 're'), n('leases', 'file', ['re.view'], 're'),
+      n('installments', 'wallet', ['re.view'], 're'), n('sales', 'trending-up', ['re.view'], 're'), n('requests', 'wrench', ['re.view'], 're'),
+    ],
+    any: ['re.view', 're.properties.manage', 're.units.manage', 're.leases.manage', 're.collect', 're.sales.manage', 're.maintenance.manage', 're.reports.view', 're.setup'],
+  },
+  gov: {
+    id: 'gov', route: '/governance', icon: 'shield', color: '#475569', titleKey: 'module.gov', subKey: 'gov.sub',
+    nav: [
+      n('overview', 'bar-chart', ['gov.view'], 'gov'), n('approvals', 'check-square', ['gov.view'], 'gov'), n('rules', 'settings', ['gov.view'], 'gov'),
+      n('delegation', 'users', ['gov.delegate'], 'gov'), n('audit', 'clipboard', ['gov.audit.view'], 'gov'), n('fields', 'layers', ['gov.fields.manage'], 'gov'),
+      n('lock', 'clock', ['gov.lock.manage'], 'gov'), n('tax', 'file', ['gov.vat.view', 'gov.zatca.manage'], 'gov'),
+    ],
+    any: ['gov.view', 'gov.audit.view', 'gov.rules.manage', 'gov.approvals.admin', 'gov.delegate', 'gov.fields.manage', 'gov.lock.manage', 'gov.zatca.manage', 'gov.vat.view'],
   },
   mfg: {
     id: 'mfg', route: '/mfg', icon: 'factory', color: '#f97316', titleKey: 'module.mfg', subKey: 'mfg.sub',

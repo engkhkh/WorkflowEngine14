@@ -1,0 +1,1269 @@
+{
+ "modules": [
+  {
+   "id": "proc",
+   "en": "Procurement",
+   "ar": "المشتريات",
+   "kinds": [
+    {
+     "kind": "requisition",
+     "en": "Requisitions",
+     "ar": "طلبات الشراء",
+     "view": "proc.view",
+     "manage": "proc.req.manage",
+     "readOnly": false
+    },
+    {
+     "kind": "rfq",
+     "en": "RFQs",
+     "ar": "طلبات عروض الأسعار",
+     "view": "proc.view",
+     "manage": "proc.rfq.manage",
+     "readOnly": false
+    },
+    {
+     "kind": "po",
+     "en": "Purchase orders",
+     "ar": "أوامر الشراء",
+     "view": "proc.view",
+     "manage": "proc.po.manage",
+     "readOnly": false
+    },
+    {
+     "kind": "contract",
+     "en": "Contracts",
+     "ar": "العقود",
+     "view": "proc.view",
+     "manage": "proc.contracts.manage",
+     "readOnly": false
+    },
+    {
+     "kind": "evaluation",
+     "en": "Evaluations",
+     "ar": "تقييم الموردين",
+     "view": "proc.view",
+     "manage": "proc.suppliers.manage",
+     "readOnly": false
+    }
+   ]
+  },
+  {
+   "id": "scm",
+   "en": "Supply chain",
+   "ar": "سلسلة الإمداد",
+   "kinds": [
+    {
+     "kind": "forecast",
+     "en": "Forecasts",
+     "ar": "التوقعات",
+     "view": "scm.view",
+     "manage": "scm.planning",
+     "readOnly": false
+    },
+    {
+     "kind": "shipment",
+     "en": "Shipments",
+     "ar": "الشحنات",
+     "view": "scm.view",
+     "manage": "scm.shipments.manage",
+     "readOnly": false
+    },
+    {
+     "kind": "carrier",
+     "en": "Carriers",
+     "ar": "الناقلون",
+     "view": "scm.view",
+     "manage": "scm.setup",
+     "readOnly": false
+    }
+   ]
+  },
+  {
+   "id": "wh",
+   "en": "Warehouse",
+   "ar": "المستودعات",
+   "kinds": [
+    {
+     "kind": "location",
+     "en": "Locations",
+     "ar": "المواقع",
+     "view": "wh.view",
+     "manage": "wh.setup",
+     "readOnly": false
+    },
+    {
+     "kind": "pick",
+     "en": "Picks",
+     "ar": "عمليات الالتقاط",
+     "view": "wh.view",
+     "manage": "wh.pick.manage",
+     "readOnly": false
+    },
+    {
+     "kind": "count",
+     "en": "Counts",
+     "ar": "الجرد",
+     "view": "wh.view",
+     "manage": "wh.count.manage",
+     "readOnly": false
+    },
+    {
+     "kind": "lot",
+     "en": "Lots",
+     "ar": "الدفعات",
+     "view": "wh.view",
+     "manage": "wh.lots.manage",
+     "readOnly": true
+    },
+    {
+     "kind": "trackrule",
+     "en": "Tracking rules",
+     "ar": "قواعد التتبع",
+     "view": "wh.view",
+     "manage": "wh.setup",
+     "readOnly": false
+    }
+   ]
+  },
+  {
+   "id": "mfg",
+   "en": "Manufacturing",
+   "ar": "التصنيع",
+   "kinds": [
+    {
+     "kind": "bom",
+     "en": "Bills of materials",
+     "ar": "قوائم المواد",
+     "view": "mfg.view",
+     "manage": "mfg.bom.manage",
+     "readOnly": false
+    },
+    {
+     "kind": "workcenter",
+     "en": "Workcenters",
+     "ar": "مراكز العمل",
+     "view": "mfg.view",
+     "manage": "mfg.bom.manage",
+     "readOnly": false
+    },
+    {
+     "kind": "machine",
+     "en": "Machines",
+     "ar": "الآلات",
+     "view": "mfg.view",
+     "manage": "mfg.bom.manage",
+     "readOnly": false
+    },
+    {
+     "kind": "workorder",
+     "en": "Work orders",
+     "ar": "أوامر العمل",
+     "view": "mfg.view",
+     "manage": "mfg.orders.manage",
+     "readOnly": false
+    },
+    {
+     "kind": "inspection",
+     "en": "Inspections",
+     "ar": "الفحوصات",
+     "view": "mfg.view",
+     "manage": "mfg.quality.manage",
+     "readOnly": false
+    },
+    {
+     "kind": "maintenance",
+     "en": "Maintenances",
+     "ar": "الصيانة",
+     "view": "mfg.view",
+     "manage": "mfg.maintenance.manage",
+     "readOnly": false
+    },
+    {
+     "kind": "plan",
+     "en": "Plans",
+     "ar": "الخطط",
+     "view": "mfg.view",
+     "manage": "mfg.planning",
+     "readOnly": false
+    }
+   ]
+  },
+  {
+   "id": "prj",
+   "en": "Projects",
+   "ar": "المشاريع",
+   "kinds": [
+    {
+     "kind": "project",
+     "en": "Projects",
+     "ar": "المشاريع",
+     "view": "prj.view",
+     "manage": "prj.manage",
+     "readOnly": false
+    },
+    {
+     "kind": "milestone",
+     "en": "Milestones",
+     "ar": "المراحل",
+     "view": "prj.view",
+     "manage": "prj.manage",
+     "readOnly": false
+    },
+    {
+     "kind": "task",
+     "en": "Tasks",
+     "ar": "المهام",
+     "view": "prj.view",
+     "manage": "prj.tasks.manage",
+     "readOnly": false
+    },
+    {
+     "kind": "allocation",
+     "en": "Allocations",
+     "ar": "التخصيصات",
+     "view": "prj.view",
+     "manage": "prj.resources.manage",
+     "readOnly": false
+    },
+    {
+     "kind": "timesheet",
+     "en": "Timesheets",
+     "ar": "سجلات الوقت",
+     "view": "prj.view",
+     "manage": "prj.time.log",
+     "readOnly": false
+    },
+    {
+     "kind": "cost",
+     "en": "Costs",
+     "ar": "التكاليف",
+     "view": "prj.view",
+     "manage": "prj.costs.manage",
+     "readOnly": false
+    }
+   ]
+  },
+  {
+   "id": "crm",
+   "en": "CRM",
+   "ar": "إدارة العملاء",
+   "kinds": [
+    {
+     "kind": "lead",
+     "en": "Leads",
+     "ar": "العملاء المحتملون",
+     "view": "crm.view",
+     "manage": "crm.leads.manage",
+     "readOnly": false
+    },
+    {
+     "kind": "account",
+     "en": "Accounts",
+     "ar": "الحسابات",
+     "view": "crm.view",
+     "manage": "crm.accounts.manage",
+     "readOnly": false
+    },
+    {
+     "kind": "contact",
+     "en": "Contacts",
+     "ar": "جهات الاتصال",
+     "view": "crm.view",
+     "manage": "crm.accounts.manage",
+     "readOnly": false
+    },
+    {
+     "kind": "opportunity",
+     "en": "Opportunities",
+     "ar": "الفرص",
+     "view": "crm.view",
+     "manage": "crm.opps.manage",
+     "readOnly": false
+    },
+    {
+     "kind": "activity",
+     "en": "Activities",
+     "ar": "الأنشطة",
+     "view": "crm.view",
+     "manage": "crm.activities.manage",
+     "readOnly": false
+    },
+    {
+     "kind": "quote",
+     "en": "Quotes",
+     "ar": "عروض الأسعار",
+     "view": "crm.view",
+     "manage": "crm.quotes.manage",
+     "readOnly": false
+    },
+    {
+     "kind": "campaign",
+     "en": "Campaigns",
+     "ar": "الحملات",
+     "view": "crm.view",
+     "manage": "crm.campaigns.manage",
+     "readOnly": false
+    }
+   ]
+  },
+  {
+   "id": "ast",
+   "en": "Assets",
+   "ar": "الأصول",
+   "kinds": [
+    {
+     "kind": "asset",
+     "en": "Assets",
+     "ar": "الأصول",
+     "view": "ast.view",
+     "manage": "ast.assets.manage",
+     "readOnly": false
+    },
+    {
+     "kind": "plan",
+     "en": "Plans",
+     "ar": "الخطط",
+     "view": "ast.view",
+     "manage": "ast.plans.manage",
+     "readOnly": false
+    },
+    {
+     "kind": "workorder",
+     "en": "Work orders",
+     "ar": "أوامر العمل",
+     "view": "ast.view",
+     "manage": "ast.orders.manage",
+     "readOnly": false
+    },
+    {
+     "kind": "meter",
+     "en": "Meters",
+     "ar": "العدادات",
+     "view": "ast.view",
+     "manage": "ast.orders.manage",
+     "readOnly": false
+    }
+   ]
+  },
+  {
+   "id": "pay",
+   "en": "Payroll",
+   "ar": "الرواتب",
+   "kinds": [
+    {
+     "kind": "element",
+     "en": "Elements",
+     "ar": "عناصر الراتب",
+     "view": "pay.view",
+     "manage": "pay.setup",
+     "readOnly": false
+    },
+    {
+     "kind": "adjustment",
+     "en": "Adjustments",
+     "ar": "التسويات",
+     "view": "pay.view",
+     "manage": "pay.run.manage",
+     "readOnly": false
+    },
+    {
+     "kind": "run",
+     "en": "Runs",
+     "ar": "مسيرات الرواتب",
+     "view": "pay.view",
+     "manage": "pay.run.manage",
+     "readOnly": false
+    },
+    {
+     "kind": "payslip",
+     "en": "Payslips",
+     "ar": "قسائم الرواتب",
+     "view": "pay.self",
+     "manage": "pay.run.manage",
+     "readOnly": true
+    }
+   ]
+  },
+  {
+   "id": "re",
+   "en": "Real estate",
+   "ar": "العقارات",
+   "kinds": [
+    {
+     "kind": "property",
+     "en": "Properties",
+     "ar": "العقارات",
+     "view": "re.view",
+     "manage": "re.properties.manage",
+     "readOnly": false
+    },
+    {
+     "kind": "owner",
+     "en": "Owners",
+     "ar": "الملاك",
+     "view": "re.view",
+     "manage": "re.properties.manage",
+     "readOnly": false
+    },
+    {
+     "kind": "unit",
+     "en": "Units",
+     "ar": "الوحدات",
+     "view": "re.view",
+     "manage": "re.units.manage",
+     "readOnly": false
+    },
+    {
+     "kind": "tenant",
+     "en": "Tenants",
+     "ar": "المستأجرون",
+     "view": "re.view",
+     "manage": "re.leases.manage",
+     "readOnly": false
+    },
+    {
+     "kind": "lease",
+     "en": "Leases",
+     "ar": "عقود الإيجار",
+     "view": "re.view",
+     "manage": "re.leases.manage",
+     "readOnly": false
+    },
+    {
+     "kind": "installment",
+     "en": "Installments",
+     "ar": "الأقساط",
+     "view": "re.view",
+     "manage": "re.collect",
+     "readOnly": false
+    },
+    {
+     "kind": "sale",
+     "en": "Sales",
+     "ar": "المبيعات",
+     "view": "re.view",
+     "manage": "re.sales.manage",
+     "readOnly": false
+    },
+    {
+     "kind": "request",
+     "en": "Requests",
+     "ar": "الطلبات",
+     "view": "re.view",
+     "manage": "re.maintenance.manage",
+     "readOnly": false
+    }
+   ]
+  },
+  {
+   "id": "arc",
+   "en": "Archive",
+   "ar": "الأرشيف",
+   "kinds": [
+    {
+     "kind": "category",
+     "en": "Categories",
+     "ar": "التصنيفات",
+     "view": "arc.view",
+     "manage": "arc.setup",
+     "readOnly": false
+    },
+    {
+     "kind": "incoming",
+     "en": "Incoming mail",
+     "ar": "الوارد",
+     "view": "arc.view",
+     "manage": "arc.incoming.manage",
+     "readOnly": false
+    },
+    {
+     "kind": "outgoing",
+     "en": "Outgoing mail",
+     "ar": "الصادر",
+     "view": "arc.view",
+     "manage": "arc.outgoing.manage",
+     "readOnly": false
+    },
+    {
+     "kind": "document",
+     "en": "Documents",
+     "ar": "المستندات",
+     "view": "arc.view",
+     "manage": "arc.docs.manage",
+     "readOnly": false
+    },
+    {
+     "kind": "appointment",
+     "en": "Appointments",
+     "ar": "المواعيد",
+     "view": "arc.view",
+     "manage": "arc.secretary.manage",
+     "readOnly": false
+    },
+    {
+     "kind": "visitor",
+     "en": "Visitors",
+     "ar": "الزوار",
+     "view": "arc.view",
+     "manage": "arc.secretary.manage",
+     "readOnly": false
+    },
+    {
+     "kind": "todo",
+     "en": "Todos",
+     "ar": "المهام",
+     "view": "arc.view",
+     "manage": "arc.secretary.manage",
+     "readOnly": false
+    }
+   ]
+  },
+  {
+   "id": "epm",
+   "en": "Performance",
+   "ar": "الأداء المؤسسي",
+   "kinds": [
+    {
+     "kind": "plan",
+     "en": "Plans",
+     "ar": "الخطط",
+     "view": "epm.view",
+     "manage": "epm.plans.manage",
+     "readOnly": false
+    },
+    {
+     "kind": "line",
+     "en": "Lines",
+     "ar": "البنود",
+     "view": "epm.view",
+     "manage": "epm.plans.manage",
+     "readOnly": false
+    },
+    {
+     "kind": "forecast",
+     "en": "Forecasts",
+     "ar": "التوقعات",
+     "view": "epm.view",
+     "manage": "epm.forecast.manage",
+     "readOnly": false
+    }
+   ]
+  },
+  {
+   "id": "bpm",
+   "en": "Processes",
+   "ar": "العمليات",
+   "kinds": [
+    {
+     "kind": "process",
+     "en": "Processes",
+     "ar": "العمليات",
+     "view": "bpm.view",
+     "manage": "bpm.manage",
+     "readOnly": false
+    }
+   ]
+  },
+  {
+   "id": "gov",
+   "en": "Governance",
+   "ar": "الحوكمة",
+   "kinds": [
+    {
+     "kind": "audit",
+     "en": "Audits",
+     "ar": "سجل التدقيق",
+     "view": "gov.audit.view",
+     "manage": "gov.audit.view",
+     "readOnly": true
+    },
+    {
+     "kind": "rule",
+     "en": "Rules",
+     "ar": "قواعد الموافقة",
+     "view": "gov.view",
+     "manage": "gov.rules.manage",
+     "readOnly": false
+    },
+    {
+     "kind": "approval",
+     "en": "Approvals",
+     "ar": "طلبات الموافقة",
+     "view": "gov.view",
+     "manage": "gov.approvals.admin",
+     "readOnly": true
+    },
+    {
+     "kind": "delegation",
+     "en": "Delegations",
+     "ar": "التفويضات",
+     "view": "gov.view",
+     "manage": "gov.delegate",
+     "readOnly": false
+    },
+    {
+     "kind": "customfield",
+     "en": "Custom fields",
+     "ar": "الحقول المخصصة",
+     "view": "gov.view",
+     "manage": "gov.fields.manage",
+     "readOnly": false
+    }
+   ]
+  },
+  {
+   "id": "int",
+   "en": "Integrations",
+   "ar": "التكامل",
+   "kinds": [
+    {
+     "kind": "apikey",
+     "en": "API keys",
+     "ar": "مفاتيح API",
+     "view": "int.view",
+     "manage": "int.keys.manage",
+     "readOnly": true
+    },
+    {
+     "kind": "webhook",
+     "en": "Webhooks",
+     "ar": "الويب هوك",
+     "view": "int.view",
+     "manage": "int.hooks.manage",
+     "readOnly": false
+    },
+    {
+     "kind": "connector",
+     "en": "Connectors",
+     "ar": "الموصلات",
+     "view": "int.view",
+     "manage": "int.hooks.manage",
+     "readOnly": false
+    },
+    {
+     "kind": "log",
+     "en": "Delivery log",
+     "ar": "سجل التسليم",
+     "view": "int.view",
+     "manage": "int.hooks.manage",
+     "readOnly": true
+    }
+   ]
+  },
+  {
+   "id": "bi",
+   "en": "Business intelligence",
+   "ar": "ذكاء الأعمال",
+   "kinds": [
+    {
+     "kind": "report",
+     "en": "Reports",
+     "ar": "التقارير",
+     "view": "bi.view",
+     "manage": "bi.reports.manage",
+     "readOnly": false
+    }
+   ]
+  },
+  {
+   "id": "fin",
+   "en": "Finance",
+   "ar": "المالية",
+   "api": "/finance",
+   "kinds": [
+    {
+     "kind": "account",
+     "en": "Chart of accounts",
+     "ar": "دليل الحسابات",
+     "view": "finance.gl.view",
+     "manage": "finance.gl.manage",
+     "readOnly": false
+    },
+    {
+     "kind": "period",
+     "en": "Fiscal periods",
+     "ar": "الفترات المالية",
+     "view": "finance.gl.view",
+     "manage": "finance.gl.manage",
+     "readOnly": false
+    },
+    {
+     "kind": "journal",
+     "en": "Journal entries",
+     "ar": "قيود اليومية",
+     "view": "finance.gl.view",
+     "manage": "finance.gl.manage",
+     "readOnly": false
+    },
+    {
+     "kind": "vendor",
+     "en": "Vendors",
+     "ar": "الموردون",
+     "view": "finance.ap.view",
+     "manage": "finance.ap.manage",
+     "readOnly": false
+    },
+    {
+     "kind": "apinvoice",
+     "en": "Vendor invoices",
+     "ar": "فواتير الموردين",
+     "view": "finance.ap.view",
+     "manage": "finance.ap.manage",
+     "readOnly": false
+    },
+    {
+     "kind": "customer",
+     "en": "Customers",
+     "ar": "العملاء",
+     "view": "finance.ar.view",
+     "manage": "finance.ar.manage",
+     "readOnly": false
+    },
+    {
+     "kind": "arinvoice",
+     "en": "Customer invoices",
+     "ar": "فواتير العملاء",
+     "view": "finance.ar.view",
+     "manage": "finance.ar.manage",
+     "readOnly": false
+    },
+    {
+     "kind": "receipt",
+     "en": "Receipts",
+     "ar": "سندات القبض",
+     "view": "finance.ar.view",
+     "manage": "finance.ar.manage",
+     "readOnly": false
+    },
+    {
+     "kind": "bankaccount",
+     "en": "Bank accounts",
+     "ar": "الحسابات البنكية",
+     "view": "finance.bank.view",
+     "manage": "finance.bank.manage",
+     "readOnly": false
+    },
+    {
+     "kind": "banktxn",
+     "en": "Bank transactions",
+     "ar": "الحركات البنكية",
+     "view": "finance.bank.view",
+     "manage": "finance.bank.manage",
+     "readOnly": false
+    },
+    {
+     "kind": "budget",
+     "en": "Budgets",
+     "ar": "الموازنات",
+     "view": "finance.budget.view",
+     "manage": "finance.budget.manage",
+     "readOnly": false
+    },
+    {
+     "kind": "assetclass",
+     "en": "Asset classes",
+     "ar": "فئات الأصول",
+     "view": "finance.assets.view",
+     "manage": "finance.assets.manage",
+     "readOnly": false
+    },
+    {
+     "kind": "asset",
+     "en": "Fixed assets",
+     "ar": "الأصول الثابتة",
+     "view": "finance.assets.view",
+     "manage": "finance.assets.manage",
+     "readOnly": false
+    },
+    {
+     "kind": "project",
+     "en": "Projects",
+     "ar": "المشاريع",
+     "view": "finance.projects.view",
+     "manage": "finance.projects.manage",
+     "readOnly": false
+    },
+    {
+     "kind": "currency",
+     "en": "Currencies",
+     "ar": "العملات",
+     "view": "finance.view",
+     "manage": "finance.setup",
+     "readOnly": false
+    },
+    {
+     "kind": "taxcode",
+     "en": "Tax codes",
+     "ar": "رموز الضريبة",
+     "view": "finance.view",
+     "manage": "finance.setup",
+     "readOnly": false
+    },
+    {
+     "kind": "costcenter",
+     "en": "Cost centers",
+     "ar": "مراكز التكلفة",
+     "view": "finance.view",
+     "manage": "finance.setup",
+     "readOnly": false
+    },
+    {
+     "kind": "setting",
+     "en": "Settings",
+     "ar": "الإعدادات",
+     "view": "finance.view",
+     "manage": "finance.setup",
+     "readOnly": false
+    }
+   ]
+  },
+  {
+   "id": "hr",
+   "en": "Human resources",
+   "ar": "الموارد البشرية",
+   "api": "/hr",
+   "kinds": [
+    {
+     "kind": "employee",
+     "en": "Employees",
+     "ar": "الموظفون",
+     "view": "hr.employees.view",
+     "manage": "hr.employees.manage",
+     "readOnly": false,
+     "template": {
+      "fullName": "",
+      "department": "",
+      "jobTitle": "",
+      "email": "",
+      "phone": "",
+      "hireDate": "",
+      "basicSalary": 0
+     }
+    },
+    {
+     "kind": "leave",
+     "en": "Leave requests",
+     "ar": "طلبات الإجازة",
+     "view": "hr.leave.view",
+     "manage": "hr.leave.approve",
+     "readOnly": false
+    },
+    {
+     "kind": "goal",
+     "en": "Goals",
+     "ar": "الأهداف",
+     "view": "hr.performance.view",
+     "manage": "hr.performance.manage",
+     "readOnly": false
+    },
+    {
+     "kind": "review",
+     "en": "Performance reviews",
+     "ar": "تقييمات الأداء",
+     "view": "hr.performance.view",
+     "manage": "hr.performance.manage",
+     "readOnly": false
+    },
+    {
+     "kind": "vacancy",
+     "en": "Vacancies",
+     "ar": "الوظائف الشاغرة",
+     "view": "hr.recruitment.view",
+     "manage": "hr.recruitment.manage",
+     "readOnly": false
+    },
+    {
+     "kind": "candidate",
+     "en": "Candidates",
+     "ar": "المرشحون",
+     "view": "hr.recruitment.view",
+     "manage": "hr.recruitment.manage",
+     "readOnly": false
+    },
+    {
+     "kind": "unit",
+     "en": "Org units",
+     "ar": "الوحدات التنظيمية",
+     "view": "hr.org.view",
+     "manage": "hr.org.manage",
+     "readOnly": false
+    },
+    {
+     "kind": "position",
+     "en": "Positions",
+     "ar": "المناصب",
+     "view": "hr.org.view",
+     "manage": "hr.org.manage",
+     "readOnly": false
+    },
+    {
+     "kind": "job",
+     "en": "Jobs",
+     "ar": "الوظائف",
+     "view": "hr.org.view",
+     "manage": "hr.org.manage",
+     "readOnly": false
+    },
+    {
+     "kind": "grade",
+     "en": "Grades",
+     "ar": "الدرجات",
+     "view": "hr.org.view",
+     "manage": "hr.org.manage",
+     "readOnly": false
+    },
+    {
+     "kind": "costcenter",
+     "en": "Cost centers",
+     "ar": "مراكز التكلفة",
+     "view": "hr.org.view",
+     "manage": "hr.org.manage",
+     "readOnly": false
+    },
+    {
+     "kind": "location",
+     "en": "Locations",
+     "ar": "المواقع",
+     "view": "hr.org.view",
+     "manage": "hr.org.manage",
+     "readOnly": false
+    },
+    {
+     "kind": "entity",
+     "en": "Legal entities",
+     "ar": "الكيانات القانونية",
+     "view": "hr.org.view",
+     "manage": "hr.org.manage",
+     "readOnly": false
+    },
+    {
+     "kind": "bu",
+     "en": "Business units",
+     "ar": "وحدات الأعمال",
+     "view": "hr.org.view",
+     "manage": "hr.org.manage",
+     "readOnly": false
+    },
+    {
+     "kind": "leavetype",
+     "en": "Leave types",
+     "ar": "أنواع الإجازات",
+     "view": "hr.org.view",
+     "manage": "hr.org.manage",
+     "readOnly": false
+    }
+   ]
+  },
+  {
+   "id": "pos",
+   "en": "Point of sale",
+   "ar": "نقاط البيع",
+   "api": "/pos",
+   "kinds": [
+    {
+     "kind": "product",
+     "en": "Products",
+     "ar": "المنتجات",
+     "view": "pos.view",
+     "manage": "pos.products.manage",
+     "readOnly": false
+    },
+    {
+     "kind": "category",
+     "en": "Categories",
+     "ar": "التصنيفات",
+     "view": "pos.view",
+     "manage": "pos.products.manage",
+     "readOnly": false
+    },
+    {
+     "kind": "customer",
+     "en": "Customers",
+     "ar": "العملاء",
+     "view": "pos.view",
+     "manage": "pos.customers.manage",
+     "readOnly": false
+    },
+    {
+     "kind": "promotion",
+     "en": "Promotions",
+     "ar": "العروض",
+     "view": "pos.view",
+     "manage": "pos.promotions.manage",
+     "readOnly": false
+    },
+    {
+     "kind": "register",
+     "en": "Registers",
+     "ar": "صناديق البيع",
+     "view": "pos.view",
+     "manage": "pos.setup",
+     "readOnly": false
+    },
+    {
+     "kind": "setting",
+     "en": "Settings",
+     "ar": "الإعدادات",
+     "view": "pos.view",
+     "manage": "pos.setup",
+     "readOnly": false
+    },
+    {
+     "kind": "sale",
+     "en": "Sales",
+     "ar": "المبيعات",
+     "view": "pos.view",
+     "manage": "pos.shifts.manage",
+     "readOnly": true
+    },
+    {
+     "kind": "shift",
+     "en": "Shifts",
+     "ar": "الورديات",
+     "view": "pos.view",
+     "manage": "pos.shifts.manage",
+     "readOnly": true
+    },
+    {
+     "kind": "cashmove",
+     "en": "Cash movements",
+     "ar": "حركات النقد",
+     "view": "pos.view",
+     "manage": "pos.shifts.manage",
+     "readOnly": true
+    },
+    {
+     "kind": "stock",
+     "en": "Stock",
+     "ar": "المخزون",
+     "view": "pos.stock.view",
+     "manage": "pos.stock.manage",
+     "readOnly": true
+    },
+    {
+     "kind": "stockmove",
+     "en": "Stock movements",
+     "ar": "حركات المخزون",
+     "view": "pos.stock.view",
+     "manage": "pos.stock.manage",
+     "readOnly": true
+    },
+    {
+     "kind": "transfer",
+     "en": "Stock transfers",
+     "ar": "تحويلات المخزون",
+     "view": "pos.stock.view",
+     "manage": "pos.stock.manage",
+     "readOnly": true
+    }
+   ]
+  },
+  {
+   "id": "hos",
+   "en": "Hospital",
+   "ar": "المستشفى",
+   "api": "/hospital",
+   "kinds": [
+    {
+     "kind": "patient",
+     "en": "Patients",
+     "ar": "المرضى",
+     "view": "hos.patients.view",
+     "manage": "hos.patients.manage",
+     "readOnly": false
+    },
+    {
+     "kind": "appointment",
+     "en": "Appointments",
+     "ar": "المواعيد",
+     "view": "hos.appointments.view",
+     "manage": "hos.setup",
+     "readOnly": true
+    },
+    {
+     "kind": "visit",
+     "en": "Visits",
+     "ar": "الزيارات",
+     "view": "hos.clinical.view",
+     "manage": "hos.setup",
+     "readOnly": true
+    },
+    {
+     "kind": "prescription",
+     "en": "Prescriptions",
+     "ar": "الوصفات الطبية",
+     "view": "hos.clinical.view",
+     "manage": "hos.setup",
+     "readOnly": true
+    },
+    {
+     "kind": "labrequest",
+     "en": "Lab requests",
+     "ar": "طلبات المختبر",
+     "view": "hos.lab.view",
+     "manage": "hos.setup",
+     "readOnly": true
+    },
+    {
+     "kind": "admission",
+     "en": "Admissions",
+     "ar": "حالات الإدخال",
+     "view": "hos.wards.view",
+     "manage": "hos.setup",
+     "readOnly": true
+    },
+    {
+     "kind": "invoice",
+     "en": "Invoices",
+     "ar": "الفواتير",
+     "view": "hos.billing.view",
+     "manage": "hos.setup",
+     "readOnly": true
+    },
+    {
+     "kind": "department",
+     "en": "Departments",
+     "ar": "الأقسام",
+     "view": "hos.view",
+     "manage": "hos.setup",
+     "readOnly": false
+    },
+    {
+     "kind": "doctor",
+     "en": "Doctors",
+     "ar": "الأطباء",
+     "view": "hos.view",
+     "manage": "hos.setup",
+     "readOnly": false
+    },
+    {
+     "kind": "ward",
+     "en": "Wards",
+     "ar": "الأجنحة",
+     "view": "hos.view",
+     "manage": "hos.setup",
+     "readOnly": false
+    },
+    {
+     "kind": "bed",
+     "en": "Beds",
+     "ar": "الأسرّة",
+     "view": "hos.wards.view",
+     "manage": "hos.setup",
+     "readOnly": false
+    },
+    {
+     "kind": "service",
+     "en": "Services",
+     "ar": "الخدمات",
+     "view": "hos.view",
+     "manage": "hos.setup",
+     "readOnly": false
+    },
+    {
+     "kind": "labtest",
+     "en": "Lab tests",
+     "ar": "الفحوصات المخبرية",
+     "view": "hos.view",
+     "manage": "hos.setup",
+     "readOnly": false
+    },
+    {
+     "kind": "drug",
+     "en": "Drugs",
+     "ar": "الأدوية",
+     "view": "hos.pharmacy.view",
+     "manage": "hos.pharmacy.stock",
+     "readOnly": false
+    },
+    {
+     "kind": "drugmove",
+     "en": "Drug stock movements",
+     "ar": "حركات الأدوية",
+     "view": "hos.pharmacy.view",
+     "manage": "hos.setup",
+     "readOnly": true
+    },
+    {
+     "kind": "setting",
+     "en": "Settings",
+     "ar": "الإعدادات",
+     "view": "hos.view",
+     "manage": "hos.setup",
+     "readOnly": false
+    },
+    {
+     "kind": "audit",
+     "en": "Audit log",
+     "ar": "سجل التدقيق",
+     "view": "hos.setup",
+     "manage": "hos.setup",
+     "readOnly": true
+    }
+   ]
+  },
+  {
+   "id": "adm",
+   "en": "Setup & administration",
+   "ar": "الإعداد والإدارة",
+   "kinds": [
+    {
+     "kind": "user",
+     "en": "Users",
+     "ar": "المستخدمون",
+     "view": "admin.users",
+     "manage": "admin.users",
+     "readOnly": false,
+     "template": {
+      "displayName": "",
+      "email": "",
+      "role": "employee",
+      "password": ""
+     }
+    },
+    {
+     "kind": "role",
+     "en": "Roles & privileges",
+     "ar": "الأدوار والصلاحيات",
+     "view": "admin.users",
+     "manage": "admin.users",
+     "readOnly": false,
+     "template": {
+      "name": "",
+      "copyFrom": "employee"
+     }
+    },
+    {
+     "kind": "company",
+     "en": "Companies",
+     "ar": "الشركات",
+     "view": "org.manage",
+     "manage": "org.manage",
+     "readOnly": false,
+     "template": {
+      "name": "",
+      "nameAr": "",
+      "currency": "SAR",
+      "taxNo": "",
+      "country": "SA"
+     }
+    },
+    {
+     "kind": "branch",
+     "en": "Branches",
+     "ar": "الفروع",
+     "view": "org.manage",
+     "manage": "org.manage",
+     "readOnly": false,
+     "template": {
+      "company": "",
+      "name": "",
+      "nameAr": "",
+      "warehouse": "",
+      "city": ""
+     }
+    }
+   ]
+  }
+ ]
+}

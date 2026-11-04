@@ -14,6 +14,7 @@ const SPECIAL: Record<string, Loader> = {
   'mfg/planning': () => import('./mfg-planning.component').then(m => m.MfgPlanningComponent),
   'mfg/costing': () => import('./mfg-costing.component').then(m => m.MfgCostingComponent),
   'prj/billing': () => import('./prj-billing.component').then(m => m.PrjBillingComponent),
+  'gov/tax': () => import('./gov-tax.component').then(m => m.GovTaxComponent),
   'wh/stock': ex('WhStockComponent'), 'epm/variance': ex('EpmVarianceComponent'), 'bpm/monitor': ex('BpmMonitorComponent'),
   'int/keys': ex('IntKeysComponent'), 'int/docs': ex('IntDocsComponent'), 'bi/insights': ex('BiInsightsComponent'), 'bi/reports': ex('BiReportsComponent'),
 };

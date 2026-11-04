@@ -1,0 +1,1278 @@
+{
+ "sections": [
+  {
+   "id": "overview",
+   "type": "dashboard",
+   "en": "Overview",
+   "ar": "نظرة عامة",
+   "perm": [
+    "hos.view",
+    "hos.reports.view"
+   ]
+  },
+  {
+   "id": "patients",
+   "kind": "patient",
+   "en": "Patients",
+   "ar": "المرضى",
+   "perm": [
+    "hos.patients.view"
+   ],
+   "search": true,
+   "take": 200,
+   "columns": [
+    {
+     "p": "code",
+     "en": "MRN",
+     "ar": "الرقم"
+    },
+    {
+     "p": "data.name",
+     "en": "Name",
+     "ar": "الاسم"
+    },
+    {
+     "p": "data.sex",
+     "en": "Sex",
+     "ar": "الجنس"
+    },
+    {
+     "p": "data.dob",
+     "en": "Born",
+     "ar": "الميلاد"
+    },
+    {
+     "p": "data.phone",
+     "en": "Phone",
+     "ar": "الهاتف"
+    },
+    {
+     "p": "data.allergies",
+     "en": "Allergies",
+     "ar": "الحساسية"
+    }
+   ],
+   "create": {
+    "en": "New patient",
+    "ar": "مريض جديد",
+    "record": "create",
+    "fields": [
+     {
+      "k": "data.name",
+      "en": "Full name",
+      "ar": "الاسم الكامل",
+      "req": true
+     },
+     {
+      "k": "data.sex",
+      "en": "Sex",
+      "ar": "الجنس",
+      "t": "select",
+      "opts": [
+       "Male",
+       "Female"
+      ]
+     },
+     {
+      "k": "data.dob",
+      "en": "Date of birth",
+      "ar": "تاريخ الميلاد",
+      "t": "date"
+     },
+     {
+      "k": "data.phone",
+      "en": "Phone",
+      "ar": "الهاتف"
+     },
+     {
+      "k": "data.nationalId",
+      "en": "National ID",
+      "ar": "رقم الهوية"
+     },
+     {
+      "k": "data.blood",
+      "en": "Blood group",
+      "ar": "فصيلة الدم",
+      "t": "select",
+      "opts": [
+       "",
+       "A+",
+       "A-",
+       "B+",
+       "B-",
+       "AB+",
+       "AB-",
+       "O+",
+       "O-"
+      ]
+     },
+     {
+      "k": "data.emergency",
+      "en": "Emergency contact",
+      "ar": "جهة الطوارئ"
+     },
+     {
+      "k": "data.allergies",
+      "en": "Allergies",
+      "ar": "الحساسية"
+     },
+     {
+      "k": "data.conditions",
+      "en": "Chronic conditions",
+      "ar": "أمراض مزمنة"
+     },
+     {
+      "k": "data.insCompany",
+      "en": "Insurance company",
+      "ar": "شركة التأمين"
+     },
+     {
+      "k": "data.insPolicy",
+      "en": "Policy no.",
+      "ar": "رقم الوثيقة"
+     },
+     {
+      "k": "data.insPct",
+      "en": "Insurance cover %",
+      "ar": "نسبة التغطية %",
+      "t": "num"
+     }
+    ]
+   },
+   "actions": [
+    {
+     "id": "file",
+     "en": "Patient file",
+     "ar": "ملف المريض",
+     "get": "patients/{code}/file",
+     "show": true
+    },
+    {
+     "id": "edit",
+     "en": "Edit",
+     "ar": "تعديل",
+     "record": "update",
+     "fields": [
+      {
+       "k": "data.name",
+       "en": "Full name",
+       "ar": "الاسم الكامل",
+       "req": true,
+       "from": "data.name"
+      },
+      {
+       "k": "data.sex",
+       "en": "Sex",
+       "ar": "الجنس",
+       "t": "select",
+       "opts": [
+        "Male",
+        "Female"
+       ],
+       "from": "data.sex"
+      },
+      {
+       "k": "data.dob",
+       "en": "Date of birth",
+       "ar": "تاريخ الميلاد",
+       "t": "date",
+       "from": "data.dob"
+      },
+      {
+       "k": "data.phone",
+       "en": "Phone",
+       "ar": "الهاتف",
+       "from": "data.phone"
+      },
+      {
+       "k": "data.nationalId",
+       "en": "National ID",
+       "ar": "رقم الهوية",
+       "from": "data.nationalId"
+      },
+      {
+       "k": "data.blood",
+       "en": "Blood group",
+       "ar": "فصيلة الدم",
+       "t": "select",
+       "opts": [
+        "",
+        "A+",
+        "A-",
+        "B+",
+        "B-",
+        "AB+",
+        "AB-",
+        "O+",
+        "O-"
+       ],
+       "from": "data.blood"
+      },
+      {
+       "k": "data.emergency",
+       "en": "Emergency contact",
+       "ar": "جهة الطوارئ",
+       "from": "data.emergency"
+      },
+      {
+       "k": "data.allergies",
+       "en": "Allergies",
+       "ar": "الحساسية",
+       "from": "data.allergies"
+      },
+      {
+       "k": "data.conditions",
+       "en": "Chronic conditions",
+       "ar": "أمراض مزمنة",
+       "from": "data.conditions"
+      },
+      {
+       "k": "data.insCompany",
+       "en": "Insurance company",
+       "ar": "شركة التأمين",
+       "from": "data.insCompany"
+      },
+      {
+       "k": "data.insPolicy",
+       "en": "Policy no.",
+       "ar": "رقم الوثيقة",
+       "from": "data.insPolicy"
+      },
+      {
+       "k": "data.insPct",
+       "en": "Insurance cover %",
+       "ar": "نسبة التغطية %",
+       "t": "num",
+       "from": "data.insPct"
+      }
+     ]
+    },
+    {
+     "id": "walkin",
+     "en": "Start visit",
+     "ar": "بدء زيارة",
+     "post": "visits",
+     "body": {
+      "patient": "{code}",
+      "today": "$today"
+     },
+     "fields": [
+      {
+       "k": "doctor",
+       "en": "Doctor",
+       "ar": "الطبيب",
+       "t": "select",
+       "req": true,
+       "src": {
+        "kind": "doctor",
+        "v": "code",
+        "l": "data.name"
+       }
+      },
+      {
+       "k": "type",
+       "en": "Type",
+       "ar": "النوع",
+       "t": "select",
+       "opts": [
+        "Outpatient",
+        "Emergency"
+       ],
+       "def": "Outpatient"
+      },
+      {
+       "k": "complaint",
+       "en": "Complaint",
+       "ar": "الشكوى"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "appointments",
+   "kind": "appointment",
+   "en": "Appointments",
+   "ar": "المواعيد",
+   "perm": [
+    "hos.appointments.view"
+   ],
+   "day": true,
+   "take": 500,
+   "columns": [
+    {
+     "p": "data.start",
+     "en": "Start",
+     "ar": "الموعد"
+    },
+    {
+     "p": "data.patientName",
+     "en": "Patient",
+     "ar": "المريض"
+    },
+    {
+     "p": "data.doctorName",
+     "en": "Doctor",
+     "ar": "الطبيب"
+    },
+    {
+     "p": "data.reason",
+     "en": "Reason",
+     "ar": "السبب"
+    },
+    {
+     "p": "status",
+     "en": "Status",
+     "ar": "الحالة"
+    }
+   ],
+   "create": {
+    "en": "Book",
+    "ar": "حجز موعد",
+    "post": "appointments",
+    "fields": [
+     {
+      "k": "patient",
+      "en": "Patient",
+      "ar": "المريض",
+      "t": "select",
+      "req": true,
+      "src": {
+       "kind": "patient",
+       "v": "code",
+       "l": "data.name",
+       "take": 300
+      }
+     },
+     {
+      "k": "doctor",
+      "en": "Doctor",
+      "ar": "الطبيب",
+      "t": "select",
+      "req": true,
+      "src": {
+       "kind": "doctor",
+       "v": "code",
+       "l": "data.name"
+      }
+     },
+     {
+      "k": "date",
+      "en": "Date",
+      "ar": "التاريخ",
+      "t": "date",
+      "req": true,
+      "def": "$today",
+      "join": "start"
+     },
+     {
+      "k": "time",
+      "en": "Time",
+      "ar": "الوقت",
+      "t": "time",
+      "req": true,
+      "def": "09:00",
+      "join": "start"
+     },
+     {
+      "k": "minutes",
+      "en": "Minutes",
+      "ar": "المدة (دقيقة)",
+      "t": "num",
+      "def": "20"
+     },
+     {
+      "k": "reason",
+      "en": "Reason",
+      "ar": "السبب"
+     }
+    ]
+   },
+   "actions": [
+    {
+     "id": "in",
+     "en": "Check in",
+     "ar": "تسجيل الحضور",
+     "when": [
+      "Booked"
+     ],
+     "post": "appointments/{id}/status",
+     "body": {
+      "status": "CheckedIn",
+      "today": "$today"
+     },
+     "fields": []
+    },
+    {
+     "id": "done",
+     "en": "Complete",
+     "ar": "إنهاء",
+     "when": [
+      "CheckedIn"
+     ],
+     "post": "appointments/{id}/status",
+     "body": {
+      "status": "Completed",
+      "today": "$today"
+     },
+     "fields": []
+    },
+    {
+     "id": "cancel",
+     "en": "Cancel",
+     "ar": "إلغاء",
+     "when": [
+      "Booked",
+      "CheckedIn"
+     ],
+     "post": "appointments/{id}/status",
+     "body": {
+      "status": "Cancelled",
+      "today": "$today"
+     },
+     "fields": [],
+     "confirm": true
+    }
+   ]
+  },
+  {
+   "id": "visits",
+   "kind": "visit",
+   "en": "Visits",
+   "ar": "الزيارات",
+   "perm": [
+    "hos.clinical.view"
+   ],
+   "search": true,
+   "take": 200,
+   "columns": [
+    {
+     "p": "code",
+     "en": "Visit",
+     "ar": "الزيارة"
+    },
+    {
+     "p": "data.patientName",
+     "en": "Patient",
+     "ar": "المريض"
+    },
+    {
+     "p": "data.doctorName",
+     "en": "Doctor",
+     "ar": "الطبيب"
+    },
+    {
+     "p": "data.complaint",
+     "en": "Complaint",
+     "ar": "الشكوى"
+    },
+    {
+     "p": "createdAt",
+     "en": "Date",
+     "ar": "التاريخ"
+    },
+    {
+     "p": "status",
+     "en": "Status",
+     "ar": "الحالة"
+    }
+   ],
+   "actions": [
+    {
+     "id": "view",
+     "en": "Details",
+     "ar": "التفاصيل",
+     "get": "records/visit/{id}",
+     "show": true
+    },
+    {
+     "id": "edit",
+     "en": "Record exam",
+     "ar": "تسجيل الفحص",
+     "when": [
+      "Open"
+     ],
+     "put": "visits/{id}",
+     "fields": [
+      {
+       "k": "complaint",
+       "en": "Complaint",
+       "ar": "الشكوى",
+       "from": "data.complaint"
+      },
+      {
+       "k": "vitals.sys",
+       "en": "BP systolic",
+       "ar": "الضغط الانقباضي",
+       "t": "num",
+       "from": "data.vitals.sys"
+      },
+      {
+       "k": "vitals.dia",
+       "en": "BP diastolic",
+       "ar": "الضغط الانبساطي",
+       "t": "num",
+       "from": "data.vitals.dia"
+      },
+      {
+       "k": "vitals.pulse",
+       "en": "Pulse",
+       "ar": "النبض",
+       "t": "num",
+       "from": "data.vitals.pulse"
+      },
+      {
+       "k": "vitals.temp",
+       "en": "Temperature",
+       "ar": "الحرارة",
+       "t": "num",
+       "from": "data.vitals.temp"
+      },
+      {
+       "k": "vitals.spo",
+       "en": "SpO₂ %",
+       "ar": "الأكسجين %",
+       "t": "num",
+       "from": "data.vitals.spo"
+      },
+      {
+       "k": "vitals.rr",
+       "en": "Resp. rate",
+       "ar": "التنفس",
+       "t": "num",
+       "from": "data.vitals.rr"
+      },
+      {
+       "k": "vitals.weight",
+       "en": "Weight kg",
+       "ar": "الوزن كغ",
+       "t": "num",
+       "from": "data.vitals.weight"
+      },
+      {
+       "k": "vitals.height",
+       "en": "Height cm",
+       "ar": "الطول سم",
+       "t": "num",
+       "from": "data.vitals.height"
+      },
+      {
+       "k": "diagnoses",
+       "en": "Diagnoses (one per line: CODE | name)",
+       "ar": "التشخيصات (سطر لكل تشخيص: الرمز | الاسم)",
+       "t": "dx",
+       "from": "data.diagnoses"
+      },
+      {
+       "k": "notes.s",
+       "en": "Subjective",
+       "ar": "الأعراض (S)",
+       "t": "area",
+       "from": "data.notes.s"
+      },
+      {
+       "k": "notes.o",
+       "en": "Objective",
+       "ar": "الفحص (O)",
+       "t": "area",
+       "from": "data.notes.o"
+      },
+      {
+       "k": "notes.a",
+       "en": "Assessment",
+       "ar": "التقييم (A)",
+       "t": "area",
+       "from": "data.notes.a"
+      },
+      {
+       "k": "notes.p",
+       "en": "Plan",
+       "ar": "الخطة (P)",
+       "t": "area",
+       "from": "data.notes.p"
+      }
+     ]
+    },
+    {
+     "id": "rx",
+     "en": "Prescribe",
+     "ar": "وصفة طبية",
+     "when": [
+      "Open"
+     ],
+     "post": "visits/{id}/prescriptions",
+     "warn": true,
+     "fields": [
+      {
+       "k": "items[].drug",
+       "en": "Drug",
+       "ar": "الدواء",
+       "t": "select",
+       "req": true,
+       "src": {
+        "kind": "drug",
+        "v": "code",
+        "l": "data.name"
+       }
+      },
+      {
+       "k": "items[].dose",
+       "en": "Dose",
+       "ar": "الجرعة"
+      },
+      {
+       "k": "items[].frequency",
+       "en": "Frequency",
+       "ar": "التكرار"
+      },
+      {
+       "k": "items[].days",
+       "en": "Days",
+       "ar": "الأيام",
+       "t": "num",
+       "def": "5"
+      },
+      {
+       "k": "items[].qty",
+       "en": "Quantity",
+       "ar": "الكمية",
+       "t": "num",
+       "def": "1"
+      }
+     ]
+    },
+    {
+     "id": "lab",
+     "en": "Order lab test",
+     "ar": "طلب فحص",
+     "when": [
+      "Open"
+     ],
+     "post": "visits/{id}/labs",
+     "fields": [
+      {
+       "k": "tests[]",
+       "en": "Test",
+       "ar": "الفحص",
+       "t": "select",
+       "req": true,
+       "src": {
+        "kind": "labtest",
+        "v": "code",
+        "l": "data.name"
+       }
+      },
+      {
+       "k": "urgent",
+       "en": "Urgent",
+       "ar": "عاجل",
+       "t": "check"
+      }
+     ]
+    },
+    {
+     "id": "svc",
+     "en": "Add service",
+     "ar": "إضافة خدمة",
+     "when": [
+      "Open"
+     ],
+     "post": "visits/{id}/services",
+     "fields": [
+      {
+       "k": "service",
+       "en": "Service",
+       "ar": "الخدمة",
+       "t": "select",
+       "req": true,
+       "src": {
+        "kind": "service",
+        "v": "code",
+        "l": "data.name"
+       }
+      },
+      {
+       "k": "qty",
+       "en": "Quantity",
+       "ar": "الكمية",
+       "t": "num",
+       "def": "1"
+      }
+     ]
+    },
+    {
+     "id": "admit",
+     "en": "Admit to ward",
+     "ar": "إدخال للتنويم",
+     "when": [
+      "Open"
+     ],
+     "post": "admissions",
+     "body": {
+      "patient": "{parent}",
+      "visit": "{code}"
+     },
+     "fields": [
+      {
+       "k": "bed",
+       "en": "Bed",
+       "ar": "السرير",
+       "t": "select",
+       "req": true,
+       "src": {
+        "kind": "bed",
+        "v": "code",
+        "l": "data.name",
+        "params": {
+         "status": "Available"
+        }
+       }
+      },
+      {
+       "k": "reason",
+       "en": "Reason",
+       "ar": "السبب",
+       "from": "data.complaint"
+      }
+     ]
+    },
+    {
+     "id": "close",
+     "en": "Close visit",
+     "ar": "إغلاق الزيارة",
+     "when": [
+      "Open"
+     ],
+     "post": "visits/{id}/close",
+     "fields": [],
+     "confirm": true
+    }
+   ]
+  },
+  {
+   "id": "lab",
+   "kind": "labrequest",
+   "en": "Laboratory",
+   "ar": "المختبر",
+   "perm": [
+    "hos.lab.view"
+   ],
+   "search": true,
+   "status": [
+    "",
+    "Ordered",
+    "Resulted"
+   ],
+   "take": 300,
+   "columns": [
+    {
+     "p": "code",
+     "en": "Request",
+     "ar": "الطلب"
+    },
+    {
+     "p": "data.patientName",
+     "en": "Patient",
+     "ar": "المريض"
+    },
+    {
+     "p": "data.name",
+     "en": "Test",
+     "ar": "الفحص"
+    },
+    {
+     "p": "data.sample",
+     "en": "Sample",
+     "ar": "العينة"
+    },
+    {
+     "p": "data.value",
+     "en": "Result",
+     "ar": "النتيجة"
+    },
+    {
+     "p": "data.unit",
+     "en": "Unit",
+     "ar": "الوحدة"
+    },
+    {
+     "p": "data.flag",
+     "en": "Flag",
+     "ar": "الدلالة"
+    },
+    {
+     "p": "status",
+     "en": "Status",
+     "ar": "الحالة"
+    }
+   ],
+   "actions": [
+    {
+     "id": "res",
+     "en": "Enter result",
+     "ar": "إدخال النتيجة",
+     "post": "labrequests/{id}/result",
+     "body": {
+      "amend": "@Resulted"
+     },
+     "fields": [
+      {
+       "k": "value",
+       "en": "Result",
+       "ar": "النتيجة",
+       "req": true,
+       "from": "data.value"
+      },
+      {
+       "k": "note",
+       "en": "Note",
+       "ar": "ملاحظة",
+       "from": "data.note"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "pharmacy",
+   "kind": "prescription",
+   "en": "Pharmacy",
+   "ar": "الصيدلية",
+   "perm": [
+    "hos.pharmacy.view"
+   ],
+   "search": true,
+   "take": 300,
+   "columns": [
+    {
+     "p": "code",
+     "en": "Rx",
+     "ar": "الوصفة"
+    },
+    {
+     "p": "data.patientName",
+     "en": "Patient",
+     "ar": "المريض"
+    },
+    {
+     "p": "data.items",
+     "en": "Items",
+     "ar": "الأصناف",
+     "t": "items"
+    },
+    {
+     "p": "data.doctorName",
+     "en": "Doctor",
+     "ar": "الطبيب"
+    },
+    {
+     "p": "status",
+     "en": "Status",
+     "ar": "الحالة"
+    }
+   ],
+   "actions": [
+    {
+     "id": "disp",
+     "en": "Dispense",
+     "ar": "صرف",
+     "post": "prescriptions/{id}/dispense",
+     "fields": [
+      {
+       "k": "allowPartial",
+       "en": "Allow partial dispensing",
+       "ar": "السماح بصرف جزئي",
+       "t": "check"
+      }
+     ]
+    },
+    {
+     "id": "cancel",
+     "en": "Cancel",
+     "ar": "إلغاء",
+     "post": "prescriptions/{id}/cancel",
+     "fields": [],
+     "confirm": true
+    }
+   ]
+  },
+  {
+   "id": "drugs",
+   "kind": "drug",
+   "en": "Drug stock",
+   "ar": "مخزون الأدوية",
+   "perm": [
+    "hos.pharmacy.view"
+   ],
+   "search": true,
+   "take": 500,
+   "columns": [
+    {
+     "p": "code",
+     "en": "Code",
+     "ar": "الرمز"
+    },
+    {
+     "p": "data.name",
+     "en": "Drug",
+     "ar": "الدواء"
+    },
+    {
+     "p": "data.strength",
+     "en": "Strength",
+     "ar": "التركيز"
+    },
+    {
+     "p": "data.form",
+     "en": "Form",
+     "ar": "الشكل"
+    },
+    {
+     "p": "data.price",
+     "en": "Price",
+     "ar": "السعر",
+     "t": "money"
+    },
+    {
+     "p": "data.stock",
+     "en": "Stock",
+     "ar": "المخزون"
+    },
+    {
+     "p": "data.reorder",
+     "en": "Reorder at",
+     "ar": "حد الطلب"
+    },
+    {
+     "p": "data.expiry",
+     "en": "Expiry",
+     "ar": "الانتهاء"
+    }
+   ],
+   "actions": [
+    {
+     "id": "adj",
+     "en": "Adjust stock",
+     "ar": "تعديل المخزون",
+     "post": "drugs/{id}/stock",
+     "fields": [
+      {
+       "k": "delta",
+       "en": "Change (+ receive, − remove)",
+       "ar": "التغيير (+ استلام، − إخراج)",
+       "t": "num",
+       "req": true,
+       "def": "0"
+      },
+      {
+       "k": "reason",
+       "en": "Reason",
+       "ar": "السبب"
+      },
+      {
+       "k": "batch",
+       "en": "Batch",
+       "ar": "الدفعة"
+      },
+      {
+       "k": "expiry",
+       "en": "Expiry",
+       "ar": "الانتهاء",
+       "t": "date"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "beds",
+   "kind": "bed",
+   "en": "Wards and beds",
+   "ar": "الأجنحة والأسرّة",
+   "perm": [
+    "hos.wards.view"
+   ],
+   "status": [
+    "",
+    "Available",
+    "Occupied",
+    "Maintenance"
+   ],
+   "take": 500,
+   "columns": [
+    {
+     "p": "code",
+     "en": "Bed",
+     "ar": "السرير"
+    },
+    {
+     "p": "data.name",
+     "en": "Name",
+     "ar": "الاسم"
+    },
+    {
+     "p": "data.wardName",
+     "en": "Ward",
+     "ar": "الجناح"
+    },
+    {
+     "p": "status",
+     "en": "Status",
+     "ar": "الحالة"
+    },
+    {
+     "p": "data.patientName",
+     "en": "Patient",
+     "ar": "المريض"
+    }
+   ],
+   "actions": [
+    {
+     "id": "admit",
+     "en": "Admit here",
+     "ar": "إدخال مريض",
+     "when": [
+      "Available"
+     ],
+     "post": "admissions",
+     "body": {
+      "bed": "{code}"
+     },
+     "fields": [
+      {
+       "k": "patient",
+       "en": "Patient",
+       "ar": "المريض",
+       "t": "select",
+       "req": true,
+       "src": {
+        "kind": "patient",
+        "v": "code",
+        "l": "data.name",
+        "take": 300
+       }
+      },
+      {
+       "k": "doctor",
+       "en": "Doctor",
+       "ar": "الطبيب",
+       "t": "select",
+       "src": {
+        "kind": "doctor",
+        "v": "code",
+        "l": "data.name"
+       }
+      },
+      {
+       "k": "reason",
+       "en": "Reason",
+       "ar": "السبب"
+      }
+     ]
+    },
+    {
+     "id": "maint",
+     "en": "Maintenance on/off",
+     "ar": "صيانة",
+     "when": [
+      "Available",
+      "Maintenance"
+     ],
+     "toggle": "Maintenance",
+     "back": "Available"
+    }
+   ]
+  },
+  {
+   "id": "adm",
+   "kind": "admission",
+   "en": "Admissions",
+   "ar": "حالات الإدخال",
+   "perm": [
+    "hos.wards.view"
+   ],
+   "search": true,
+   "take": 300,
+   "columns": [
+    {
+     "p": "code",
+     "en": "Admission",
+     "ar": "الإدخال"
+    },
+    {
+     "p": "data.patientName",
+     "en": "Patient",
+     "ar": "المريض"
+    },
+    {
+     "p": "data.bed",
+     "en": "Bed",
+     "ar": "السرير"
+    },
+    {
+     "p": "data.reason",
+     "en": "Reason",
+     "ar": "السبب"
+    },
+    {
+     "p": "createdAt",
+     "en": "Since",
+     "ar": "منذ"
+    },
+    {
+     "p": "status",
+     "en": "Status",
+     "ar": "الحالة"
+    }
+   ],
+   "actions": [
+    {
+     "id": "tr",
+     "en": "Transfer",
+     "ar": "نقل",
+     "post": "admissions/{id}/transfer",
+     "fields": [
+      {
+       "k": "bed",
+       "en": "New bed",
+       "ar": "السرير الجديد",
+       "t": "select",
+       "req": true,
+       "src": {
+        "kind": "bed",
+        "v": "code",
+        "l": "data.name",
+        "params": {
+         "status": "Available"
+        }
+       }
+      }
+     ]
+    },
+    {
+     "id": "dis",
+     "en": "Discharge",
+     "ar": "خروج",
+     "post": "admissions/{id}/discharge",
+     "fields": [
+      {
+       "k": "outcome",
+       "en": "Outcome",
+       "ar": "النتيجة",
+       "t": "select",
+       "opts": [
+        "Recovered",
+        "Improved",
+        "Referred",
+        "Deceased"
+       ],
+       "def": "Recovered"
+      },
+      {
+       "k": "summary",
+       "en": "Summary",
+       "ar": "ملخص الخروج",
+       "t": "area"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "billing",
+   "kind": "invoice",
+   "en": "Billing",
+   "ar": "الفوترة",
+   "perm": [
+    "hos.billing.view"
+   ],
+   "search": true,
+   "take": 300,
+   "columns": [
+    {
+     "p": "code",
+     "en": "Invoice",
+     "ar": "الفاتورة"
+    },
+    {
+     "p": "data.patientName",
+     "en": "Patient",
+     "ar": "المريض"
+    },
+    {
+     "p": "createdAt",
+     "en": "Date",
+     "ar": "التاريخ"
+    },
+    {
+     "p": "data.total",
+     "en": "Total",
+     "ar": "الإجمالي",
+     "t": "money"
+    },
+    {
+     "p": "data.insurance",
+     "en": "Insurance",
+     "ar": "التأمين",
+     "t": "money"
+    },
+    {
+     "p": "data.balance",
+     "en": "Balance",
+     "ar": "المتبقي",
+     "t": "money"
+    },
+    {
+     "p": "status",
+     "en": "Status",
+     "ar": "الحالة"
+    }
+   ],
+   "actions": [
+    {
+     "id": "view",
+     "en": "Details",
+     "ar": "التفاصيل",
+     "get": "records/invoice/{id}",
+     "show": true
+    },
+    {
+     "id": "print",
+     "en": "Print",
+     "ar": "طباعة",
+     "get": "records/invoice/{id}",
+     "print": "invoice"
+    },
+    {
+     "id": "pay",
+     "en": "Take payment",
+     "ar": "تحصيل دفعة",
+     "post": "invoices/{id}/pay",
+     "fields": [
+      {
+       "k": "amount",
+       "en": "Amount",
+       "ar": "المبلغ",
+       "t": "num",
+       "req": true,
+       "from": "data.balance"
+      },
+      {
+       "k": "method",
+       "en": "Method",
+       "ar": "الطريقة",
+       "t": "select",
+       "opts": [
+        "cash",
+        "card",
+        "transfer",
+        "other"
+       ],
+       "def": "cash"
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

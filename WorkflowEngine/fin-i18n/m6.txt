@@ -1,0 +1,198 @@
+perm.proc.contracts.manage || Manage supplier contracts || إدارة عقود الموردين || Gérer les contrats fournisseurs || Gestionar contratos de proveedores || سپلائر معاہدے منظم کریں || Lieferantenverträge verwalten || Gestire contratti fornitori
+perm.proc.invoice || Create supplier invoices from receipts || إنشاء فواتير الموردين من الاستلام || Créer des factures fournisseur depuis les réceptions || Crear facturas de proveedor desde recepciones || وصولیوں سے سپلائر انوائس بنائیں || Eingangsrechnungen aus Wareneingängen erzeugen || Creare fatture fornitore dai ricevimenti
+perm.proc.po.approve || Approve purchase orders || اعتماد أوامر الشراء || Approuver les commandes d'achat || Aprobar órdenes de compra || خریداری آرڈر منظور کریں || Bestellungen genehmigen || Approvare ordini d'acquisto
+perm.proc.po.manage || Manage purchase orders || إدارة أوامر الشراء || Gérer les commandes d'achat || Gestionar órdenes de compra || خریداری آرڈر منظم کریں || Bestellungen verwalten || Gestire ordini d'acquisto
+perm.proc.po.selfApprove || Approve own purchase orders || اعتماد أوامر الشراء الخاصة بي || Approuver ses propres commandes || Aprobar mis propias órdenes de compra || اپنے خریداری آرڈر منظور کریں || Eigene Bestellungen genehmigen || Approvare i propri ordini d'acquisto
+perm.proc.receive || Receive goods || استلام البضائع || Réceptionner les marchandises || Recibir mercancías || سامان وصول کریں || Wareneingang buchen || Ricevere merci
+perm.proc.reports.view || View procurement reports || عرض تقارير المشتريات || Voir les rapports d'achats || Ver informes de compras || خریداری رپورٹیں دیکھیں || Einkaufsberichte ansehen || Vedere report acquisti
+perm.proc.req.approve || Approve requisitions || اعتماد طلبات الشراء || Approuver les demandes d'achat || Aprobar solicitudes de compra || درخواستیں منظور کریں || Bestellanforderungen genehmigen || Approvare richieste d'acquisto
+perm.proc.req.manage || Create requisitions || إنشاء طلبات الشراء || Créer des demandes d'achat || Crear solicitudes de compra || خریداری درخواستیں بنائیں || Bestellanforderungen anlegen || Creare richieste d'acquisto
+perm.proc.rfq.manage || Manage RFQs || إدارة طلبات عروض الأسعار || Gérer les appels d'offres || Gestionar solicitudes de cotización || RFQ منظم کریں || Anfragen verwalten || Gestire RFQ
+perm.proc.setup || Procurement setup || إعداد المشتريات || Configuration des achats || Configuración de compras || خریداری سیٹ اپ || Einkaufs-Einrichtung || Impostazioni acquisti
+perm.proc.suppliers.manage || Evaluate suppliers || تقييم الموردين || Évaluer les fournisseurs || Evaluar proveedores || سپلائرز کا جائزہ لیں || Lieferanten bewerten || Valutare fornitori
+perm.proc.view || View procurement || عرض المشتريات || Voir les achats || Ver compras || خریداری دیکھیں || Beschaffung ansehen || Vedere acquisti
+perm.scm.planning || Manage demand forecasts || إدارة توقعات الطلب || Gérer les prévisions de demande || Gestionar pronósticos de demanda || طلب کی پیشگوئی منظم کریں || Bedarfsprognosen verwalten || Gestire previsioni di domanda
+perm.scm.reports.view || View supply chain reports || عرض تقارير سلسلة الإمداد || Voir les rapports logistiques || Ver informes de cadena de suministro || سپلائی چین رپورٹیں دیکھیں || Lieferkettenberichte ansehen || Vedere report supply chain
+perm.scm.setup || Supply chain setup || إعداد سلسلة الإمداد || Configuration logistique || Configuración de cadena de suministro || سپلائی چین سیٹ اپ || Lieferketten-Einrichtung || Impostazioni supply chain
+perm.scm.shipments.manage || Manage shipments & carriers || إدارة الشحنات والناقلين || Gérer expéditions et transporteurs || Gestionar envíos y transportistas || شپمنٹس اور کیریئرز منظم کریں || Lieferungen & Spediteure verwalten || Gestire spedizioni e vettori
+perm.scm.view || View supply chain || عرض سلسلة الإمداد || Voir la chaîne logistique || Ver cadena de suministro || سپلائی چین دیکھیں || Lieferkette ansehen || Vedere supply chain
+perm.wh.count.approve || Post stock count adjustments || ترحيل تسويات الجرد || Comptabiliser les écarts d'inventaire || Contabilizar ajustes de conteo || گنتی ایڈجسٹمنٹ پوسٹ کریں || Inventurdifferenzen buchen || Registrare rettifiche inventariali
+perm.wh.count.manage || Manage stock counts || إدارة الجرد || Gérer les inventaires || Gestionar conteos de inventario || اسٹاک گنتی منظم کریں || Inventuren verwalten || Gestire inventari
+perm.wh.pick.manage || Manage pick lists || إدارة قوائم الالتقاط || Gérer les bons de préparation || Gestionar listas de picking || پک لسٹ منظم کریں || Kommissionierlisten verwalten || Gestire liste di prelievo
+perm.wh.reports.view || View warehouse reports || عرض تقارير المستودع || Voir les rapports d'entrepôt || Ver informes de almacén || گودام رپورٹیں دیکھیں || Lagerberichte ansehen || Vedere report di magazzino
+perm.wh.setup || Warehouse setup || إعداد المستودع || Configuration de l'entrepôt || Configuración de almacén || گودام سیٹ اپ || Lager-Einrichtung || Impostazioni magazzino
+perm.wh.view || View warehouse & stock || عرض المستودع والمخزون || Voir entrepôt et stocks || Ver almacén y stock || گودام اور اسٹاک دیکھیں || Lager & Bestand ansehen || Vedere magazzino e giacenze
+prj.bill.billed || Billed || تمت الفوترة || Facturé || Facturado || بل شدہ || Abgerechnet || Fatturato
+prj.bill.create || Create invoice draft || إنشاء مسودة فاتورة || Créer un brouillon de facture || Crear borrador de factura || انوائس مسودہ بنائیں || Rechnungsentwurf erstellen || Crea bozza fattura
+prj.bill.done || Invoice draft {inv} created ({total}). || تم إنشاء مسودة الفاتورة {inv} ({total}). || Brouillon de facture {inv} créé ({total}). || Borrador de factura {inv} creado ({total}). || انوائس مسودہ {inv} بن گیا ({total})۔ || Rechnungsentwurf {inv} erstellt ({total}). || Bozza fattura {inv} creata ({total}).
+prj.bill.draftNote || The invoice is created as a draft in Finance receivables for review. || تُنشأ الفاتورة كمسودة في ذمم العملاء بالمالية للمراجعة. || La facture est créée en brouillon dans les créances Finance pour révision. || La factura se crea como borrador en cuentas por cobrar de Finanzas para su revisión. || انوائس مالیات کی وصولیوں میں جائزے کے لیے مسودے کے طور پر بنتی ہے۔ || Die Rechnung wird als Entwurf in den Forderungen angelegt. || La fattura viene creata come bozza nei crediti per revisione.
+prj.bill.open || Unbilled || غير مفوتر || Non facturé || Sin facturar || بل نہ ہوا || Nicht abgerechnet || Da fatturare
+prj.bill.ready || Ready to bill || جاهز للفوترة || Prêt à facturer || Listo para facturar || بل کے لیے تیار || Abrechnungsbereit || Pronto da fatturare
+prj.bill.sub || Turns approved time, costs and milestones into a draft customer invoice. || يحوّل الوقت والتكاليف والمراحل المعتمدة إلى مسودة فاتورة عميل. || Transforme temps, coûts et jalons approuvés en brouillon de facture client. || Convierte tiempo, costos e hitos aprobados en un borrador de factura de cliente. || منظور شدہ وقت، لاگت اور سنگ میل کو کسٹمر انوائس مسودے میں بدلتا ہے۔ || Macht aus genehmigter Zeit, Kosten und Meilensteinen einen Rechnungsentwurf. || Trasforma ore, costi e milestone approvati in una bozza di fattura cliente.
+prj.bill.terms || Payment terms (days) || شروط الدفع (أيام) || Conditions de paiement (jours) || Condiciones de pago (días) || ادائیگی کی شرائط (دن) || Zahlungsziel (Tage) || Termini di pagamento (giorni)
+prj.cost.new || New project cost || تكلفة مشروع جديدة || Nouveau coût projet || Nuevo costo de proyecto || نئی پراجیکٹ لاگت || Neue Projektkosten || Nuovo costo di progetto
+prj.f.assignee || Assignee || المكلّف || Responsable || Asignado a || مفوض || Zugewiesen an || Assegnato a
+prj.f.billRate || Bill rate/h || سعر الفوترة/س || Taux facturé/h || Tarifa de facturación/h || بل ریٹ/گھنٹہ || Verrechnungssatz/Std. || Tariffa fatturabile/h
+prj.f.billable || Billable || قابل للفوترة || Facturable || Facturable || قابل بل || Abrechenbar || Fatturabile
+prj.f.billing || Billing model || نموذج الفوترة || Mode de facturation || Modelo de facturación || بلنگ ماڈل || Abrechnungsmodell || Modello di fatturazione
+prj.f.budget || Budget || الميزانية || Budget || Presupuesto || بجٹ || Budget || Budget
+prj.f.budgetLines || Budget lines || بنود الميزانية || Lignes de budget || Líneas de presupuesto || بجٹ لائنز || Budgetzeilen || Righe di budget
+prj.f.category || Category || الفئة || Catégorie || Categoría || زمرہ || Kategorie || Categoria
+prj.f.contract || Contract value || قيمة العقد || Valeur du contrat || Valor del contrato || معاہدے کی قدر || Vertragswert || Valore contratto
+prj.f.costRate || Cost rate/h || سعر التكلفة/س || Taux de coût/h || Tarifa de costo/h || لاگت ریٹ/گھنٹہ || Kostensatz/Std. || Tariffa di costo/h
+prj.f.costRateHint || Internal cost of one hour of this person. || التكلفة الداخلية لساعة هذا الشخص. || Coût interne d'une heure de cette personne. || Costo interno de una hora de esta persona. || اس فرد کے ایک گھنٹے کی اندرونی لاگت۔ || Interne Kosten einer Stunde dieser Person. || Costo interno di un'ora di questa persona.
+prj.f.customer || Customer || العميل || Client || Cliente || کسٹمر || Kunde || Cliente
+prj.f.employee || Employee || الموظف || Employé || Empleado || ملازم || Mitarbeiter || Dipendente
+prj.f.estimate || Estimate (h) || التقدير (س) || Estimation (h) || Estimación (h) || تخمینہ (گھنٹے) || Schätzung (Std.) || Stima (h)
+prj.f.hours || Hours || الساعات || Heures || Horas || گھنٹے || Stunden || Ore
+prj.f.manager || Project manager || مدير المشروع || Chef de projet || Gerente de proyecto || پراجیکٹ مینیجر || Projektleiter || Project manager
+prj.f.markup || Markup % || هامش الربح % || Majoration % || Margen % || مارک اپ % || Aufschlag % || Ricarico %
+prj.f.project || Project || المشروع || Projet || Proyecto || پراجیکٹ || Projekt || Progetto
+prj.f.role || Role || الدور || Rôle || Rol || کردار || Rolle || Ruolo
+prj.f.task || Task || المهمة || Tâche || Tarea || کام || Aufgabe || Attività
+prj.f.vendor || Vendor || المورد || Fournisseur || Proveedor || سپلائر || Lieferant || Fornitore
+prj.kpi.active || Active projects || مشاريع نشطة || Projets actifs || Proyectos activos || فعال پراجیکٹس || Aktive Projekte || Progetti attivi
+prj.kpi.actual || Actual cost || التكلفة الفعلية || Coût réel || Costo real || اصل لاگت || Istkosten || Costo effettivo
+prj.kpi.billed || Billed || المفوتر || Facturé || Facturado || بل شدہ || Abgerechnet || Fatturato
+prj.kpi.budget || Budget || الميزانية || Budget || Presupuesto || بجٹ || Budget || Budget
+prj.kpi.hoursMonth || Hours (month) || الساعات (الشهر) || Heures (mois) || Horas (mes) || گھنٹے (ماہ) || Stunden (Monat) || Ore (mese)
+prj.kpi.margin || Margin || الهامش || Marge || Margen || مارجن || Marge || Margine
+prj.kpi.overBudget || Over budget || تجاوز الميزانية || Hors budget || Sobre presupuesto || بجٹ سے زیادہ || Über Budget || Oltre budget
+prj.kpi.pendingTimesheets || Timesheets to approve || سجلات دوام للاعتماد || Feuilles à approuver || Hojas por aprobar || منظوری کے لیے ٹائم شیٹس || Zeiten zu genehmigen || Fogli ore da approvare
+prj.list.byStatus || Projects by status || المشاريع حسب الحالة || Projets par statut || Proyectos por estado || حالت کے لحاظ سے پراجیکٹس || Projekte nach Status || Progetti per stato
+prj.list.margin || Margin by project || الهامش حسب المشروع || Marge par projet || Margen por proyecto || پراجیکٹ کے لحاظ سے مارجن || Marge je Projekt || Margine per progetto
+prj.ms.achieve || Mark achieved || تحديد كمُنجَز || Marquer atteint || Marcar logrado || حاصل شدہ نشان کریں || Als erreicht markieren || Segna raggiunto
+prj.ms.new || New milestone || مرحلة جديدة || Nouveau jalon || Nuevo hito || نیا سنگ میل || Neuer Meilenstein || Nuova milestone
+prj.ms.pct || Billing % || نسبة الفوترة % || % facturation || % de facturación || بلنگ % || Abrechnung % || % fatturazione
+prj.nav.billing || Billing || الفوترة || Facturation || Facturación || بلنگ || Abrechnung || Fatturazione
+prj.nav.costs || Costs || التكاليف || Coûts || Costos || لاگتیں || Kosten || Costi
+prj.nav.milestones || Milestones || المراحل || Jalons || Hitos || سنگ میل || Meilensteine || Milestone
+prj.nav.overview || Overview || نظرة عامة || Aperçu || Resumen || جائزہ || Übersicht || Panoramica
+prj.nav.projects || Projects || المشاريع || Projets || Proyectos || پراجیکٹس || Projekte || Progetti
+prj.nav.resources || Resources || الموارد || Ressources || Recursos || وسائل || Ressourcen || Risorse
+prj.nav.tasks || Tasks || المهام || Tâches || Tareas || کام || Aufgaben || Attività
+prj.nav.timesheets || Timesheets || سجلات الدوام || Feuilles de temps || Hojas de horas || ٹائم شیٹس || Zeiterfassung || Fogli ore
+prj.new || New project || مشروع جديد || Nouveau projet || Nuevo proyecto || نیا پراجیکٹ || Neues Projekt || Nuovo progetto
+prj.none || No projects yet. || لا توجد مشاريع بعد. || Aucun projet. || Aún no hay proyectos. || ابھی کوئی پراجیکٹ نہیں۔ || Noch keine Projekte. || Nessun progetto.
+prj.res.alloc || Allocation % || التخصيص % || Affectation % || Asignación % || تخصیص % || Zuordnung % || Assegnazione %
+prj.res.allocHint || Share of the person's time on this project in the period. || حصة وقت الشخص على هذا المشروع في الفترة. || Part du temps de la personne sur ce projet sur la période. || Parte del tiempo de la persona en este proyecto en el período. || مدت میں اس پراجیکٹ پر فرد کے وقت کا حصہ۔ || Anteil der Zeit der Person an diesem Projekt im Zeitraum. || Quota di tempo della persona su questo progetto nel periodo.
+prj.res.new || New allocation || تخصيص جديد || Nouvelle affectation || Nueva asignación || نئی تخصیص || Neue Zuordnung || Nuova assegnazione
+prj.res.util || Utilization || نسبة الاستغلال || Taux d'utilisation || Utilización || استعمال || Auslastung || Utilizzo
+prj.sub || Projects, tasks, timesheets, costs and billing || المشاريع والمهام وسجلات الدوام والتكاليف والفوترة || Projets, tâches, feuilles de temps, coûts et facturation || Proyectos, tareas, hojas de horas, costos y facturación || پراجیکٹس، کام، ٹائم شیٹس، لاگتیں اور بلنگ || Projekte, Aufgaben, Zeiterfassung, Kosten und Abrechnung || Progetti, attività, fogli ore, costi e fatturazione
+prj.task.new || New task || مهمة جديدة || Nouvelle tâche || Nueva tarea || نیا کام || Neue Aufgabe || Nuova attività
+prj.ts.approve || Approve || اعتماد || Approuver || Aprobar || منظور کریں || Genehmigen || Approva
+prj.ts.new || New time entry || سجل وقت جديد || Nouvelle saisie de temps || Nueva entrada de tiempo || نیا وقت اندراج || Neue Zeitbuchung || Nuova registrazione ore
+prj.ts.reject || Reject || رفض || Rejeter || Rechazar || مسترد کریں || Ablehnen || Rifiuta
+prj.ts.submit || Submit || إرسال || Soumettre || Enviar || جمع کریں || Einreichen || Invia
+prj.bm.fixed || Fixed price || سعر ثابت || Prix fixe || Precio fijo || مقررہ قیمت || Festpreis || Prezzo fisso
+prj.bm.milestone || Milestones || بالمراحل || Par jalons || Por hitos || سنگ میل کے مطابق || Meilensteine || A milestone
+prj.bm.tm || Time & materials || الوقت والمواد || Temps et matériaux || Tiempo y materiales || وقت اور مواد || Zeit & Material || Tempo e materiali
+proc.con.new || New contract || عقد جديد || Nouveau contrat || Nuevo contrato || نیا معاہدہ || Neuer Vertrag || Nuovo contratto
+proc.con.terms || Terms || الشروط || Conditions || Condiciones || شرائط || Bedingungen || Condizioni
+proc.ev.delivery || Delivery score || درجة التسليم || Note de livraison || Puntaje de entrega || ڈیلیوری سکور || Liefernote || Punteggio consegna
+proc.ev.new || New evaluation || تقييم جديد || Nouvelle évaluation || Nueva evaluación || نیا جائزہ || Neue Bewertung || Nuova valutazione
+proc.ev.overall || Overall || الإجمالي || Global || General || مجموعی || Gesamt || Complessivo
+proc.ev.period || Period || الفترة || Période || Período || مدت || Periode || Periodo
+proc.ev.price || Price score || درجة السعر || Note de prix || Puntaje de precio || قیمت سکور || Preisnote || Punteggio prezzo
+proc.ev.quality || Quality score || درجة الجودة || Note de qualité || Puntaje de calidad || کوالٹی سکور || Qualitätsnote || Punteggio qualità
+proc.ev.service || Service score || درجة الخدمة || Note de service || Puntaje de servicio || سروس سکور || Servicenote || Punteggio servizio
+proc.f.department || Department || القسم || Service || Departamento || شعبہ || Abteilung || Reparto
+proc.f.expected || Expected delivery || التسليم المتوقع || Livraison prévue || Entrega prevista || متوقع ڈیلیوری || Erwartete Lieferung || Consegna prevista
+proc.f.items || Items || الأصناف || Articles || Artículos || اشیاء || Positionen || Articoli
+proc.f.needBy || Needed by || مطلوب قبل || Besoin pour le || Necesario para || درکار تاریخ || Benötigt bis || Necessario entro
+proc.f.reason || Reason || السبب || Motif || Motivo || وجہ || Grund || Motivo
+proc.f.requester || Requester || مقدم الطلب || Demandeur || Solicitante || درخواست گزار || Anforderer || Richiedente
+proc.f.vendor || Vendor || المورد || Fournisseur || Proveedor || سپلائر || Lieferant || Fornitore
+proc.kpi.awaitingReceipt || Awaiting receipt || بانتظار الاستلام || En attente de réception || Pendiente de recepción || وصولی کے منتظر || Wareneingang offen || In attesa di ricevimento
+proc.kpi.contractsExpiring || Contracts expiring || عقود تنتهي قريبًا || Contrats à échéance || Contratos por vencer || ختم ہوتے معاہدے || Auslaufende Verträge || Contratti in scadenza
+proc.kpi.latePo || Late orders || أوامر متأخرة || Commandes en retard || Órdenes atrasadas || تاخیر سے آرڈرز || Verspätete Bestellungen || Ordini in ritardo
+proc.kpi.openPo || Open purchase orders || أوامر شراء مفتوحة || Commandes ouvertes || Órdenes abiertas || کھلے خریداری آرڈر || Offene Bestellungen || Ordini aperti
+proc.kpi.pendingReq || Requisitions pending || طلبات شراء معلقة || Demandes en attente || Solicitudes pendientes || زیر التواء درخواستیں || Offene Anforderungen || Richieste in sospeso
+proc.kpi.spendMonth || Spend (month) || الإنفاق (الشهر) || Dépenses (mois) || Gasto (mes) || خرچ (ماہ) || Ausgaben (Monat) || Spesa (mese)
+proc.list.poByStatus || Orders by status || الأوامر حسب الحالة || Commandes par statut || Órdenes por estado || حالت کے لحاظ سے آرڈر || Bestellungen nach Status || Ordini per stato
+proc.list.spendByVendor || Spend by vendor || الإنفاق حسب المورد || Dépenses par fournisseur || Gasto por proveedor || سپلائر کے لحاظ سے خرچ || Ausgaben nach Lieferant || Spesa per fornitore
+proc.nav.contracts || Contracts || العقود || Contrats || Contratos || معاہدے || Verträge || Contratti
+proc.nav.evaluations || Supplier evaluation || تقييم الموردين || Évaluation fournisseurs || Evaluación de proveedores || سپلائر جائزہ || Lieferantenbewertung || Valutazione fornitori
+proc.nav.orders || Purchase orders || أوامر الشراء || Commandes d'achat || Órdenes de compra || خریداری آرڈر || Bestellungen || Ordini d'acquisto
+proc.nav.overview || Overview || نظرة عامة || Aperçu || Resumen || جائزہ || Übersicht || Panoramica
+proc.nav.requisitions || Requisitions || طلبات الشراء || Demandes d'achat || Solicitudes de compra || خریداری درخواستیں || Bestellanforderungen || Richieste d'acquisto
+proc.nav.rfq || RFQs || طلبات عروض الأسعار || Appels d'offres || Solicitudes de cotización || RFQ || Anfragen || RFQ
+proc.nav.setup || Setup || الإعداد || Configuration || Configuración || سیٹ اپ || Einrichtung || Impostazioni
+proc.ordered || Ordered || المطلوب || Commandé || Pedido || آرڈر شدہ || Bestellt || Ordinato
+proc.po.new || New purchase order || أمر شراء جديد || Nouvelle commande d'achat || Nueva orden de compra || نیا خریداری آرڈر || Neue Bestellung || Nuovo ordine d'acquisto
+proc.po.none || No purchase orders yet. || لا توجد أوامر شراء بعد. || Aucune commande d'achat. || Aún no hay órdenes de compra. || ابھی کوئی خریداری آرڈر نہیں۔ || Noch keine Bestellungen. || Nessun ordine d'acquisto.
+proc.receive || Receive goods || استلام البضائع || Réceptionner || Recibir mercancías || سامان وصول کریں || Wareneingang || Ricevi merci
+proc.received || Received || المستلم || Reçu || Recibido || موصول || Erhalten || Ricevuto
+proc.receiveNow || Receive now || استلام الآن || Réceptionner maintenant || Recibir ahora || ابھی وصول کریں || Jetzt buchen || Ricevi ora
+proc.req.new || New requisition || طلب شراء جديد || Nouvelle demande d'achat || Nueva solicitud de compra || نئی خریداری درخواست || Neue Bestellanforderung || Nuova richiesta d'acquisto
+proc.rfq.awarded || Awarded to || رُسّي على || Attribué à || Adjudicado a || کو تفویض || Vergeben an || Aggiudicato a
+proc.rfq.lead || Lead time (days) || مدة التوريد (أيام) || Délai (jours) || Plazo (días) || مدت (دن) || Lieferzeit (Tage) || Tempi (giorni)
+proc.rfq.new || New RFQ || طلب عرض سعر جديد || Nouvel appel d'offres || Nueva solicitud de cotización || نیا RFQ || Neue Anfrage || Nuova RFQ
+proc.rfq.quotes || Vendor quotes || عروض الموردين || Offres fournisseurs || Cotizaciones de proveedores || سپلائر کوٹیشنز || Lieferantenangebote || Offerte fornitori
+proc.rfq.target || Target price || السعر المستهدف || Prix cible || Precio objetivo || ہدفی قیمت || Zielpreis || Prezzo obiettivo
+proc.send || Send to vendor || إرسال للمورد || Envoyer au fournisseur || Enviar al proveedor || سپلائر کو بھیجیں || An Lieferant senden || Invia al fornitore
+proc.setup.overReceipt || Over-receipt tolerance % || نسبة السماح بالاستلام الزائد % || Tolérance de sur-réception % || Tolerancia de sobrerrecepción % || زائد وصولی رواداری % || Überlieferungstoleranz % || Tolleranza ricevimento in eccesso %
+proc.setup.overReceiptHint || How much more than ordered may be received. || كم يُسمح باستلامه زيادة عن المطلوب. || Quantité supplémentaire acceptée par rapport à la commande. || Cuánto más de lo pedido se puede recibir. || آرڈر سے کتنا زیادہ وصول ہو سکتا ہے۔ || Wie viel mehr als bestellt angenommen werden darf. || Quanto in più dell'ordinato può essere ricevuto.
+proc.sub || Requisitions, purchase orders, RFQs and supplier management || طلبات الشراء وأوامر الشراء والعروض وإدارة الموردين || Demandes, commandes, appels d'offres et gestion des fournisseurs || Solicitudes, órdenes de compra, cotizaciones y gestión de proveedores || درخواستیں، خریداری آرڈر، RFQ اور سپلائر انتظام || Anforderungen, Bestellungen, Anfragen und Lieferantenmanagement || Richieste, ordini d'acquisto, RFQ e gestione fornitori
+proc.toPo || Create purchase order || إنشاء أمر شراء || Créer une commande d'achat || Crear orden de compra || خریداری آرڈر بنائیں || Bestellung erzeugen || Crea ordine d'acquisto
+scm.car.mode || Mode || الوسيلة || Mode || Modo || ذریعہ || Verkehrsträger || Modalità
+scm.car.new || New carrier || ناقل جديد || Nouveau transporteur || Nuevo transportista || نیا کیریئر || Neuer Spediteur || Nuovo vettore
+scm.car.rating || Rating || التقييم || Note || Calificación || درجہ بندی || Bewertung || Valutazione
+scm.fc.method || Method || الطريقة || Méthode || Método || طریقہ || Methode || Metodo
+scm.fc.new || New forecast || توقع جديد || Nouvelle prévision || Nuevo pronóstico || نئی پیشگوئی || Neue Prognose || Nuova previsione
+scm.kpi.carriers || Carriers || الناقلون || Transporteurs || Transportistas || کیریئرز || Spediteure || Vettori
+scm.kpi.delayed || Delayed shipments || شحنات متأخرة || Expéditions en retard || Envíos retrasados || تاخیر سے شپمنٹس || Verspätete Lieferungen || Spedizioni in ritardo
+scm.kpi.forecastQty || Forecast quantity || كمية التوقعات || Quantité prévue || Cantidad pronosticada || پیشگوئی مقدار || Prognosemenge || Quantità prevista
+scm.kpi.inTransit || In transit || في الطريق || En transit || En tránsito || راستے میں || Unterwegs || In transito
+scm.kpi.onTimePct || On-time delivery || التسليم في الموعد || Livraison à temps || Entrega a tiempo || بروقت ڈیلیوری || Termintreue || Consegne puntuali
+scm.list.forecast || Forecast by item || التوقعات حسب الصنف || Prévisions par article || Pronóstico por artículo || آئٹم کے لحاظ سے پیشگوئی || Prognose nach Artikel || Previsioni per articolo
+scm.list.shipments || Shipments by status || الشحنات حسب الحالة || Expéditions par statut || Envíos por estado || حالت کے لحاظ سے شپمنٹس || Lieferungen nach Status || Spedizioni per stato
+scm.nav.carriers || Carriers || الناقلون || Transporteurs || Transportistas || کیریئرز || Spediteure || Vettori
+scm.nav.forecast || Demand forecast || توقعات الطلب || Prévision de la demande || Pronóstico de demanda || طلب کی پیشگوئی || Bedarfsprognose || Previsione della domanda
+scm.nav.overview || Overview || نظرة عامة || Aperçu || Resumen || جائزہ || Übersicht || Panoramica
+scm.nav.shipments || Shipments || الشحنات || Expéditions || Envíos || شپمنٹس || Lieferungen || Spedizioni
+scm.sh.carrier || Carrier || الناقل || Transporteur || Transportista || کیریئر || Spediteur || Vettore
+scm.sh.deliver || Mark delivered || تحديد كمُسلَّمة || Marquer livré || Marcar entregado || ڈیلیور شدہ نشان کریں || Als geliefert markieren || Segna consegnata
+scm.sh.delivered || Delivered on || تاريخ التسليم || Livré le || Entregado el || ڈیلیوری کی تاریخ || Geliefert am || Consegnata il
+scm.sh.destination || Destination || الوجهة || Destination || Destino || منزل || Ziel || Destinazione
+scm.sh.dispatched || Dispatched on || تاريخ الإرسال || Expédié le || Despachado el || روانگی کی تاریخ || Versendet am || Spedita il
+scm.sh.eta || ETA || الوصول المتوقع || Arrivée prévue || Llegada estimada || متوقع آمد || Voraussichtl. Ankunft || Arrivo previsto
+scm.sh.new || New shipment || شحنة جديدة || Nouvelle expédition || Nuevo envío || نئی شپمنٹ || Neue Lieferung || Nuova spedizione
+scm.sh.origin || Origin || المنشأ || Origine || Origen || مبدا || Herkunft || Origine
+scm.sh.reference || Reference || المرجع || Référence || Referencia || حوالہ || Referenz || Riferimento
+scm.sh.tracking || Tracking no. || رقم التتبع || N° de suivi || N.º de seguimiento || ٹریکنگ نمبر || Sendungsnummer || N. tracciamento
+scm.sh.type || Type || النوع || Type || Tipo || قسم || Typ || Tipo
+scm.sub || Demand forecast, shipments and carriers || توقعات الطلب والشحنات والناقلون || Prévisions, expéditions et transporteurs || Pronóstico, envíos y transportistas || طلب کی پیشگوئی، شپمنٹس اور کیریئرز || Prognose, Lieferungen und Spediteure || Previsioni, spedizioni e vettori
+wh.count.counted || Counted || المعدود || Compté || Contado || گنتی شدہ || Gezählt || Contato
+wh.count.new || New stock count || جرد جديد || Nouvel inventaire || Nuevo conteo || نئی اسٹاک گنتی || Neue Inventur || Nuovo inventario
+wh.count.post || Post adjustments || ترحيل التسويات || Comptabiliser les écarts || Contabilizar ajustes || ایڈجسٹمنٹ پوسٹ کریں || Differenzen buchen || Registra rettifiche
+wh.count.system || System qty || كمية النظام || Qté système || Cant. sistema || سسٹم مقدار || Systembestand || Qtà sistema
+wh.count.varQty || Variance qty || كمية الفرق || Écart qté || Diferencia cant. || فرق مقدار || Differenzmenge || Qtà differenza
+wh.count.varValue || Variance value || قيمة الفرق || Valeur écart || Valor diferencia || فرق کی قدر || Differenzwert || Valore differenza
+wh.count.variance || Variance || الفرق || Écart || Diferencia || فرق || Differenz || Differenza
+wh.kpi.locations || Locations || المواقع || Emplacements || Ubicaciones || مقامات || Lagerplätze || Ubicazioni
+wh.kpi.lowStock || Low stock items || أصناف منخفضة المخزون || Articles en stock bas || Artículos con stock bajo || کم اسٹاک اشیاء || Artikel mit niedrigem Bestand || Articoli sotto scorta
+wh.kpi.openCounts || Open counts || جرد مفتوح || Inventaires ouverts || Conteos abiertos || کھلی گنتیاں || Offene Inventuren || Inventari aperti
+wh.kpi.openPicks || Open picks || التقاط مفتوح || Préparations ouvertes || Picking abierto || کھلی پکس || Offene Kommissionierungen || Prelievi aperti
+wh.kpi.skus || Items in stock || أصناف في المخزون || Articles en stock || Artículos en stock || اسٹاک میں اشیاء || Artikel im Bestand || Articoli in giacenza
+wh.kpi.stockValue || Stock value || قيمة المخزون || Valeur du stock || Valor del stock || اسٹاک کی قدر || Bestandswert || Valore giacenze
+wh.list.picks || Picks by status || الالتقاط حسب الحالة || Préparations par statut || Picking por estado || حالت کے لحاظ سے پکس || Kommissionierungen nach Status || Prelievi per stato
+wh.list.valueByBranch || Stock value by branch || قيمة المخزون حسب الفرع || Valeur du stock par agence || Valor del stock por sucursal || برانچ کے لحاظ سے اسٹاک کی قدر || Bestandswert je Filiale || Valore giacenze per filiale
+wh.loc || Location || الموقع || Emplacement || Ubicación || مقام || Lagerplatz || Ubicazione
+wh.loc.new || New location || موقع جديد || Nouvel emplacement || Nueva ubicación || نیا مقام || Neuer Lagerplatz || Nuova ubicazione
+wh.loc.parent || Parent location || الموقع الأب || Emplacement parent || Ubicación superior || بالائی مقام || Übergeordneter Platz || Ubicazione superiore
+wh.lowOnly || Low stock only || المخزون المنخفض فقط || Stock bas uniquement || Solo stock bajo || صرف کم اسٹاک || Nur niedriger Bestand || Solo sotto scorta
+wh.nav.counts || Stock counts || الجرد || Inventaires || Conteos || اسٹاک گنتیاں || Inventuren || Inventari
+wh.nav.locations || Locations || المواقع || Emplacements || Ubicaciones || مقامات || Lagerplätze || Ubicazioni
+wh.nav.overview || Overview || نظرة عامة || Aperçu || Resumen || جائزہ || Übersicht || Panoramica
+wh.nav.picks || Pick lists || قوائم الالتقاط || Bons de préparation || Listas de picking || پک لسٹ || Kommissionierlisten || Liste di prelievo
+wh.nav.setup || Setup || الإعداد || Configuration || Configuración || سیٹ اپ || Einrichtung || Impostazioni
+wh.nav.stock || Stock on hand || المخزون المتاح || Stock disponible || Stock disponible || موجود اسٹاک || Lagerbestand || Giacenze
+wh.pick.confirm || Confirm picked || تأكيد الالتقاط || Confirmer la préparation || Confirmar picking || پک کی تصدیق کریں || Kommissionierung bestätigen || Conferma prelievo
+wh.pick.new || New pick list || قائمة التقاط جديدة || Nouveau bon de préparation || Nueva lista de picking || نئی پک لسٹ || Neue Kommissionierliste || Nuova lista di prelievo
+wh.pick.picker || Picker || الملتقط || Préparateur || Preparador || پکر || Kommissionierer || Operatore
+wh.reorder || Reorder level || حد إعادة الطلب || Seuil de réappro. || Punto de pedido || دوبارہ آرڈر کی سطح || Meldebestand || Punto di riordino
+wh.stockValue || Stock value || قيمة المخزون || Valeur du stock || Valor del stock || اسٹاک کی قدر || Bestandswert || Valore giacenze
+wh.sub || Stock on hand, pick lists, stock counts and locations || المخزون وقوائم الالتقاط والجرد والمواقع || Stock, bons de préparation, inventaires et emplacements || Stock, listas de picking, conteos y ubicaciones || موجود اسٹاک، پک لسٹ، گنتی اور مقامات || Bestand, Kommissionierlisten, Inventuren und Lagerplätze || Giacenze, liste di prelievo, inventari e ubicazioni
+wh.unitCost || Unit cost || تكلفة الوحدة || Coût unitaire || Costo unitario || فی یونٹ لاگت || Stückkosten || Costo unitario
+blk.lists || Breakdown lists || قوائم التفصيل || Listes détaillées || Listas de desglose || تفصیلی فہرستیں || Aufschlüsselungen || Elenchi di dettaglio

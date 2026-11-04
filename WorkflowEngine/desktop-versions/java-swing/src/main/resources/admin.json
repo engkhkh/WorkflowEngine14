@@ -1,0 +1,32 @@
+{
+ "currencies": [
+  "SAR",
+  "USD",
+  "EUR",
+  "GBP",
+  "AED",
+  "KWD",
+  "QAR",
+  "BHD",
+  "OMR",
+  "EGP",
+  "JOD",
+  "LBP",
+  "IQD",
+  "MAD",
+  "TND",
+  "DZD",
+  "LYD",
+  "SDG",
+  "YER",
+  "TRY",
+  "PKR",
+  "INR",
+  "CAD",
+  "AUD",
+  "CHF",
+  "JPY",
+  "CNY"
+ ],
+ "inviteBranchesNote": true
+}

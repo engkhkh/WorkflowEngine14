@@ -1,0 +1,249 @@
+hr.sub || Employees, organization, leave, performance and recruitment in one place || الموظفون والهيكل التنظيمي والإجازات والأداء والتوظيف في مكان واحد || Employés, organisation, congés, performance et recrutement au même endroit || Empleados, organización, ausencias, desempeño y selección en un solo lugar || ملازمین، تنظیمی ڈھانچہ، چھٹیاں، کارکردگی اور بھرتی ایک جگہ || Mitarbeiter, Organisation, Abwesenheit, Leistung und Recruiting an einem Ort || Dipendenti, organizzazione, assenze, performance e selezione in un unico posto
+hr.requests || HR requests & workflows || طلبات وسير عمل الموارد البشرية || Demandes et workflows RH || Solicitudes y flujos de RR. HH. || ایچ آر درخواستیں اور ورک فلو || HR-Anträge & Workflows || Richieste e workflow HR
+hr.nav.overview || Overview || نظرة عامة || Vue d'ensemble || Resumen || جائزہ || Übersicht || Panoramica
+hr.nav.employees || Employees || الموظفون || Employés || Empleados || ملازمین || Mitarbeiter || Dipendenti
+hr.nav.org || Organization || الهيكل التنظيمي || Organisation || Organización || تنظیمی ڈھانچہ || Organisation || Organizzazione
+hr.nav.leave || Leave & absence || الإجازات والغياب || Congés et absences || Ausencias y permisos || چھٹیاں اور غیر حاضری || Urlaub & Abwesenheit || Ferie e assenze
+hr.nav.performance || Performance || الأداء || Performance || Desempeño || کارکردگی || Leistung || Performance
+hr.nav.recruitment || Recruitment || التوظيف || Recrutement || Selección || بھرتی || Recruiting || Selezione
+hr.nav.me || My HR (self-service) || خدماتي (الخدمة الذاتية) || Mes RH (libre-service) || Mis RR. HH. (autoservicio) || میرے ایچ آر (سیلف سروس) || Mein HR (Self-Service) || Il mio HR (self-service)
+hr.err.forbidden || You don't have the privilege for this. Ask an administrator. || ليست لديك صلاحية لهذا الإجراء. اطلب من المسؤول. || Vous n'avez pas le droit pour cela. Demandez à un administrateur. || No tiene el privilegio para esto. Consulte a un administrador. || آپ کے پاس اس کی اجازت نہیں۔ ایڈمنسٹریٹر سے رابطہ کریں۔ || Dafür fehlt Ihnen die Berechtigung. Fragen Sie einen Administrator. || Non hai il privilegio necessario. Rivolgiti a un amministratore.
+hr.err.network || Can't reach the server. || تعذّر الاتصال بالخادم. || Serveur injoignable. || No se puede conectar con el servidor. || سرور سے رابطہ نہیں ہو سکا۔ || Server nicht erreichbar. || Impossibile raggiungere il server.
+hr.err.generic || Something went wrong. || حدث خطأ ما. || Une erreur s'est produite. || Algo salió mal. || کچھ غلط ہو گیا۔ || Etwas ist schiefgelaufen. || Qualcosa è andato storto.
+hr.err.required || Please fill in the required fields (*). || يرجى تعبئة الحقول المطلوبة (*). || Veuillez remplir les champs obligatoires (*). || Complete los campos obligatorios (*). || براہِ کرم ضروری خانے (*) پُر کریں۔ || Bitte füllen Sie die Pflichtfelder (*) aus. || Compila i campi obbligatori (*).
+hr.err.dupEmp || That employee number already exists. || رقم الموظف موجود مسبقًا. || Ce numéro d'employé existe déjà. || Ese número de empleado ya existe. || یہ ملازم نمبر پہلے سے موجود ہے۔ || Diese Personalnummer existiert bereits. || Questo numero di dipendente esiste già.
+hr.err.dupCode || That code already exists. || هذا الرمز موجود مسبقًا. || Ce code existe déjà. || Ese código ya existe. || یہ کوڈ پہلے سے موجود ہے۔ || Dieser Code existiert bereits. || Questo codice esiste già.
+hr.saved || Saved. || تم الحفظ. || Enregistré. || Guardado. || محفوظ ہو گیا۔ || Gespeichert. || Salvato.
+hr.deleted || Deleted. || تم الحذف. || Supprimé. || Eliminado. || حذف ہو گیا۔ || Gelöscht. || Eliminato.
+hr.male || Male || ذكر || Homme || Hombre || مرد || Männlich || Maschio
+hr.female || Female || أنثى || Femme || Mujer || عورت || Weiblich || Femmina
+hr.st.Active || Active || على رأس العمل || Actif || Activo || فعال || Aktiv || Attivo
+hr.st.Probation || Probation || تحت التجربة || Période d'essai || Periodo de prueba || زیرِ آزمائش || Probezeit || Periodo di prova
+hr.st.OnLeave || On leave || في إجازة || En congé || De permiso || چھٹی پر || Im Urlaub || In congedo
+hr.st.Terminated || Terminated || منتهي الخدمة || Sorti || Dado de baja || سبکدوش || Ausgeschieden || Cessato
+hr.sec.personal || Personal information || المعلومات الشخصية || Informations personnelles || Información personal || ذاتی معلومات || Persönliche Angaben || Dati personali
+hr.sec.employment || Employment & organization || الوظيفة والهيكل التنظيمي || Emploi et organisation || Empleo y organización || ملازمت اور تنظیم || Beschäftigung & Organisation || Impiego e organizzazione
+hr.sec.compensation || Compensation || التعويضات || Rémunération || Compensación || معاوضہ || Vergütung || Retribuzione
+hr.sec.access || Portal access || الوصول إلى البوابة || Accès au portail || Acceso al portal || پورٹل تک رسائی || Portalzugang || Accesso al portale
+hr.f.empNo || Employee no. || رقم الموظف || N° d'employé || N.º de empleado || ملازم نمبر || Personalnummer || N. dipendente
+hr.f.fullName || Full name || الاسم الكامل || Nom complet || Nombre completo || پورا نام || Vollständiger Name || Nome completo
+hr.f.fullNameAr || Name (Arabic) || الاسم بالعربية || Nom (arabe) || Nombre (árabe) || نام (عربی) || Name (Arabisch) || Nome (arabo)
+hr.f.email || E-mail || البريد الإلكتروني || E-mail || Correo electrónico || ای میل || E-Mail || E-mail
+hr.f.phone || Mobile / phone || الجوال / الهاتف || Mobile / téléphone || Móvil / teléfono || موبائل / فون || Mobil / Telefon || Cellulare / telefono
+hr.f.nationality || Nationality || الجنسية || Nationalité || Nacionalidad || قومیت || Nationalität || Nazionalità
+hr.f.gender || Gender || الجنس || Genre || Género || جنس || Geschlecht || Genere
+hr.f.nationalId || National ID / Iqama || الهوية / الإقامة || N° d'identité / Iqama || ID nacional / Iqama || قومی شناخت / اقامہ || Ausweis- / Iqama-Nr. || ID nazionale / Iqama
+hr.f.birthDate || Date of birth || تاريخ الميلاد || Date de naissance || Fecha de nacimiento || تاریخِ پیدائش || Geburtsdatum || Data di nascita
+hr.f.hireDate || Hire date || تاريخ التعيين || Date d'embauche || Fecha de contratación || تاریخِ تقرری || Eintrittsdatum || Data di assunzione
+hr.f.terminationDate || End of service date || تاريخ انتهاء الخدمة || Date de fin de service || Fecha de baja || خدمت ختم ہونے کی تاریخ || Austrittsdatum || Data di cessazione
+hr.f.status || Status || الحالة || Statut || Estado || حالت || Status || Stato
+hr.f.company || Company || الشركة || Société || Empresa || کمپنی || Gesellschaft || Società
+hr.f.branch || Branch || الفرع || Agence || Sucursal || برانچ || Filiale || Filiale
+hr.f.unit || Department / unit || القسم / الوحدة || Département / unité || Departamento / unidad || شعبہ / یونٹ || Abteilung / Einheit || Reparto / unità
+hr.f.position || Position / job title || المسمى الوظيفي || Poste || Puesto || عہدہ || Position || Posizione
+hr.f.job || Job || الوظيفة || Emploi || Función || ملازمت || Stelle || Mansione
+hr.f.grade || Grade || الدرجة || Grade || Grado || گریڈ || Gehaltsgruppe || Grado
+hr.f.managerEmpNo || Manager (emp. no.) || المدير (رقم الموظف) || Responsable (n° d'employé) || Jefe (n.º de empleado) || مینیجر (ملازم نمبر) || Vorgesetzter (Personalnr.) || Responsabile (n. dip.)
+hr.f.costCenter || Cost center || مركز التكلفة || Centre de coûts || Centro de costos || کاسٹ سینٹر || Kostenstelle || Centro di costo
+hr.f.location || Location || الموقع || Lieu || Ubicación || مقام || Standort || Sede
+hr.f.legalEntity || Legal entity || الكيان القانوني || Entité juridique || Entidad legal || قانونی ادارہ || Rechtseinheit || Entità legale
+hr.f.businessUnit || Business unit || وحدة الأعمال || Unité commerciale || Unidad de negocio || بزنس یونٹ || Geschäftsbereich || Business unit
+hr.f.basicSalary || Basic salary || الراتب الأساسي || Salaire de base || Salario base || بنیادی تنخواہ || Grundgehalt || Stipendio base
+hr.f.username || Portal username || اسم مستخدم البوابة || Identifiant du portail || Usuario del portal || پورٹل صارف نام || Portal-Benutzername || Nome utente portale
+hr.f.usernameHint || Links this employee to a portal login so they get self-service (leave, goals, profile). || يربط الموظف بحساب في البوابة ليحصل على الخدمة الذاتية (الإجازات والأهداف والملف). || Relie l'employé à un compte du portail pour le libre-service (congés, objectifs, profil). || Vincula al empleado con un acceso al portal para el autoservicio (permisos, objetivos, perfil). || ملازم کو پورٹل لاگ اِن سے جوڑتا ہے تاکہ سیلف سروس (چھٹیاں، اہداف، پروفائل) ملے۔ || Verknüpft den Mitarbeiter mit einem Portal-Login für Self-Service (Urlaub, Ziele, Profil). || Collega il dipendente a un accesso al portale per il self-service (ferie, obiettivi, profilo).
+hr.f.notes || Notes || ملاحظات || Notes || Notas || نوٹس || Notizen || Note
+hr.emp.new || New employee || موظف جديد || Nouvel employé || Nuevo empleado || نیا ملازم || Neuer Mitarbeiter || Nuovo dipendente
+hr.emp.edit || Edit employee || تعديل الموظف || Modifier l'employé || Editar empleado || ملازم میں ترمیم || Mitarbeiter bearbeiten || Modifica dipendente
+hr.emp.search || Search by name, number, e-mail, position… || ابحث بالاسم أو الرقم أو البريد أو الوظيفة… || Rechercher par nom, numéro, e-mail, poste… || Buscar por nombre, número, correo, puesto… || نام، نمبر، ای میل، عہدے سے تلاش کریں… || Suche nach Name, Nummer, E-Mail, Position… || Cerca per nome, numero, e-mail, posizione…
+hr.emp.allStatus || All statuses || كل الحالات || Tous les statuts || Todos los estados || تمام حالتیں || Alle Status || Tutti gli stati
+hr.emp.allUnits || All departments || كل الأقسام || Tous les départements || Todos los departamentos || تمام شعبے || Alle Abteilungen || Tutti i reparti
+hr.emp.export || Export Excel || تصدير Excel || Exporter Excel || Exportar Excel || ایکسل ایکسپورٹ || Excel exportieren || Esporta Excel
+hr.emp.import || Import from Excel / CSV || استيراد من Excel / CSV || Importer depuis Excel / CSV || Importar desde Excel / CSV || ایکسل / CSV سے امپورٹ || Aus Excel / CSV importieren || Importa da Excel / CSV
+hr.emp.none || No employees yet. Add one, or import your whole list from Excel. || لا يوجد موظفون بعد. أضف موظفًا أو استورد القائمة كاملة من Excel. || Aucun employé. Ajoutez-en un ou importez toute la liste depuis Excel. || Aún no hay empleados. Agregue uno o importe toda la lista desde Excel. || ابھی کوئی ملازم نہیں۔ ایک شامل کریں یا پوری فہرست ایکسل سے امپورٹ کریں۔ || Noch keine Mitarbeiter. Fügen Sie einen hinzu oder importieren Sie die ganze Liste aus Excel. || Nessun dipendente. Aggiungine uno o importa l'intero elenco da Excel.
+hr.emp.count || {from}–{to} of {n} || {from}–{to} من {n} || {from}–{to} sur {n} || {from}–{to} de {n} || {n} میں سے {from}–{to} || {from}–{to} von {n} || {from}–{to} di {n}
+hr.emp.created || Employee added. || تمت إضافة الموظف. || Employé ajouté. || Empleado agregado. || ملازم شامل ہو گیا۔ || Mitarbeiter hinzugefügt. || Dipendente aggiunto.
+hr.emp.saved || Employee saved. || تم حفظ الموظف. || Employé enregistré. || Empleado guardado. || ملازم محفوظ ہو گیا۔ || Mitarbeiter gespeichert. || Dipendente salvato.
+hr.emp.deleted || Employee deleted. || تم حذف الموظف. || Employé supprimé. || Empleado eliminado. || ملازم حذف ہو گیا۔ || Mitarbeiter gelöscht. || Dipendente eliminato.
+hr.emp.deleteConfirm || Delete {name}? || حذف {name}؟ || Supprimer {name} ? || ¿Eliminar a {name}? || {name} کو حذف کریں؟ || {name} löschen? || Eliminare {name}?
+hr.emp.deleteHint || To keep the history, set the status to Terminated instead of deleting. || للإبقاء على السجل، غيّر الحالة إلى «منتهي الخدمة» بدل الحذف. || Pour garder l'historique, passez le statut à « Sorti » au lieu de supprimer. || Para conservar el historial, cambie el estado a «Dado de baja» en lugar de eliminar. || ریکارڈ برقرار رکھنے کے لیے حذف کرنے کے بجائے حالت "سبکدوش" کر دیں۔ || Um den Verlauf zu behalten, setzen Sie den Status auf „Ausgeschieden“, statt zu löschen. || Per mantenere lo storico, imposta lo stato su «Cessato» invece di eliminare.
+hr.prof.tenure || Time in service || مدة الخدمة || Ancienneté || Antigüedad || مدتِ ملازمت || Betriebszugehörigkeit || Anzianità
+hr.prof.ym || {y} yr {m} mo || {y} سنة {m} شهر || {y} an(s) {m} mois || {y} a {m} m || {y} سال {m} ماہ || {y} J. {m} M. || {y} a {m} m
+hr.prof.reports || Direct reports || المرؤوسون المباشرون || Collaborateurs directs || Subordinados directos || براہِ راست ماتحت || Direkte Mitarbeiter || Riporti diretti
+hr.prof.notFound || Employee not found. || لم يتم العثور على الموظف. || Employé introuvable. || Empleado no encontrado. || ملازم نہیں ملا۔ || Mitarbeiter nicht gefunden. || Dipendente non trovato.
+hr.imp.title || Import employees || استيراد الموظفين || Importer des employés || Importar empleados || ملازمین امپورٹ کریں || Mitarbeiter importieren || Importa dipendenti
+hr.imp.intro || Upload an Excel (.xlsx) or CSV file with one employee per row. Columns are matched to employee fields automatically (English or Arabic headings) and you can adjust them before importing. || ارفع ملف Excel (.xlsx) أو CSV بحيث يكون لكل موظف صف. تتم مطابقة الأعمدة مع حقول الموظف تلقائيًا (بعناوين إنجليزية أو عربية) ويمكنك تعديلها قبل الاستيراد. || Chargez un fichier Excel (.xlsx) ou CSV avec un employé par ligne. Les colonnes sont associées automatiquement (titres en anglais ou arabe) et vous pouvez les ajuster avant l'import. || Suba un archivo Excel (.xlsx) o CSV con un empleado por fila. Las columnas se asocian automáticamente (encabezados en inglés o árabe) y puede ajustarlas antes de importar. || ایکسل (.xlsx) یا CSV فائل اپ لوڈ کریں جس میں ہر قطار ایک ملازم ہو۔ کالم خود بخود ملازم کے خانوں سے ملائے جاتے ہیں (انگریزی یا عربی عنوانات) اور امپورٹ سے پہلے آپ انہیں بدل سکتے ہیں۔ || Laden Sie eine Excel- (.xlsx) oder CSV-Datei mit einem Mitarbeiter pro Zeile hoch. Die Spalten werden automatisch zugeordnet (englische oder arabische Überschriften) und können vor dem Import angepasst werden. || Carica un file Excel (.xlsx) o CSV con un dipendente per riga. Le colonne vengono abbinate automaticamente (intestazioni in inglese o arabo) e puoi modificarle prima dell'importazione.
+hr.imp.drop || Drop the file here or click to choose || أفلت الملف هنا أو انقر للاختيار || Déposez le fichier ici ou cliquez pour choisir || Suelte el archivo aquí o haga clic para elegir || فائل یہاں چھوڑیں یا منتخب کرنے کے لیے کلک کریں || Datei hier ablegen oder klicken zum Auswählen || Trascina qui il file o fai clic per sceglierlo
+hr.imp.template || Download template || تنزيل النموذج || Télécharger le modèle || Descargar plantilla || ٹیمپلیٹ ڈاؤن لوڈ کریں || Vorlage herunterladen || Scarica il modello
+hr.imp.templateHint || Required columns: empNo, fullName. || الأعمدة المطلوبة: empNo و fullName. || Colonnes obligatoires : empNo, fullName. || Columnas obligatorias: empNo, fullName. || ضروری کالم: empNo، fullName۔ || Pflichtspalten: empNo, fullName. || Colonne obbligatorie: empNo, fullName.
+hr.imp.reading || Reading the file… || جارٍ قراءة الملف… || Lecture du fichier… || Leyendo el archivo… || فائل پڑھی جا رہی ہے… || Datei wird gelesen… || Lettura del file…
+hr.imp.badType || Please choose an .xlsx or .csv file. || يرجى اختيار ملف .xlsx أو .csv. || Choisissez un fichier .xlsx ou .csv. || Elija un archivo .xlsx o .csv. || براہِ کرم .xlsx یا .csv فائل منتخب کریں۔ || Bitte wählen Sie eine .xlsx- oder .csv-Datei. || Scegli un file .xlsx o .csv.
+hr.imp.empty || The file has no rows. || الملف لا يحتوي على صفوف. || Le fichier est vide. || El archivo no tiene filas. || فائل میں کوئی قطار نہیں۔ || Die Datei enthält keine Zeilen. || Il file non contiene righe.
+hr.imp.tooMany || Up to 5,000 rows per file. Split the file and import in parts. || حتى 5000 صف في الملف. قسّم الملف واستورده على دفعات. || 5 000 lignes maximum par fichier. Découpez le fichier. || Hasta 5000 filas por archivo. Divida el archivo. || فی فائل زیادہ سے زیادہ 5000 قطاریں۔ فائل تقسیم کر کے امپورٹ کریں۔ || Maximal 5.000 Zeilen pro Datei. Teilen Sie die Datei auf. || Massimo 5.000 righe per file. Dividi il file.
+hr.imp.readError || The file could not be read. Check that it is a valid Excel or CSV file. || تعذّرت قراءة الملف. تأكد أنه ملف Excel أو CSV صالح. || Lecture impossible. Vérifiez qu'il s'agit d'un fichier Excel ou CSV valide. || No se pudo leer el archivo. Compruebe que sea un Excel o CSV válido. || فائل پڑھی نہیں جا سکی۔ یقینی بنائیں کہ یہ درست ایکسل یا CSV فائل ہے۔ || Die Datei konnte nicht gelesen werden. Prüfen Sie, ob sie eine gültige Excel- oder CSV-Datei ist. || Impossibile leggere il file. Verifica che sia un file Excel o CSV valido.
+hr.imp.rows || {n} data rows || {n} صف بيانات || {n} lignes de données || {n} filas de datos || {n} ڈیٹا قطاریں || {n} Datenzeilen || {n} righe di dati
+hr.imp.hasHeader || First row contains column headings || الصف الأول يحتوي على عناوين الأعمدة || La première ligne contient les titres || La primera fila contiene los encabezados || پہلی قطار میں کالم کے عنوانات ہیں || Erste Zeile enthält Spaltenüberschriften || La prima riga contiene le intestazioni
+hr.imp.mapping || Column mapping || مطابقة الأعمدة || Correspondance des colonnes || Asignación de columnas || کالم کی ترتیب || Spaltenzuordnung || Mappatura delle colonne
+hr.imp.column || Column || عمود || Colonne || Columna || کالم || Spalte || Colonna
+hr.imp.skip || — skip this column — || — تجاهل هذا العمود — || — ignorer cette colonne — || — omitir esta columna — || — یہ کالم چھوڑیں — || — Spalte überspringen — || — ignora questa colonna —
+hr.imp.needMap || Map these required fields || طابق هذه الحقول المطلوبة || Associez ces champs obligatoires || Asigne estos campos obligatorios || یہ ضروری خانے ملائیں || Ordnen Sie diese Pflichtfelder zu || Abbina questi campi obbligatori
+hr.imp.preview || Preview || معاينة || Aperçu || Vista previa || پیش منظر || Vorschau || Anteprima
+hr.imp.valid || {n} valid || {n} صالح || {n} valides || {n} válidas || {n} درست || {n} gültig || {n} valide
+hr.imp.invalid || {n} with problems || {n} بها مشاكل || {n} avec erreurs || {n} con problemas || {n} میں مسائل || {n} mit Fehlern || {n} con problemi
+hr.imp.more || …and {n} more rows || …و{n} صفوف أخرى || …et {n} lignes de plus || …y {n} filas más || …اور {n} مزید قطاریں || …und {n} weitere Zeilen || …e altre {n} righe
+hr.imp.update || Update employees that already exist (same employee no.) || تحديث الموظفين الموجودين (نفس رقم الموظف) || Mettre à jour les employés existants (même n°) || Actualizar los empleados existentes (mismo n.º) || موجودہ ملازمین (وہی نمبر) اپ ڈیٹ کریں || Vorhandene Mitarbeiter aktualisieren (gleiche Personalnr.) || Aggiorna i dipendenti già esistenti (stesso n.)
+hr.imp.run || Import {n} employees || استيراد {n} موظف || Importer {n} employés || Importar {n} empleados || {n} ملازمین امپورٹ کریں || {n} Mitarbeiter importieren || Importa {n} dipendenti
+hr.imp.back || Back || رجوع || Retour || Atrás || واپس || Zurück || Indietro
+hr.imp.close || Close || إغلاق || Fermer || Cerrar || بند کریں || Schließen || Chiudi
+hr.imp.done || Import finished || اكتمل الاستيراد || Import terminé || Importación finalizada || امپورٹ مکمل || Import abgeschlossen || Importazione completata
+hr.imp.created || Added || أُضيف || Ajoutés || Agregados || شامل || Hinzugefügt || Aggiunti
+hr.imp.updated || Updated || حُدّث || Mis à jour || Actualizados || اپ ڈیٹ || Aktualisiert || Aggiornati
+hr.imp.skipped || Skipped || تم تخطيه || Ignorés || Omitidos || چھوڑے گئے || Übersprungen || Saltati
+hr.imp.failed || Failed || فشل || Échecs || Con error || ناکام || Fehlgeschlagen || Falliti
+hr.imp.errors || Rows that were not imported || الصفوف التي لم تُستورد || Lignes non importées || Filas no importadas || جو قطاریں امپورٹ نہیں ہوئیں || Nicht importierte Zeilen || Righe non importate
+hr.imp.reason || Reason || السبب || Motif || Motivo || وجہ || Grund || Motivo
+hr.imp.e.required || required || مطلوب || obligatoire || obligatorio || ضروری || Pflichtfeld || obbligatorio
+hr.imp.e.date || not a valid date || تاريخ غير صالح || date invalide || fecha no válida || تاریخ درست نہیں || kein gültiges Datum || data non valida
+hr.imp.e.number || not a number || ليس رقمًا || pas un nombre || no es un número || نمبر نہیں || keine Zahl || non è un numero
+hr.imp.e.status || unknown status || حالة غير معروفة || statut inconnu || estado desconocido || نامعلوم حالت || unbekannter Status || stato sconosciuto
+hr.imp.e.gender || unknown value || قيمة غير معروفة || valeur inconnue || valor desconocido || نامعلوم قدر || unbekannter Wert || valore sconosciuto
+hr.imp.e.email || not a valid e-mail || بريد غير صالح || e-mail invalide || correo no válido || ای میل درست نہیں || ungültige E-Mail || e-mail non valida
+hr.imp.e.dup || duplicate in the file || مكرر في الملف || doublon dans le fichier || duplicado en el archivo || فائل میں دہرایا گیا || doppelt in der Datei || duplicato nel file
+hr.ref.position || Positions || المسميات الوظيفية || Postes || Puestos || عہدے || Positionen || Posizioni
+hr.ref.job || Jobs || الوظائف || Emplois || Funciones || ملازمتیں || Stellen || Mansioni
+hr.ref.grade || Grades || الدرجات || Grades || Grados || گریڈز || Gehaltsgruppen || Gradi
+hr.ref.costcenter || Cost centers || مراكز التكلفة || Centres de coûts || Centros de costos || کاسٹ سینٹرز || Kostenstellen || Centri di costo
+hr.ref.location || Locations || المواقع || Lieux || Ubicaciones || مقامات || Standorte || Sedi
+hr.ref.entity || Legal entities || الكيانات القانونية || Entités juridiques || Entidades legales || قانونی ادارے || Rechtseinheiten || Entità legali
+hr.ref.bu || Business units || وحدات الأعمال || Unités commerciales || Unidades de negocio || بزنس یونٹس || Geschäftsbereiche || Business unit
+hr.ref.leavetype || Leave types || أنواع الإجازات || Types de congé || Tipos de permiso || چھٹی کی اقسام || Urlaubsarten || Tipi di ferie
+hr.lvl.division || Division || قطاع || Division || División || ڈویژن || Bereich || Divisione
+hr.lvl.department || Department || إدارة || Département || Departamento || شعبہ || Abteilung || Reparto
+hr.lvl.section || Section || قسم || Section || Sección || سیکشن || Sektion || Sezione
+hr.lvl.team || Team || فريق || Équipe || Equipo || ٹیم || Team || Team
+hr.org.structure || Structure || الهيكل || Structure || Estructura || ڈھانچہ || Struktur || Struttura
+hr.org.structureHint || Company › Division › Department › Section › Team. Employees are counted per unit. || الشركة ‹ القطاع ‹ الإدارة ‹ القسم ‹ الفريق. يُحسب الموظفون لكل وحدة. || Société › Division › Département › Section › Équipe. Les employés sont comptés par unité. || Empresa › División › Departamento › Sección › Equipo. Los empleados se cuentan por unidad. || کمپنی › ڈویژن › شعبہ › سیکشن › ٹیم۔ ملازمین ہر یونٹ کے حساب سے گنے جاتے ہیں۔ || Gesellschaft › Bereich › Abteilung › Sektion › Team. Mitarbeiter werden je Einheit gezählt. || Società › Divisione › Reparto › Sezione › Team. I dipendenti sono contati per unità.
+hr.org.companiesLink || Companies & branches are managed in Administration. || تُدار الشركات والفروع من صفحة الإدارة. || Les sociétés et agences se gèrent dans Administration. || Las empresas y sucursales se gestionan en Administración. || کمپنیاں اور برانچیں ایڈمنسٹریشن میں سنبھالی جاتی ہیں۔ || Gesellschaften und Filialen verwalten Sie unter Administration. || Società e filiali si gestiscono in Amministrazione.
+hr.org.newUnit || New unit || وحدة جديدة || Nouvelle unité || Nueva unidad || نئی یونٹ || Neue Einheit || Nuova unità
+hr.org.editUnit || Edit unit || تعديل الوحدة || Modifier l'unité || Editar unidad || یونٹ میں ترمیم || Einheit bearbeiten || Modifica unità
+hr.org.addChild || Add a sub-unit || إضافة وحدة فرعية || Ajouter une sous-unité || Agregar subunidad || ذیلی یونٹ شامل کریں || Untereinheit hinzufügen || Aggiungi sotto-unità
+hr.org.unit || Unit || الوحدة || Unité || Unidad || یونٹ || Einheit || Unità
+hr.org.level || Level || المستوى || Niveau || Nivel || سطح || Ebene || Livello
+hr.org.manager || Manager || المدير || Responsable || Responsable || مینیجر || Leitung || Responsabile
+hr.org.headcount || Headcount || عدد الموظفين || Effectif || Plantilla || ملازمین کی تعداد || Mitarbeiterzahl || Organico
+hr.org.noUnits || No organization units yet. Add the first division or department. || لا توجد وحدات تنظيمية بعد. أضف أول قطاع أو إدارة. || Aucune unité. Ajoutez la première division ou le premier département. || Aún no hay unidades. Agregue la primera división o departamento. || ابھی کوئی تنظیمی یونٹ نہیں۔ پہلا ڈویژن یا شعبہ شامل کریں۔ || Noch keine Einheiten. Fügen Sie den ersten Bereich oder die erste Abteilung hinzu. || Nessuna unità. Aggiungi la prima divisione o il primo reparto.
+hr.org.code || Code || الرمز || Code || Código || کوڈ || Code || Codice
+hr.org.name || Name || الاسم || Nom || Nombre || نام || Name || Nome
+hr.org.nameAr || Name (Arabic) || الاسم بالعربية || Nom (arabe) || Nombre (árabe) || نام (عربی) || Name (Arabisch) || Nome (arabo)
+hr.org.parent || Reports to (parent unit) || تابعة لـ (الوحدة الأعلى) || Rattaché à (unité parente) || Depende de (unidad superior) || ماتحت (بالائی یونٹ) || Gehört zu (übergeordnete Einheit) || Dipende da (unità superiore)
+hr.org.top || top level || المستوى الأعلى || niveau supérieur || nivel superior || اعلیٰ سطح || oberste Ebene || livello più alto
+hr.org.selfParent || A unit can't be its own parent. || لا يمكن أن تكون الوحدة تابعة لنفسها. || Une unité ne peut pas être son propre parent. || Una unidad no puede depender de sí misma. || یونٹ اپنی ہی بالائی یونٹ نہیں ہو سکتی۔ || Eine Einheit kann nicht ihre eigene übergeordnete sein. || Un'unità non può dipendere da sé stessa.
+hr.org.refHint || These lists fill the drop-downs on the employee form. Employees keep the code or name you pick. || تملأ هذه القوائم الخيارات في نموذج الموظف. يحتفظ الموظف بالرمز أو الاسم الذي تختاره. || Ces listes alimentent les menus de la fiche employé. L'employé conserve le code ou le nom choisi. || Estas listas llenan los desplegables del formulario de empleado. El empleado conserva el código o nombre elegido. || یہ فہرستیں ملازم فارم کے ڈراپ ڈاؤن بھرتی ہیں۔ ملازم آپ کا منتخب کردہ کوڈ یا نام رکھتا ہے۔ || Diese Listen füllen die Auswahllisten im Mitarbeiterformular. Der Mitarbeiter behält den gewählten Code oder Namen. || Questi elenchi riempiono i menu della scheda dipendente. Il dipendente conserva il codice o il nome scelto.
+hr.org.newRef || Add new || إضافة جديد || Ajouter || Agregar nuevo || نیا شامل کریں || Neu hinzufügen || Aggiungi
+hr.org.daysYear || Days per year || الأيام في السنة || Jours par an || Días por año || سالانہ دن || Tage pro Jahr || Giorni all'anno
+hr.org.used || Employees || الموظفون || Employés || Empleados || ملازمین || Mitarbeiter || Dipendenti
+hr.org.deleteConfirm || Delete {name}? Employees keep their current text. || حذف {name}؟ يحتفظ الموظفون بالنص الحالي. || Supprimer {name} ? Les employés gardent leur texte actuel. || ¿Eliminar {name}? Los empleados conservan su texto actual. || {name} حذف کریں؟ ملازمین کا موجودہ متن برقرار رہتا ہے۔ || {name} löschen? Mitarbeiter behalten ihren aktuellen Text. || Eliminare {name}? I dipendenti mantengono il testo attuale.
+hr.lv.requests || Requests || الطلبات || Demandes || Solicitudes || درخواستیں || Anträge || Richieste
+hr.lv.balances || Balances || الأرصدة || Soldes || Saldos || بیلنس || Salden || Saldi
+hr.lv.new || Request leave || طلب إجازة || Demander un congé || Solicitar permiso || چھٹی کی درخواست || Urlaub beantragen || Richiedi ferie
+hr.lv.employee || Employee || الموظف || Employé || Empleado || ملازم || Mitarbeiter || Dipendente
+hr.lv.type || Leave type || نوع الإجازة || Type de congé || Tipo de permiso || چھٹی کی قسم || Urlaubsart || Tipo di ferie
+hr.lv.period || Period || الفترة || Période || Periodo || مدت || Zeitraum || Periodo
+hr.lv.from || From || من || Du || Desde || از || Von || Dal
+hr.lv.to || To || إلى || Au || Hasta || تا || Bis || Al
+hr.lv.days || Days || الأيام || Jours || Días || دن || Tage || Giorni
+hr.lv.reason || Reason || السبب || Motif || Motivo || وجہ || Grund || Motivo
+hr.lv.approve || Approve || موافقة || Approuver || Aprobar || منظور کریں || Genehmigen || Approva
+hr.lv.reject || Reject || رفض || Rejeter || Rechazar || مسترد کریں || Ablehnen || Rifiuta
+hr.lv.cancel || Cancel request || إلغاء الطلب || Annuler la demande || Cancelar solicitud || درخواست منسوخ کریں || Antrag zurückziehen || Annulla richiesta
+hr.lv.submit || Submit request || إرسال الطلب || Envoyer la demande || Enviar solicitud || درخواست بھیجیں || Antrag senden || Invia richiesta
+hr.lv.sent || Leave request sent. || تم إرسال طلب الإجازة. || Demande envoyée. || Solicitud enviada. || چھٹی کی درخواست بھیج دی گئی۔ || Urlaubsantrag gesendet. || Richiesta inviata.
+hr.lv.over || This is more than the remaining balance. || هذا أكثر من الرصيد المتبقي. || C'est plus que le solde restant. || Es más que el saldo restante. || یہ باقی بیلنس سے زیادہ ہے۔ || Das ist mehr als der Resturlaub. || È più del saldo residuo.
+hr.lv.badDates || The end date is before the start date. || تاريخ النهاية قبل البداية. || La date de fin précède le début. || La fecha final es anterior al inicio. || اختتامی تاریخ آغاز سے پہلے ہے۔ || Das Enddatum liegt vor dem Beginn. || La data di fine precede l'inizio.
+hr.lv.usedOf || {used} of {total} used || استُخدم {used} من {total} || {used} sur {total} utilisés || {used} de {total} usados || {total} میں سے {used} استعمال || {used} von {total} genommen || {used} di {total} usati
+hr.lv.noTypes || Add leave types and employees first (Organization › Leave types). || أضف أنواع الإجازات والموظفين أولًا (الهيكل التنظيمي ‹ أنواع الإجازات). || Ajoutez d'abord des types de congé et des employés (Organisation › Types de congé). || Agregue primero tipos de permiso y empleados (Organización › Tipos de permiso). || پہلے چھٹی کی اقسام اور ملازمین شامل کریں (تنظیمی ڈھانچہ ‹ چھٹی کی اقسام)۔ || Legen Sie zuerst Urlaubsarten und Mitarbeiter an (Organisation › Urlaubsarten). || Aggiungi prima tipi di ferie e dipendenti (Organizzazione › Tipi di ferie).
+hr.lvst.Pending || Pending || قيد الانتظار || En attente || Pendiente || زیرِ التوا || Ausstehend || In attesa
+hr.lvst.Approved || Approved || موافق عليها || Approuvé || Aprobado || منظور || Genehmigt || Approvato
+hr.lvst.Rejected || Rejected || مرفوضة || Rejeté || Rechazado || مسترد || Abgelehnt || Rifiutato
+hr.lvst.Cancelled || Cancelled || ملغاة || Annulé || Cancelado || منسوخ || Zurückgezogen || Annullato
+hr.me.notLinked || Your login isn't linked to an employee record yet. Ask HR to enter your username (or e-mail) on your employee profile. || حسابك غير مرتبط بسجل موظف بعد. اطلب من الموارد البشرية إدخال اسم المستخدم (أو البريد) في ملفك. || Votre compte n'est pas encore lié à une fiche employé. Demandez aux RH de saisir votre identifiant (ou e-mail). || Su acceso aún no está vinculado a un empleado. Pida a RR. HH. que registre su usuario (o correo) en su ficha. || آپ کا لاگ اِن ابھی کسی ملازم ریکارڈ سے منسلک نہیں۔ ایچ آر سے کہیں کہ آپ کا صارف نام (یا ای میل) آپ کی پروفائل میں درج کرے۔ || Ihr Login ist noch keinem Mitarbeiter zugeordnet. Bitten Sie HR, Ihren Benutzernamen (oder Ihre E-Mail) im Profil einzutragen. || Il tuo accesso non è ancora collegato a un dipendente. Chiedi a HR di inserire il tuo nome utente (o e-mail) nel profilo.
+hr.me.myDocs || My requests || طلباتي || Mes demandes || Mis solicitudes || میری درخواستیں || Meine Anträge || Le mie richieste
+hr.pf.goals || Goals & KPIs || الأهداف ومؤشرات الأداء || Objectifs et KPI || Objetivos y KPI || اہداف اور KPIs || Ziele & KPIs || Obiettivi e KPI
+hr.pf.reviews || Reviews || التقييمات || Évaluations || Evaluaciones || جائزے || Beurteilungen || Valutazioni
+hr.pf.distribution || Rating distribution || توزيع التقييمات || Répartition des notes || Distribución de calificaciones || ریٹنگ کی تقسیم || Bewertungsverteilung || Distribuzione dei voti
+hr.pf.cycle || Cycle || الدورة || Cycle || Ciclo || سائیکل || Zyklus || Ciclo
+hr.pf.newGoal || New goal || هدف جديد || Nouvel objectif || Nuevo objetivo || نیا ہدف || Neues Ziel || Nuovo obiettivo
+hr.pf.newReview || New review || تقييم جديد || Nouvelle évaluation || Nueva evaluación || نیا جائزہ || Neue Beurteilung || Nuova valutazione
+hr.pf.goal || Goal || الهدف || Objectif || Objetivo || ہدف || Ziel || Obiettivo
+hr.pf.review || Review || تقييم || Évaluation || Evaluación || جائزہ || Beurteilung || Valutazione
+hr.pf.weight || Weight || الوزن || Poids || Peso || وزن || Gewicht || Peso
+hr.pf.target || Target || المستهدف || Cible || Meta || ہدف کی مقدار || Zielwert || Target
+hr.pf.actual || Actual || الفعلي || Réel || Real || حقیقی || Ist || Effettivo
+hr.pf.progress || Progress || التقدّم || Progression || Avance || پیش رفت || Fortschritt || Avanzamento
+hr.pf.stage || Stage || المرحلة || Étape || Etapa || مرحلہ || Phase || Fase
+hr.pf.rating || Rating || التقييم || Note || Calificación || ریٹنگ || Bewertung || Voto
+hr.pf.comments || Comments || الملاحظات || Commentaires || Comentarios || تبصرے || Kommentare || Commenti
+hr.pf.reviewer || Reviewer || المُقيِّم || Évaluateur || Evaluador || جائزہ لینے والا || Beurteiler || Valutatore
+hr.pf.avg || Average || المتوسط || Moyenne || Promedio || اوسط || Durchschnitt || Media
+hr.pf.attain || Goal attainment || تحقيق الأهداف || Atteinte des objectifs || Logro de objetivos || اہداف کا حصول || Zielerreichung || Raggiungimento obiettivi
+hr.pf.goalsN || Goals || الأهداف || Objectifs || Objetivos || اہداف || Ziele || Obiettivi
+hr.pf.attainPct || Attainment || نسبة التحقيق || Atteinte || Logro || حصول || Erreichung || Raggiungimento
+hr.pf.st.MidYear || Mid-year || منتصف العام || Mi-année || Mitad de año || سال کے وسط میں || Jahresmitte || Metà anno
+hr.pf.st.Final || Final || نهائي || Final || Final || حتمی || Final || Finale
+hr.pf.st.Calibrated || Calibrated || بعد المعايرة || Calibré || Calibrado || کیلیبریٹڈ || Kalibriert || Calibrato
+hr.rc.pipeline || Pipeline || مسار المرشحين || Pipeline || Embudo || پائپ لائن || Pipeline || Pipeline
+hr.rc.vacancies || Vacancies || الوظائف الشاغرة || Postes ouverts || Vacantes || خالی آسامیاں || Offene Stellen || Posizioni aperte
+hr.rc.allVacancies || All vacancies || كل الوظائف الشاغرة || Tous les postes || Todas las vacantes || تمام خالی آسامیاں || Alle Stellen || Tutte le posizioni
+hr.rc.newVacancy || New vacancy || وظيفة شاغرة جديدة || Nouveau poste || Nueva vacante || نئی آسامی || Neue Stelle || Nuova posizione
+hr.rc.newCandidate || New candidate || مرشح جديد || Nouveau candidat || Nuevo candidato || نیا امیدوار || Neuer Bewerber || Nuovo candidato
+hr.rc.title || Job title || المسمى الوظيفي || Intitulé du poste || Título del puesto || عہدے کا نام || Stellenbezeichnung || Titolo
+hr.rc.openings || Openings || عدد الشواغر || Postes à pourvoir || Plazas || آسامیاں || Offene Plätze || Posti
+hr.rc.candidates || Candidates || المرشحون || Candidats || Candidatos || امیدوار || Bewerber || Candidati
+hr.rc.vacancy || Vacancy || الوظيفة الشاغرة || Poste || Vacante || آسامی || Stelle || Posizione
+hr.rc.source || Source || المصدر || Source || Fuente || ذریعہ || Quelle || Fonte
+hr.rc.stage || Stage || المرحلة || Étape || Etapa || مرحلہ || Phase || Fase
+hr.rc.next || Next || التالي || Suivant || Siguiente || اگلا || Weiter || Avanti
+hr.rc.hire || Hire → employee || تعيين ← موظف || Embaucher → employé || Contratar → empleado || تقرری ← ملازم || Einstellen → Mitarbeiter || Assumi → dipendente
+hr.rc.reject || Reject || رفض || Rejeter || Rechazar || مسترد || Absagen || Scarta
+hr.rc.hired || Candidate hired and added to employees. || تم تعيين المرشح وإضافته إلى الموظفين. || Candidat embauché et ajouté aux employés. || Candidato contratado y agregado a empleados. || امیدوار کی تقرری ہو گئی اور ملازمین میں شامل ہو گیا۔ || Bewerber eingestellt und zu Mitarbeitern hinzugefügt. || Candidato assunto e aggiunto ai dipendenti.
+hr.rc.st.Applied || Applied || تقدّم || Candidature || Postulado || درخواست دی || Beworben || Candidato
+hr.rc.st.Screening || Screening || الفرز || Présélection || Preselección || جانچ پڑتال || Vorauswahl || Screening
+hr.rc.st.Interview || Interview || المقابلة || Entretien || Entrevista || انٹرویو || Interview || Colloquio
+hr.rc.st.Offer || Offer || العرض || Offre || Oferta || پیشکش || Angebot || Offerta
+hr.rc.st.Hired || Hired || تم التعيين || Embauché || Contratado || تقرری ہو گئی || Eingestellt || Assunto
+hr.rc.st.Rejected || Rejected || مرفوض || Rejeté || Rechazado || مسترد || Abgelehnt || Scartato
+hr.rc.vs.Open || Open || مفتوحة || Ouvert || Abierta || کھلی || Offen || Aperta
+hr.rc.vs.OnHold || On hold || معلّقة || En attente || En pausa || روکی گئی || Pausiert || In pausa
+hr.rc.vs.Closed || Closed || مغلقة || Fermé || Cerrada || بند || Geschlossen || Chiusa
+hr.ov.total || Total employees || إجمالي الموظفين || Total employés || Total de empleados || کل ملازمین || Mitarbeiter gesamt || Dipendenti totali
+hr.ov.activeN || {n} active || {n} على رأس العمل || {n} actifs || {n} activos || {n} فعال || {n} aktiv || {n} attivi
+hr.ov.hires || New hires || التعيينات الجديدة || Nouvelles embauches || Nuevas contrataciones || نئی تقرریاں || Neueinstellungen || Nuove assunzioni
+hr.ov.last12 || last 12 months || آخر 12 شهرًا || 12 derniers mois || últimos 12 meses || پچھلے 12 ماہ || letzte 12 Monate || ultimi 12 mesi
+hr.ov.turnover || Turnover || معدل الدوران || Turnover || Rotación || ٹرن اوور || Fluktuation || Turnover
+hr.ov.leavers || {n} left in 12 months || غادر {n} خلال 12 شهرًا || {n} départs en 12 mois || {n} bajas en 12 meses || 12 ماہ میں {n} رخصت || {n} Abgänge in 12 Monaten || {n} uscite in 12 mesi
+hr.ov.onLeaveToday || On leave today || في إجازة اليوم || En congé aujourd'hui || De permiso hoy || آج چھٹی پر || Heute im Urlaub || In ferie oggi
+hr.ov.pendingLeave || {n} requests pending || {n} طلبات معلقة || {n} demandes en attente || {n} solicitudes pendientes || {n} درخواستیں زیرِ التوا || {n} Anträge offen || {n} richieste in attesa
+hr.ov.vacancies || Open vacancies || الوظائف الشاغرة || Postes ouverts || Vacantes abiertas || کھلی آسامیاں || Offene Stellen || Posizioni aperte
+hr.ov.openings || {n} openings · {c} candidates || {n} شواغر · {c} مرشحين || {n} postes · {c} candidats || {n} plazas · {c} candidatos || {n} آسامیاں · {c} امیدوار || {n} Plätze · {c} Bewerber || {n} posti · {c} candidati
+hr.ov.tenure || Average tenure || متوسط مدة الخدمة || Ancienneté moyenne || Antigüedad media || اوسط مدتِ ملازمت || Ø Betriebszugehörigkeit || Anzianità media
+hr.ov.years || years || سنوات || ans || años || سال || Jahre || anni
+hr.ov.payroll || Monthly basic payroll || كشف الرواتب الأساسية الشهري || Masse salariale de base mensuelle || Nómina base mensual || ماہانہ بنیادی تنخواہیں || Monatliche Grundgehälter || Stipendi base mensili
+hr.ov.basicMonthly || basic salaries, current staff || الرواتب الأساسية للموظفين الحاليين || salaires de base, effectif actuel || salarios base, plantilla actual || بنیادی تنخواہیں، موجودہ عملہ || Grundgehälter, aktuelle Belegschaft || stipendi base, personale attuale
+hr.ov.hiresTrend || Hires per month || التعيينات شهريًا || Embauches par mois || Contrataciones por mes || ماہانہ تقرریاں || Einstellungen pro Monat || Assunzioni al mese
+hr.ov.byUnit || Headcount by department || الموظفون حسب الإدارة || Effectif par département || Plantilla por departamento || شعبے کے لحاظ سے ملازمین || Mitarbeiter nach Abteilung || Organico per reparto
+hr.ov.byNationality || Headcount by nationality || الموظفون حسب الجنسية || Effectif par nationalité || Plantilla por nacionalidad || قومیت کے لحاظ سے ملازمین || Mitarbeiter nach Nationalität || Organico per nazionalità
+hr.ov.byLocation || Headcount by location || الموظفون حسب الموقع || Effectif par lieu || Plantilla por ubicación || مقام کے لحاظ سے ملازمین || Mitarbeiter nach Standort || Organico per sede
+hr.ov.byGender || Headcount by gender || الموظفون حسب الجنس || Effectif par genre || Plantilla por género || جنس کے لحاظ سے ملازمین || Mitarbeiter nach Geschlecht || Organico per genere
+perm.hr.reports.view || View HR dashboard & analytics || عرض لوحة الموارد البشرية والتحليلات || Voir le tableau de bord RH et les analyses || Ver panel y analítica de RR. HH. || ایچ آر ڈیش بورڈ اور تجزیات دیکھیں || HR-Dashboard & Analysen ansehen || Vedere dashboard e analisi HR
+perm.hr.employees.view || View employee records || عرض سجلات الموظفين || Voir les fiches employés || Ver fichas de empleados || ملازمین کے ریکارڈ دیکھیں || Mitarbeiterdaten ansehen || Vedere le schede dipendenti
+perm.hr.employees.manage || Add, edit & delete employees || إضافة الموظفين وتعديلهم وحذفهم || Ajouter, modifier et supprimer des employés || Agregar, editar y eliminar empleados || ملازمین شامل، ترمیم اور حذف کریں || Mitarbeiter anlegen, ändern & löschen || Aggiungere, modificare ed eliminare dipendenti
+perm.hr.employees.import || Import employees from Excel / CSV || استيراد الموظفين من Excel / CSV || Importer des employés depuis Excel / CSV || Importar empleados desde Excel / CSV || ایکسل / CSV سے ملازمین امپورٹ کریں || Mitarbeiter aus Excel / CSV importieren || Importare dipendenti da Excel / CSV
+perm.hr.employees.salary || See & edit salaries || عرض الرواتب وتعديلها || Voir et modifier les salaires || Ver y editar salarios || تنخواہیں دیکھیں اور تبدیل کریں || Gehälter sehen & ändern || Vedere e modificare gli stipendi
+perm.hr.org.view || View organization structure || عرض الهيكل التنظيمي || Voir la structure de l'organisation || Ver la estructura organizativa || تنظیمی ڈھانچہ دیکھیں || Organisationsstruktur ansehen || Vedere la struttura organizzativa
+perm.hr.org.manage || Manage organization structure & HR lists || إدارة الهيكل التنظيمي وقوائم الموارد البشرية || Gérer la structure et les listes RH || Gestionar estructura y listas de RR. HH. || تنظیمی ڈھانچہ اور ایچ آر فہرستیں سنبھالیں || Struktur & HR-Listen verwalten || Gestire struttura e liste HR
+perm.hr.leave.view || View everyone's leave & balances || عرض إجازات وأرصدة الجميع || Voir les congés et soldes de tous || Ver permisos y saldos de todos || سب کی چھٹیاں اور بیلنس دیکھیں || Urlaub & Salden aller sehen || Vedere ferie e saldi di tutti
+perm.hr.leave.approve || Approve leave & file for others || الموافقة على الإجازات وتقديمها نيابة عن الآخرين || Approuver les congés et saisir pour d'autres || Aprobar permisos y registrar por otros || چھٹیاں منظور کریں اور دوسروں کی طرف سے درج کریں || Urlaub genehmigen & für andere erfassen || Approvare ferie e inserire per altri
+perm.hr.performance.view || View everyone's goals & reviews || عرض أهداف وتقييمات الجميع || Voir les objectifs et évaluations de tous || Ver objetivos y evaluaciones de todos || سب کے اہداف اور جائزے دیکھیں || Ziele & Beurteilungen aller sehen || Vedere obiettivi e valutazioni di tutti
+perm.hr.performance.manage || Manage goals & reviews || إدارة الأهداف والتقييمات || Gérer objectifs et évaluations || Gestionar objetivos y evaluaciones || اہداف اور جائزے سنبھالیں || Ziele & Beurteilungen verwalten || Gestire obiettivi e valutazioni
+perm.hr.recruitment.view || View recruitment || عرض التوظيف || Voir le recrutement || Ver selección || بھرتی دیکھیں || Recruiting ansehen || Vedere la selezione
+perm.hr.recruitment.manage || Manage vacancies & candidates || إدارة الوظائف الشاغرة والمرشحين || Gérer postes et candidats || Gestionar vacantes y candidatos || آسامیاں اور امیدوار سنبھالیں || Stellen & Bewerber verwalten || Gestire posizioni e candidati
+perm.hr.self || Employee self-service (my profile, leave, goals) || الخدمة الذاتية للموظف (ملفي وإجازاتي وأهدافي) || Libre-service employé (profil, congés, objectifs) || Autoservicio del empleado (perfil, permisos, objetivos) || ملازم سیلف سروس (میری پروفائل، چھٹیاں، اہداف) || Mitarbeiter-Self-Service (Profil, Urlaub, Ziele) || Self-service dipendente (profilo, ferie, obiettivi)

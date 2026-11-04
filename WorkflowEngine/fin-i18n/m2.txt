@@ -1,0 +1,113 @@
+crm.acc.new || New account || حساب جديد || Nouveau compte || Nueva cuenta || نیا اکاؤنٹ || Neues Konto || Nuovo account
+crm.act.new || New activity || نشاط جديد || Nouvelle activité || Nueva actividad || نئی سرگرمی || Neue Aktivität || Nuova attività
+crm.cmp.new || New campaign || حملة جديدة || Nouvelle campagne || Nueva campaña || نئی مہم || Neue Kampagne || Nuova campagna
+crm.convert || Convert lead || تحويل العميل المحتمل || Convertir le prospect || Convertir lead || لیڈ تبدیل کریں || Lead konvertieren || Converti lead
+crm.convertHint || Creates an account and a contact from this lead. || ينشئ حسابًا وجهة اتصال من هذا العميل المحتمل. || Crée un compte et un contact à partir de ce prospect. || Crea una cuenta y un contacto a partir de este lead. || اس لیڈ سے اکاؤنٹ اور رابطہ بنتا ہے۔ || Erstellt aus diesem Lead ein Konto und einen Kontakt. || Crea un account e un contatto da questo lead.
+crm.convertOpp || Also create an opportunity || إنشاء فرصة أيضًا || Créer aussi une opportunité || Crear también una oportunidad || موقع بھی بنائیں || Auch eine Chance anlegen || Crea anche un'opportunità
+crm.ct.new || New contact || جهة اتصال جديدة || Nouveau contact || Nuevo contacto || نیا رابطہ || Neuer Kontakt || Nuovo contatto
+crm.f.account || Account || الحساب || Compte || Cuenta || اکاؤنٹ || Konto || Account
+crm.f.actType || Type || النوع || Type || Tipo || قسم || Typ || Tipo
+crm.f.amount || Amount || المبلغ || Montant || Importe || رقم || Betrag || Importo
+crm.f.city || City || المدينة || Ville || Ciudad || شہر || Stadt || Città
+crm.f.closeDate || Expected close || الإغلاق المتوقع || Clôture prévue || Cierre previsto || متوقع اختتام || Erwarteter Abschluss || Chiusura prevista
+crm.f.cmpType || Channel || القناة || Canal || Canal || چینل || Kanal || Canale
+crm.f.company || Company || الشركة || Société || Empresa || کمپنی || Firma || Azienda
+crm.f.estValue || Estimated value || القيمة التقديرية || Valeur estimée || Valor estimado || تخمینی قدر || Geschätzter Wert || Valore stimato
+crm.f.industry || Industry || القطاع || Secteur || Sector || صنعت || Branche || Settore
+crm.f.opportunity || Opportunity || الفرصة || Opportunité || Oportunidad || موقع || Chance || Opportunità
+crm.f.owner || Owner || المالك || Responsable || Responsable || مالک || Verantwortlich || Responsabile
+crm.f.probability || Probability % || الاحتمال % || Probabilité % || Probabilidad % || امکان % || Wahrscheinlichkeit % || Probabilità %
+crm.f.source || Source || المصدر || Source || Origen || ماخذ || Quelle || Fonte
+crm.f.spent || Spent || المصروف || Dépensé || Gastado || خرچ || Ausgegeben || Speso
+crm.f.stage || Stage || المرحلة || Étape || Etapa || مرحلہ || Phase || Fase
+crm.f.subject || Subject || الموضوع || Objet || Asunto || موضوع || Betreff || Oggetto
+crm.f.taxNo || Tax number || الرقم الضريبي || N° fiscal || N.º fiscal || ٹیکس نمبر || Steuernummer || Partita IVA
+crm.f.title || Job title || المسمى الوظيفي || Fonction || Cargo || عہدہ || Position || Ruolo
+crm.f.website || Website || الموقع الإلكتروني || Site web || Sitio web || ویب سائٹ || Webseite || Sito web
+crm.kpi.activitiesDue || Activities due || أنشطة مستحقة || Activités dues || Actividades vencidas || واجب الادا سرگرمیاں || Fällige Aktivitäten || Attività in scadenza
+crm.kpi.leadsNew || New leads || عملاء محتملون جدد || Nouveaux prospects || Leads nuevos || نئے لیڈز || Neue Leads || Nuovi lead
+crm.kpi.openCount || Open opportunities || فرص مفتوحة || Opportunités ouvertes || Oportunidades abiertas || کھلے مواقع || Offene Chancen || Opportunità aperte
+crm.kpi.pipeline || Pipeline value || قيمة خط المبيعات || Valeur du pipeline || Valor del pipeline || پائپ لائن کی قدر || Pipeline-Wert || Valore pipeline
+crm.kpi.weighted || Weighted pipeline || خط المبيعات المرجّح || Pipeline pondéré || Pipeline ponderado || وزنی پائپ لائن || Gewichtete Pipeline || Pipeline ponderata
+crm.kpi.winRate || Win rate || معدل الفوز || Taux de réussite || Tasa de éxito || جیت کی شرح || Gewinnquote || Tasso di vittoria
+crm.kpi.wonMonth || Won this month || مكسوب هذا الشهر || Gagné ce mois || Ganado este mes || اس ماہ جیتا || Diesen Monat gewonnen || Vinto questo mese
+crm.lead.new || New lead || عميل محتمل جديد || Nouveau prospect || Nuevo lead || نیا لیڈ || Neuer Lead || Nuovo lead
+crm.lead.none || No leads yet. || لا يوجد عملاء محتملون بعد. || Aucun prospect. || Aún no hay leads. || ابھی کوئی لیڈ نہیں۔ || Noch keine Leads. || Ancora nessun lead.
+crm.list.bySource || Leads by source || العملاء المحتملون حسب المصدر || Prospects par source || Leads por origen || ماخذ کے لحاظ سے لیڈز || Leads nach Quelle || Lead per fonte
+crm.list.byStage || Pipeline by stage || خط المبيعات حسب المرحلة || Pipeline par étape || Pipeline por etapa || مرحلے کے لحاظ سے پائپ لائن || Pipeline nach Phase || Pipeline per fase
+crm.list.leadsByStatus || Leads by status || العملاء المحتملون حسب الحالة || Prospects par statut || Leads por estado || حالت کے لحاظ سے لیڈز || Leads nach Status || Lead per stato
+crm.list.topOpen || Largest open opportunities || أكبر الفرص المفتوحة || Plus grandes opportunités ouvertes || Mayores oportunidades abiertas || سب سے بڑے کھلے مواقع || Größte offene Chancen || Maggiori opportunità aperte
+crm.nav.accounts || Accounts || الحسابات || Comptes || Cuentas || اکاؤنٹس || Konten || Account
+crm.nav.activities || Activities || الأنشطة || Activités || Actividades || سرگرمیاں || Aktivitäten || Attività
+crm.nav.campaigns || Campaigns || الحملات || Campagnes || Campañas || مہمات || Kampagnen || Campagne
+crm.nav.contacts || Contacts || جهات الاتصال || Contacts || Contactos || رابطے || Kontakte || Contatti
+crm.nav.leads || Leads || العملاء المحتملون || Prospects || Leads || لیڈز || Leads || Lead
+crm.nav.opportunities || Opportunities || الفرص || Opportunités || Oportunidades || مواقع || Chancen || Opportunità
+crm.nav.overview || Overview || نظرة عامة || Aperçu || Resumen || جائزہ || Übersicht || Panoramica
+crm.nav.quotes || Quotes || عروض الأسعار || Devis || Cotizaciones || کوٹیشنز || Angebote || Preventivi
+crm.nav.setup || Setup || الإعداد || Configuration || Configuración || سیٹ اپ || Einrichtung || Impostazioni
+crm.opp.lost || Lost || خسارة || Perdue || Perdida || ہار گئی || Verloren || Persa
+crm.opp.new || New opportunity || فرصة جديدة || Nouvelle opportunité || Nueva oportunidad || نیا موقع || Neue Chance || Nuova opportunità
+crm.opp.reason || Reason || السبب || Motif || Motivo || وجہ || Grund || Motivo
+crm.opp.reopen || Reopen || إعادة فتح || Rouvrir || Reabrir || دوبارہ کھولیں || Wieder öffnen || Riapri
+crm.opp.won || Won || مكسوبة || Gagnée || Ganada || جیت گئی || Gewonnen || Vinta
+crm.q.accept || Accept || قبول || Accepter || Aceptar || قبول کریں || Annehmen || Accetta
+crm.q.discount || Discount % || الخصم % || Remise % || Descuento % || رعایت % || Rabatt % || Sconto %
+crm.q.lines || Quote lines || بنود العرض || Lignes du devis || Líneas de cotización || کوٹیشن لائنز || Angebotspositionen || Righe preventivo
+crm.q.new || New quote || عرض سعر جديد || Nouveau devis || Nueva cotización || نئی کوٹیشن || Neues Angebot || Nuovo preventivo
+crm.q.send || Send || إرسال || Envoyer || Enviar || بھیجیں || Senden || Invia
+crm.q.tax || Tax % || الضريبة % || Taxe % || Impuesto % || ٹیکس % || Steuer % || Imposta %
+crm.q.valid || Valid until || صالح حتى || Valable jusqu'au || Válida hasta || کارآمد تا || Gültig bis || Valido fino al
+crm.setup.sources || Lead sources (comma separated) || مصادر العملاء المحتملين (مفصولة بفواصل) || Sources de prospects (séparées par des virgules) || Orígenes de leads (separados por comas) || لیڈ ماخذ (کوما سے الگ) || Lead-Quellen (kommagetrennt) || Fonti dei lead (separate da virgola)
+crm.setup.stages || Pipeline stages (comma separated, in order) || مراحل خط المبيعات (مفصولة بفواصل بالترتيب) || Étapes du pipeline (séparées par des virgules, dans l'ordre) || Etapas del pipeline (separadas por comas, en orden) || پائپ لائن مراحل (کوما سے الگ، ترتیب سے) || Pipeline-Phasen (kommagetrennt, der Reihe nach) || Fasi della pipeline (separate da virgola, in ordine)
+crm.setup.stagesHint || Won and Lost are always available. || "مكسوبة" و"خسارة" متاحتان دائمًا. || « Gagnée » et « Perdue » sont toujours disponibles. || «Ganada» y «Perdida» siempre están disponibles. || جیت اور ہار ہمیشہ دستیاب ہیں۔ || Gewonnen und Verloren sind immer verfügbar. || Vinta e Persa sono sempre disponibili.
+crm.setup.tax || Default tax % || الضريبة الافتراضية % || Taxe par défaut % || Impuesto por defecto % || ڈیفالٹ ٹیکس % || Standardsteuer % || Imposta predefinita %
+crm.sub || Leads, opportunities, accounts and quotes || العملاء المحتملون والفرص والحسابات وعروض الأسعار || Prospects, opportunités, comptes et devis || Leads, oportunidades, cuentas y cotizaciones || لیڈز، مواقع، اکاؤنٹس اور کوٹیشنز || Leads, Chancen, Konten und Angebote || Lead, opportunità, account e preventivi
+epm.basis || Basis || الأساس || Base || Base || بنیاد || Grundlage || Base
+epm.fc.new || New forecast || توقع جديد || Nouvelle prévision || Nuevo pronóstico || نئی پیشگوئی || Neue Prognose || Nuova previsione
+epm.kpi.approved || Approved plans || خطط معتمدة || Plans approuvés || Planes aprobados || منظور شدہ منصوبے || Genehmigte Pläne || Piani approvati
+epm.kpi.forecastTotal || Forecast total || إجمالي التوقعات || Total prévisions || Total pronóstico || کل پیشگوئی || Prognose gesamt || Totale previsioni
+epm.kpi.planTotal || Plan total || إجمالي الخطط || Total des plans || Total de planes || کل منصوبے || Plan gesamt || Totale piani
+epm.kpi.plans || Plans || الخطط || Plans || Planes || منصوبے || Pläne || Piani
+epm.line.new || New plan line || بند خطة جديد || Nouvelle ligne de plan || Nueva línea de plan || نئی منصوبہ لائن || Neue Planzeile || Nuova riga di piano
+epm.lines || Plan lines || بنود الخطة || Lignes de plan || Líneas de plan || منصوبہ لائنز || Planzeilen || Righe di piano
+epm.list.byCostCenter || Plan by cost center || الخطة حسب مركز التكلفة || Plan par centre de coûts || Plan por centro de costo || لاگت مرکز کے لحاظ سے منصوبہ || Plan nach Kostenstelle || Piano per centro di costo
+epm.list.plansByStatus || Plans by status || الخطط حسب الحالة || Plans par statut || Planes por estado || حالت کے لحاظ سے منصوبے || Pläne nach Status || Piani per stato
+epm.nav.forecast || Forecast || التوقعات || Prévisions || Pronóstico || پیشگوئی || Prognose || Previsioni
+epm.nav.overview || Overview || نظرة عامة || Aperçu || Resumen || جائزہ || Übersicht || Panoramica
+epm.nav.plans || Budget plans || خطط الميزانية || Plans budgétaires || Planes presupuestarios || بجٹ منصوبے || Budgetpläne || Piani di budget
+epm.nav.setup || Setup || الإعداد || Configuration || Configuración || سیٹ اپ || Einrichtung || Impostazioni
+epm.nav.variance || Variance || الانحراف || Écarts || Desviación || فرق || Abweichung || Scostamento
+epm.plan || Plan || الخطة || Plan || Plan || منصوبہ || Plan || Piano
+epm.plan.new || New budget plan || خطة ميزانية جديدة || Nouveau plan budgétaire || Nuevo plan presupuestario || نیا بجٹ منصوبہ || Neuer Budgetplan || Nuovo piano di budget
+epm.publish || Publish to Finance || نشر إلى المالية || Publier vers Finance || Publicar en Finanzas || مالیات میں شائع کریں || An Finanzen veröffentlichen || Pubblica in Contabilità
+epm.scenario || Scenario || السيناريو || Scénario || Escenario || منظر نامہ || Szenario || Scenario
+epm.setup.year || Default fiscal year || السنة المالية الافتراضية || Exercice par défaut || Año fiscal por defecto || ڈیفالٹ مالی سال || Standard-Geschäftsjahr || Anno fiscale predefinito
+epm.sub || Budgeting, forecasting and variance analysis || الميزانية والتوقعات وتحليل الانحرافات || Budgets, prévisions et analyse des écarts || Presupuestos, pronósticos y análisis de desviaciones || بجٹ، پیشگوئی اور فرق کا تجزیہ || Budgetierung, Prognose und Abweichungsanalyse || Budget, previsioni e analisi degli scostamenti
+epm.variance || Variance || الانحراف || Écart || Desviación || فرق || Abweichung || Scostamento
+epm.variance.none || No published budgets yet. Approve and publish a plan to compare it with actuals. || لا توجد ميزانيات منشورة. اعتمد خطة وانشرها لمقارنتها بالفعلي. || Aucun budget publié. Approuvez et publiez un plan pour le comparer au réel. || Aún no hay presupuestos publicados. Apruebe y publique un plan para compararlo con lo real. || ابھی کوئی شائع شدہ بجٹ نہیں۔ موازنہ کے لیے منصوبہ منظور اور شائع کریں۔ || Noch keine veröffentlichten Budgets. Plan genehmigen und veröffentlichen, um ihn mit den Ist-Werten zu vergleichen. || Nessun budget pubblicato. Approva e pubblica un piano per confrontarlo con il consuntivo.
+epm.version || Version || الإصدار || Version || Versión || ورژن || Version || Versione
+erp.addLine || Add line || إضافة بند || Ajouter une ligne || Añadir línea || لائن شامل کریں || Zeile hinzufügen || Aggiungi riga
+erp.allStatus || All statuses || كل الحالات || Tous les statuts || Todos los estados || تمام حالتیں || Alle Status || Tutti gli stati
+erp.autoCode || Leave empty for an automatic number || اتركه فارغًا لرقم تلقائي || Laisser vide pour un numéro automatique || Déjelo vacío para un número automático || خودکار نمبر کے لیے خالی چھوڑیں || Leer lassen für automatische Nummer || Lascia vuoto per numero automatico
+erp.done || Done || تم || Terminé || Hecho || مکمل || Fertig || Fatto
+erp.f.address || Address || العنوان || Adresse || Dirección || پتہ || Adresse || Indirizzo
+erp.f.amount || Amount || المبلغ || Montant || Importe || رقم || Betrag || Importo
+erp.f.branch || Branch || الفرع || Agence || Sucursal || برانچ || Filiale || Filiale
+erp.f.code || Code || الرمز || Code || Código || کوڈ || Code || Codice
+erp.f.date || Date || التاريخ || Date || Fecha || تاریخ || Datum || Data
+erp.f.description || Description || الوصف || Description || Descripción || تفصیل || Beschreibung || Descrizione
+erp.f.due || Due date || تاريخ الاستحقاق || Échéance || Vencimiento || واجب الادا تاریخ || Fälligkeit || Scadenza
+erp.f.email || Email || البريد الإلكتروني || E-mail || Correo || ای میل || E-Mail || Email
+erp.f.end || End || النهاية || Fin || Fin || اختتام || Ende || Fine
+erp.f.name || Name || الاسم || Nom || Nombre || نام || Name || Nome
+erp.f.notes || Notes || ملاحظات || Notes || Notas || نوٹس || Notizen || Note
+erp.f.phone || Phone || الهاتف || Téléphone || Teléfono || فون || Telefon || Telefono
+erp.f.price || Price || السعر || Prix || Precio || قیمت || Preis || Prezzo
+erp.f.qty || Qty || الكمية || Qté || Cant. || مقدار || Menge || Qtà
+erp.f.start || Start || البداية || Début || Inicio || آغاز || Beginn || Inizio
+erp.f.status || Status || الحالة || Statut || Estado || حالت || Status || Stato
+erp.f.total || Total || الإجمالي || Total || Total || کل || Gesamt || Totale
+erp.new || New || جديد || Nouveau || Nuevo || نیا || Neu || Nuovo
+erp.required || Please fill in the required fields. || يرجى تعبئة الحقول المطلوبة. || Veuillez remplir les champs obligatoires. || Complete los campos obligatorios. || براہ کرم مطلوبہ خانے پُر کریں۔ || Bitte Pflichtfelder ausfüllen. || Compila i campi obbligatori.
+erp.setup.title || Module defaults || إعدادات الوحدة الافتراضية || Paramètres par défaut du module || Valores por defecto del módulo || ماڈیول کی ڈیفالٹ ترتیبات || Modul-Standardwerte || Impostazioni predefinite del modulo

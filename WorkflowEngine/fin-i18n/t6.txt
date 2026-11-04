@@ -1,0 +1,224 @@
+module.pos || Point of sale || نقاط البيع || Point de vente || Punto de venta || پوائنٹ آف سیل || Kassensystem || Punto vendita
+module.pos.desc || Tills, shifts, products, promotions, loyalty and branch stock || الكاشير والورديات والمنتجات والعروض والولاء ومخزون الفروع || Caisses, sessions, produits, promotions, fidélité et stock par succursale || Cajas, turnos, productos, promociones, fidelidad e inventario por sucursal || کیش رجسٹر، شفٹس، مصنوعات، پروموشنز، لائلٹی اور برانچ اسٹاک || Kassen, Schichten, Produkte, Aktionen, Treue und Filialbestand || Casse, turni, prodotti, promozioni, fedeltà e scorte per filiale
+perm.group.pos || Point of sale || نقاط البيع || Point de vente || Punto de venta || پوائنٹ آف سیل || Kassensystem || Punto vendita
+perm.pos.view || View POS sales & catalogue || عرض مبيعات وكتالوج نقاط البيع || Voir les ventes et le catalogue || Ver ventas y catálogo del TPV || POS فروخت اور کیٹلاگ دیکھیں || Kassenverkäufe und Katalog ansehen || Vedere vendite e catalogo POS
+perm.pos.sell || Sell at the till & open shifts || البيع على الكاشير وفتح الورديات || Vendre en caisse et ouvrir des sessions || Vender en caja y abrir turnos || کیش رجسٹر پر فروخت اور شفٹ کھولنا || An der Kasse verkaufen und Schichten öffnen || Vendere in cassa e aprire turni
+perm.pos.discount || Give manual discounts || منح خصومات يدوية || Accorder des remises manuelles || Aplicar descuentos manuales || دستی رعایت دینا || Manuelle Rabatte geben || Concedere sconti manuali
+perm.pos.refund || Refund & return sales || استرجاع المبيعات والمرتجعات || Rembourser et retourner des ventes || Reembolsar y devolver ventas || فروخت واپس اور ریفنڈ کرنا || Verkäufe erstatten und retournieren || Rimborsare e rendere vendite
+perm.pos.void || Void sales || إلغاء المبيعات || Annuler des ventes || Anular ventas || فروخت منسوخ کرنا || Verkäufe stornieren || Annullare vendite
+perm.pos.shifts.manage || See all shifts & cash movements || عرض كل الورديات والحركات النقدية || Voir toutes les sessions et mouvements de caisse || Ver todos los turnos y movimientos de caja || تمام شفٹس اور نقد حرکات دیکھیں || Alle Schichten und Kassenbewegungen sehen || Vedere tutti i turni e movimenti di cassa
+perm.pos.products.manage || Manage products & categories || إدارة المنتجات والفئات || Gérer produits et catégories || Gestionar productos y categorías || مصنوعات اور زمرے سنبھالنا || Produkte und Kategorien verwalten || Gestire prodotti e categorie
+perm.pos.customers.manage || Manage POS customers & loyalty || إدارة عملاء نقاط البيع والولاء || Gérer clients et fidélité || Gestionar clientes y fidelidad || POS کسٹمرز اور لائلٹی سنبھالنا || Kunden und Treueprogramm verwalten || Gestire clienti e fedeltà
+perm.pos.promotions.manage || Manage promotions || إدارة العروض الترويجية || Gérer les promotions || Gestionar promociones || پروموشنز سنبھالنا || Aktionen verwalten || Gestire promozioni
+perm.pos.stock.view || View branch stock || عرض مخزون الفروع || Voir le stock des succursales || Ver inventario de sucursales || برانچ اسٹاک دیکھیں || Filialbestand ansehen || Vedere scorte delle filiali
+perm.pos.stock.manage || Adjust stock & transfer between branches || تعديل المخزون والتحويل بين الفروع || Ajuster le stock et transférer entre succursales || Ajustar inventario y transferir entre sucursales || اسٹاک ایڈجسٹ اور برانچوں میں منتقل کرنا || Bestand anpassen und zwischen Filialen umlagern || Rettificare scorte e trasferire tra filiali
+perm.pos.reports.view || View POS dashboard & reports || عرض لوحة نقاط البيع والتقارير || Voir le tableau de bord et les rapports || Ver panel e informes del TPV || POS ڈیش بورڈ اور رپورٹس دیکھیں || Kassen-Dashboard und Berichte ansehen || Vedere dashboard e report POS
+perm.pos.setup || POS setup (tax, loyalty, registers) || إعداد نقاط البيع (الضريبة والولاء والكاشيرات) || Paramétrage (taxe, fidélité, caisses) || Configuración (impuesto, fidelidad, cajas) || POS سیٹ اپ (ٹیکس، لائلٹی، رجسٹر) || Einrichtung (Steuer, Treue, Kassen) || Impostazioni (imposta, fedeltà, casse)
+blk.pos.trend || Sales trend || اتجاه المبيعات || Tendance des ventes || Tendencia de ventas || فروخت کا رجحان || Verkaufsverlauf || Andamento vendite
+blk.pos.payments || Payment methods || طرق الدفع || Modes de paiement || Métodos de pago || ادائیگی کے طریقے || Zahlungsarten || Metodi di pagamento
+blk.pos.top || Best sellers || الأكثر مبيعاً || Meilleures ventes || Más vendidos || سب سے زیادہ فروخت || Bestseller || Più venduti
+blk.pos.branches || Sales by branch || المبيعات حسب الفرع || Ventes par succursale || Ventas por sucursal || برانچ کے لحاظ سے فروخت || Umsatz nach Filiale || Vendite per filiale
+blk.pos.low || Low stock || مخزون منخفض || Stock bas || Stock bajo || کم اسٹاک || Niedriger Bestand || Scorte basse
+pos.sub || Sell, count the till, manage stock and promotions || البيع وجرد الصندوق وإدارة المخزون والعروض || Vendez, comptez la caisse, gérez stock et promotions || Venda, cuente la caja, gestione inventario y promociones || فروخت، کیش گنتی، اسٹاک اور پروموشنز || Verkaufen, Kasse zählen, Bestand und Aktionen verwalten || Vendi, conta la cassa, gestisci scorte e promozioni
+pos.noBranches || Single location (no branches) || موقع واحد (بدون فروع) || Site unique (sans succursales) || Ubicación única (sin sucursales) || واحد مقام (کوئی برانچ نہیں) || Ein Standort (keine Filialen) || Sede unica (senza filiali)
+pos.nav.terminal || Till || الكاشير || Caisse || Caja || کیش رجسٹر || Kasse || Cassa
+pos.nav.shifts || Shifts || الورديات || Sessions || Turnos || شفٹس || Schichten || Turni
+pos.nav.sales || Sales || المبيعات || Ventes || Ventas || فروخت || Verkäufe || Vendite
+pos.nav.products || Products || المنتجات || Produits || Productos || مصنوعات || Produkte || Prodotti
+pos.nav.customers || Customers || العملاء || Clients || Clientes || کسٹمرز || Kunden || Clienti
+pos.nav.promotions || Promotions || العروض || Promotions || Promociones || پروموشنز || Aktionen || Promozioni
+pos.nav.stock || Stock || المخزون || Stock || Inventario || اسٹاک || Bestand || Scorte
+pos.nav.overview || Dashboard || اللوحة || Tableau de bord || Panel || ڈیش بورڈ || Dashboard || Dashboard
+pos.nav.setup || Setup || الإعدادات || Paramètres || Configuración || سیٹ اپ || Einrichtung || Impostazioni
+pos.all || All || الكل || Tout || Todo || سب || Alle || Tutti
+pos.new || New || جديد || Nouveau || Nuevo || نیا || Neu || Nuovo
+pos.code || Code || الرمز || Code || Código || کوڈ || Code || Codice
+pos.sku || SKU || رمز المنتج || Référence || SKU || SKU || Artikelnr. || SKU
+pos.name || Name || الاسم || Nom || Nombre || نام || Name || Nome
+pos.nameAr || Arabic name || الاسم بالعربية || Nom en arabe || Nombre en árabe || عربی نام || Arabischer Name || Nome in arabo
+pos.barcode || Barcode || الباركود || Code-barres || Código de barras || بار کوڈ || Barcode || Codice a barre
+pos.category || Category || الفئة || Catégorie || Categoría || زمرہ || Kategorie || Categoria
+pos.price || Price || السعر || Prix || Precio || قیمت || Preis || Prezzo
+pos.cost || Cost || التكلفة || Coût || Costo || لاگت || Kosten || Costo
+pos.taxRate || Tax rate % || نسبة الضريبة % || Taux de taxe % || Tasa de impuesto % || ٹیکس شرح % || Steuersatz % || Aliquota %
+pos.taxRateHint || Leave blank to use the default rate; 0 = tax exempt || اتركه فارغاً لاستخدام النسبة الافتراضية؛ 0 = معفى || Vide = taux par défaut ; 0 = exonéré || Vacío = tasa por defecto; 0 = exento || خالی = ڈیفالٹ شرح؛ 0 = مستثنیٰ || Leer = Standardsatz; 0 = steuerfrei || Vuoto = aliquota predefinita; 0 = esente
+pos.trackStock || Track stock || تتبع المخزون || Suivre le stock || Controlar inventario || اسٹاک ٹریک کریں || Bestand führen || Gestisci scorte
+pos.reorder || Reorder level || حد إعادة الطلب || Seuil de réappro. || Punto de reposición || ری آرڈر حد || Meldebestand || Livello di riordino
+pos.status || Status || الحالة || Statut || Estado || حالت || Status || Stato
+pos.autoCode || Leave blank to number automatically || اتركه فارغاً للترقيم التلقائي || Vide = numérotation auto || Vacío = numeración automática || خالی = خودکار نمبر || Leer = automatische Nummer || Vuoto = numerazione automatica
+pos.phone || Phone || الهاتف || Téléphone || Teléfono || فون || Telefon || Telefono
+pos.email || Email || البريد الإلكتروني || E-mail || Correo || ای میل || E-Mail || Email
+pos.discountPct || Standing discount % || خصم دائم % || Remise permanente % || Descuento fijo % || مستقل رعایت % || Dauerrabatt % || Sconto fisso %
+pos.points || Loyalty points || نقاط الولاء || Points de fidélité || Puntos de fidelidad || لائلٹی پوائنٹس || Treuepunkte || Punti fedeltà
+pos.product || Product || المنتج || Produit || Producto || مصنوعہ || Produkt || Prodotto
+pos.customer || Customer || العميل || Client || Cliente || کسٹمر || Kunde || Cliente
+pos.product.new || New product || منتج جديد || Nouveau produit || Nuevo producto || نیا مصنوعہ || Neues Produkt || Nuovo prodotto
+pos.customer.new || New customer || عميل جديد || Nouveau client || Nuevo cliente || نیا کسٹمر || Neuer Kunde || Nuovo cliente
+pos.promo.new || New promotion || عرض جديد || Nouvelle promotion || Nueva promoción || نیا پروموشن || Neue Aktion || Nuova promozione
+pos.category.new || New category || فئة جديدة || Nouvelle catégorie || Nueva categoría || نیا زمرہ || Neue Kategorie || Nuova categoria
+pos.register.new || New register || كاشير جديد || Nouvelle caisse || Nueva caja || نیا رجسٹر || Neue Kasse || Nuova cassa
+pos.noProducts || No products found || لا توجد منتجات || Aucun produit || No hay productos || کوئی مصنوعات نہیں || Keine Produkte || Nessun prodotto
+pos.promo.type || Promotion type || نوع العرض || Type de promotion || Tipo de promoción || پروموشن کی قسم || Aktionstyp || Tipo di promozione
+pos.promo.t.pct || Percent off || خصم نسبة مئوية || Remise en % || Descuento % || فیصد رعایت || Prozent Rabatt || Sconto %
+pos.promo.t.amount || Amount off per unit || خصم مبلغ لكل وحدة || Remise par unité || Descuento por unidad || فی یونٹ رقم کی رعایت || Betrag pro Einheit || Sconto per unità
+pos.promo.t.qty || Buy N or more, % off || اشترِ N أو أكثر بخصم % || Achetez N ou plus, % de remise || Compre N o más, % dto. || N یا زیادہ خریدیں، % رعایت || Ab N Stück, % Rabatt || Acquista N o più, % sconto
+pos.promo.scope || Applies to || ينطبق على || S'applique à || Se aplica a || لاگو ہوتا ہے || Gilt für || Si applica a
+pos.promo.s.all || Everything || كل المنتجات || Tout || Todo || سب کچھ || Alles || Tutto
+pos.promo.s.category || One category || فئة واحدة || Une catégorie || Una categoría || ایک زمرہ || Eine Kategorie || Una categoria
+pos.promo.s.sku || One product (SKU) || منتج واحد || Un produit (réf.) || Un producto (SKU) || ایک مصنوعہ || Ein Produkt (Artikelnr.) || Un prodotto (SKU)
+pos.promo.target || Category / SKU || الفئة / رمز المنتج || Catégorie / réf. || Categoría / SKU || زمرہ / SKU || Kategorie / Artikelnr. || Categoria / SKU
+pos.promo.targetHint || Needed when it applies to a category or one product || مطلوب عند تطبيقه على فئة أو منتج || Requis pour une catégorie ou un produit || Necesario para una categoría o un producto || زمرے یا مصنوعہ کے لیے ضروری || Nötig bei Kategorie oder Produkt || Necessario per categoria o prodotto
+pos.promo.value || Value (% or amount) || القيمة (% أو مبلغ) || Valeur (% ou montant) || Valor (% o importe) || قدر (% یا رقم) || Wert (% oder Betrag) || Valore (% o importo)
+pos.promo.minQty || Minimum quantity || الحد الأدنى للكمية || Quantité minimale || Cantidad mínima || کم از کم مقدار || Mindestmenge || Quantità minima
+pos.promo.from || Starts || يبدأ || Début || Inicio || آغاز || Beginn || Inizio
+pos.promo.to || Ends || ينتهي || Fin || Fin || اختتام || Ende || Fine
+pos.promo.branches || Branches (codes, comma separated) || الفروع (رموز مفصولة بفواصل) || Succursales (codes, séparés par virgules) || Sucursales (códigos separados por comas) || برانچیں (کوڈ، کومہ سے الگ) || Filialen (Codes, kommagetrennt) || Filiali (codici separati da virgola)
+pos.promo.branchesHint || Blank = every branch || فارغ = كل الفروع || Vide = toutes || Vacío = todas || خالی = تمام برانچیں || Leer = alle Filialen || Vuoto = tutte le filiali
+pos.st.Active || Active || نشط || Actif || Activo || فعال || Aktiv || Attivo
+pos.st.Inactive || Inactive || غير نشط || Inactif || Inactivo || غیر فعال || Inaktiv || Inattivo
+pos.st.Open || Open || مفتوحة || Ouverte || Abierto || کھلی || Offen || Aperto
+pos.st.Closed || Closed || مغلقة || Clôturée || Cerrado || بند || Geschlossen || Chiuso
+pos.st.Completed || Completed || مكتملة || Terminée || Completada || مکمل || Abgeschlossen || Completata
+pos.st.Voided || Voided || ملغاة || Annulée || Anulada || منسوخ || Storniert || Annullata
+pos.st.Returned || Returned || مرتجعة || Retournée || Devuelta || واپس || Retourniert || Resa
+pos.st.PartlyReturned || Partly returned || مرتجعة جزئياً || Partiellement retournée || Devuelta parcialmente || جزوی واپس || Teilweise retourniert || Parzialmente resa
+pos.st.InTransit || In transit || قيد النقل || En transit || En tránsito || راستے میں || Unterwegs || In transito
+pos.st.Received || Received || مستلم || Reçu || Recibido || موصول || Erhalten || Ricevuto
+pos.st.Queued || Waiting to sync || بانتظار المزامنة || En attente de synchro || Pendiente de sincronizar || مطابقت کے انتظار میں || Wartet auf Sync || In attesa di sync
+pos.pay || Pay || ادفع || Payer || Cobrar || ادائیگی || Bezahlen || Paga
+pos.pay.cash || Cash || نقداً || Espèces || Efectivo || نقد || Bargeld || Contanti
+pos.pay.card || Card || بطاقة || Carte || Tarjeta || کارڈ || Karte || Carta
+pos.pay.other || Other || أخرى || Autre || Otro || دیگر || Sonstige || Altro
+pos.pay.loyalty || Loyalty points || نقاط الولاء || Points fidélité || Puntos || لائلٹی پوائنٹس || Treuepunkte || Punti fedeltà
+pos.scan || Scan barcode or search product… || امسح الباركود أو ابحث عن منتج… || Scanner un code-barres ou chercher… || Escanee o busque un producto… || بار کوڈ اسکین کریں یا مصنوعہ تلاش کریں… || Barcode scannen oder Produkt suchen… || Scansiona o cerca un prodotto…
+pos.notFound || No product matches that code || لا يوجد منتج بهذا الرمز || Aucun produit pour ce code || Ningún producto con ese código || اس کوڈ کا کوئی مصنوعہ نہیں || Kein Produkt mit diesem Code || Nessun prodotto con quel codice
+pos.left || {n} left || المتبقي {n} || {n} restant(s) || quedan {n} || {n} باقی || {n} übrig || {n} rimasti
+pos.walkin || Walk-in customer || عميل عابر || Client de passage || Cliente ocasional || عام گاہک || Laufkunde || Cliente occasionale
+pos.emptyCart || Scan or tap a product to start || امسح أو اضغط على منتج للبدء || Scannez ou touchez un produit || Escanee o toque un producto || شروع کرنے کے لیے مصنوعہ اسکین کریں || Produkt scannen oder antippen || Scansiona o tocca un prodotto
+pos.lineDisc || Line discount % || خصم السطر % || Remise ligne % || Dto. línea % || لائن رعایت % || Positionsrabatt % || Sconto riga %
+pos.orderDisc || Order discount % || خصم الفاتورة % || Remise globale % || Dto. total % || آرڈر رعایت % || Gesamtrabatt % || Sconto totale %
+pos.subtotal || Subtotal || المجموع الفرعي || Sous-total || Subtotal || ذیلی کل || Zwischensumme || Subtotale
+pos.discount || Discount || الخصم || Remise || Descuento || رعایت || Rabatt || Sconto
+pos.tax || Tax || الضريبة || Taxe || Impuesto || ٹیکس || Steuer || Imposta
+pos.total || Total || الإجمالي || Total || Total || کل || Gesamt || Totale
+pos.hold || Hold || تعليق || Suspendre || En espera || روکیں || Parken || Sospendi
+pos.recall || Held baskets || السلال المعلقة || Paniers suspendus || Cestas en espera || روکی ہوئی ٹوکریاں || Geparkte Warenkörbe || Carrelli sospesi
+pos.recallOne || Recall || استرجاع || Rappeler || Recuperar || واپس لائیں || Abrufen || Richiama
+pos.items || items || أصناف || articles || artículos || اشیاء || Artikel || articoli
+pos.clear || Clear || مسح || Vider || Vaciar || صاف کریں || Leeren || Svuota
+pos.redeem || Redeem points || استبدال النقاط || Utiliser des points || Canjear puntos || پوائنٹس استعمال کریں || Punkte einlösen || Riscatta punti
+pos.exactCash || Exact cash || المبلغ بالضبط نقداً || Espèces exact || Efectivo exacto || عین نقد || Passend bar || Contanti esatti
+pos.exactCard || Full by card || كامل بالبطاقة || Tout par carte || Todo con tarjeta || پوری کارڈ سے || Voll per Karte || Tutto con carta
+pos.due || Amount due || المبلغ المستحق || Montant dû || Importe a cobrar || واجب الادا رقم || Fälliger Betrag || Importo dovuto
+pos.tendered || Tendered || المدفوع || Reçu || Entregado || ادا شدہ || Gegeben || Ricevuto
+pos.remaining || Still to pay || المتبقي للدفع || Reste à payer || Falta por cobrar || باقی ادائیگی || Noch offen || Ancora da pagare
+pos.change || Change || الباقي || Monnaie rendue || Cambio || بقایا || Rückgeld || Resto
+pos.complete || Complete sale || إتمام البيع || Finaliser la vente || Completar venta || فروخت مکمل کریں || Verkauf abschließen || Completa vendita
+pos.saleDone || Sale complete || تم البيع || Vente terminée || Venta completada || فروخت مکمل || Verkauf abgeschlossen || Vendita completata
+pos.print || Print || طباعة || Imprimer || Imprimir || پرنٹ || Drucken || Stampa
+pos.newSale || New sale || بيع جديد || Nouvelle vente || Nueva venta || نئی فروخت || Neuer Verkauf || Nuova vendita
+pos.pointsEarned || Points earned || النقاط المكتسبة || Points gagnés || Puntos ganados || حاصل شدہ پوائنٹس || Gesammelte Punkte || Punti guadagnati
+pos.offlineCode || OFFLINE || دون اتصال || HORS LIGNE || SIN CONEXIÓN || آف لائن || OFFLINE || OFFLINE
+pos.queued || {n} sale(s) saved offline, waiting to send || {n} عملية بيع محفوظة دون اتصال بانتظار الإرسال || {n} vente(s) hors ligne en attente d'envoi || {n} venta(s) guardadas sin conexión pendientes de envío || {n} فروخت آف لائن محفوظ، بھیجنے کے انتظار میں || {n} Verkauf/Verkäufe offline gespeichert, werden gesendet || {n} vendite salvate offline in attesa di invio
+pos.syncNow || Send now || أرسل الآن || Envoyer maintenant || Enviar ahora || ابھی بھیجیں || Jetzt senden || Invia ora
+pos.rejectedN || {n} offline sale(s) were refused by the server and need attention || رفض الخادم {n} عملية بيع دون اتصال وتحتاج إلى مراجعة || {n} vente(s) hors ligne refusée(s) par le serveur || El servidor rechazó {n} venta(s) sin conexión || سرور نے {n} آف لائن فروخت مسترد کی || {n} Offline-Verkäufe wurden vom Server abgelehnt || {n} vendite offline rifiutate dal server
+pos.dismiss || Dismiss || إخفاء || Ignorer || Descartar || ہٹائیں || Ausblenden || Nascondi
+pos.shift.none || No open shift || لا توجد وردية مفتوحة || Aucune session ouverte || Ningún turno abierto || کوئی شفٹ کھلی نہیں || Keine offene Schicht || Nessun turno aperto
+pos.shift.noneHint || Open a shift with your starting cash to start selling. || افتح وردية بالنقد الافتتاحي لبدء البيع. || Ouvrez une session avec votre fonds de caisse pour vendre. || Abra un turno con su efectivo inicial para vender. || فروخت شروع کرنے کے لیے ابتدائی نقد کے ساتھ شفٹ کھولیں۔ || Öffnen Sie eine Schicht mit Anfangsbestand, um zu verkaufen. || Apri un turno con il fondo cassa per vendere.
+pos.register || Register || الكاشير || Caisse || Caja || رجسٹر || Kasse || Cassa
+pos.shift.opening || Opening cash || النقد الافتتاحي || Fonds de caisse || Efectivo inicial || ابتدائی نقد || Anfangsbestand || Fondo cassa
+pos.shift.open || Open shift || فتح الوردية || Ouvrir la session || Abrir turno || شفٹ کھولیں || Schicht öffnen || Apri turno
+pos.shift.opened || Shift opened || تم فتح الوردية || Session ouverte || Turno abierto || شفٹ کھل گئی || Schicht geöffnet || Turno aperto
+pos.shift.current || Current shift || الوردية الحالية || Session en cours || Turno actual || موجودہ شفٹ || Aktuelle Schicht || Turno corrente
+pos.shift.cashSales || Cash sales || مبيعات نقدية || Ventes espèces || Ventas en efectivo || نقد فروخت || Barumsatz || Vendite in contanti
+pos.shift.cardSales || Card & other sales || مبيعات البطاقة وغيرها || Ventes carte et autres || Ventas con tarjeta y otras || کارڈ اور دیگر فروخت || Karten- & sonstiger Umsatz || Vendite carta e altro
+pos.shift.refunds || Refunds || المرتجعات || Remboursements || Reembolsos || ریفنڈز || Erstattungen || Rimborsi
+pos.shift.cashIn || Cash in || إيداع نقدي || Entrée d'espèces || Entrada de efectivo || نقد داخل || Einlage || Versamento
+pos.shift.cashOut || Cash out || سحب نقدي || Sortie d'espèces || Salida de efectivo || نقد خارج || Entnahme || Prelievo
+pos.shift.sales || Sales || المبيعات || Ventes || Ventas || فروخت || Verkäufe || Vendite
+pos.shift.close || Close shift || إغلاق الوردية || Clôturer la session || Cerrar turno || شفٹ بند کریں || Schicht schließen || Chiudi turno
+pos.shift.closed || Shift closed || تم إغلاق الوردية || Session clôturée || Turno cerrado || شفٹ بند ہو گئی || Schicht geschlossen || Turno chiuso
+pos.shift.closeHint || Count the cash in the drawer. Closing records the variance and drafts the journal for finance. || عدّ النقد في الدرج. الإغلاق يسجل الفرق ويُنشئ قيداً مسودة للمالية. || Comptez les espèces du tiroir. La clôture enregistre l'écart et prépare l'écriture comptable. || Cuente el efectivo del cajón. El cierre registra la diferencia y prepara el asiento para finanzas. || دراز میں نقد گنیں۔ بند کرنے سے فرق درج ہوگا اور فنانس کے لیے مسودہ اندراج بنے گا۔ || Zählen Sie das Bargeld. Beim Schließen wird die Differenz erfasst und die Buchung für Finanzen entworfen. || Conta i contanti nel cassetto. La chiusura registra la differenza e prepara la scrittura per la finanza.
+pos.shift.countedCash || Counted cash || النقد المعدود || Espèces comptées || Efectivo contado || گنا ہوا نقد || Gezähltes Bargeld || Contanti contati
+pos.shift.counted || Counted || المعدود || Compté || Contado || گنتی || Gezählt || Contato
+pos.shift.expected || Expected || المتوقع || Attendu || Esperado || متوقع || Erwartet || Atteso
+pos.shift.variance || Variance || الفرق || Écart || Diferencia || فرق || Differenz || Differenza
+pos.shift.journal || Finance journal || قيد المالية || Écriture comptable || Asiento contable || فنانس اندراج || Finanzbuchung || Scrittura contabile
+pos.shift.history || Shift history || سجل الورديات || Historique des sessions || Historial de turnos || شفٹ کی تاریخ || Schichtverlauf || Storico turni
+pos.cashier || Cashier || الكاشير || Caissier || Cajero || کیشیئر || Kassierer || Cassiere
+pos.branch || Branch || الفرع || Succursale || Sucursal || برانچ || Filiale || Filiale
+pos.opened || Opened || فُتحت || Ouverte || Abierto || کھلی || Geöffnet || Aperto
+pos.amount || Amount || المبلغ || Montant || Importe || رقم || Betrag || Importo
+pos.note || Note || ملاحظة || Note || Nota || نوٹ || Notiz || Nota
+pos.reason || Reason || السبب || Motif || Motivo || وجہ || Grund || Motivo
+pos.date || Date || التاريخ || Date || Fecha || تاریخ || Datum || Data
+pos.document || Document || المستند || Document || Documento || دستاویز || Beleg || Documento
+pos.findReceipt || Find receipt, customer, cashier… || ابحث عن إيصال أو عميل أو كاشير… || Chercher ticket, client, caissier… || Buscar ticket, cliente, cajero… || رسید، کسٹمر، کیشیئر تلاش کریں… || Beleg, Kunde, Kassierer suchen… || Cerca scontrino, cliente, cassiere…
+pos.rc.receipt || Sale || بيع || Vente || Venta || فروخت || Verkauf || Vendita
+pos.rc.return || Return || مرتجع || Retour || Devolución || واپسی || Retoure || Reso
+pos.rc.original || Original sale || البيع الأصلي || Vente d'origine || Venta original || اصل فروخت || Ursprungsverkauf || Vendita originale
+pos.rc.thanks || Thank you! || شكراً لزيارتكم! || Merci ! || ¡Gracias! || شکریہ! || Danke! || Grazie!
+pos.void || Void || إلغاء || Annuler || Anular || منسوخ || Stornieren || Annulla
+pos.voidConfirm || Void sale {name}? Stock and loyalty points are restored. || إلغاء البيع {name}؟ سيُعاد المخزون ونقاط الولاء. || Annuler la vente {name} ? Stock et points restitués. || ¿Anular la venta {name}? Se restituyen stock y puntos. || فروخت {name} منسوخ کریں؟ اسٹاک اور پوائنٹس بحال ہوں گے۔ || Verkauf {name} stornieren? Bestand und Punkte werden zurückgebucht. || Annullare la vendita {name}? Scorte e punti vengono ripristinati.
+pos.sold || Sold || المباع || Vendu || Vendido || فروخت شدہ || Verkauft || Venduto
+pos.alreadyReturned || Already returned || مرتجع سابقاً || Déjà retourné || Ya devuelto || پہلے واپس || Bereits retourniert || Già reso
+pos.returnQty || Return qty || كمية المرتجع || Qté retournée || Cant. a devolver || واپسی مقدار || Retourmenge || Q.tà da rendere
+pos.refundMethod || Refund by || الاسترداد عبر || Remboursement par || Reembolsar con || ریفنڈ بذریعہ || Erstattung per || Rimborso con
+pos.pickReturn || Enter a quantity for at least one item. || أدخل كمية لصنف واحد على الأقل. || Saisissez une quantité pour au moins un article. || Indique una cantidad para al menos un artículo. || کم از کم ایک آئٹم کی مقدار درج کریں۔ || Menge für mindestens einen Artikel eingeben. || Inserisci una quantità per almeno un articolo.
+pos.returned || Return recorded || تم تسجيل المرتجع || Retour enregistré || Devolución registrada || واپسی درج ہو گئی || Retoure erfasst || Reso registrato
+pos.imp.title || Import from Excel / CSV || استيراد من Excel / CSV || Importer depuis Excel / CSV || Importar desde Excel / CSV || Excel / CSV سے درآمد || Aus Excel / CSV importieren || Importa da Excel / CSV
+pos.imp.intro || Columns are matched by their header. Rows whose code already exists are updated. || تُطابق الأعمدة حسب عناوينها. تُحدَّث الصفوف التي رمزها موجود. || Les colonnes sont reconnues par leur en-tête. Les lignes dont le code existe sont mises à jour. || Las columnas se reconocen por su encabezado. Las filas con código existente se actualizan. || کالم عنوان سے ملائے جاتے ہیں۔ موجودہ کوڈ والی قطاریں اپڈیٹ ہوں گی۔ || Spalten werden über die Überschrift erkannt. Zeilen mit vorhandenem Code werden aktualisiert. || Le colonne sono riconosciute dall'intestazione. Le righe con codice esistente vengono aggiornate.
+pos.imp.choose || Choose file || اختر ملفاً || Choisir un fichier || Elegir archivo || فائل منتخب کریں || Datei wählen || Scegli file
+pos.imp.needCols || The file needs at least "code" and "name" columns. || يحتاج الملف عموديّ "code" و "name" على الأقل. || Le fichier doit avoir au moins les colonnes « code » et « name ». || El archivo necesita al menos las columnas «code» y «name». || فائل میں کم از کم "code" اور "name" کالم ہونے چاہئیں۔ || Die Datei braucht mindestens die Spalten „code“ und „name“. || Il file richiede almeno le colonne «code» e «name».
+pos.imp.run || Import || استيراد || Importer || Importar || درآمد کریں || Importieren || Importa
+pos.imp.done || Created {c}, updated {u}, skipped {s}. || تم إنشاء {c} وتحديث {u} وتخطي {s}. || {c} créés, {u} mis à jour, {s} ignorés. || {c} creados, {u} actualizados, {s} omitidos. || {c} بنائے، {u} اپڈیٹ، {s} چھوڑے گئے۔ || {c} angelegt, {u} aktualisiert, {s} übersprungen. || {c} creati, {u} aggiornati, {s} saltati.
+pos.stock.levels || Stock levels || مستويات المخزون || Niveaux de stock || Niveles de inventario || اسٹاک کی سطح || Bestände || Livelli di scorta
+pos.stock.transfers || Transfers || التحويلات || Transferts || Transferencias || منتقلی || Umlagerungen || Trasferimenti
+pos.stock.moves || Movements || الحركات || Mouvements || Movimientos || حرکات || Bewegungen || Movimenti
+pos.stock.lowOnly || Low stock only || المخزون المنخفض فقط || Stock bas seulement || Solo stock bajo || صرف کم اسٹاک || Nur niedriger Bestand || Solo scorte basse
+pos.stock.value || Stock value || قيمة المخزون || Valeur du stock || Valor del inventario || اسٹاک کی قیمت || Bestandswert || Valore scorte
+pos.stock.qty || On hand || المتوفر || En stock || Disponible || موجود || Bestand || Disponibile
+pos.stock.adjust || Count / adjust || جرد / تعديل || Inventorier / ajuster || Contar / ajustar || گنتی / ایڈجسٹ || Zählen / anpassen || Conta / rettifica
+pos.stock.counted || Counted quantity || الكمية المعدودة || Quantité comptée || Cantidad contada || گنی ہوئی مقدار || Gezählte Menge || Quantità contata
+pos.stock.newTransfer || New transfer || تحويل جديد || Nouveau transfert || Nueva transferencia || نئی منتقلی || Neue Umlagerung || Nuovo trasferimento
+pos.stock.from || From branch || من الفرع || De la succursale || Desde sucursal || برانچ سے || Von Filiale || Dalla filiale
+pos.stock.to || To branch || إلى الفرع || Vers la succursale || A sucursal || برانچ تک || Nach Filiale || Alla filiale
+pos.stock.addLine || Add at least one product with a quantity. || أضف منتجاً واحداً على الأقل بكمية. || Ajoutez au moins un produit avec quantité. || Añada al menos un producto con cantidad. || کم از کم ایک مصنوعہ مقدار کے ساتھ شامل کریں۔ || Mindestens ein Produkt mit Menge hinzufügen. || Aggiungi almeno un prodotto con quantità.
+pos.stock.receive || Receive || استلام || Réceptionner || Recibir || وصول کریں || Annehmen || Ricevi
+pos.stock.received || Transfer received || تم استلام التحويل || Transfert réceptionné || Transferencia recibida || منتقلی موصول || Umlagerung erhalten || Trasferimento ricevuto
+pos.stock.type || Type || النوع || Type || Tipo || قسم || Typ || Tipo
+pos.stock.delta || Change || التغيير || Variation || Cambio || تبدیلی || Änderung || Variazione
+pos.stock.balance || Balance || الرصيد || Solde || Saldo || بیلنس || Saldo || Saldo
+pos.mv.sale || Sale || بيع || Vente || Venta || فروخت || Verkauf || Vendita
+pos.mv.return || Return || مرتجع || Retour || Devolución || واپسی || Retoure || Reso
+pos.mv.void || Void || إلغاء || Annulation || Anulación || منسوخی || Storno || Annullo
+pos.mv.adjust || Adjustment || تعديل || Ajustement || Ajuste || ایڈجسٹمنٹ || Anpassung || Rettifica
+pos.mv.count || Stock count || جرد || Inventaire || Recuento || اسٹاک گنتی || Inventur || Inventario
+pos.mv.transfer-out || Transfer out || تحويل صادر || Transfert sortant || Transferencia salida || منتقلی خارج || Umlagerung aus || Trasferimento in uscita
+pos.mv.transfer-in || Transfer in || تحويل وارد || Transfert entrant || Transferencia entrada || منتقلی داخل || Umlagerung ein || Trasferimento in entrata
+pos.ov.today || Sales today || مبيعات اليوم || Ventes du jour || Ventas de hoy || آج کی فروخت || Umsatz heute || Vendite di oggi
+pos.ov.tickets || {n} receipts || {n} إيصال || {n} tickets || {n} tickets || {n} رسیدیں || {n} Belege || {n} scontrini
+pos.ov.basket || Average basket || متوسط السلة || Panier moyen || Ticket medio || اوسط ٹوکری || Ø Warenkorb || Scontrino medio
+pos.ov.returns || Returns today || مرتجعات اليوم || Retours du jour || Devoluciones de hoy || آج کی واپسیاں || Retouren heute || Resi di oggi
+pos.ov.period || Sales (14 days) || المبيعات (14 يوماً) || Ventes (14 jours) || Ventas (14 días) || فروخت (14 دن) || Umsatz (14 Tage) || Vendite (14 giorni)
+pos.ov.net || net {n} || الصافي {n} || net {n} || neto {n} || خالص {n} || netto {n} || netto {n}
+pos.ov.shifts || Open shifts || ورديات مفتوحة || Sessions ouvertes || Turnos abiertos || کھلی شفٹس || Offene Schichten || Turni aperti
+pos.ov.variance || Cash variance || فرق النقد || Écart de caisse || Diferencia de caja || نقد کا فرق || Kassendifferenz || Differenza di cassa
+pos.ov.stockValue || Stock value || قيمة المخزون || Valeur du stock || Valor del inventario || اسٹاک کی قیمت || Bestandswert || Valore scorte
+pos.ov.trend || Sales, last 14 days || المبيعات آخر 14 يوماً || Ventes, 14 derniers jours || Ventas, últimos 14 días || فروخت، پچھلے 14 دن || Umsatz, letzte 14 Tage || Vendite, ultimi 14 giorni
+pos.ov.payments || Payment methods || طرق الدفع || Modes de paiement || Métodos de pago || ادائیگی کے طریقے || Zahlungsarten || Metodi di pagamento
+pos.ov.top || Best sellers || الأكثر مبيعاً || Meilleures ventes || Más vendidos || سب سے زیادہ فروخت || Bestseller || Più venduti
+pos.ov.byBranch || Sales by branch || المبيعات حسب الفرع || Ventes par succursale || Ventas por sucursal || برانچ کے لحاظ سے فروخت || Umsatz nach Filiale || Vendite per filiale
+pos.ov.low || Low stock || مخزون منخفض || Stock bas || Stock bajo || کم اسٹاک || Niedriger Bestand || Scorte basse
+pos.setup.rules || Till rules || قواعد الكاشير || Règles de caisse || Reglas de caja || کیش رجسٹر کے اصول || Kassenregeln || Regole di cassa
+pos.setup.taxRate || Default tax rate % || نسبة الضريبة الافتراضية % || Taux de taxe par défaut % || Tasa de impuesto por defecto % || ڈیفالٹ ٹیکس شرح % || Standardsteuersatz % || Aliquota predefinita %
+pos.setup.maxDisc || Highest manual discount % || أعلى خصم يدوي % || Remise manuelle max % || Descuento manual máx. % || زیادہ سے زیادہ دستی رعایت % || Höchster manueller Rabatt % || Sconto manuale massimo %
+pos.setup.ppc || Points earned per 1 spent || النقاط لكل 1 مُنفق || Points par unité dépensée || Puntos por cada 1 gastado || فی 1 خرچ پر پوائنٹس || Punkte pro 1 Umsatz || Punti per ogni 1 speso
+pos.setup.pointValue || Value of one point || قيمة النقطة الواحدة || Valeur d'un point || Valor de un punto || ایک پوائنٹ کی قدر || Wert eines Punkts || Valore di un punto
+pos.setup.inclTax || Prices include tax || الأسعار شاملة الضريبة || Prix TTC || Precios con impuesto incluido || قیمتیں ٹیکس سمیت || Preise inkl. Steuer || Prezzi IVA inclusa
+pos.setup.reqShift || A shift must be open to sell || يجب فتح وردية للبيع || Une session ouverte est requise pour vendre || Se requiere un turno abierto para vender || فروخت کے لیے شفٹ کھلی ہونا ضروری || Zum Verkaufen muss eine Schicht offen sein || Per vendere serve un turno aperto
+pos.setup.negStock || Allow selling below zero stock || السماح بالبيع عند نفاد المخزون || Autoriser la vente à stock négatif || Permitir vender sin existencias || صفر اسٹاک سے کم پر فروخت کی اجازت || Verkauf unter Nullbestand erlauben || Consenti vendita sotto zero
+pos.setup.rcHeader || Receipt header || رأس الإيصال || En-tête du ticket || Encabezado del ticket || رسید کا عنوان || Belegkopf || Intestazione scontrino
+pos.setup.rcFooter || Receipt footer || تذييل الإيصال || Pied du ticket || Pie del ticket || رسید کا فوٹر || Belegfuß || Piè di pagina scontrino
+pos.setup.categories || Product categories || فئات المنتجات || Catégories de produits || Categorías de productos || مصنوعات کے زمرے || Produktkategorien || Categorie prodotto
+pos.setup.registers || Registers || الكاشيرات || Caisses || Cajas || رجسٹرز || Kassen || Casse

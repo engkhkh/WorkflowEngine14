@@ -13,6 +13,7 @@ interface LoginResponse {
   permissions?: string[];
   tenantId?: string;
   tenantName?: string;
+  branches?: string[] | null;
 }
 
 const TOKEN_KEY = 'portal_token';
@@ -34,13 +35,23 @@ export class AuthService {
     return this.http.post<LoginResponse>(`${this.base}/tenants/signup`, payload).pipe(tap(res => this.store(res)));
   }
 
+  /** Invitation link: who it is for. */
+  inviteInfo(token: string): Observable<{ username: string; displayName: string; workspace: string }> {
+    return this.http.get<{ username: string; displayName: string; workspace: string }>(`${this.base}/auth/invite`, { params: { token } });
+  }
+
+  /** The invited person chooses a password and is signed in. */
+  acceptInvite(token: string, password: string): Observable<LoginResponse> {
+    return this.http.post<LoginResponse>(`${this.base}/auth/accept-invite`, { token, password }).pipe(tap(res => this.store(res)));
+  }
+
   /** Re-reads the signed-in user's current privileges (an admin may have changed them). */
   refreshMe(): Observable<AdminUser | null> {
     return this.http.get<AdminUser>(`${this.base}/users/me`).pipe(
       tap(me => {
         const u = this.currentUser();
         if (!u) return;
-        this.setUser({ ...u, role: me.role, displayName: me.displayName, permissions: me.effectivePermissions });
+        this.setUser({ ...u, role: me.role, displayName: me.displayName, permissions: me.effectivePermissions, branches: me.branches ?? null });
       }),
       catchError(() => of(null))
     );
@@ -69,7 +80,7 @@ export class AuthService {
     localStorage.setItem(TOKEN_KEY, res.token);
     this.setUser({
       id: res.id, username: res.username, displayName: res.displayName, role: res.role,
-      permissions: res.permissions, tenantId: res.tenantId, tenantName: res.tenantName
+      permissions: res.permissions, tenantId: res.tenantId, tenantName: res.tenantName, branches: res.branches ?? null
     });
   }
 

@@ -1,0 +1,19 @@
+<RCC>
+    <qresource prefix="/">
+        <file alias="catalog.json">data/catalog.json</file>
+        <file alias="i18n.json">data/i18n.json</file>
+        <file alias="workflow.json">data/workflow.json</file>
+        <file alias="dashboard.json">data/dashboard.json</file>
+        <file alias="hospital.json">data/hospital.json</file>
+        <file alias="finance.json">data/finance.json</file>
+        <file alias="hr.json">data/hr.json</file>
+        <file alias="ops.json">data/ops.json</file>
+        <file alias="website.json">data/website.json</file>
+        <file alias="admin.json">data/admin.json</file>
+        <file alias="custom.json">data/custom.json</file>
+        <file alias="muslim.json">data/muslim.json</file>
+        <file alias="mushaf-text.json">data/mushaf-text.json</file>
+        <file alias="mushaf-index.json">data/mushaf-index.json</file>
+        <file alias="AmiriQuran-Regular.ttf">data/AmiriQuran-Regular.ttf</file>
+    </qresource>
+</RCC>

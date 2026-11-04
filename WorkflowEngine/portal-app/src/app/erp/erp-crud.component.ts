@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from '../core/auth.service';
-import { ErpService } from '../core/erp.service';
+import { ErpCustomField, ErpService } from '../core/erp.service';
 import { ErpKind, ErpModule, ErpRec } from '../core/erp.models';
 import { ErpContextService } from '../core/erp-context.service';
 import { I18nService } from '../core/i18n.service';
@@ -79,6 +79,7 @@ export interface ErpAction { label: string; show: (r: ErpRec) => boolean; run: (
             </td>
             <td class="act">
               <ng-container *ngFor="let a of actions"><button class="ghost sm" *ngIf="a.show(r)" [class.danger-i]="a.danger" (click)="a.run(r)">{{ a.label | translate }}</button></ng-container>
+              <button class="ghost sm" *ngIf="showHistory" (click)="openHistory(r)" [title]="'gov.history' | translate"><app-icon name="clock" [size]="15"></app-icon></button>
               <button class="ghost sm" *ngIf="canManage && editable(r)" (click)="openForm(r)" [title]="'admin.edit' | translate"><app-icon name="edit" [size]="15"></app-icon></button>
               <button class="ghost sm" *ngIf="!(canManage && editable(r))" (click)="openForm(r, true)" [title]="'common.view' | translate"><app-icon name="search" [size]="15"></app-icon></button>
               <button class="ghost sm danger-i" *ngIf="canManage && editable(r)" (click)="deleting = r; error = ''" [title]="'admin.delete' | translate"><app-icon name="trash" [size]="15"></app-icon></button>
@@ -120,6 +121,21 @@ export interface ErpAction { label: string; show: (r: ErpRec) => boolean; run: (
             <small class="dim" *ngIf="f.hint">{{ f.hint | translate }}</small>
           </div></ng-container>
         </div>
+        <ng-container *ngIf="cf.length">
+          <h4 class="cfh">{{ 'gov.cf.section' | translate }}</h4>
+          <div class="form-grid">
+            <div *ngFor="let c of cf">
+              <label class="lbl" *ngIf="c.type !== 'bool'">{{ cfLabel(c) }}<span *ngIf="c.required"> *</span></label>
+              <ng-container [ngSwitch]="c.type">
+                <select *ngSwitchCase="'select'" [(ngModel)]="cfForm[c.key]" [disabled]="readOnly"><option value="">—</option><option *ngFor="let o of cfOpts(c)" [value]="o">{{ o }}</option></select>
+                <input *ngSwitchCase="'number'" type="number" step="any" [(ngModel)]="cfForm[c.key]" [disabled]="readOnly" />
+                <input *ngSwitchCase="'date'" type="date" [(ngModel)]="cfForm[c.key]" [disabled]="readOnly" />
+                <label class="chk" *ngSwitchCase="'bool'"><input type="checkbox" [(ngModel)]="cfForm[c.key]" [disabled]="readOnly" /> {{ cfLabel(c) }}</label>
+                <input *ngSwitchDefault [(ngModel)]="cfForm[c.key]" [disabled]="readOnly" />
+              </ng-container>
+            </div>
+          </div>
+        </ng-container>
         <app-chatter *ngIf="editing" [module]="module" [kind]="kind" [recordId]="editing.id"></app-chatter>
         <p class="flash bad" *ngIf="error">{{ error }}</p></div>
         <div class="modal-foot"><button (click)="form = null">{{ 'common.cancel' | translate }}</button><button class="primary" *ngIf="!readOnly" (click)="save()" [disabled]="saving">{{ 'admin.save' | translate }}</button></div>
@@ -127,6 +143,22 @@ export interface ErpAction { label: string; show: (r: ErpRec) => boolean; run: (
     </div>
 
     <app-report-designer *ngIf="reportOpen" [view]="module + ':' + kind" [title]="reportTitle()" [columns]="reportCols()" [rows]="reportRows()" [user]="auth.currentUser()?.displayName || ''" (close)="reportOpen = false"></app-report-designer>
+
+    <div class="modal-scrim" *ngIf="hist" (click)="hist = null">
+      <div class="modal wide" (click)="$event.stopPropagation()">
+        <div class="modal-head"><h3>{{ 'gov.history' | translate }} · {{ hist.code }}</h3></div>
+        <div class="modal-body">
+          <p class="dim" *ngIf="histBusy">…</p>
+          <p class="flash bad" *ngIf="error">{{ error }}</p>
+          <div class="empty" *ngIf="!histBusy && !histRows.length">{{ 'gov.audit.none' | translate }}</div>
+          <div class="hrow" *ngFor="let h of histRows">
+            <div class="hh"><b>{{ h.status }}</b> · {{ h.createdBy }} · <span class="dim">{{ fmtAt(h.createdAt) }}</span></div>
+            <div class="hc" *ngFor="let c of changes(h)"><span class="hf">{{ c.f }}</span> <span class="hv">{{ c.from ?? '—' }}</span> → <span class="hv">{{ c.to ?? '—' }}</span></div>
+          </div>
+        </div>
+        <div class="modal-foot"><button (click)="hist = null">{{ 'common.cancel' | translate }}</button></div>
+      </div>
+    </div>
 
     <div class="modal-scrim" *ngIf="deleting" (click)="deleting = null">
       <div class="modal sm" (click)="$event.stopPropagation()">
@@ -142,6 +174,9 @@ export interface ErpAction { label: string; show: (r: ErpRec) => boolean; run: (
     .danger-fill { background: var(--bad); border-color: var(--bad); color: #fff; }
     .chk { display: flex; gap: 8px; align-items: center; padding-top: 22px; } .chk input { width: auto; }
     .full { grid-column: 1 / -1; } small.dim { display: block; margin-top: 3px; }
+    .cfh { margin: 14px 0 6px; font-size: 13px; color: var(--text-2); }
+    .hrow { border-bottom: 1px solid var(--border); padding: 8px 0; font-size: 13px; } .hh { margin-bottom: 3px; } .hc { padding-inline-start: 12px; color: var(--text-2); word-break: break-word; }
+    .hf { font-weight: 600; color: var(--text); } .hv { font-family: ui-monospace, monospace; font-size: 12px; }
     .modal.wide { width: min(860px, 96vw); } .lines { border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 8px; display: grid; gap: 8px; } .lines td { padding: 4px; } .lines input, .lines select { min-width: 70px; }
   `]
 })
@@ -177,6 +212,17 @@ export class ErpCrudComponent implements OnInit, OnChanges {
 
   all = signal<ErpRec[]>([]);
   q = signal(''); st = signal('');
+  cf: ErpCustomField[] = []; cfForm: Record<string, any> = {};
+  hist: ErpRec | null = null; histRows: ErpRec[] = []; histBusy = false;
+  get showHistory() { return this.module !== 'gov' && this.auth.can('gov.audit.view'); }
+  cfLabel(c: ErpCustomField) { return this.i18n.lang() === 'ar' && c.labelAr ? c.labelAr : c.labelEn; }
+  cfOpts(c: ErpCustomField) { return (c.options || '').split(',').map(x => x.trim()).filter(Boolean); }
+  fmtAt(s?: string) { return s ? new Date(s.endsWith('Z') ? s : s + 'Z').toLocaleString() : ''; }
+  changes(h: ErpRec): { f: string; from: string | null; to: string | null }[] { return Array.isArray(h.data?.['changes']) ? h.data['changes'] : []; }
+  openHistory(r: ErpRec) {
+    this.hist = r; this.histRows = []; this.histBusy = true; this.error = '';
+    this.erp.records('gov', 'audit', { ref: r.id, take: 500 }).subscribe({ next: l => { this.histRows = l; this.histBusy = false; }, error: e => { this.histBusy = false; this.error = errMsg(e, this.i18n); } });
+  }
   form: Record<string, any> | null = null;
   editing: ErpRec | null = null;
   deleting: ErpRec | null = null;
@@ -219,7 +265,10 @@ export class ErpCrudComponent implements OnInit, OnChanges {
       .filter(r => !q || this.fields.some(f => f.type !== 'lines' && String(this.val(r, f) ?? '').toLowerCase().includes(q)));
   };
 
-  ngOnInit() { this.load(true); }
+  ngOnInit() {
+    this.load(true);
+    if (this.module !== 'gov') this.erp.customFields(this.module, this.kind).subscribe(l => this.cf = l);
+  }
   ngOnChanges(c: SimpleChanges) {
     const changed = ['company', 'status', 'refFilter'].some(k => c[k] && !c[k].firstChange);
     if (changed) this.load(false);
@@ -266,11 +315,17 @@ export class ErpCrudComponent implements OnInit, OnChanges {
       if (x.type === 'lines') v = JSON.parse(JSON.stringify(v));
       f[x.key] = v;
     }
+    this.cfForm = JSON.parse(JSON.stringify(r?.data?.['cf'] ?? {}));
+    for (const c of this.cf) if (c.type === 'bool' && this.cfForm[c.key] === undefined) this.cfForm[c.key] = false;
     this.form = f;
   }
 
   save() {
     const f = this.form!;
+    for (const c of this.cf) {
+      const v = this.cfForm[c.key];
+      if (c.required && c.type !== 'bool' && (v === '' || v === null || v === undefined)) { this.error = `${this.cfLabel(c)}: ${this.i18n.t('hr.err.required')}`; return; }
+    }
     for (const x of this.fields) {
       if (x.show && !x.show(f)) continue;
       if (x.required && (f[x.key] === '' || f[x.key] === null || f[x.key] === undefined)) { this.error = this.i18n.t('hr.err.required'); return; }
@@ -286,6 +341,15 @@ export class ErpCrudComponent implements OnInit, OnChanges {
       else if (w === 'status') body.status = v || undefined;
       else if (w === 'ref') body.ref = v || undefined;
       else (body.data as any)[x.key] = v;
+    }
+    if (this.cf.length) {
+      const o: Record<string, any> = {};
+      for (const c of this.cf) {
+        const v = this.cfForm[c.key];
+        if (v === '' || v === null || v === undefined) continue;
+        o[c.key] = c.type === 'number' ? Number(v) : v;
+      }
+      (body.data as any)['cf'] = o;
     }
     if (!this.editing) {
       if (this.company) body.company = this.company;

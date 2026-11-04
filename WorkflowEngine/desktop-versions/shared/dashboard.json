@@ -1,0 +1,32 @@
+{
+ "stages": ["request", "approval", "purchase", "inventory", "accounting", "reporting"],
+ "modules": {"sales": "#0ea5e9", "purchasing": "#8b5cf6", "inventory": "#f59e0b", "finance": "#10b981", "hr": "#ec4899", "operations": "#64748b"},
+ "docTypes": [
+  {"key": "PR", "module": "purchasing", "workflow": "ERP · Purchase Requisition (Procure-to-Pay)"},
+  {"key": "SO", "module": "sales", "workflow": "ERP · Sales Order (Order-to-Cash)"},
+  {"key": "TRF", "module": "inventory", "workflow": "ERP · Stock Transfer"},
+  {"key": "PV", "module": "finance", "workflow": "ERP · Payment Voucher"},
+  {"key": "EXP", "module": "finance", "workflow": "ERP · Expense Claim"}
+ ],
+ "nodeStage": {
+  "Manager Approval": "approval", "Senior Manager Approval": "approval", "Sales Manager Approval": "approval",
+  "Warehouse Approval": "approval", "Finance Approval": "approval", "Credit Check": "approval",
+  "Issue Purchase Order": "purchase", "Goods Receipt": "inventory", "Deliver Goods": "inventory", "Dispatch & Receive": "inventory",
+  "Vendor Invoice & Payment": "accounting", "Invoice & Collect Payment": "accounting", "Finance Review & Payment": "accounting",
+  "Finance Payment": "accounting", "Post to General Ledger": "accounting"
+ },
+ "stageKeywords": [
+  ["approval", "approv|review|check|sign"],
+  ["purchase", "purchase order|\\bpo\\b|procure"],
+  ["inventory", "receipt|deliver|dispatch|stock|stores|warehouse"],
+  ["accounting", "invoice|payment|pay|ledger|finance"]
+ ],
+ "moduleKeywords": [
+  ["hr", "leave|clearance|transfer|start work|candidate|employee|hire|ambitious|hr"],
+  ["purchasing", "purchase|procure|vendor|supplier"],
+  ["sales", "sales|customer|quotation|order"],
+  ["inventory", "stock|inventory|warehouse"],
+  ["finance", "expense|payment|invoice|budget|finance"]
+ ],
+ "rejectActions": "^(reject|rejected|declined?|return to vendor|out of stock)$"
+}

@@ -5,6 +5,7 @@ import { environment } from '../../environments/environment';
 import {
   AdminUser, OrgSnapshot, PermissionCatalog, RbacCatalog, SaveUserPayload, WorkflowDefinitionSummary, WorkflowInstance, WorkflowTask
 } from './models';
+import { BillingSummary, Invoice } from './models';
 import { Branch, Company } from './erp.config';
 
 @Injectable({ providedIn: 'root' })
@@ -53,6 +54,13 @@ export class PortalApiService {
   adminListUsers(): Observable<AdminUser[]> { return this.http.get<AdminUser[]>(`${this.base}/users/admin`); }
   adminCreateUser(p: SaveUserPayload): Observable<AdminUser> { return this.http.post<AdminUser>(`${this.base}/users/admin`, p); }
   adminUpdateUser(id: string, p: SaveUserPayload): Observable<AdminUser> { return this.http.put<AdminUser>(`${this.base}/users/admin/${id}`, p); }
+  adminInviteUser(id: string, appUrl: string): Observable<AdminUser> { return this.http.post<AdminUser>(`${this.base}/users/admin/${id}/invite`, { appUrl }); }
+  completeSetup(): Observable<void> { return this.http.post<void>(`${this.base}/org/setup/complete`, {}); }
+  billingSummary(): Observable<BillingSummary> { return this.http.get<BillingSummary>(`${this.base}/billing/summary`); }
+  billingInvoices(): Observable<Invoice[]> { return this.http.get<Invoice[]>(`${this.base}/billing/invoices`); }
+  billingPay(id: string, returnUrl: string): Observable<{ url: string; provider: string }> { return this.http.post<{ url: string; provider: string }>(`${this.base}/billing/invoices/${id}/pay`, { returnUrl }); }
+  billingConfirm(id: string): Observable<Invoice> { return this.http.post<Invoice>(`${this.base}/billing/invoices/${id}/confirm`, {}); }
+  billingSandboxPay(id: string): Observable<Invoice> { return this.http.post<Invoice>(`${this.base}/billing/invoices/${id}/sandbox-pay`, {}); }
   adminResetPassword(id: string, password: string): Observable<void> { return this.http.post<void>(`${this.base}/users/admin/${id}/reset-password`, { password }); }
   adminDeleteUser(id: string): Observable<void> { return this.http.delete<void>(`${this.base}/users/admin/${id}`); }
 

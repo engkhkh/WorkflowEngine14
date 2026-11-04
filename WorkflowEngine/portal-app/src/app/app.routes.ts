@@ -4,6 +4,8 @@ import { HR_ANY } from './core/hr.models';
 import { FIN_ANY } from './core/fin.models';
 import { ERP_ROUTES } from './erp/erp.routes';
 import { POS_ANY } from './core/pos.models';
+import { HOS_ANY } from './hospital/hospital.service';
+import { CAL_ANY } from './calendar/calendar.service';
 
 export const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'dashboard' },
@@ -53,6 +55,56 @@ export const routes: Routes = [
     ]
   },
 
+  {
+    // Calendar & meetings (cal.*) and the Muslim module (mus.view): per-company modules, per-user privileges
+    path: 'calendar', canActivate: [authGuard, permGuard(...CAL_ANY)],
+    loadComponent: () => import('./calendar/calendar-shell.component').then(m => m.CalendarShellComponent),
+    children: [
+      { path: '', pathMatch: 'full', redirectTo: 'view' },
+      { path: 'view', loadComponent: () => import('./calendar/cal-view.component').then(m => m.CalViewComponent) },
+      { path: 'todos', loadComponent: () => import('./calendar/cal-todos.component').then(m => m.CalTodosComponent) },
+      { path: 'room/:id', canActivate: [permGuard('cal.meetings.join')], loadComponent: () => import('./calendar/cal-room.component').then(m => m.CalRoomComponent) },
+      { path: 'settings', canActivate: [permGuard('cal.settings')], loadComponent: () => import('./calendar/cal-settings.component').then(m => m.CalSettingsComponent) },
+    ]
+  },
+  {
+    path: 'custom', canActivate: [authGuard, permGuard('cus.view')],
+    children: [
+      { path: '', pathMatch: 'full', loadComponent: () => import('./custom/custom-index.component').then(m => m.CustomIndexComponent) },
+      { path: ':key', loadComponent: () => import('./custom/custom-module.component').then(m => m.CustomModuleComponent) },
+    ]
+  },
+  {
+    path: 'muslim', canActivate: [authGuard, permGuard('mus.view')],
+    loadComponent: () => import('./muslim/muslim-shell.component').then(m => m.MuslimShellComponent),
+    children: [
+      { path: '', pathMatch: 'full', redirectTo: 'times' },
+      { path: 'times', loadComponent: () => import('./muslim/muslim-times.component').then(m => m.MuslimTimesComponent) },
+      { path: 'quran', loadComponent: () => import('./muslim/muslim-quran.component').then(m => m.MuslimQuranComponent) },
+      { path: 'quran/:n', loadComponent: () => import('./muslim/muslim-quran.component').then(m => m.MuslimQuranComponent) },
+    ]
+  },
+
+  {
+    // Hospital: every page is guarded by its own hos.* privilege (set per user in Admin > Users)
+    path: 'hospital', canActivate: [authGuard, permGuard(...HOS_ANY)],
+    loadComponent: () => import('./hospital/hospital-shell.component').then(m => m.HospitalShellComponent),
+    children: [
+      { path: '', pathMatch: 'full', loadComponent: () => import('./hospital/hospital-shell.component').then(m => m.HospitalHomeComponent) },
+      { path: 'overview', canActivate: [permGuard('hos.view', 'hos.reports.view')], loadComponent: () => import('./hospital/hos-dashboard.component').then(m => m.HosDashboardComponent) },
+      { path: 'patients', canActivate: [permGuard('hos.patients.view')], loadComponent: () => import('./hospital/hos-patients.component').then(m => m.HosPatientsComponent) },
+      { path: 'patients/:code', canActivate: [permGuard('hos.patients.view')], loadComponent: () => import('./hospital/hos-patient-file.component').then(m => m.HosPatientFileComponent) },
+      { path: 'appointments', canActivate: [permGuard('hos.appointments.view')], loadComponent: () => import('./hospital/hos-appointments.component').then(m => m.HosAppointmentsComponent) },
+      { path: 'visits', canActivate: [permGuard('hos.clinical.view')], loadComponent: () => import('./hospital/hos-visits.component').then(m => m.HosVisitsComponent) },
+      { path: 'visits/:id', canActivate: [permGuard('hos.clinical.view')], loadComponent: () => import('./hospital/hos-visit.component').then(m => m.HosVisitComponent) },
+      { path: 'lab', canActivate: [permGuard('hos.lab.view')], loadComponent: () => import('./hospital/hos-lab.component').then(m => m.HosLabComponent) },
+      { path: 'pharmacy', canActivate: [permGuard('hos.pharmacy.view')], loadComponent: () => import('./hospital/hos-pharmacy.component').then(m => m.HosPharmacyComponent) },
+      { path: 'wards', canActivate: [permGuard('hos.wards.view')], loadComponent: () => import('./hospital/hos-wards.component').then(m => m.HosWardsComponent) },
+      { path: 'billing', canActivate: [permGuard('hos.billing.view')], loadComponent: () => import('./hospital/hos-billing.component').then(m => m.HosBillingComponent) },
+      { path: 'setup', canActivate: [permGuard('hos.setup')], loadComponent: () => import('./hospital/hos-setup.component').then(m => m.HosSetupComponent) },
+    ]
+  },
+
   ...ERP_ROUTES,
 
   {
@@ -74,6 +126,15 @@ export const routes: Routes = [
     ]
   },
 
+  { path: 'workflow', canActivate: [authGuard, permGuard('wf.view')], loadComponent: () => import('./workflow/definitions-list.component').then(m => m.DefinitionsListComponent) },
+  { path: 'workflow/designer', canActivate: [authGuard, permGuard('wf.design')], loadComponent: () => import('./workflow/designer.component').then(m => m.DesignerComponent) },
+  { path: 'workflow/designer/:id', canActivate: [authGuard, permGuard('wf.view')], loadComponent: () => import('./workflow/designer.component').then(m => m.DesignerComponent) },
+  { path: 'workflow/instances', canActivate: [authGuard, permGuard('wf.instances.view')], loadComponent: () => import('./workflow/instances-list.component').then(m => m.InstancesListComponent) },
+  { path: 'workflow/instances/:id', canActivate: [authGuard, permGuard('wf.instances.view')], loadComponent: () => import('./workflow/instance-detail.component').then(m => m.InstanceDetailComponent) },
+  { path: 'website', canActivate: [authGuard, permGuard('web.view')], loadComponent: () => import('./website/website-home.component').then(m => m.WebsiteHomeComponent) },
+  { path: 'website/:id', canActivate: [authGuard, permGuard('web.view')], loadComponent: () => import('./website/website-designer.component').then(m => m.WebsiteDesignerComponent) },
+  { path: 'accept-invite', loadComponent: () => import('./setup/accept-invite.component').then(m => m.AcceptInviteComponent) },
+  { path: 'setup', canActivate: [authGuard, permGuard('org.manage')], loadComponent: () => import('./setup/setup-wizard.component').then(m => m.SetupWizardComponent) },
   { path: 'admin', canActivate: [authGuard, permGuard('admin.users', 'org.manage')], loadComponent: () => import('./admin/admin.component').then(m => m.AdminComponent) },
 
   // old portal URLs keep working

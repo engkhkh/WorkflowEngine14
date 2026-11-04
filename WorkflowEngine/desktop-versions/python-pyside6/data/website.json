@@ -1,0 +1,1732 @@
+{
+ "blocks": [
+  {
+   "type": "nav",
+   "label": "web.b.nav",
+   "icon": "menu",
+   "defaults": {
+    "brand": "My Business",
+    "logo": "",
+    "sticky": "yes"
+   },
+   "fields": [
+    {
+     "key": "brand",
+     "label": "web.f.brand",
+     "kind": "text"
+    },
+    {
+     "key": "logo",
+     "label": "web.f.logo",
+     "kind": "image"
+    },
+    {
+     "key": "sticky",
+     "label": "web.f.sticky",
+     "kind": "select",
+     "options": [
+      {
+       "v": "yes",
+       "l": "web.o.yes"
+      },
+      {
+       "v": "no",
+       "l": "web.o.no"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "type": "hero",
+   "label": "web.b.hero",
+   "icon": "sparkles",
+   "defaults": {
+    "title": "Welcome to our website",
+    "subtitle": "Tell visitors what you do in one sentence.",
+    "button": "Get started",
+    "link": "/contact",
+    "button2": "",
+    "link2": "",
+    "image": "",
+    "overlay": 45,
+    "height": "l",
+    "align": "center"
+   },
+   "fields": [
+    {
+     "key": "title",
+     "label": "web.f.title",
+     "kind": "text"
+    },
+    {
+     "key": "subtitle",
+     "label": "web.f.subtitle",
+     "kind": "textarea"
+    },
+    {
+     "key": "button",
+     "label": "web.f.button",
+     "kind": "text"
+    },
+    {
+     "key": "link",
+     "label": "web.f.link",
+     "kind": "text"
+    },
+    {
+     "key": "button2",
+     "label": "web.f.button2",
+     "kind": "text"
+    },
+    {
+     "key": "link2",
+     "label": "web.f.link",
+     "kind": "text"
+    },
+    {
+     "key": "image",
+     "label": "web.f.image",
+     "kind": "image"
+    },
+    {
+     "key": "overlay",
+     "label": "web.f.overlay",
+     "kind": "number",
+     "min": 0,
+     "max": 85
+    },
+    {
+     "key": "height",
+     "label": "web.f.height",
+     "kind": "select",
+     "options": [
+      {
+       "v": "s",
+       "l": "web.o.small"
+      },
+      {
+       "v": "m",
+       "l": "web.o.medium"
+      },
+      {
+       "v": "l",
+       "l": "web.o.large"
+      }
+     ]
+    },
+    {
+     "key": "align",
+     "label": "web.f.align",
+     "kind": "select",
+     "options": [
+      {
+       "v": "start",
+       "l": "web.o.start"
+      },
+      {
+       "v": "center",
+       "l": "web.o.center"
+      },
+      {
+       "v": "end",
+       "l": "web.o.end"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "type": "text",
+   "label": "web.b.text",
+   "icon": "file",
+   "defaults": {
+    "heading": "About us",
+    "body": "Write about your business here. Use a blank line to start a new paragraph.",
+    "align": "start",
+    "bgStyle": "none",
+    "pad": "m"
+   },
+   "fields": [
+    {
+     "key": "heading",
+     "label": "web.f.title",
+     "kind": "text"
+    },
+    {
+     "key": "body",
+     "label": "web.f.text",
+     "kind": "textarea"
+    },
+    {
+     "key": "align",
+     "label": "web.f.align",
+     "kind": "select",
+     "options": [
+      {
+       "v": "start",
+       "l": "web.o.start"
+      },
+      {
+       "v": "center",
+       "l": "web.o.center"
+      },
+      {
+       "v": "end",
+       "l": "web.o.end"
+      }
+     ]
+    },
+    {
+     "key": "bgStyle",
+     "label": "web.f.background",
+     "kind": "select",
+     "options": [
+      {
+       "v": "none",
+       "l": "web.o.none"
+      },
+      {
+       "v": "soft",
+       "l": "web.o.soft"
+      },
+      {
+       "v": "primary",
+       "l": "web.o.primary"
+      },
+      {
+       "v": "dark",
+       "l": "web.o.dark"
+      }
+     ]
+    },
+    {
+     "key": "pad",
+     "label": "web.f.padding",
+     "kind": "select",
+     "options": [
+      {
+       "v": "s",
+       "l": "web.o.small"
+      },
+      {
+       "v": "m",
+       "l": "web.o.medium"
+      },
+      {
+       "v": "l",
+       "l": "web.o.large"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "type": "image",
+   "label": "web.b.image",
+   "icon": "image",
+   "defaults": {
+    "image": "",
+    "alt": "",
+    "caption": "",
+    "width": "contained",
+    "pad": "m",
+    "bgStyle": "none"
+   },
+   "fields": [
+    {
+     "key": "image",
+     "label": "web.f.image",
+     "kind": "image"
+    },
+    {
+     "key": "alt",
+     "label": "web.f.alt",
+     "kind": "text"
+    },
+    {
+     "key": "caption",
+     "label": "web.f.caption",
+     "kind": "text"
+    },
+    {
+     "key": "width",
+     "label": "web.f.width",
+     "kind": "select",
+     "options": [
+      {
+       "v": "contained",
+       "l": "web.o.contained"
+      },
+      {
+       "v": "full",
+       "l": "web.o.full"
+      }
+     ]
+    },
+    {
+     "key": "bgStyle",
+     "label": "web.f.background",
+     "kind": "select",
+     "options": [
+      {
+       "v": "none",
+       "l": "web.o.none"
+      },
+      {
+       "v": "soft",
+       "l": "web.o.soft"
+      },
+      {
+       "v": "primary",
+       "l": "web.o.primary"
+      },
+      {
+       "v": "dark",
+       "l": "web.o.dark"
+      }
+     ]
+    },
+    {
+     "key": "pad",
+     "label": "web.f.padding",
+     "kind": "select",
+     "options": [
+      {
+       "v": "s",
+       "l": "web.o.small"
+      },
+      {
+       "v": "m",
+       "l": "web.o.medium"
+      },
+      {
+       "v": "l",
+       "l": "web.o.large"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "type": "features",
+   "label": "web.b.features",
+   "icon": "grid",
+   "defaults": {
+    "heading": "Why choose us",
+    "columns": "3",
+    "bgStyle": "soft",
+    "pad": "m",
+    "items": [
+     {
+      "icon": "⚡",
+      "title": "Fast",
+      "text": "Quick and reliable service."
+     },
+     {
+      "icon": "🛡️",
+      "title": "Trusted",
+      "text": "Quality you can count on."
+     },
+     {
+      "icon": "💬",
+      "title": "Support",
+      "text": "We are here to help."
+     }
+    ]
+   },
+   "fields": [
+    {
+     "key": "heading",
+     "label": "web.f.title",
+     "kind": "text"
+    },
+    {
+     "key": "columns",
+     "label": "web.f.columns",
+     "kind": "select",
+     "options": [
+      {
+       "v": "2",
+       "l": "2"
+      },
+      {
+       "v": "3",
+       "l": "3"
+      },
+      {
+       "v": "4",
+       "l": "4"
+      }
+     ]
+    },
+    {
+     "key": "items",
+     "label": "web.f.items",
+     "kind": "list",
+     "itemDefault": {
+      "icon": "⭐",
+      "title": "Title",
+      "text": "Text"
+     },
+     "itemFields": [
+      {
+       "key": "icon",
+       "label": "web.f.icon",
+       "kind": "text"
+      },
+      {
+       "key": "title",
+       "label": "web.f.title",
+       "kind": "text"
+      },
+      {
+       "key": "text",
+       "label": "web.f.text",
+       "kind": "textarea"
+      }
+     ]
+    },
+    {
+     "key": "bgStyle",
+     "label": "web.f.background",
+     "kind": "select",
+     "options": [
+      {
+       "v": "none",
+       "l": "web.o.none"
+      },
+      {
+       "v": "soft",
+       "l": "web.o.soft"
+      },
+      {
+       "v": "primary",
+       "l": "web.o.primary"
+      },
+      {
+       "v": "dark",
+       "l": "web.o.dark"
+      }
+     ]
+    },
+    {
+     "key": "pad",
+     "label": "web.f.padding",
+     "kind": "select",
+     "options": [
+      {
+       "v": "s",
+       "l": "web.o.small"
+      },
+      {
+       "v": "m",
+       "l": "web.o.medium"
+      },
+      {
+       "v": "l",
+       "l": "web.o.large"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "type": "products",
+   "label": "web.b.products",
+   "icon": "store",
+   "defaults": {
+    "heading": "Our products",
+    "columns": "4",
+    "category": "",
+    "limit": 8,
+    "bgStyle": "none",
+    "pad": "m"
+   },
+   "fields": [
+    {
+     "key": "heading",
+     "label": "web.f.title",
+     "kind": "text"
+    },
+    {
+     "key": "columns",
+     "label": "web.f.columns",
+     "kind": "select",
+     "options": [
+      {
+       "v": "2",
+       "l": "2"
+      },
+      {
+       "v": "3",
+       "l": "3"
+      },
+      {
+       "v": "4",
+       "l": "4"
+      }
+     ]
+    },
+    {
+     "key": "category",
+     "label": "web.f.category",
+     "kind": "text"
+    },
+    {
+     "key": "limit",
+     "label": "web.f.limit",
+     "kind": "number",
+     "min": 1,
+     "max": 60
+    },
+    {
+     "key": "bgStyle",
+     "label": "web.f.background",
+     "kind": "select",
+     "options": [
+      {
+       "v": "none",
+       "l": "web.o.none"
+      },
+      {
+       "v": "soft",
+       "l": "web.o.soft"
+      },
+      {
+       "v": "primary",
+       "l": "web.o.primary"
+      },
+      {
+       "v": "dark",
+       "l": "web.o.dark"
+      }
+     ]
+    },
+    {
+     "key": "pad",
+     "label": "web.f.padding",
+     "kind": "select",
+     "options": [
+      {
+       "v": "s",
+       "l": "web.o.small"
+      },
+      {
+       "v": "m",
+       "l": "web.o.medium"
+      },
+      {
+       "v": "l",
+       "l": "web.o.large"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "type": "gallery",
+   "label": "web.b.gallery",
+   "icon": "image",
+   "defaults": {
+    "heading": "Gallery",
+    "columns": "3",
+    "bgStyle": "none",
+    "pad": "m",
+    "items": [
+     {
+      "image": "",
+      "alt": ""
+     },
+     {
+      "image": "",
+      "alt": ""
+     },
+     {
+      "image": "",
+      "alt": ""
+     }
+    ]
+   },
+   "fields": [
+    {
+     "key": "heading",
+     "label": "web.f.title",
+     "kind": "text"
+    },
+    {
+     "key": "columns",
+     "label": "web.f.columns",
+     "kind": "select",
+     "options": [
+      {
+       "v": "2",
+       "l": "2"
+      },
+      {
+       "v": "3",
+       "l": "3"
+      },
+      {
+       "v": "4",
+       "l": "4"
+      }
+     ]
+    },
+    {
+     "key": "items",
+     "label": "web.f.items",
+     "kind": "list",
+     "itemDefault": {
+      "image": "",
+      "alt": ""
+     },
+     "itemFields": [
+      {
+       "key": "image",
+       "label": "web.f.image",
+       "kind": "image"
+      },
+      {
+       "key": "alt",
+       "label": "web.f.alt",
+       "kind": "text"
+      }
+     ]
+    },
+    {
+     "key": "bgStyle",
+     "label": "web.f.background",
+     "kind": "select",
+     "options": [
+      {
+       "v": "none",
+       "l": "web.o.none"
+      },
+      {
+       "v": "soft",
+       "l": "web.o.soft"
+      },
+      {
+       "v": "primary",
+       "l": "web.o.primary"
+      },
+      {
+       "v": "dark",
+       "l": "web.o.dark"
+      }
+     ]
+    },
+    {
+     "key": "pad",
+     "label": "web.f.padding",
+     "kind": "select",
+     "options": [
+      {
+       "v": "s",
+       "l": "web.o.small"
+      },
+      {
+       "v": "m",
+       "l": "web.o.medium"
+      },
+      {
+       "v": "l",
+       "l": "web.o.large"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "type": "testimonials",
+   "label": "web.b.testimonials",
+   "icon": "message",
+   "defaults": {
+    "heading": "What customers say",
+    "bgStyle": "soft",
+    "pad": "m",
+    "items": [
+     {
+      "name": "Sara A.",
+      "role": "Customer",
+      "text": "Excellent service, highly recommended."
+     },
+     {
+      "name": "Omar K.",
+      "role": "Customer",
+      "text": "Great quality and fast delivery."
+     }
+    ]
+   },
+   "fields": [
+    {
+     "key": "heading",
+     "label": "web.f.title",
+     "kind": "text"
+    },
+    {
+     "key": "items",
+     "label": "web.f.items",
+     "kind": "list",
+     "itemDefault": {
+      "name": "Name",
+      "role": "",
+      "text": "Opinion"
+     },
+     "itemFields": [
+      {
+       "key": "name",
+       "label": "web.f.name",
+       "kind": "text"
+      },
+      {
+       "key": "role",
+       "label": "web.f.role",
+       "kind": "text"
+      },
+      {
+       "key": "text",
+       "label": "web.f.text",
+       "kind": "textarea"
+      }
+     ]
+    },
+    {
+     "key": "bgStyle",
+     "label": "web.f.background",
+     "kind": "select",
+     "options": [
+      {
+       "v": "none",
+       "l": "web.o.none"
+      },
+      {
+       "v": "soft",
+       "l": "web.o.soft"
+      },
+      {
+       "v": "primary",
+       "l": "web.o.primary"
+      },
+      {
+       "v": "dark",
+       "l": "web.o.dark"
+      }
+     ]
+    },
+    {
+     "key": "pad",
+     "label": "web.f.padding",
+     "kind": "select",
+     "options": [
+      {
+       "v": "s",
+       "l": "web.o.small"
+      },
+      {
+       "v": "m",
+       "l": "web.o.medium"
+      },
+      {
+       "v": "l",
+       "l": "web.o.large"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "type": "faq",
+   "label": "web.b.faq",
+   "icon": "help",
+   "defaults": {
+    "heading": "Questions",
+    "bgStyle": "none",
+    "pad": "m",
+    "items": [
+     {
+      "q": "How can I order?",
+      "a": "Add products to the cart and send your order."
+     }
+    ]
+   },
+   "fields": [
+    {
+     "key": "heading",
+     "label": "web.f.title",
+     "kind": "text"
+    },
+    {
+     "key": "items",
+     "label": "web.f.items",
+     "kind": "list",
+     "itemDefault": {
+      "q": "Question",
+      "a": "Answer"
+     },
+     "itemFields": [
+      {
+       "key": "q",
+       "label": "web.f.question",
+       "kind": "text"
+      },
+      {
+       "key": "a",
+       "label": "web.f.answer",
+       "kind": "textarea"
+      }
+     ]
+    },
+    {
+     "key": "bgStyle",
+     "label": "web.f.background",
+     "kind": "select",
+     "options": [
+      {
+       "v": "none",
+       "l": "web.o.none"
+      },
+      {
+       "v": "soft",
+       "l": "web.o.soft"
+      },
+      {
+       "v": "primary",
+       "l": "web.o.primary"
+      },
+      {
+       "v": "dark",
+       "l": "web.o.dark"
+      }
+     ]
+    },
+    {
+     "key": "pad",
+     "label": "web.f.padding",
+     "kind": "select",
+     "options": [
+      {
+       "v": "s",
+       "l": "web.o.small"
+      },
+      {
+       "v": "m",
+       "l": "web.o.medium"
+      },
+      {
+       "v": "l",
+       "l": "web.o.large"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "type": "cta",
+   "label": "web.b.cta",
+   "icon": "send",
+   "defaults": {
+    "heading": "Ready to start?",
+    "text": "Contact us today.",
+    "button": "Contact us",
+    "link": "/contact",
+    "bgStyle": "primary",
+    "pad": "m"
+   },
+   "fields": [
+    {
+     "key": "heading",
+     "label": "web.f.title",
+     "kind": "text"
+    },
+    {
+     "key": "text",
+     "label": "web.f.text",
+     "kind": "textarea"
+    },
+    {
+     "key": "button",
+     "label": "web.f.button",
+     "kind": "text"
+    },
+    {
+     "key": "link",
+     "label": "web.f.link",
+     "kind": "text"
+    },
+    {
+     "key": "bgStyle",
+     "label": "web.f.background",
+     "kind": "select",
+     "options": [
+      {
+       "v": "none",
+       "l": "web.o.none"
+      },
+      {
+       "v": "soft",
+       "l": "web.o.soft"
+      },
+      {
+       "v": "primary",
+       "l": "web.o.primary"
+      },
+      {
+       "v": "dark",
+       "l": "web.o.dark"
+      }
+     ]
+    },
+    {
+     "key": "pad",
+     "label": "web.f.padding",
+     "kind": "select",
+     "options": [
+      {
+       "v": "s",
+       "l": "web.o.small"
+      },
+      {
+       "v": "m",
+       "l": "web.o.medium"
+      },
+      {
+       "v": "l",
+       "l": "web.o.large"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "type": "contact",
+   "label": "web.b.contact",
+   "icon": "mail",
+   "defaults": {
+    "heading": "Contact us",
+    "text": "Send us a message and we will answer you soon.",
+    "button": "Send",
+    "phone": "",
+    "email": "",
+    "address": "",
+    "bgStyle": "none",
+    "pad": "m"
+   },
+   "fields": [
+    {
+     "key": "heading",
+     "label": "web.f.title",
+     "kind": "text"
+    },
+    {
+     "key": "text",
+     "label": "web.f.text",
+     "kind": "textarea"
+    },
+    {
+     "key": "button",
+     "label": "web.f.button",
+     "kind": "text"
+    },
+    {
+     "key": "phone",
+     "label": "web.f.phone",
+     "kind": "text"
+    },
+    {
+     "key": "email",
+     "label": "web.f.email",
+     "kind": "text"
+    },
+    {
+     "key": "address",
+     "label": "web.f.address",
+     "kind": "text"
+    },
+    {
+     "key": "bgStyle",
+     "label": "web.f.background",
+     "kind": "select",
+     "options": [
+      {
+       "v": "none",
+       "l": "web.o.none"
+      },
+      {
+       "v": "soft",
+       "l": "web.o.soft"
+      },
+      {
+       "v": "primary",
+       "l": "web.o.primary"
+      },
+      {
+       "v": "dark",
+       "l": "web.o.dark"
+      }
+     ]
+    },
+    {
+     "key": "pad",
+     "label": "web.f.padding",
+     "kind": "select",
+     "options": [
+      {
+       "v": "s",
+       "l": "web.o.small"
+      },
+      {
+       "v": "m",
+       "l": "web.o.medium"
+      },
+      {
+       "v": "l",
+       "l": "web.o.large"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "type": "embed",
+   "label": "web.b.embed",
+   "icon": "globe",
+   "defaults": {
+    "url": "",
+    "height": 360,
+    "pad": "m",
+    "bgStyle": "none"
+   },
+   "fields": [
+    {
+     "key": "url",
+     "label": "web.f.embedUrl",
+     "kind": "text"
+    },
+    {
+     "key": "height",
+     "label": "web.f.height",
+     "kind": "number",
+     "min": 200,
+     "max": 900
+    },
+    {
+     "key": "bgStyle",
+     "label": "web.f.background",
+     "kind": "select",
+     "options": [
+      {
+       "v": "none",
+       "l": "web.o.none"
+      },
+      {
+       "v": "soft",
+       "l": "web.o.soft"
+      },
+      {
+       "v": "primary",
+       "l": "web.o.primary"
+      },
+      {
+       "v": "dark",
+       "l": "web.o.dark"
+      }
+     ]
+    },
+    {
+     "key": "pad",
+     "label": "web.f.padding",
+     "kind": "select",
+     "options": [
+      {
+       "v": "s",
+       "l": "web.o.small"
+      },
+      {
+       "v": "m",
+       "l": "web.o.medium"
+      },
+      {
+       "v": "l",
+       "l": "web.o.large"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "type": "spacer",
+   "label": "web.b.spacer",
+   "icon": "minus",
+   "defaults": {
+    "height": 48
+   },
+   "fields": [
+    {
+     "key": "height",
+     "label": "web.f.height",
+     "kind": "number",
+     "min": 8,
+     "max": 300
+    }
+   ]
+  },
+  {
+   "type": "footer",
+   "label": "web.b.footer",
+   "icon": "chevron",
+   "defaults": {
+    "text": "© My Business. All rights reserved.",
+    "items": [
+     {
+      "label": "Home",
+      "link": "/"
+     }
+    ]
+   },
+   "fields": [
+    {
+     "key": "text",
+     "label": "web.f.text",
+     "kind": "text"
+    },
+    {
+     "key": "items",
+     "label": "web.f.links",
+     "kind": "list",
+     "itemDefault": {
+      "label": "Link",
+      "link": "/"
+     },
+     "itemFields": [
+      {
+       "key": "label",
+       "label": "web.f.label",
+       "kind": "text"
+      },
+      {
+       "key": "link",
+       "label": "web.f.link",
+       "kind": "text"
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "templates": {
+  "blank": {
+   "theme": {
+    "primary": "#4f46e5",
+    "bg": "#ffffff",
+    "text": "#1f2937",
+    "font": "sans",
+    "radius": 10,
+    "dark": false
+   },
+   "pages": [
+    {
+     "id": "rvrqb4w",
+     "path": "/",
+     "title": "Home",
+     "blocks": [
+      {
+       "id": "7orew1e",
+       "type": "nav",
+       "props": {
+        "brand": "{{name}}",
+        "logo": "",
+        "sticky": "yes"
+       }
+      },
+      {
+       "id": "feggzm5",
+       "type": "hero",
+       "props": {
+        "title": "{{name}}",
+        "subtitle": "Tell visitors what you do in one sentence.",
+        "button": "Get started",
+        "link": "/contact",
+        "button2": "",
+        "link2": "",
+        "image": "",
+        "overlay": 45,
+        "height": "l",
+        "align": "center"
+       }
+      },
+      {
+       "id": "np977uu",
+       "type": "footer",
+       "props": {
+        "text": "© 2026 {{name}}. All rights reserved.",
+        "items": [
+         {
+          "label": "Home",
+          "link": "/"
+         },
+         {
+          "label": "Contact",
+          "link": "/contact"
+         }
+        ]
+       }
+      }
+     ]
+    }
+   ],
+   "settings": {
+    "title": "{{name}}",
+    "lang": "en",
+    "dir": "ltr"
+   },
+   "shop": {
+    "enabled": false,
+    "currency": "{{cur}}",
+    "products": []
+   }
+  },
+  "business": {
+   "theme": {
+    "primary": "#4f46e5",
+    "bg": "#ffffff",
+    "text": "#1f2937",
+    "font": "sans",
+    "radius": 10,
+    "dark": false
+   },
+   "pages": [
+    {
+     "id": "sfpves3",
+     "path": "/",
+     "title": "Home",
+     "blocks": [
+      {
+       "id": "bdcileh",
+       "type": "nav",
+       "props": {
+        "brand": "{{name}}",
+        "logo": "",
+        "sticky": "yes"
+       }
+      },
+      {
+       "id": "w1n8esd",
+       "type": "hero",
+       "props": {
+        "title": "{{name}}",
+        "subtitle": "Professional services you can rely on.",
+        "button": "Contact us",
+        "link": "/contact",
+        "button2": "",
+        "link2": "",
+        "image": "",
+        "overlay": 45,
+        "height": "l",
+        "align": "center"
+       }
+      },
+      {
+       "id": "0fmsl7g",
+       "type": "features",
+       "props": {
+        "heading": "Why choose us",
+        "columns": "3",
+        "bgStyle": "soft",
+        "pad": "m",
+        "items": [
+         {
+          "icon": "⚡",
+          "title": "Fast",
+          "text": "Quick and reliable service."
+         },
+         {
+          "icon": "🛡️",
+          "title": "Trusted",
+          "text": "Quality you can count on."
+         },
+         {
+          "icon": "💬",
+          "title": "Support",
+          "text": "We are here to help."
+         }
+        ]
+       }
+      },
+      {
+       "id": "grhs9gq",
+       "type": "testimonials",
+       "props": {
+        "heading": "What customers say",
+        "bgStyle": "soft",
+        "pad": "m",
+        "items": [
+         {
+          "name": "Sara A.",
+          "role": "Customer",
+          "text": "Excellent service, highly recommended."
+         },
+         {
+          "name": "Omar K.",
+          "role": "Customer",
+          "text": "Great quality and fast delivery."
+         }
+        ]
+       }
+      },
+      {
+       "id": "p1y7rem",
+       "type": "cta",
+       "props": {
+        "heading": "Ready to start?",
+        "text": "Contact us today.",
+        "button": "Contact us",
+        "link": "/contact",
+        "bgStyle": "primary",
+        "pad": "m"
+       }
+      },
+      {
+       "id": "ozcvb2m",
+       "type": "footer",
+       "props": {
+        "text": "© 2026 {{name}}. All rights reserved.",
+        "items": [
+         {
+          "label": "Home",
+          "link": "/"
+         },
+         {
+          "label": "Contact",
+          "link": "/contact"
+         }
+        ]
+       }
+      }
+     ]
+    },
+    {
+     "id": "x07m83d",
+     "path": "/about",
+     "title": "About",
+     "blocks": [
+      {
+       "id": "2ov3n84",
+       "type": "nav",
+       "props": {
+        "brand": "{{name}}",
+        "logo": "",
+        "sticky": "yes"
+       }
+      },
+      {
+       "id": "hunb2y0",
+       "type": "text",
+       "props": {
+        "heading": "About {{name}}",
+        "body": "Write about your business here. Use a blank line to start a new paragraph.",
+        "align": "start",
+        "bgStyle": "none",
+        "pad": "m"
+       }
+      },
+      {
+       "id": "trj8fvf",
+       "type": "features",
+       "props": {
+        "heading": "Our values",
+        "columns": "3",
+        "bgStyle": "none",
+        "pad": "m",
+        "items": [
+         {
+          "icon": "⚡",
+          "title": "Fast",
+          "text": "Quick and reliable service."
+         },
+         {
+          "icon": "🛡️",
+          "title": "Trusted",
+          "text": "Quality you can count on."
+         },
+         {
+          "icon": "💬",
+          "title": "Support",
+          "text": "We are here to help."
+         }
+        ]
+       }
+      },
+      {
+       "id": "46fdmdz",
+       "type": "footer",
+       "props": {
+        "text": "© 2026 {{name}}. All rights reserved.",
+        "items": [
+         {
+          "label": "Home",
+          "link": "/"
+         },
+         {
+          "label": "Contact",
+          "link": "/contact"
+         }
+        ]
+       }
+      }
+     ]
+    },
+    {
+     "id": "oare51j",
+     "path": "/contact",
+     "title": "Contact",
+     "blocks": [
+      {
+       "id": "0mxdut1",
+       "type": "nav",
+       "props": {
+        "brand": "{{name}}",
+        "logo": "",
+        "sticky": "yes"
+       }
+      },
+      {
+       "id": "ojt2hpf",
+       "type": "contact",
+       "props": {
+        "heading": "Contact us",
+        "text": "Send us a message and we will answer you soon.",
+        "button": "Send",
+        "phone": "",
+        "email": "",
+        "address": "",
+        "bgStyle": "none",
+        "pad": "m"
+       }
+      },
+      {
+       "id": "ar2y6sh",
+       "type": "embed",
+       "props": {
+        "url": "",
+        "height": 360,
+        "pad": "m",
+        "bgStyle": "none"
+       }
+      },
+      {
+       "id": "cf5yzba",
+       "type": "footer",
+       "props": {
+        "text": "© 2026 {{name}}. All rights reserved.",
+        "items": [
+         {
+          "label": "Home",
+          "link": "/"
+         },
+         {
+          "label": "Contact",
+          "link": "/contact"
+         }
+        ]
+       }
+      }
+     ]
+    }
+   ],
+   "settings": {
+    "title": "{{name}}",
+    "lang": "en",
+    "dir": "ltr"
+   },
+   "shop": {
+    "enabled": false,
+    "currency": "{{cur}}",
+    "products": []
+   }
+  },
+  "shop": {
+   "theme": {
+    "primary": "#4f46e5",
+    "bg": "#ffffff",
+    "text": "#1f2937",
+    "font": "sans",
+    "radius": 10,
+    "dark": false
+   },
+   "pages": [
+    {
+     "id": "chpi0f0",
+     "path": "/",
+     "title": "Home",
+     "blocks": [
+      {
+       "id": "l0k1eb3",
+       "type": "nav",
+       "props": {
+        "brand": "{{name}}",
+        "logo": "",
+        "sticky": "yes"
+       }
+      },
+      {
+       "id": "6yx3kmp",
+       "type": "hero",
+       "props": {
+        "title": "{{name}}",
+        "subtitle": "Shop our latest products. Order online in minutes.",
+        "button": "Shop now",
+        "link": "/shop",
+        "button2": "",
+        "link2": "",
+        "image": "",
+        "overlay": 45,
+        "height": "l",
+        "align": "center"
+       }
+      },
+      {
+       "id": "g5evfod",
+       "type": "products",
+       "props": {
+        "heading": "Featured products",
+        "columns": "4",
+        "category": "",
+        "limit": 4,
+        "bgStyle": "none",
+        "pad": "m"
+       }
+      },
+      {
+       "id": "jvjxpfb",
+       "type": "features",
+       "props": {
+        "heading": "Why shop with us",
+        "columns": "3",
+        "bgStyle": "soft",
+        "pad": "m",
+        "items": [
+         {
+          "icon": "🚚",
+          "title": "Delivery",
+          "text": "Fast delivery to your door."
+         },
+         {
+          "icon": "🔒",
+          "title": "Safe ordering",
+          "text": "Your details stay private."
+         },
+         {
+          "icon": "↩️",
+          "title": "Easy returns",
+          "text": "Change of mind? We help."
+         }
+        ]
+       }
+      },
+      {
+       "id": "41qv7vy",
+       "type": "cta",
+       "props": {
+        "heading": "Questions about an order?",
+        "text": "Contact us today.",
+        "button": "Contact us",
+        "link": "/contact",
+        "bgStyle": "primary",
+        "pad": "m"
+       }
+      },
+      {
+       "id": "4mzsfsl",
+       "type": "footer",
+       "props": {
+        "text": "© 2026 {{name}}. All rights reserved.",
+        "items": [
+         {
+          "label": "Home",
+          "link": "/"
+         },
+         {
+          "label": "Contact",
+          "link": "/contact"
+         }
+        ]
+       }
+      }
+     ]
+    },
+    {
+     "id": "rxsq769",
+     "path": "/shop",
+     "title": "Shop",
+     "blocks": [
+      {
+       "id": "tmcmyg8",
+       "type": "nav",
+       "props": {
+        "brand": "{{name}}",
+        "logo": "",
+        "sticky": "yes"
+       }
+      },
+      {
+       "id": "ctx6nz9",
+       "type": "products",
+       "props": {
+        "heading": "All products",
+        "columns": "4",
+        "category": "",
+        "limit": 60,
+        "bgStyle": "none",
+        "pad": "m"
+       }
+      },
+      {
+       "id": "n7z5eld",
+       "type": "footer",
+       "props": {
+        "text": "© 2026 {{name}}. All rights reserved.",
+        "items": [
+         {
+          "label": "Home",
+          "link": "/"
+         },
+         {
+          "label": "Contact",
+          "link": "/contact"
+         }
+        ]
+       }
+      }
+     ]
+    },
+    {
+     "id": "q9x04kr",
+     "path": "/contact",
+     "title": "Contact",
+     "blocks": [
+      {
+       "id": "7zk1k6f",
+       "type": "nav",
+       "props": {
+        "brand": "{{name}}",
+        "logo": "",
+        "sticky": "yes"
+       }
+      },
+      {
+       "id": "acvp7j6",
+       "type": "contact",
+       "props": {
+        "heading": "Contact us",
+        "text": "Send us a message and we will answer you soon.",
+        "button": "Send",
+        "phone": "",
+        "email": "",
+        "address": "",
+        "bgStyle": "none",
+        "pad": "m"
+       }
+      },
+      {
+       "id": "3q8rb7s",
+       "type": "faq",
+       "props": {
+        "heading": "Questions",
+        "bgStyle": "none",
+        "pad": "m",
+        "items": [
+         {
+          "q": "How can I order?",
+          "a": "Add products to the cart and send your order."
+         }
+        ]
+       }
+      },
+      {
+       "id": "b9d9xw9",
+       "type": "footer",
+       "props": {
+        "text": "© 2026 {{name}}. All rights reserved.",
+        "items": [
+         {
+          "label": "Home",
+          "link": "/"
+         },
+         {
+          "label": "Contact",
+          "link": "/contact"
+         }
+        ]
+       }
+      }
+     ]
+    }
+   ],
+   "settings": {
+    "title": "{{name}}",
+    "lang": "en",
+    "dir": "ltr"
+   },
+   "shop": {
+    "enabled": true,
+    "currency": "{{cur}}",
+    "products": []
+   }
+  }
+ },
+ "fonts": {
+  "sans": "system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif",
+  "serif": "Georgia,'Times New Roman',serif",
+  "mono": "ui-monospace,Menlo,Consolas,monospace",
+  "arabic": "Tahoma,'Segoe UI','Noto Naskh Arabic',Arial,sans-serif"
+ },
+ "defaultTheme": {
+  "primary": "#4f46e5",
+  "bg": "#ffffff",
+  "text": "#1f2937",
+  "font": "sans",
+  "radius": 10,
+  "dark": false
+ },
+ "css": "\n*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:{{bg}};color:{{tx}};font-family:{{font}};line-height:1.6;--p:{{primary}};--r:{{radius}}px;--soft:{{soft}};--line:{{line}}}\nimg{max-width:100%;display:block}a{color:var(--p)}.wrap{max-width:1120px;margin:0 auto;padding-inline:20px}.center{text-align:center}.muted{opacity:.7}\n.page{display:none}.page.on{display:block}\n.nav{background:{{navbg}};border-bottom:1px solid var(--line);z-index:30}.nav.sticky{position:sticky;top:0}.navin{display:flex;align-items:center;gap:20px;min-height:64px;flex-wrap:wrap}\n.brand{display:flex;align-items:center;gap:10px;font-weight:700;font-size:20px;text-decoration:none;color:inherit}.brand img{height:36px;width:auto}\n.links{display:flex;gap:18px;margin-inline-start:auto;flex-wrap:wrap}.links a{text-decoration:none;color:inherit;opacity:.8}.links a.on,.links a:hover{opacity:1;color:var(--p)}\n.cartbtn{border:1px solid var(--line);background:transparent;color:inherit;border-radius:var(--r);padding:6px 12px;cursor:pointer;font-size:15px}\n.hero{display:flex;align-items:center;background:linear-gradient(135deg,var(--p),#111827);color:#fff;background-size:cover;background-position:center;padding:60px 0}.hero h1{font-size:clamp(30px,5vw,56px);line-height:1.15;margin:0 0 14px}.hero .lead{font-size:clamp(16px,2vw,21px);opacity:.92;max-width:680px;margin:0 auto 24px}.hero[style*=\"start\"] .lead{margin-inline:0}\n.btn{display:inline-block;background:var(--p);color:#fff;border:2px solid var(--p);padding:11px 24px;border-radius:var(--r);text-decoration:none;font-weight:600;cursor:pointer;font-size:15px;font-family:inherit}.btn.ghost{background:transparent;color:#fff;border-color:#fff;margin-inline-start:10px}.btn.light{background:#fff;color:var(--p);border-color:#fff}.btn.sm{padding:7px 16px;font-size:14px}\n.blk.bg-soft{background:var(--soft)}.blk.bg-primary{background:var(--p);color:#fff}.blk.bg-primary .card{color:{{tx}}}.blk.bg-dark{background:#111827;color:#f3f4f6}.blk.bg-dark .card{color:#f3f4f6;background:#1f2937;border-color:#374151}\n.h2{font-size:clamp(24px,3.4vw,36px);margin:0 0 28px;text-align:center}.prose{max-width:760px;margin-inline:auto}.prose p{margin:0 0 14px}.lead{font-size:18px}\n.grid{display:grid;gap:22px}.c2{grid-template-columns:repeat(2,1fr)}.c3{grid-template-columns:repeat(3,1fr)}.c4{grid-template-columns:repeat(4,1fr)}\n.card{background:{{cardbg}};border:1px solid var(--line);border-radius:var(--r);padding:20px;margin:0}.feat .ico{font-size:34px}.feat h3,.prod h3{margin:8px 0 6px;font-size:18px}\n.prod{display:flex;flex-direction:column;gap:6px;padding:12px}.pimg{aspect-ratio:1/1;border-radius:calc(var(--r) - 2px);background:var(--soft);display:grid;place-items:center;overflow:hidden;font-size:42px}.pimg img{width:100%;height:100%;object-fit:cover}.price{font-weight:700;color:var(--p);margin-top:auto}\n.g{width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:var(--r)}.fig{margin:0 auto;max-width:860px}.fig.full{max-width:none}.fig img{width:100%;border-radius:var(--r)}.fig figcaption{text-align:center;font-size:14px;opacity:.7;margin-top:8px}\n.ph{background:var(--soft);border:2px dashed var(--line);border-radius:var(--r);min-height:140px;display:grid;place-items:center;font-size:36px}\nblockquote.card p{font-size:17px;margin:0 0 12px}blockquote footer{font-size:14px}.faq{max-width:760px;margin:0 auto;display:grid;gap:10px}.faq summary{cursor:pointer;font-weight:600}.faq p{margin:10px 0 0}\n.two{display:grid;grid-template-columns:1fr 1fr;gap:32px;align-items:start}.two .h2{text-align:start}.info{display:grid;gap:8px;margin-top:16px}.form{display:grid;gap:10px}\ninput,textarea,select{font:inherit;color:inherit;background:transparent;border:1px solid var(--line);border-radius:var(--r);padding:10px 12px;width:100%}.hp{position:absolute;left:-9999px;opacity:0;height:0;width:0}\n.status{margin:0;font-size:14px}.embed{width:100%;border:0;border-radius:var(--r)}\n.foot{background:#111827;color:#d1d5db;padding:32px 0;text-align:center}.foot a{color:#e5e7eb;margin:0 10px}.foot p{margin:14px 0 0;font-size:14px;opacity:.8}\n.drawer{position:fixed;inset:0;background:rgba(0,0,0,.45);display:none;z-index:50}.drawer.open{display:block}.panel{position:absolute;inset-block:0;inset-inline-end:0;width:min(420px,100%);background:{{panelbg}};color:{{tx}};padding:20px;overflow:auto;display:flex;flex-direction:column;gap:12px}\n.panel h3{margin:0}.ci{display:flex;gap:10px;align-items:center;border-bottom:1px solid var(--line);padding:8px 0}.ci span{flex:1}.q{display:flex;gap:6px;align-items:center}.q button{width:26px;height:26px;border-radius:50%;border:1px solid var(--line);background:transparent;color:inherit;cursor:pointer}\n.total{display:flex;justify-content:space-between;font-weight:700;font-size:18px}.ok{color:#16a34a}.err{color:#dc2626}\n@media(max-width:860px){.c3,.c4{grid-template-columns:repeat(2,1fr)}.two{grid-template-columns:1fr}.links{margin-inline-start:0;width:100%}}\n@media(max-width:520px){.c2,.c3,.c4{grid-template-columns:1fr}.c4.prodgrid{grid-template-columns:repeat(2,1fr)}}\n",
+ "cart": "<div class=\"drawer\" data-drawer><div class=\"panel\"><div style=\"display:flex;justify-content:space-between;align-items:center\"><h3>🛒 {{L.cart}}</h3><button class=\"btn sm ghost\" style=\"color:inherit;border-color:var(--line)\" type=\"button\" data-cart-close>✕</button></div>\n    <div data-items></div><div class=\"total\"><span>{{L.total}}</span><span data-total></span></div>\n    <form class=\"form\" data-checkout><input name=\"name\" placeholder=\"{{L.name}}\" required maxlength=\"120\"><input name=\"phone\" placeholder=\"{{L.phone}}\" maxlength=\"40\"><input name=\"email\" type=\"email\" placeholder=\"{{L.email}}\" maxlength=\"160\">\n    <textarea name=\"address\" rows=\"2\" placeholder=\"{{L.address}}\" maxlength=\"300\"></textarea><textarea name=\"note\" rows=\"2\" placeholder=\"{{L.note}}\" maxlength=\"500\"></textarea>\n    <input name=\"website\" class=\"hp\" tabindex=\"-1\" autocomplete=\"off\"><button class=\"btn\" type=\"submit\">{{L.order}}</button><p class=\"status\" data-ostatus></p></form></div></div>",
+ "js": "\n(function(){var D={{data}};var cart={};var $=function(s,r){return(r||document).querySelector(s)};var $$=function(s,r){return Array.prototype.slice.call((r||document).querySelectorAll(s))};\nfunction fmt(n){return (Math.round(n*100)/100).toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2})+' '+D.cur}\nfunction show(){var h=(location.hash||'').replace(/^#/,'')||D.page||'/';var pg=$$('.page');var f=pg.filter(function(p){return p.getAttribute('data-path')===h})[0]||pg[0];pg.forEach(function(p){p.classList.toggle('on',p===f)});\n$$('[data-nav]').forEach(function(a){a.classList.toggle('on',a.getAttribute('data-nav')===f.getAttribute('data-path'))});if(D.mode!=='preview')window.scrollTo(0,0)}\nfunction render(){if(!D.shop)return;var items=$('[data-items]'),n=0,t=0,html='';Object.keys(cart).forEach(function(k){var p=D.prods.filter(function(x){return x.sku===k})[0];if(!p)return;n+=cart[k];t+=p.price*cart[k];\nhtml+='<div class=\"ci\"><span>'+esc(p.name)+'<br><small class=\"muted\">'+fmt(p.price)+'</small></span><div class=\"q\"><button type=\"button\" data-q=\"-1\" data-k=\"'+esc(k)+'\">−</button><b>'+cart[k]+'</b><button type=\"button\" data-q=\"1\" data-k=\"'+esc(k)+'\">+</button></div></div>'});\nitems.innerHTML=html||'<p class=\"muted\">'+esc(D.t.empty)+'</p>';$('[data-total]').textContent=fmt(t);$$('[data-cart-count]').forEach(function(b){b.textContent=n})}\nfunction esc(s){return String(s).replace(/[&<>\"']/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','\"':'&quot;',\"'\":'&#39;'}[c]})}\nfunction post(url,body,ok,bad){fetch(url,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)}).then(function(r){return r.ok?r.json():r.text().then(function(t){throw new Error(t)})}).then(ok).catch(function(e){bad(e&&e.message)})}\ndocument.addEventListener('click',function(e){var t=e.target;if(!t.closest)return;\nvar add=t.closest('[data-add]');if(add){var k=add.getAttribute('data-add');cart[k]=(cart[k]||0)+1;render();var d=$('[data-drawer]');if(d)d.classList.add('open');return}\nif(t.closest('[data-cart-open]')){$('[data-drawer]').classList.add('open');return}\nif(t.closest('[data-cart-close]')||t.matches('[data-drawer]')){$('[data-drawer]').classList.remove('open');return}\nvar q=t.closest('[data-q]');if(q){var kk=q.getAttribute('data-k');cart[kk]=(cart[kk]||0)+Number(q.getAttribute('data-q'));if(cart[kk]<=0)delete cart[kk];render();return}\nif(D.mode==='preview'){var a=t.closest('a');if(a){e.preventDefault();var h=a.getAttribute('href')||'';if(h.indexOf('#/')===0)parent.postMessage({wb:'goto',path:h.slice(1)},'*');return}\nvar b=t.closest('[data-bid]');if(b){e.preventDefault();parent.postMessage({wb:'select',id:b.getAttribute('data-bid')},'*')}}},true);\ndocument.addEventListener('submit',function(e){var f=e.target;e.preventDefault();if(D.mode==='preview')return;var v=function(n){var i=f.elements[n];return i?i.value:''};\nif(f.hasAttribute('data-contact')){var s=$('[data-status]',f);if(!D.msg){s.textContent=D.t.nopub;return}post(D.msg,{name:v('name'),email:v('email'),phone:v('phone'),message:v('message'),website:v('website')},function(){s.className='status ok';s.textContent=D.t.sent;f.reset()},function(){s.className='status err';s.textContent=D.t.fail});return}\nif(f.hasAttribute('data-checkout')){var st=$('[data-ostatus]',f);if(!D.order){st.textContent=D.t.nopub;return}var lines=Object.keys(cart).map(function(k){return{sku:k,qty:cart[k]}});if(!lines.length){st.className='status err';st.textContent=D.t.empty;return}\npost(D.order,{name:v('name'),phone:v('phone'),email:v('email'),address:v('address'),note:v('note'),website:v('website'),lines:lines},function(r){cart={};render();f.reset();st.className='status ok';st.textContent=D.t.thanks+' '+r.number},function(m){st.className='status err';st.textContent=D.t.fail})}},true);\nwindow.addEventListener('hashchange',show);if(D.mode==='preview'){window.addEventListener('scroll',function(){parent.postMessage({wb:'scroll',y:window.scrollY},'*')});setTimeout(function(){window.scrollTo(0,D.y)},0)}\nshow();render()})();",
+ "arLabels": {
+  "add": "أضف إلى السلة",
+  "cart": "سلتك",
+  "total": "الإجمالي",
+  "name": "الاسم",
+  "email": "البريد الإلكتروني",
+  "phone": "الهاتف",
+  "message": "الرسالة",
+  "address": "عنوان التوصيل",
+  "note": "ملاحظة",
+  "order": "إرسال الطلب",
+  "empty": "السلة فارغة",
+  "thanks": "شكراً لك! رقم طلبك",
+  "sent": "تم إرسال الرسالة. شكراً لك!",
+  "fail": "تعذر الإرسال. حاول مرة أخرى.",
+  "noProducts": "لا توجد منتجات بعد.",
+  "nopub": "الطلب يعمل بعد نشر الموقع."
+ },
+ "enLabels": {
+  "add": "Add to cart",
+  "cart": "Your cart",
+  "total": "Total",
+  "name": "Your name",
+  "email": "E-mail",
+  "phone": "Phone",
+  "message": "Message",
+  "address": "Delivery address",
+  "note": "Note",
+  "order": "Place order",
+  "empty": "Your cart is empty",
+  "thanks": "Thank you! Your order number is",
+  "sent": "Message sent. Thank you!",
+  "fail": "Could not send. Please try again.",
+  "noProducts": "No products yet. Sync products from the point of sale in the shop settings.",
+  "nopub": "Ordering works once the site is published."
+ }
+}

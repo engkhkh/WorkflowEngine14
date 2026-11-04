@@ -3,6 +3,7 @@ import { Observable, catchError, of, tap } from 'rxjs';
 import { PortalApiService } from './portal-api.service';
 import { BRANCHES, COMPANIES, Branch, Company, WAREHOUSES } from './erp.config';
 import { Tenant } from './models';
+import { AuthService } from './auth.service';
 
 /**
  * The signed-in workspace's companies and branches. Starts with the built-in defaults so screens are never empty,
@@ -21,13 +22,15 @@ export class OrgService {
     return Array.from(new Set(own.length ? own : WAREHOUSES));
   });
 
-  constructor(private api: PortalApiService) {}
+  constructor(private api: PortalApiService, private auth: AuthService) {}
 
   load(): Observable<unknown> {
     return this.api.getOrg().pipe(
       tap(o => {
         if (o.companies.length) this.companies.set(o.companies);
-        this.branches.set(o.branches);
+        // a user limited to some branches only gets those in the pickers (the server enforces it as well)
+        const allowed = this.auth.currentUser()?.branches;
+        this.branches.set(allowed && allowed.length ? o.branches.filter(b => allowed.includes(b.code)) : o.branches);
         this.tenant.set(o.tenant);
         this.loaded.set(true);
       }),
@@ -69,6 +72,10 @@ export class OrgService {
   removeBranch(code: string): Observable<void> {
     return this.api.deleteBranch(code).pipe(tap(() => { this.branches.set(this.branches().filter(b => b.code !== code)); this.bump(); }));
   }
+
+  /** one-company workspaces: no second company can be added */
+  companyLimitReached = computed(() => { const t = this.tenant(); return !!t && t.maxCompanies > 0 && this.companies().length >= t.maxCompanies; });
+  completeSetup(): Observable<void> { return this.api.completeSetup().pipe(tap(() => { const t = this.tenant(); if (t) this.tenant.set({ ...t, setupDone: true }); })); }
 
   private bump() {
     const t = this.tenant();

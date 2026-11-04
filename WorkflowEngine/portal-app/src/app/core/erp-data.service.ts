@@ -155,7 +155,7 @@ export class ErpDataService {
       title: i.definitionName,
       party: data['party'] ?? data['employeeName'] ?? data['candidateName'] ?? '',
       total: num(data['total']),
-      currency: data['currency'] ?? 'SAR',
+      currency: data['currency'] ?? '',
       company: data['company'],
       branch: data['branch'],
       warehouse: data['warehouse'],

@@ -1,0 +1,31 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <UseWPF>true</UseWPF>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <RootNamespace>WorkflowErp</RootNamespace>
+    <AssemblyName>WorkflowErp</AssemblyName>
+    <StartupObject>WorkflowErp.Program</StartupObject>
+    <ApplicationHighDpiMode>PerMonitorV2</ApplicationHighDpiMode>
+    <EnableCompressionInSingleFile>true</EnableCompressionInSingleFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="data\catalog.json" LogicalName="catalog.json" />
+    <EmbeddedResource Include="data\i18n.json" LogicalName="i18n.json" />
+    <EmbeddedResource Include="data\workflow.json" LogicalName="workflow.json" />
+    <EmbeddedResource Include="data\dashboard.json" LogicalName="dashboard.json" />
+    <EmbeddedResource Include="data\hospital.json" LogicalName="hospital.json" />
+    <EmbeddedResource Include="data\finance.json" LogicalName="finance.json" />
+    <EmbeddedResource Include="data\hr.json" LogicalName="hr.json" />
+    <EmbeddedResource Include="data\ops.json" LogicalName="ops.json" />
+    <EmbeddedResource Include="data\website.json" LogicalName="website.json" />
+    <EmbeddedResource Include="data\custom.json" LogicalName="custom.json" />
+    <EmbeddedResource Include="data\admin.json" LogicalName="admin.json" />
+    <EmbeddedResource Include="data\muslim.json" LogicalName="muslim.json" />
+    <EmbeddedResource Include="data\mushaf-text.json" LogicalName="mushaf-text.json" />
+    <EmbeddedResource Include="data\mushaf-index.json" LogicalName="mushaf-index.json" />
+    <Resource Include="data\AmiriQuran-Regular.ttf" />
+  </ItemGroup>
+</Project>

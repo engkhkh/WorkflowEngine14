@@ -1,12 +1,15 @@
 import { Component, Input, Pipe, PipeTransform } from '@angular/core';
+import { OrgService } from '../core/org.service';
+import { defaultCurrency } from '../core/region';
 import { I18nService } from '../core/i18n.service';
 
 /** Currency/number formatting that follows the UI language. `compact` = 12.4K style. */
 @Pipe({ name: 'money', standalone: true, pure: false })
 export class MoneyPipe implements PipeTransform {
-  constructor(private i18n: I18nService) {}
-  transform(value: number | null | undefined, currency = 'SAR', compact = false): string {
+  constructor(private i18n: I18nService, private org: OrgService) {}
+  transform(value: number | null | undefined, currency = '', compact = false): string {
     if (value === null || value === undefined || isNaN(value)) return '—';
+    currency = currency || this.org.companies()[0]?.currency || defaultCurrency();
     try {
       return new Intl.NumberFormat(this.i18n.locale, {
         style: 'currency', currency, notation: compact ? 'compact' : 'standard',

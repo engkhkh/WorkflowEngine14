@@ -1,0 +1,18 @@
+rbac.newRole || New role || دور جديد || Nouveau rôle || Nuevo rol || نیا کردار || Neue Rolle || Nuovo ruolo
+rbac.unsaved || Roles with unsaved changes || أدوار بتغييرات غير محفوظة || Rôles avec modifications non enregistrées || Roles con cambios sin guardar || غیر محفوظ تبدیلیوں والے کردار || Rollen mit ungespeicherten Änderungen || Ruoli con modifiche non salvate
+rbac.users || users || مستخدمون || utilisateurs || usuarios || صارفین || Benutzer || utenti
+rbac.restore || Restore default || استعادة الافتراضي || Rétablir par défaut || Restaurar valores || ڈیفالٹ بحال کریں || Standard wiederherstellen || Ripristina predefinito
+rbac.custom || custom || مخصص || personnalisé || personalizado || حسب ضرورت || benutzerdefiniert || personalizzato
+rbac.catalog || Privilege & page catalog || كتالوج الصلاحيات والصفحات || Catalogue des privilèges et pages || Catálogo de privilegios y páginas || مراعات اور صفحات کی فہرست || Berechtigungs- & Seitenkatalog || Catalogo privilegi e pagine
+rbac.catalogSub || Switch a page off to remove it for everyone in this workspace, or add a privilege of your own to protect an extra page. || أوقف صفحة لإزالتها عن الجميع في هذه المساحة، أو أضف صلاحية خاصة بك لحماية صفحة إضافية. || Désactivez une page pour la retirer à tous dans cet espace, ou ajoutez votre propre privilège pour protéger une page supplémentaire. || Desactive una página para quitarla a todos en este espacio, o añada su propio privilegio para proteger una página adicional. || اس ورک اسپیس میں سب کے لیے صفحہ ہٹانے کو بند کریں، یا اضافی صفحہ محفوظ کرنے کے لیے اپنی مراعات شامل کریں۔ || Seite ausschalten, um sie für alle in diesem Arbeitsbereich zu entfernen, oder eigene Berechtigung für eine zusätzliche Seite hinzufügen. || Disattiva una pagina per rimuoverla a tutti in questo spazio, o aggiungi un privilegio tuo per proteggere una pagina extra.
+rbac.group || Group || المجموعة || Groupe || Grupo || گروپ || Gruppe || Gruppo
+rbac.route || Page route || مسار الصفحة || Chemin de la page || Ruta de la página || صفحے کا راستہ || Seitenpfad || Percorso pagina
+rbac.active || On || مفعّل || Actif || Activo || فعال || Aktiv || Attivo
+rbac.newPerm || New privilege || صلاحية جديدة || Nouveau privilège || Nuevo privilegio || نئی مراعات || Neue Berechtigung || Nuovo privilegio
+rbac.roleCode || Role code || رمز الدور || Code du rôle || Código del rol || کردار کوڈ || Rollencode || Codice ruolo
+rbac.copyFrom || Copy privileges from || نسخ الصلاحيات من || Copier les privilèges de || Copiar privilegios de || مراعات یہاں سے نقل کریں || Berechtigungen kopieren von || Copia privilegi da
+rbac.key || Privilege key || مفتاح الصلاحية || Clé du privilège || Clave del privilegio || مراعات کی کلید || Berechtigungsschlüssel || Chiave privilegio
+rbac.label || Label || التسمية || Libellé || Etiqueta || لیبل || Bezeichnung || Etichetta
+rbac.saved || Role saved. || تم حفظ الدور. || Rôle enregistré. || Rol guardado. || کردار محفوظ ہو گیا۔ || Rolle gespeichert. || Ruolo salvato.
+rbac.restoreConfirm || Restore {name} to the platform default? || استعادة {name} إلى الافتراضي؟ || Rétablir {name} par défaut ? || ¿Restaurar {name} a los valores por defecto? || {name} کو ڈیفالٹ پر بحال کریں؟ || {name} auf Standard zurücksetzen? || Ripristinare {name} al predefinito?
+rbac.deleteConfirm || Delete {name}? || حذف {name}؟ || Supprimer {name} ? || ¿Eliminar {name}? || {name} حذف کریں؟ || {name} löschen? || Eliminare {name}?

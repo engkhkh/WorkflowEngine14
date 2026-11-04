@@ -4,10 +4,16 @@ import { I18nService } from './i18n.service';
 import { ErpContextService } from './erp-context.service';
 import { DOC_TYPES } from './erp.config';
 import { Router } from '@angular/router';
+import { HttpClient } from '@angular/common/http';
+import { firstValueFrom } from 'rxjs';
+import { environment } from '../../environments/environment';
+import { ERP_MODULES } from './erp.models';
 import { AppearanceService } from './appearance.service';
 import { LayoutService } from './layout.service';
 import { AuthService } from './auth.service';
 import { CustomizeEngine } from './assistant-customize';
+import { BuildEngine } from './assistant-build';
+import { CustomService } from '../custom/custom.service';
 
 export interface AssistantAction { label: string; route: any[]; queryParams?: Record<string, string>; }
 export interface AssistantMessage { from: 'user' | 'ai'; text: string; actions?: AssistantAction[]; at: Date; }
@@ -57,15 +63,22 @@ export class AssistantService {
   messages = signal<AssistantMessage[]>([]);
   open = signal(false);
 
-  private customizer: CustomizeEngine;
+  /** true while the server is working out an answer (the panel can show a typing hint) */
+  thinking = signal(false);
+  /** set by fallback() when no local rule understood the question; the question then goes to the server chatbot */
+  private missed = false;
 
-  constructor(private data: ErpDataService, private i18n: I18nService, private ctx: ErpContextService,
-              router: Router, look: AppearanceService, layout: LayoutService, auth: AuthService) {
+  private customizer: CustomizeEngine;
+  private builder: BuildEngine;
+
+  constructor(private http: HttpClient, private data: ErpDataService, private i18n: I18nService, private ctx: ErpContextService,
+              router: Router, look: AppearanceService, layout: LayoutService, auth: AuthService, custom: CustomService) {
     this.customizer = new CustomizeEngine(look, layout, i18n, router, auth);
+    this.builder = new BuildEngine(custom, i18n, router, auth);
   }
 
   suggestions(): string[] {
-    return ['ai.s1', 'ai.s2', 'ai.s3', 'ai.s4', 'ai.s5', 'ai.s6', 'ai.s7'].map(k => this.i18n.t(k));
+    return ['ai.s1', 'ai.s2', 'ai.s3', 'ai.s4', 'ai.s5', 'ai.s6', 'ai.s7', 'ai.s8', 'ai.s9'].map(k => this.i18n.t(k));
   }
 
   ensureGreeting() {
@@ -77,8 +90,30 @@ export class AssistantService {
     const q = question.trim();
     if (!q) return;
     this.push('user', q);
+    // build requests (create a module, add / remove / rename fields, rename labels) first: they need the original capitalisation and may be asynchronous
+    const built = this.builder.handle(q);
+    if (built) { Promise.resolve(built).then(a => this.push('ai', a.text, a.actions)); return; }
+    this.missed = false;
     const answer = this.answer(q.toLowerCase());
+    if (this.missed) { void this.askServer(q, answer.text); return; }
     this.push('ai', answer.text, answer.actions);
+  }
+
+  /** The local rules only know workflow documents. Everything else goes to POST api/assistant/chat, which answers from the live ERP data (only what this user may see). */
+  private async askServer(q: string, localText: string) {
+    this.thinking.set(true);
+    try {
+      const history = this.messages().slice(-7, -1).map(m => ({ from: m.from, text: m.text }));
+      const res = await firstValueFrom(this.http.post<{ reply: string; actions?: { label: string; module: string }[]; suggestions?: string[] }>(
+        `${environment.apiBaseUrl}/assistant/chat`, { message: q, lang: this.i18n.locale.startsWith('ar') ? 'ar' : 'en', history }));
+      const actions: AssistantAction[] = (res.actions ?? []).map(a => {
+        const def = (ERP_MODULES as Record<string, { route: string }>)[a.module];
+        return { label: a.label, route: [def ? def.route : '/dashboard'] };
+      });
+      this.push('ai', res.reply, actions);
+    } catch {
+      this.push('ai', localText);   // offline or not allowed: show the local help text
+    } finally { this.thinking.set(false); }
   }
 
   private push(from: 'user' | 'ai', text: string, actions?: AssistantAction[]) {
@@ -204,7 +239,7 @@ export class AssistantService {
     });
   }
 
-  private fallback() { return { text: this.i18n.t('ai.fallback') }; }
+  private fallback() { this.missed = true; return { text: this.i18n.t('ai.fallback') }; }
 
   private statusWord(d: ErpDoc) { return this.i18n.t('filter.' + d.status).toLowerCase(); }
 

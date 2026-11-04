@@ -1,0 +1,1058 @@
+{
+ "fields": [
+  {
+   "key": "empNo",
+   "en": "Employee no.",
+   "ar": "رقم الموظف",
+   "type": "text",
+   "required": true,
+   "salary": false,
+   "sample": "E1001",
+   "names": [
+    "empno",
+    "emp no",
+    "employee no",
+    "employee number",
+    "employee id",
+    "emp id",
+    "id",
+    "staff no",
+    "staff number",
+    "رقم الموظف",
+    "الرقم الوظيفي",
+    "رقم وظيفي"
+   ]
+  },
+  {
+   "key": "fullName",
+   "en": "Full name",
+   "ar": "الاسم الكامل",
+   "type": "text",
+   "required": true,
+   "salary": false,
+   "sample": "Ahmed Ali",
+   "names": [
+    "fullname",
+    "full name",
+    "name",
+    "employee name",
+    "اسم الموظف",
+    "الاسم",
+    "الاسم الكامل",
+    "الاسم بالانجليزي"
+   ]
+  },
+  {
+   "key": "fullNameAr",
+   "en": "Name (Arabic)",
+   "ar": "الاسم بالعربية",
+   "type": "text",
+   "required": false,
+   "salary": false,
+   "sample": "أحمد علي",
+   "names": [
+    "fullnamear",
+    "arabic name",
+    "name ar",
+    "name (arabic)",
+    "الاسم بالعربي",
+    "الاسم عربي",
+    "اسم الموظف بالعربي"
+   ]
+  },
+  {
+   "key": "email",
+   "en": "E-mail",
+   "ar": "البريد الإلكتروني",
+   "type": "email",
+   "required": false,
+   "salary": false,
+   "sample": "ahmed@company.com",
+   "names": [
+    "email",
+    "e-mail",
+    "mail",
+    "work email",
+    "البريد",
+    "البريد الالكتروني",
+    "البريد الإلكتروني"
+   ]
+  },
+  {
+   "key": "phone",
+   "en": "Mobile / phone",
+   "ar": "الجوال / الهاتف",
+   "type": "text",
+   "required": false,
+   "salary": false,
+   "sample": "+966500000000",
+   "names": [
+    "phone",
+    "mobile",
+    "tel",
+    "telephone",
+    "cell",
+    "الجوال",
+    "الهاتف",
+    "رقم الجوال"
+   ]
+  },
+  {
+   "key": "nationality",
+   "en": "Nationality",
+   "ar": "الجنسية",
+   "type": "text",
+   "required": false,
+   "salary": false,
+   "sample": "Local",
+   "names": [
+    "nationality",
+    "country",
+    "الجنسية"
+   ]
+  },
+  {
+   "key": "gender",
+   "en": "Gender",
+   "ar": "الجنس",
+   "type": "gender",
+   "required": false,
+   "salary": false,
+   "sample": "Male",
+   "names": [
+    "gender",
+    "sex",
+    "الجنس",
+    "النوع"
+   ]
+  },
+  {
+   "key": "nationalId",
+   "en": "National ID / Iqama",
+   "ar": "الهوية / الإقامة",
+   "type": "text",
+   "required": false,
+   "salary": false,
+   "sample": "1000000000",
+   "names": [
+    "nationalid",
+    "national id",
+    "iqama",
+    "id number",
+    "iqama no",
+    "الهوية",
+    "رقم الهوية",
+    "رقم الإقامة",
+    "الاقامة"
+   ]
+  },
+  {
+   "key": "birthDate",
+   "en": "Date of birth",
+   "ar": "تاريخ الميلاد",
+   "type": "date",
+   "required": false,
+   "salary": false,
+   "sample": "1990-05-20",
+   "names": [
+    "birthdate",
+    "birth date",
+    "date of birth",
+    "dob",
+    "تاريخ الميلاد"
+   ]
+  },
+  {
+   "key": "hireDate",
+   "en": "Hire date",
+   "ar": "تاريخ التعيين",
+   "type": "date",
+   "required": false,
+   "salary": false,
+   "sample": "2022-01-15",
+   "names": [
+    "hiredate",
+    "hire date",
+    "join date",
+    "joining date",
+    "date of joining",
+    "start date",
+    "تاريخ التعيين",
+    "تاريخ الالتحاق",
+    "تاريخ المباشرة"
+   ]
+  },
+  {
+   "key": "terminationDate",
+   "en": "End of service date",
+   "ar": "تاريخ انتهاء الخدمة",
+   "type": "date",
+   "required": false,
+   "salary": false,
+   "sample": "",
+   "names": [
+    "terminationdate",
+    "termination date",
+    "end date",
+    "leaving date",
+    "exit date",
+    "تاريخ انتهاء الخدمة",
+    "تاريخ الانتهاء"
+   ]
+  },
+  {
+   "key": "status",
+   "en": "Status",
+   "ar": "الحالة",
+   "type": "status",
+   "required": false,
+   "salary": false,
+   "sample": "Active",
+   "names": [
+    "status",
+    "employee status",
+    "الحالة",
+    "حالة الموظف"
+   ]
+  },
+  {
+   "key": "company",
+   "en": "Company",
+   "ar": "الشركة",
+   "type": "text",
+   "required": false,
+   "salary": false,
+   "sample": "MAIN",
+   "names": [
+    "company",
+    "company code",
+    "الشركة"
+   ]
+  },
+  {
+   "key": "branch",
+   "en": "Branch",
+   "ar": "الفرع",
+   "type": "text",
+   "required": false,
+   "salary": false,
+   "sample": "HQ",
+   "names": [
+    "branch",
+    "branch code",
+    "الفرع"
+   ]
+  },
+  {
+   "key": "unit",
+   "en": "Department / unit",
+   "ar": "القسم / الوحدة",
+   "type": "text",
+   "required": false,
+   "salary": false,
+   "sample": "Finance",
+   "names": [
+    "unit",
+    "department",
+    "dept",
+    "division",
+    "section",
+    "team",
+    "org unit",
+    "القسم",
+    "الإدارة",
+    "الادارة",
+    "الوحدة"
+   ]
+  },
+  {
+   "key": "position",
+   "en": "Position / job title",
+   "ar": "المسمى الوظيفي",
+   "type": "text",
+   "required": false,
+   "salary": false,
+   "sample": "Senior Accountant",
+   "names": [
+    "position",
+    "job title",
+    "title",
+    "designation",
+    "المسمى الوظيفي",
+    "المنصب",
+    "الوظيفة"
+   ]
+  },
+  {
+   "key": "job",
+   "en": "Job",
+   "ar": "الوظيفة",
+   "type": "text",
+   "required": false,
+   "salary": false,
+   "sample": "Accountant",
+   "names": [
+    "job",
+    "job code",
+    "job family",
+    "الوظيفة العامة"
+   ]
+  },
+  {
+   "key": "grade",
+   "en": "Grade",
+   "ar": "الدرجة",
+   "type": "text",
+   "required": false,
+   "salary": false,
+   "sample": "G5",
+   "names": [
+    "grade",
+    "level",
+    "band",
+    "الدرجة",
+    "المرتبة"
+   ]
+  },
+  {
+   "key": "managerEmpNo",
+   "en": "Manager (emp. no.)",
+   "ar": "المدير (رقم الموظف)",
+   "type": "text",
+   "required": false,
+   "salary": false,
+   "sample": "E1000",
+   "names": [
+    "manager",
+    "manager no",
+    "manager empno",
+    "manager id",
+    "line manager",
+    "reports to",
+    "المدير",
+    "رقم المدير",
+    "المدير المباشر"
+   ]
+  },
+  {
+   "key": "costCenter",
+   "en": "Cost center",
+   "ar": "مركز التكلفة",
+   "type": "text",
+   "required": false,
+   "salary": false,
+   "sample": "CC-100",
+   "names": [
+    "costcenter",
+    "cost center",
+    "cost centre",
+    "cc",
+    "مركز التكلفة"
+   ]
+  },
+  {
+   "key": "location",
+   "en": "Location",
+   "ar": "الموقع",
+   "type": "text",
+   "required": false,
+   "salary": false,
+   "sample": "Head office",
+   "names": [
+    "location",
+    "city",
+    "work location",
+    "site",
+    "الموقع",
+    "المدينة"
+   ]
+  },
+  {
+   "key": "legalEntity",
+   "en": "Legal entity",
+   "ar": "الكيان القانوني",
+   "type": "text",
+   "required": false,
+   "salary": false,
+   "sample": "",
+   "names": [
+    "legalentity",
+    "legal entity",
+    "الكيان القانوني"
+   ]
+  },
+  {
+   "key": "businessUnit",
+   "en": "Business unit",
+   "ar": "وحدة الأعمال",
+   "type": "text",
+   "required": false,
+   "salary": false,
+   "sample": "",
+   "names": [
+    "businessunit",
+    "business unit",
+    "bu",
+    "وحدة الأعمال",
+    "وحدة الاعمال"
+   ]
+  },
+  {
+   "key": "basicSalary",
+   "en": "Basic salary",
+   "ar": "الراتب الأساسي",
+   "type": "number",
+   "required": false,
+   "salary": true,
+   "sample": 12000,
+   "names": [
+    "basicsalary",
+    "basic salary",
+    "salary",
+    "basic",
+    "الراتب",
+    "الراتب الأساسي",
+    "الراتب الاساسي"
+   ]
+  },
+  {
+   "key": "username",
+   "en": "Portal username",
+   "ar": "اسم مستخدم البوابة",
+   "type": "text",
+   "required": false,
+   "salary": false,
+   "sample": "ahmed",
+   "names": [
+    "username",
+    "user name",
+    "login",
+    "user",
+    "اسم المستخدم"
+   ]
+  },
+  {
+   "key": "notes",
+   "en": "Notes",
+   "ar": "ملاحظات",
+   "type": "text",
+   "required": false,
+   "salary": false,
+   "sample": "",
+   "names": [
+    "notes",
+    "remarks",
+    "comment",
+    "ملاحظات"
+   ]
+  }
+ ],
+ "status": {
+  "active": "Active",
+  "on job": "Active",
+  "نشط": "Active",
+  "على رأس العمل": "Active",
+  "علي راس العمل": "Active",
+  "probation": "Probation",
+  "تجربة": "Probation",
+  "تحت التجربة": "Probation",
+  "on leave": "OnLeave",
+  "onleave": "OnLeave",
+  "leave": "OnLeave",
+  "في إجازة": "OnLeave",
+  "اجازة": "OnLeave",
+  "إجازة": "OnLeave",
+  "terminated": "Terminated",
+  "resigned": "Terminated",
+  "inactive": "Terminated",
+  "left": "Terminated",
+  "منتهي": "Terminated",
+  "مستقيل": "Terminated",
+  "منتهية خدمته": "Terminated"
+ },
+ "imp": {
+  "title": [
+   "Import employees",
+   "استيراد الموظفين"
+  ],
+  "intro": [
+   "Upload an Excel (.xlsx) or CSV file with one employee per row. Columns are matched to employee fields automatically (English or Arabic headings) and you can adjust them before importing.",
+   "ارفع ملف Excel (.xlsx) أو CSV بحيث يكون لكل موظف صف. تتم مطابقة الأعمدة مع حقول الموظف تلقائيًا (بعناوين إنجليزية أو عربية) ويمكنك تعديلها قبل الاستيراد."
+  ],
+  "drop": [
+   "Drop the file here or click to choose",
+   "أفلت الملف هنا أو انقر للاختيار"
+  ],
+  "template": [
+   "Download template",
+   "تنزيل النموذج"
+  ],
+  "templateHint": [
+   "Required columns: empNo, fullName.",
+   "الأعمدة المطلوبة: empNo و fullName."
+  ],
+  "reading": [
+   "Reading the file…",
+   "جارٍ قراءة الملف…"
+  ],
+  "badType": [
+   "Please choose an .xlsx or .csv file.",
+   "يرجى اختيار ملف .xlsx أو .csv."
+  ],
+  "empty": [
+   "The file has no rows.",
+   "الملف لا يحتوي على صفوف."
+  ],
+  "tooMany": [
+   "Up to 5,000 rows per file. Split the file and import in parts.",
+   "حتى 5000 صف في الملف. قسّم الملف واستورده على دفعات."
+  ],
+  "readError": [
+   "The file could not be read. Check that it is a valid Excel or CSV file.",
+   "تعذّرت قراءة الملف. تأكد أنه ملف Excel أو CSV صالح."
+  ],
+  "rows": [
+   "{n} data rows",
+   "{n} صف بيانات"
+  ],
+  "hasHeader": [
+   "First row contains column headings",
+   "الصف الأول يحتوي على عناوين الأعمدة"
+  ],
+  "mapping": [
+   "Column mapping",
+   "مطابقة الأعمدة"
+  ],
+  "column": [
+   "Column",
+   "عمود"
+  ],
+  "skip": [
+   "— skip this column —",
+   "— تجاهل هذا العمود —"
+  ],
+  "needMap": [
+   "Map these required fields",
+   "طابق هذه الحقول المطلوبة"
+  ],
+  "preview": [
+   "Preview",
+   "معاينة"
+  ],
+  "valid": [
+   "{n} valid",
+   "{n} صالح"
+  ],
+  "invalid": [
+   "{n} with problems",
+   "{n} بها مشاكل"
+  ],
+  "more": [
+   "…and {n} more rows",
+   "…و{n} صفوف أخرى"
+  ],
+  "update": [
+   "Update employees that already exist (same employee no.)",
+   "تحديث الموظفين الموجودين (نفس رقم الموظف)"
+  ],
+  "run": [
+   "Import {n} employees",
+   "استيراد {n} موظف"
+  ],
+  "back": [
+   "Back",
+   "رجوع"
+  ],
+  "close": [
+   "Close",
+   "إغلاق"
+  ],
+  "done": [
+   "Import finished",
+   "اكتمل الاستيراد"
+  ],
+  "created": [
+   "Added",
+   "أُضيف"
+  ],
+  "updated": [
+   "Updated",
+   "حُدّث"
+  ],
+  "skipped": [
+   "Skipped",
+   "تم تخطيه"
+  ],
+  "failed": [
+   "Failed",
+   "فشل"
+  ],
+  "errors": [
+   "Rows that were not imported",
+   "الصفوف التي لم تُستورد"
+  ],
+  "reason": [
+   "Reason",
+   "السبب"
+  ],
+  "e.required": [
+   "required",
+   "مطلوب"
+  ],
+  "e.date": [
+   "not a valid date",
+   "تاريخ غير صالح"
+  ],
+  "e.number": [
+   "not a number",
+   "ليس رقمًا"
+  ],
+  "e.status": [
+   "unknown status",
+   "حالة غير معروفة"
+  ],
+  "e.gender": [
+   "unknown value",
+   "قيمة غير معروفة"
+  ],
+  "e.email": [
+   "not a valid e-mail",
+   "بريد غير صالح"
+  ],
+  "e.dup": [
+   "duplicate in the file",
+   "مكرر في الملف"
+  ]
+ },
+ "labels": {
+  "title": [
+   "HR",
+   "الموارد البشرية"
+  ],
+  "refresh": [
+   "Refresh",
+   "تحديث"
+  ],
+  "import": [
+   "Import employees...",
+   "استيراد موظفين..."
+  ],
+  "approve": [
+   "Approve",
+   "اعتماد"
+  ],
+  "reject": [
+   "Reject",
+   "رفض"
+  ],
+  "next": [
+   "Next stage",
+   "المرحلة التالية"
+  ],
+  "prev": [
+   "Previous stage",
+   "المرحلة السابقة"
+  ],
+  "empty": [
+   "No data.",
+   "لا توجد بيانات."
+  ],
+  "noperm": [
+   "You do not have access to HR reports.",
+   "لا تملك صلاحية تقارير الموارد البشرية."
+  ],
+  "totals": [
+   "Total",
+   "الإجمالي"
+  ],
+  "avg": [
+   "Average rating",
+   "متوسط التقييم"
+  ],
+  "rated": [
+   "Rated reviews",
+   "تقييمات مُقيَّمة"
+  ],
+  "dist": [
+   "Distribution",
+   "التوزيع"
+  ],
+  "pick": [
+   "Choose file...",
+   "اختيار ملف..."
+  ],
+  "file": [
+   "File (.xlsx or .csv)",
+   "الملف (.xlsx أو .csv)"
+  ],
+  "load": [
+   "Load",
+   "تحميل"
+  ],
+  "template": [
+   "Save template (.csv)",
+   "حفظ نموذج (.csv)"
+  ],
+  "templated": [
+   "Template saved: {0}",
+   "تم حفظ النموذج: {0}"
+  ],
+  "column": [
+   "Column",
+   "عمود"
+  ],
+  "row": [
+   "Row",
+   "الصف"
+  ],
+  "problem": [
+   "Problem",
+   "المشكلة"
+  ],
+  "mapping": [
+   "Column mapping",
+   "مطابقة الأعمدة"
+  ],
+  "nofile": [
+   "Choose a file first.",
+   "اختر ملفًا أولًا."
+  ],
+  "needmap": [
+   "Map these required fields: {0}",
+   "طابق هذه الحقول المطلوبة: {0}"
+  ],
+  "nothing": [
+   "Nothing valid to import.",
+   "لا يوجد ما يمكن استيراده."
+  ],
+  "yes": [
+   "Yes",
+   "نعم"
+  ],
+  "hire": [
+   "Hire as employee",
+   "تعيين كموظف"
+  ],
+  "hireTitle": [
+   "Hire candidate",
+   "تعيين مرشح"
+  ],
+  "hired": [
+   "Hired - employee {n} created.",
+   "تم التعيين - أُنشئ الموظف {n}."
+  ],
+  "empNoReq": [
+   "Employee number and name are required.",
+   "رقم الموظف والاسم مطلوبان."
+  ]
+ },
+ "reports": [
+  {
+   "id": "overview",
+   "en": "Overview",
+   "ar": "نظرة عامة",
+   "cols": [
+    {
+     "en": "Measure",
+     "ar": "البند",
+     "num": false
+    },
+    {
+     "en": "Value",
+     "ar": "القيمة",
+     "num": 1
+    }
+   ],
+   "server": true
+  },
+  {
+   "id": "employees",
+   "en": "Employees",
+   "ar": "الموظفون",
+   "cols": [
+    {
+     "en": "Emp no.",
+     "ar": "رقم الموظف",
+     "num": false
+    },
+    {
+     "en": "Name",
+     "ar": "الاسم",
+     "num": false
+    },
+    {
+     "en": "Position",
+     "ar": "المنصب",
+     "num": false
+    },
+    {
+     "en": "Unit",
+     "ar": "الوحدة",
+     "num": false
+    },
+    {
+     "en": "Status",
+     "ar": "الحالة",
+     "num": false
+    },
+    {
+     "en": "Hire date",
+     "ar": "تاريخ التعيين",
+     "num": false
+    },
+    {
+     "en": "Salary",
+     "ar": "الراتب",
+     "num": 1
+    }
+   ]
+  },
+  {
+   "id": "leave",
+   "en": "Leave requests",
+   "ar": "طلبات الإجازة",
+   "cols": [
+    {
+     "en": "Employee",
+     "ar": "الموظف",
+     "num": false
+    },
+    {
+     "en": "Type",
+     "ar": "النوع",
+     "num": false
+    },
+    {
+     "en": "From",
+     "ar": "من",
+     "num": false
+    },
+    {
+     "en": "To",
+     "ar": "إلى",
+     "num": false
+    },
+    {
+     "en": "Days",
+     "ar": "الأيام",
+     "num": 1
+    },
+    {
+     "en": "Status",
+     "ar": "الحالة",
+     "num": false
+    }
+   ],
+   "actions": [
+    "approve",
+    "reject"
+   ]
+  },
+  {
+   "id": "balances",
+   "en": "Leave balances",
+   "ar": "أرصدة الإجازات",
+   "cols": [
+    {
+     "en": "Employee",
+     "ar": "الموظف",
+     "num": false
+    },
+    {
+     "en": "Type",
+     "ar": "النوع",
+     "num": false
+    },
+    {
+     "en": "Total",
+     "ar": "الإجمالي",
+     "num": 1
+    },
+    {
+     "en": "Used",
+     "ar": "المستخدم",
+     "num": 1
+    },
+    {
+     "en": "Left",
+     "ar": "المتبقي",
+     "num": 1
+    }
+   ]
+  },
+  {
+   "id": "recruit",
+   "en": "Recruitment",
+   "ar": "التوظيف",
+   "cols": [
+    {
+     "en": "Candidate",
+     "ar": "المرشح",
+     "num": false
+    },
+    {
+     "en": "Vacancy",
+     "ar": "الوظيفة الشاغرة",
+     "num": false
+    },
+    {
+     "en": "Email",
+     "ar": "البريد",
+     "num": false
+    },
+    {
+     "en": "Stage",
+     "ar": "المرحلة",
+     "num": false
+    }
+   ],
+   "actions": [
+    "next",
+    "prev",
+    "hire",
+    "reject"
+   ]
+  },
+  {
+   "id": "perf",
+   "en": "Performance reviews",
+   "ar": "تقييمات الأداء",
+   "cols": [
+    {
+     "en": "Employee",
+     "ar": "الموظف",
+     "num": false
+    },
+    {
+     "en": "Stage",
+     "ar": "المرحلة",
+     "num": false
+    },
+    {
+     "en": "Rating",
+     "ar": "التقييم",
+     "num": 1
+    }
+   ]
+  },
+  {
+   "id": "org",
+   "en": "Organization",
+   "ar": "الهيكل التنظيمي",
+   "cols": [
+    {
+     "en": "Code",
+     "ar": "الرمز",
+     "num": false
+    },
+    {
+     "en": "Name",
+     "ar": "الاسم",
+     "num": false
+    },
+    {
+     "en": "Level",
+     "ar": "المستوى",
+     "num": false
+    },
+    {
+     "en": "Parent",
+     "ar": "التابع لـ",
+     "num": false
+    },
+    {
+     "en": "Headcount",
+     "ar": "عدد الموظفين",
+     "num": 1
+    }
+   ]
+  }
+ ],
+ "chunk": 200,
+ "maxRows": 5000,
+ "measures": [
+  [
+   "total",
+   "Employees",
+   "الموظفون"
+  ],
+  [
+   "active",
+   "Active",
+   "نشط"
+  ],
+  [
+   "onLeave",
+   "On leave",
+   "في إجازة"
+  ],
+  [
+   "probation",
+   "On probation",
+   "تحت التجربة"
+  ],
+  [
+   "terminated",
+   "Terminated",
+   "منتهية خدمتهم"
+  ],
+  [
+   "newHires12m",
+   "Hires (12 months)",
+   "تعيينات (12 شهرًا)"
+  ],
+  [
+   "terminations12m",
+   "Leavers (12 months)",
+   "مغادرون (12 شهرًا)"
+  ],
+  [
+   "turnoverPct",
+   "Turnover %",
+   "معدل الدوران %"
+  ],
+  [
+   "avgTenureYears",
+   "Average tenure (years)",
+   "متوسط الخدمة (سنوات)"
+  ],
+  [
+   "onLeaveToday",
+   "On leave today",
+   "في إجازة اليوم"
+  ],
+  [
+   "pendingLeave",
+   "Pending leave requests",
+   "طلبات إجازة معلقة"
+  ],
+  [
+   "openVacancies",
+   "Open vacancies",
+   "وظائف شاغرة"
+  ],
+  [
+   "openPositions",
+   "Open positions",
+   "مناصب مفتوحة"
+  ],
+  [
+   "candidatesInPipeline",
+   "Candidates in pipeline",
+   "مرشحون قيد التوظيف"
+  ],
+  [
+   "monthlyPayroll",
+   "Monthly basic payroll",
+   "الرواتب الأساسية الشهرية"
+  ]
+ ],
+ "stages": [
+  "Applied",
+  "Screening",
+  "Interview",
+  "Offer",
+  "Hired",
+  "Rejected"
+ ]
+}

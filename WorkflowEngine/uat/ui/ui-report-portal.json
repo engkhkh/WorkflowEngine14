@@ -1,0 +1,3275 @@
+[
+ {
+  "user": "l394803w1u00",
+  "profile": "admin",
+  "ws": 1,
+  "screens": [
+   {
+    "route": "/dashboard",
+    "ms": 1560,
+    "created": 0,
+    "actions": 0,
+    "stats": {
+     "clicks": 1,
+     "forms": 0,
+     "fields": 0,
+     "saved": 0,
+     "repairs": 0,
+     "noSave": 0,
+     "confirms": 0,
+     "tabs": 0,
+     "fillErrors": 0,
+     "skippedDanger": 0,
+     "refused": []
+    },
+    "jsErrors": [],
+    "consoleErrors": [
+     "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+     "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED"
+    ],
+    "http4xx": [],
+    "http5xx": [],
+    "loadError": ""
+   },
+   {
+    "route": "/approvals",
+    "ms": 1891,
+    "created": 0,
+    "actions": 0,
+    "stats": {
+     "clicks": 1,
+     "forms": 0,
+     "fields": 0,
+     "saved": 0,
+     "repairs": 0,
+     "noSave": 0,
+     "confirms": 0,
+     "tabs": 2,
+     "fillErrors": 0,
+     "skippedDanger": 0,
+     "refused": []
+    },
+    "jsErrors": [],
+    "consoleErrors": [
+     "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+     "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED"
+    ],
+    "http4xx": [],
+    "http5xx": [],
+    "loadError": ""
+   },
+   {
+    "route": "/documents",
+    "ms": 3962,
+    "created": 0,
+    "actions": 0,
+    "stats": {
+     "clicks": 4,
+     "forms": 0,
+     "fields": 0,
+     "saved": 0,
+     "repairs": 0,
+     "noSave": 0,
+     "confirms": 0,
+     "tabs": 7,
+     "fillErrors": 0,
+     "skippedDanger": 0,
+     "refused": []
+    },
+    "jsErrors": [],
+    "consoleErrors": [
+     "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+     "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED"
+    ],
+    "http4xx": [],
+    "http5xx": [],
+    "loadError": ""
+   },
+   {
+    "route": "/services",
+    "ms": 1477,
+    "created": 0,
+    "actions": 0,
+    "stats": {
+     "clicks": 0,
+     "forms": 0,
+     "fields": 0,
+     "saved": 0,
+     "repairs": 0,
+     "noSave": 0,
+     "confirms": 0,
+     "tabs": 0,
+     "fillErrors": 0,
+     "skippedDanger": 0,
+     "refused": []
+    },
+    "jsErrors": [],
+    "consoleErrors": [
+     "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+     "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED"
+    ],
+    "http4xx": [],
+    "http5xx": [],
+    "loadError": ""
+   },
+   {
+    "route": "/pos",
+    "ms": 1383,
+    "created": 0,
+    "actions": 0,
+    "stats": {
+     "clicks": 0,
+     "forms": 0,
+     "fields": 0,
+     "saved": 0,
+     "repairs": 0,
+     "noSave": 0,
+     "confirms": 0,
+     "tabs": 0,
+     "fillErrors": 0,
+     "skippedDanger": 0,
+     "refused": []
+    },
+    "jsErrors": [],
+    "consoleErrors": [
+     "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+     "ERROR ge: NG0600\n    at http://localhost:4200/main.edd4b56aa97bb5d2.js:1:1565942\n    at Et (http://localhost:4200/main.edd4b56aa97bb5d2.js:1:1445366)\n    at de (http://localhost:4200/main.edd4b56aa97bb5d2.js:1:1445406)\n ",
+     "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED"
+    ],
+    "http4xx": [],
+    "http5xx": [],
+    "loadError": ""
+   },
+   {
+    "route": "/website",
+    "ms": 2925,
+    "created": 1,
+    "actions": 0,
+    "stats": {
+     "clicks": 1,
+     "forms": 1,
+     "fields": 1,
+     "saved": 1,
+     "repairs": 0,
+     "noSave": 0,
+     "confirms": 0,
+     "tabs": 3,
+     "fillErrors": 0,
+     "skippedDanger": 0,
+     "refused": []
+    },
+    "jsErrors": [],
+    "consoleErrors": [
+     "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+     "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED"
+    ],
+    "http4xx": [],
+    "http5xx": [],
+    "loadError": ""
+   },
+   {
+    "route": "/workflow",
+    "ms": 2761,
+    "created": 0,
+    "actions": 0,
+    "stats": {
+     "clicks": 4,
+     "forms": 0,
+     "fields": 0,
+     "saved": 0,
+     "repairs": 0,
+     "noSave": 0,
+     "confirms": 0,
+     "tabs": 0,
+     "fillErrors": 0,
+     "skippedDanger": 0,
+     "refused": []
+    },
+    "jsErrors": [],
+    "consoleErrors": [
+     "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+     "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+     "ERROR TypeError: Cannot read properties of undefined (reading 'find')\n    at get selectedNode (http://localhost:4200/4097.20adb44982ee7cc3.js:1:45002)\n    at template (http://localhost:4200/4097.20adb44982ee7cc3.js:1:606",
+     "ERROR TypeError: Cannot read properties of undefined (reading 'find')\n    at get selectedNode (http://localhost:4200/4097.20adb44982ee7cc3.js:1:45002)\n    at template (http://localhost:4200/4097.20adb44982ee7cc3.js:1:606",
+     "ERROR TypeError: Cannot read properties of undefined (reading 'find')\n    at get selectedNode (http://localhost:4200/4097.20adb44982ee7cc3.js:1:45002)\n    at template (http://localhost:4200/4097.20adb44982ee7cc3.js:1:606",
+     "ERROR TypeError: Cannot read properties of undefined (reading 'find')\n    at get selectedNode (http://localhost:4200/4097.20adb44982ee7cc3.js:1:45002)\n    at template (http://localhost:4200/4097.20adb44982ee7cc3.js:1:606",
+     "ERROR ge: NG04008\n    at Ul (http://localhost:4200/main.edd4b56aa97bb5d2.js:1:1684339)\n    at u.navigate (http://localhost:4200/main.edd4b56aa97bb5d2.js:1:1684358)\n    at Object.next (http://localhost:4200/4097.20adb4498",
+     "ERROR TypeError: Cannot read properties of undefined (reading 'find')\n    at get selectedNode (http://localhost:4200/4097.20adb44982ee7cc3.js:1:45002)\n    at template (http://localhost:4200/4097.20adb44982ee7cc3.js:1:606",
+     "ERROR TypeError: Cannot read properties of undefined (reading 'find')\n    at get selectedNode (http://localhost:4200/4097.20adb44982ee7cc3.js:1:45002)\n    at template (http://localhost:4200/4097.20adb44982ee7cc3.js:1:606",
+     "ERROR TypeError: Cannot read properties of undefined (reading 'find')\n    at get selectedNode (http://localhost:4200/4097.20adb44982ee7cc3.js:1:45002)\n    at template (http://localhost:4200/4097.20adb44982ee7cc3.js:1:606"
+    ],
+    "http4xx": [],
+    "http5xx": [],
+    "loadError": ""
+   },
+   {
+    "route": "/hospital",
+    "ms": 1243,
+    "created": 0,
+    "actions": 0,
+    "stats": {
+     "clicks": 0,
+     "forms": 0,
+     "fields": 0,
+     "saved": 0,
+     "repairs": 0,
+     "noSave": 0,
+     "confirms": 0,
+     "tabs": 0,
+     "fillErrors": 0,
+     "skippedDanger": 0,
+     "refused": []
+    },
+    "jsErrors": [],
+    "consoleErrors": [
+     "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+     "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED"
+    ],
+    "http4xx": [],
+    "http5xx": [],
+    "loadError": ""
+   },
+   {
+    "route": "/calendar",
+    "ms": 2192,
+    "created": 0,
+    "actions": 0,
+    "stats": {
+     "clicks": 0,
+     "forms": 0,
+     "fields": 0,
+     "saved": 0,
+     "repairs": 0,
+     "noSave": 0,
+     "confirms": 0,
+     "tabs": 3,
+     "fillErrors": 0,
+     "skippedDanger": 0,
+     "refused": []
+    },
+    "jsErrors": [],
+    "consoleErrors": [
+     "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+     "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED"
+    ],
+    "http4xx": [],
+    "http5xx": [],
+    "loadError": ""
+   },
+   {
+    "route": "/muslim",
+    "ms": 2279,
+    "created": 0,
+    "actions": 0,
+    "stats": {
+     "clicks": 0,
+     "forms": 0,
+     "fields": 0,
+     "saved": 0,
+     "repairs": 0,
+     "noSave": 0,
+     "confirms": 0,
+     "tabs": 2,
+     "fillErrors": 0,
+     "skippedDanger": 0,
+     "refused": []
+    },
+    "jsErrors": [],
+    "consoleErrors": [
+     "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+     "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+     "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+     "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+     "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED"
+    ],
+    "http4xx": [],
+    "http5xx": [],
+    "loadError": ""
+   },
+   {
+    "route": "/custom",
+    "ms": 2300,
+    "created": 1,
+    "actions": 0,
+    "stats": {
+     "clicks": 1,
+     "forms": 1,
+     "fields": 8,
+     "saved": 1,
+     "repairs": 0,
+     "noSave": 0,
+     "confirms": 0,
+     "tabs": 0,
+     "fillErrors": 0,
+     "skippedDanger": 0,
+     "refused": []
+    },
+    "jsErrors": [],
+    "consoleErrors": [
+     "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+     "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED"
+    ],
+    "http4xx": [],
+    "http5xx": [],
+    "loadError": ""
+   },
+   {
+    "route": "/reports",
+    "ms": 1239,
+    "created": 0,
+    "actions": 0,
+    "stats": {
+     "clicks": 0,
+     "forms": 0,
+     "fields": 0,
+     "saved": 0,
+     "repairs": 0,
+     "noSave": 0,
+     "confirms": 0,
+     "tabs": 0,
+     "fillErrors": 0,
+     "skippedDanger": 0,
+     "refused": []
+    },
+    "jsErrors": [],
+    "consoleErrors": [
+     "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+     "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED"
+    ],
+    "http4xx": [],
+    "http5xx": [],
+    "loadError": ""
+   },
+   {
+    "route": "/assistant",
+    "ms": 1107,
+    "created": 0,
+    "actions": 0,
+    "stats": {
+     "clicks": 0,
+     "forms": 0,
+     "fields": 0,
+     "saved": 0,
+     "repairs": 0,
+     "noSave": 0,
+     "confirms": 0,
+     "tabs": 0,
+     "fillErrors": 0,
+     "skippedDanger": 0,
+     "refused": []
+    },
+    "jsErrors": [],
+    "consoleErrors": [
+     "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+     "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED"
+    ],
+    "http4xx": [],
+    "http5xx": [],
+    "loadError": ""
+   },
+   {
+    "route": "/admin",
+    "ms": 41630,
+    "created": 0,
+    "actions": 0,
+    "stats": {
+     "clicks": 3,
+     "forms": 1,
+     "fields": 8,
+     "saved": 0,
+     "repairs": 3,
+     "noSave": 0,
+     "confirms": 2,
+     "tabs": 6,
+     "fillErrors": 0,
+     "skippedDanger": 4,
+     "refused": [
+      "new#0: form stayed open",
+      "row0:Edit user: form stayed open",
+      "row1:Edit user: form stayed open"
+     ]
+    },
+    "jsErrors": [],
+    "consoleErrors": [
+     "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+     "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED"
+    ],
+    "http4xx": [],
+    "http5xx": [],
+    "loadError": ""
+   },
+   {
+    "route": "/documents?scope=all",
+    "ms": 3888,
+    "created": 0,
+    "actions": 0,
+    "stats": {
+     "clicks": 4,
+     "forms": 0,
+     "fields": 0,
+     "saved": 0,
+     "repairs": 0,
+     "noSave": 0,
+     "confirms": 0,
+     "tabs": 7,
+     "fillErrors": 0,
+     "skippedDanger": 0,
+     "refused": []
+    },
+    "jsErrors": [],
+    "consoleErrors": [
+     "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+     "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED"
+    ],
+    "http4xx": [],
+    "http5xx": [],
+    "loadError": ""
+   },
+   {
+    "route": "/new/PR",
+    "ms": 1441,
+    "created": 0,
+    "actions": 0,
+    "stats": {
+     "clicks": 1,
+     "forms": 0,
+     "fields": 0,
+     "saved": 0,
+     "repairs": 0,
+     "noSave": 0,
+     "confirms": 0,
+     "tabs": 0,
+     "fillErrors": 0,
+     "skippedDanger": 0,
+     "refused": []
+    },
+    "jsErrors": [],
+    "consoleErrors": [
+     "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+     "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED"
+    ],
+    "http4xx": [],
+    "http5xx": [],
+    "loadError": ""
+   },
+   {
+    "route": "/new/SO",
+    "ms": 1464,
+    "created": 0,
+    "actions": 0,
+    "stats": {
+     "clicks": 1,
+     "forms": 0,
+     "fields": 0,
+     "saved": 0,
+     "repairs": 0,
+     "noSave": 0,
+     "confirms": 0,
+     "tabs": 0,
+     "fillErrors": 0,
+     "skippedDanger": 0,
+     "refused": []
+    },
+    "jsErrors": [],
+    "consoleErrors": [
+     "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+     "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED"
+    ],
+    "http4xx": [],
+    "http5xx": [],
+    "loadError": ""
+   },
+   {
+    "route": "/new/TRF",
+    "ms": 1277,
+    "created": 0,
+    "actions": 0,
+    "stats": {
+     "clicks": 1,
+     "forms": 0,
+     "fields": 0,
+     "saved": 0,
+     "repairs": 0,
+     "noSave": 0,
+     "confirms": 0,
+     "tabs": 0,
+     "fillErrors": 0,
+     "skippedDanger": 0,
+     "refused": []
+    },
+    "jsErrors": [],
+    "consoleErrors": [
+     "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+     "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED"
+    ],
+    "http4xx": [],
+    "http5xx": [],
+    "loadError": ""
+   },
+   {
+    "route": "/new/PV",
+    "ms": 1443,
+    "created": 0,
+    "actions": 0,
+    "stats": {
+     "clicks": 1,
+     "forms": 0,
+     "fields": 0,
+     "saved": 0,
+     "repairs": 0,
+     "noSave": 0,
+     "confirms": 0,
+     "tabs": 0,
+     "fillErrors": 0,
+     "skippedDanger": 0,
+     "refused": []
+    },
+    "jsErrors": [],
+    "consoleErrors": [
+     "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+     "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED"
+    ],
+    "http4xx": [],
+    "http5xx": [],
+    "loadError": ""
+   },
+   {
+    "route": "/new/EXP",
+    "ms": 1399,
+    "created": 0,
+    "actions": 0,
+    "stats": {
+     "clicks": 1,
+     "forms": 0,
+     "fields": 0,
+     "saved": 0,
+     "repairs": 0,
+     "noSave": 0,
+     "confirms": 0,
+     "tabs": 0,
+     "fillErrors": 0,
+     "skippedDanger": 0,
+     "refused": []
+    },
+    "jsErrors": [],
+    "consoleErrors": [
+     "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+     "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED"
+    ],
+    "http4xx": [],
+    "http5xx": [],
+    "loadError": ""
+   },
+   {
+    "route": "/pos/sales",
+    "ms": 1036,
+    "created": 0,
+    "actions": 0,
+    "stats": {
+     "clicks": 0,
+     "forms": 0,
+     "fields": 0,
+     "saved": 0,
+     "repairs": 0,
+     "noSave": 0,
+     "confirms": 0,
+     "tabs": 0,
+     "fillErrors": 0,
+     "skippedDanger": 0,
+     "refused": []
+    },
+    "jsErrors": [],
+    "consoleErrors": [
+     "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+     "ERROR ge: NG0600\n    at http://localhost:4200/main.edd4b56aa97bb5d2.js:1:1565942\n    at Et (http://localhost:4200/main.edd4b56aa97bb5d2.js:1:1445366)\n    at de (http://localhost:4200/main.edd4b56aa97bb5d2.js:1:1445406)\n ",
+     "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+     "ERROR ge: NG0600\n    at http://localhost:4200/main.edd4b56aa97bb5d2.js:1:1565942\n    at Et (http://localhost:4200/main.edd4b56aa97bb5d2.js:1:1445366)\n    at de (http://localhost:4200/main.edd4b56aa97bb5d2.js:1:1445406)\n "
+    ],
+    "http4xx": [],
+    "http5xx": [],
+    "loadError": ""
+   },
+   {
+    "route": "/pos/products",
+    "ms": 1203,
+    "created": 0,
+    "actions": 0,
+    "stats": {
+     "clicks": 0,
+     "forms": 0,
+     "fields": 0,
+     "saved": 0,
+     "repairs": 0,
+     "noSave": 0,
+     "confirms": 0,
+     "tabs": 0,
+     "fillErrors": 0,
+     "skippedDanger": 0,
+     "refused": []
+    },
+    "jsErrors": [],
+    "consoleErrors": [
+     "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+     "ERROR TypeError: this.pos.categories(...).map is not a function\n    at Object.options (http://localhost:4200/8393.ff2ba1f8eac59f15.js:1:9106)\n    at s.optLabel (http://localhost:4200/4891.6d7c69d4d3096237.js:1:16841)\n   ",
+     "ERROR TypeError: this.pos.categories(...).map is not a function\n    at Object.options (http://localhost:4200/8393.ff2ba1f8eac59f15.js:1:9106)\n    at s.optLabel (http://localhost:4200/4891.6d7c69d4d3096237.js:1:16841)\n   ",
+     "ERROR TypeError: this.pos.categories(...).map is not a function\n    at Object.options (http://localhost:4200/8393.ff2ba1f8eac59f15.js:1:9106)\n    at s.optLabel (http://localhost:4200/4891.6d7c69d4d3096237.js:1:16841)\n   ",
+     "ERROR TypeError: this.pos.categories(...).map is not a function\n    at Object.options (http://localhost:4200/8393.ff2ba1f8eac59f15.js:1:9106)\n    at s.optLabel (http://localhost:4200/4891.6d7c69d4d3096237.js:1:16841)\n   ",
+     "ERROR TypeError: this.pos.categories(...).map is not a function\n    at Object.options (http://localhost:4200/8393.ff2ba1f8eac59f15.js:1:9106)\n    at s.optLabel (http://localhost:4200/4891.6d7c69d4d3096237.js:1:16841)\n   ",
+     "ERROR TypeError: this.pos.categories(...).map is not a function\n    at Object.options (http://localhost:4200/8393.ff2ba1f8eac59f15.js:1:9106)\n    at s.optLabel (http://localhost:4200/4891.6d7c69d4d3096237.js:1:16841)\n   ",
+     "ERROR TypeError: this.pos.categories(...).map is not a function\n    at Object.options (http://localhost:4200/8393.ff2ba1f8eac59f15.js:1:9106)\n    at s.optLabel (http://localhost:4200/4891.6d7c69d4d3096237.js:1:16841)\n   ",
+     "ERROR TypeError: this.pos.categories(...).map is not a function\n    at Object.options (http://localhost:4200/8393.ff2ba1f8eac59f15.js:1:9106)\n    at s.optLabel (http://localhost:4200/4891.6d7c69d4d3096237.js:1:16841)\n   ",
+     "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+     "ERROR TypeError: this.pos.categories(...).map is not a function\n    at Object.options (http://localhost:4200/8393.ff2ba1f8eac59f15.js:1:9106)\n    at s.optLabel (http://localhost:4200/4891.6d7c69d4d3096237.js:1:16841)\n   ",
+     "ERROR TypeError: this.pos.categories(...).map is not a function\n    at Object.options (http://localhost:4200/8393.ff2ba1f8eac59f15.js:1:9106)\n    at s.optLabel (http://localhost:4200/4891.6d7c69d4d3096237.js:1:16841)\n   ",
+     "ERROR TypeError: this.pos.categories(...).map is not a function\n    at Object.options (http://localhost:4200/8393.ff2ba1f8eac59f15.js:1:9106)\n    at s.optLabel (http://localhost:4200/4891.6d7c69d4d3096237.js:1:16841)\n   ",
+     "ERROR TypeError: this.pos.categories(...).map is not a function\n    at Object.options (http://localhost:4200/8393.ff2ba1f8eac59f15.js:1:9106)\n    at s.optLabel (http://localhost:4200/4891.6d7c69d4d3096237.js:1:16841)\n   "
+    ],
+    "http4xx": [],
+    "http5xx": [],
+    "loadError": ""
+   },
+   {
+    "route": "/pos/customers",
+    "ms": 1267,
+    "created": 0,
+    "actions": 0,
+    "stats": {
+     "clicks": 0,
+     "forms": 0,
+     "fields": 0,
+     "saved": 0,
+     "repairs": 0,
+     "noSave": 0,
+     "confirms": 0,
+     "tabs": 0,
+     "fillErrors": 0,
+     "skippedDanger": 0,
+     "refused": []
+    },
+    "jsErrors": [],
+    "consoleErrors": [
+     "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+     "ERROR TypeError: this.all(...).filter is not a function\n    at s.shown (http://localhost:4200/4891.6d7c69d4d3096237.js:1:15569)\n    at template (http://localhost:4200/4891.6d7c69d4d3096237.js:1:22487)\n    at Rm (http://l",
+     "ERROR TypeError: this.all(...).filter is not a function\n    at s.shown (http://localhost:4200/4891.6d7c69d4d3096237.js:1:15569)\n    at template (http://localhost:4200/4891.6d7c69d4d3096237.js:1:22487)\n    at Rm (http://l",
+     "ERROR TypeError: this.all(...).filter is not a function\n    at s.shown (http://localhost:4200/4891.6d7c69d4d3096237.js:1:15569)\n    at template (http://localhost:4200/4891.6d7c69d4d3096237.js:1:22487)\n    at Rm (http://l",
+     "ERROR TypeError: this.all(...).filter is not a function\n    at s.shown (http://localhost:4200/4891.6d7c69d4d3096237.js:1:15569)\n    at template (http://localhost:4200/4891.6d7c69d4d3096237.js:1:22487)\n    at Rm (http://l",
+     "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED"
+    ],
+    "http4xx": [],
+    "http5xx": [],
+    "loadError": ""
+   },
+   {
+    "route": "/pos/promotions",
+    "ms": 1020,
+    "created": 0,
+    "actions": 0,
+    "stats": {
+     "clicks": 0,
+     "forms": 0,
+     "fields": 0,
+     "saved": 0,
+     "repairs": 0,
+     "noSave": 0,
+     "confirms": 0,
+     "tabs": 0,
+     "fillErrors": 0,
+     "skippedDanger": 0,
+     "refused": []
+    },
+    "jsErrors": [],
+    "consoleErrors": [
+     "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+     "ERROR TypeError: this.all(...).filter is not a function\n    at s.shown (http://localhost:4200/4891.6d7c69d4d3096237.js:1:15569)\n    at template (http://localhost:4200/4891.6d7c69d4d3096237.js:1:22487)\n    at Rm (http://l",
+     "ERROR TypeError: this.all(...).filter is not a function\n    at s.shown (http://localhost:4200/4891.6d7c69d4d3096237.js:1:15569)\n    at template (http://localhost:4200/4891.6d7c69d4d3096237.js:1:22487)\n    at Rm (http://l",
+     "ERROR TypeError: this.all(...).filter is not a function\n    at s.shown (http://localhost:4200/4891.6d7c69d4d3096237.js:1:15569)\n    at template (http://localhost:4200/4891.6d7c69d4d3096237.js:1:22487)\n    at Rm (http://l",
+     "ERROR TypeError: this.all(...).filter is not a function\n    at s.shown (http://localhost:4200/4891.6d7c69d4d3096237.js:1:15569)\n    at template (http://localhost:4200/4891.6d7c69d4d3096237.js:1:22487)\n    at Rm (http://l",
+     "ERROR TypeError: this.all(...).filter is not a function\n    at s.shown (http://localhost:4200/4891.6d7c69d4d3096237.js:1:15569)\n    at template (http://localhost:4200/4891.6d7c69d4d3096237.js:1:22487)\n    at Rm (http://l",
+     "ERROR TypeError: this.all(...).filter is not a function\n    at s.shown (http://localhost:4200/4891.6d7c69d4d3096237.js:1:15569)\n    at template (http://localhost:4200/4891.6d7c69d4d3096237.js:1:22487)\n    at Rm (http://l",
+     "ERROR TypeError: this.all(...).filter is not a function\n    at s.shown (http://localhost:4200/4891.6d7c69d4d3096237.js:1:15569)\n    at template (http://localhost:4200/4891.6d7c69d4d3096237.js:1:22487)\n    at Rm (http://l",
+     "ERROR TypeError: this.all(...).filter is not a function\n    at s.shown (http://localhost:4200/4891.6d7c69d4d3096237.js:1:15569)\n    at template (http://localhost:4200/4891.6d7c69d4d3096237.js:1:22487)\n    at Rm (http://l",
+     "ERROR TypeError: this.all(...).filter is not a function\n    at s.shown (http://localhost:4200/4891.6d7c69d4d3096237.js:1:15569)\n    at template (http://localhost:4200/4891.6d7c69d4d3096237.js:1:22487)\n    at Rm (http://l",
+     "ERROR TypeError: this.all(...).filter is not a function\n    at s.shown (http://localhost:4200/4891.6d7c69d4d3096237.js:1:15569)\n    at template (http://localhost:4200/4891.6d7c69d4d3096237.js:1:22487)\n    at Rm (http://l",
+     "ERROR TypeError: this.all(...).filter is not a function\n    at s.shown (http://localhost:4200/4891.6d7c69d4d3096237.js:1:15569)\n    at template (http://localhost:4200/4891.6d7c69d4d3096237.js:1:22487)\n    at Rm (http://l",
+     "ERROR TypeError: this.all(...).filter is not a function\n    at s.shown (http://localhost:4200/4891.6d7c69d4d3096237.js:1:15569)\n    at template (http://localhost:4200/4891.6d7c69d4d3096237.js:1:22487)\n    at Rm (http://l",
+     "ERROR TypeError: this.all(...).filter is not a function\n    at s.shown (http://localhost:4200/4891.6d7c69d4d3096237.js:1:15569)\n    at template (http://localhost:4200/4891.6d7c69d4d3096237.js:1:22487)\n    at Rm (http://l",
+     "ERROR TypeError: this.all(...).filter is not a function\n    at s.shown (http://localhost:4200/4891.6d7c69d4d3096237.js:1:15569)\n    at template (http://localhost:4200/4891.6d7c69d4d3096237.js:1:22487)\n    at Rm (http://l",
+     "ERROR TypeError: this.all(...).filter is not a function\n    at s.shown (http://localhost:4200/4891.6d7c69d4d3096237.js:1:15569)\n    at template (http://localhost:4200/4891.6d7c69d4d3096237.js:1:22487)\n    at Rm (http://l",
+     "ERROR TypeError: this.all(...).filter is not a function\n    at s.shown (http://localhost:4200/4891.6d7c69d4d3096237.js:1:15569)\n    at template (http://localhost:4200/4891.6d7c69d4d3096237.js:1:22487)\n    at Rm (http://l",
+     "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED"
+    ],
+    "http4xx": [],
+    "http5xx": [],
+    "loadError": ""
+   },
+   {
+    "route": "/hospital/overview",
+    "ms": 1042,
+    "created": 0,
+    "actions": 0,
+    "stats": {
+     "clicks": 0,
+     "forms": 0,
+     "fields": 0,
+     "saved": 0,
+     "repairs": 0,
+     "noSave": 0,
+     "confirms": 0,
+     "tabs": 0,
+     "fillErrors": 0,
+     "skippedDanger": 0,
+     "refused": []
+    },
+    "jsErrors": [],
+    "consoleErrors": [
+     "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+     "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED"
+    ],
+    "http4xx": [],
+    "http5xx": [],
+    "loadError": ""
+   },
+   {
+    "route": "/hospital/patients",
+    "ms": 3557,
+    "created": 1,
+    "actions": 0,
+    "stats": {
+     "clicks": 1,
+     "forms": 1,
+     "fields": 13,
+     "saved": 1,
+     "repairs": 0,
+     "noSave": 0,
+     "confirms": 0,
+     "tabs": 6,
+     "fillErrors": 0,
+     "skippedDanger": 0,
+     "refused": []
+    },
+    "jsErrors": [],
+    "consoleErrors": [
+     "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+     "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED"
+    ],
+    "http4xx": [],
+    "http5xx": [],
+    "loadError": ""
+   },
+   {
+    "route": "/hospital/appointments",
+    "ms": 9963,
+    "created": 0,
+    "actions": 0,
+    "stats": {
+     "clicks": 1,
+     "forms": 1,
+     "fields": 7,
+     "saved": 0,
+     "repairs": 1,
+     "noSave": 0,
+     "confirms": 0,
+     "tabs": 0,
+     "fillErrors": 0,
+     "skippedDanger": 0,
+     "refused": [
+      "new#0: Fill in the required fields."
+     ]
+    },
+    "jsErrors": [],
+    "consoleErrors": [
+     "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+     "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED"
+    ],
+    "http4xx": [],
+    "http5xx": [],
+    "loadError": ""
+   },
+   {
+    "route": "/hospital/visits",
+    "ms": 1589,
+    "created": 0,
+    "actions": 0,
+    "stats": {
+     "clicks": 0,
+     "forms": 0,
+     "fields": 0,
+     "saved": 0,
+     "repairs": 0,
+     "noSave": 0,
+     "confirms": 0,
+     "tabs": 2,
+     "fillErrors": 0,
+     "skippedDanger": 0,
+     "refused": []
+    },
+    "jsErrors": [],
+    "consoleErrors": [
+     "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+     "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED"
+    ],
+    "http4xx": [],
+    "http5xx": [],
+    "loadError": ""
+   },
+   {
+    "route": "/hospital/lab",
+    "ms": 1512,
+    "created": 0,
+    "actions": 0,
+    "stats": {
+     "clicks": 0,
+     "forms": 0,
+     "fields": 0,
+     "saved": 0,
+     "repairs": 0,
+     "noSave": 0,
+     "confirms": 0,
+     "tabs": 2,
+     "fillErrors": 0,
+     "skippedDanger": 0,
+     "refused": []
+    },
+    "jsErrors": [],
+    "consoleErrors": [
+     "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+     "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED"
+    ],
+    "http4xx": [],
+    "http5xx": [],
+    "loadError": ""
+   },
+   {
+    "route": "/hospital/pharmacy",
+    "ms": 5452,
+    "created": 0,
+    "actions": 0,
+    "stats": {
+     "clicks": 0,
+     "forms": 0,
+     "fields": 0,
+     "saved": 0,
+     "repairs": 0,
+     "noSave": 0,
+     "confirms": 0,
+     "tabs": 5,
+     "fillErrors": 0,
+     "skippedDanger": 0,
+     "refused": []
+    },
+    "jsErrors": [],
+    "consoleErrors": [
+     "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+     "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED"
+    ],
+    "http4xx": [],
+    "http5xx": [],
+    "loadError": ""
+   },
+   {
+    "route": "/hospital/wards",
+    "ms": 1099,
+    "created": 0,
+    "actions": 0,
+    "stats": {
+     "clicks": 0,
+     "forms": 0,
+     "fields": 0,
+     "saved": 0,
+     "repairs": 0,
+     "noSave": 0,
+     "confirms": 0,
+     "tabs": 0,
+     "fillErrors": 0,
+     "skippedDanger": 0,
+     "refused": []
+    },
+    "jsErrors": [],
+    "consoleErrors": [
+     "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+     "Failed to load resource: net::ERR_CONNECTION_REFUSED",
+     "Failed to load resource: net::ERR_CONNECTION_REFUSED",
+     "Failed to load resource: net::ERR_CONNECTION_REFUSED",
+     "Failed to load resource: net::ERR_CONNECTION_REFUSED",
+     "Failed to load resource: net::ERR_CONNECTION_REFUSED",
+     "Failed to load resource: net::ERR_CONNECTION_REFUSED",
+     "Failed to load resource: net::ERR_CONNECTION_REFUSED",
+     "Failed to load resource: net::ERR_CONNECTION_REFUSED",
+     "Failed to load resource: net::ERR_CONNECTION_REFUSED",
+     "Failed to load resource: net::ERR_CONNECTION_REFUSED",
+     "ERROR ChunkLoadError: Loading chunk 5924 failed.\n(error: http://localhost:4200/5924.b67f1eaf8c13c39e.js)\n    at a.f.j (http://localhost:4200/runtime.cdd0d3934aeb51bd.js:1:4248)\n    at http://localhost:4200/runtime.cdd0d3",
+     "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+     "Failed to load resource: net::ERR_CONNECTION_REFUSED",
+     "Failed to load resource: net::ERR_CONNECTION_REFUSED",
+     "Failed to load resource: net::ERR_CONNECTION_REFUSED",
+     "Failed to load resource: net::ERR_CONNECTION_REFUSED",
+     "Failed to load resource: net::ERR_CONNECTION_REFUSED",
+     "Failed to load resource: net::ERR_CONNECTION_REFUSED",
+     "Failed to load resource: net::ERR_CONNECTION_REFUSED",
+     "Failed to load resource: net::ERR_CONNECTION_REFUSED"
+    ],
+    "http4xx": [],
+    "http5xx": [],
+    "loadError": ""
+   },
+   {
+    "route": "/hospital/billing",
+    "ms": 42,
+    "created": 0,
+    "actions": 0,
+    "stats": {
+     "clicks": 0,
+     "forms": 0,
+     "fields": 0,
+     "saved": 0,
+     "repairs": 0,
+     "noSave": 0,
+     "confirms": 0,
+     "tabs": 0,
+     "fillErrors": 0,
+     "skippedDanger": 0,
+     "refused": []
+    },
+    "jsErrors": [],
+    "consoleErrors": [],
+    "http4xx": [],
+    "http5xx": [],
+    "loadError": "page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:4200/hospital/billing"
+   },
+   {
+    "route": "/hospital/setup",
+    "ms": 25,
+    "created": 0,
+    "actions": 0,
+    "stats": {
+     "clicks": 0,
+     "forms": 0,
+     "fields": 0,
+     "saved": 0,
+     "repairs": 0,
+     "noSave": 0,
+     "confirms": 0,
+     "tabs": 0,
+     "fillErrors": 0,
+     "skippedDanger": 0,
+     "refused": []
+    },
+    "jsErrors": [],
+    "consoleErrors": [],
+    "http4xx": [],
+    "http5xx": [],
+    "loadError": "page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:4200/hospital/setup"
+   },
+   {
+    "route": "/calendar/view",
+    "ms": 16,
+    "created": 0,
+    "actions": 0,
+    "stats": {
+     "clicks": 0,
+     "forms": 0,
+     "fields": 0,
+     "saved": 0,
+     "repairs": 0,
+     "noSave": 0,
+     "confirms": 0,
+     "tabs": 0,
+     "fillErrors": 0,
+     "skippedDanger": 0,
+     "refused": []
+    },
+    "jsErrors": [],
+    "consoleErrors": [],
+    "http4xx": [],
+    "http5xx": [],
+    "loadError": "page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:4200/calendar/view"
+   },
+   {
+    "route": "/calendar/todos",
+    "ms": 48,
+    "created": 0,
+    "actions": 0,
+    "stats": {
+     "clicks": 0,
+     "forms": 0,
+     "fields": 0,
+     "saved": 0,
+     "repairs": 0,
+     "noSave": 0,
+     "confirms": 0,
+     "tabs": 0,
+     "fillErrors": 0,
+     "skippedDanger": 0,
+     "refused": []
+    },
+    "jsErrors": [],
+    "consoleErrors": [],
+    "http4xx": [],
+    "http5xx": [],
+    "loadError": "page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:4200/calendar/todos"
+   },
+   {
+    "route": "/calendar/settings",
+    "ms": 33,
+    "created": 0,
+    "actions": 0,
+    "stats": {
+     "clicks": 0,
+     "forms": 0,
+     "fields": 0,
+     "saved": 0,
+     "repairs": 0,
+     "noSave": 0,
+     "confirms": 0,
+     "tabs": 0,
+     "fillErrors": 0,
+     "skippedDanger": 0,
+     "refused": []
+    },
+    "jsErrors": [],
+    "consoleErrors": [],
+    "http4xx": [],
+    "http5xx": [],
+    "loadError": "page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:4200/calendar/settings"
+   },
+   {
+    "route": "/tasks",
+    "ms": 10,
+    "created": 0,
+    "actions": 0,
+    "stats": {
+     "clicks": 0,
+     "forms": 0,
+     "fields": 0,
+     "saved": 0,
+     "repairs": 0,
+     "noSave": 0,
+     "confirms": 0,
+     "tabs": 0,
+     "fillErrors": 0,
+     "skippedDanger": 0,
+     "refused": []
+    },
+    "jsErrors": [],
+    "consoleErrors": [],
+    "http4xx": [],
+    "http5xx": [],
+    "loadError": "page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:4200/tasks"
+   },
+   {
+    "route": "/muslim/times",
+    "ms": 12,
+    "created": 0,
+    "actions": 0,
+    "stats": {
+     "clicks": 0,
+     "forms": 0,
+     "fields": 0,
+     "saved": 0,
+     "repairs": 0,
+     "noSave": 0,
+     "confirms": 0,
+     "tabs": 0,
+     "fillErrors": 0,
+     "skippedDanger": 0,
+     "refused": []
+    },
+    "jsErrors": [],
+    "consoleErrors": [],
+    "http4xx": [],
+    "http5xx": [],
+    "loadError": "page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:4200/muslim/times"
+   },
+   {
+    "route": "/muslim/quran",
+    "ms": 18,
+    "created": 0,
+    "actions": 0,
+    "stats": {
+     "clicks": 0,
+     "forms": 0,
+     "fields": 0,
+     "saved": 0,
+     "repairs": 0,
+     "noSave": 0,
+     "confirms": 0,
+     "tabs": 0,
+     "fillErrors": 0,
+     "skippedDanger": 0,
+     "refused": []
+    },
+    "jsErrors": [],
+    "consoleErrors": [],
+    "http4xx": [],
+    "http5xx": [],
+    "loadError": "page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:4200/muslim/quran"
+   }
+  ],
+  "error": null,
+  "ms": 111201
+ },
+ {
+  "user": "l394803w1u01",
+  "profile": "finance-gl",
+  "ws": 1,
+  "screens": [
+   {
+    "route": "/dashboard",
+    "ms": 1635,
+    "created": 0,
+    "actions": 0,
+    "stats": {
+     "clicks": 1,
+     "forms": 0,
+     "fields": 0,
+     "saved": 0,
+     "repairs": 0,
+     "noSave": 0,
+     "confirms": 0,
+     "tabs": 0,
+     "fillErrors": 0,
+     "skippedDanger": 0,
+     "refused": []
+    },
+    "jsErrors": [],
+    "consoleErrors": [
+     "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+     "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED"
+    ],
+    "http4xx": [],
+    "http5xx": [],
+    "loadError": ""
+   },
+   {
+    "route": "/approvals",
+    "ms": 1885,
+    "created": 0,
+    "actions": 0,
+    "stats": {
+     "clicks": 1,
+     "forms": 0,
+     "fields": 0,
+     "saved": 0,
+     "repairs": 0,
+     "noSave": 0,
+     "confirms": 0,
+     "tabs": 2,
+     "fillErrors": 0,
+     "skippedDanger": 0,
+     "refused": []
+    },
+    "jsErrors": [],
+    "consoleErrors": [
+     "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+     "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED"
+    ],
+    "http4xx": [],
+    "http5xx": [],
+    "loadError": ""
+   },
+   {
+    "route": "/documents",
+    "ms": 4000,
+    "created": 0,
+    "actions": 0,
+    "stats": {
+     "clicks": 4,
+     "forms": 0,
+     "fields": 0,
+     "saved": 0,
+     "repairs": 0,
+     "noSave": 0,
+     "confirms": 0,
+     "tabs": 7,
+     "fillErrors": 0,
+     "skippedDanger": 0,
+     "refused": []
+    },
+    "jsErrors": [],
+    "consoleErrors": [
+     "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+     "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED"
+    ],
+    "http4xx": [],
+    "http5xx": [],
+    "loadError": ""
+   },
+   {
+    "route": "/services",
+    "ms": 1223,
+    "created": 0,
+    "actions": 0,
+    "stats": {
+     "clicks": 0,
+     "forms": 0,
+     "fields": 0,
+     "saved": 0,
+     "repairs": 0,
+     "noSave": 0,
+     "confirms": 0,
+     "tabs": 0,
+     "fillErrors": 0,
+     "skippedDanger": 0,
+     "refused": []
+    },
+    "jsErrors": [],
+    "consoleErrors": [
+     "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+     "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED"
+    ],
+    "http4xx": [],
+    "http5xx": [],
+    "loadError": ""
+   },
+   {
+    "route": "/pos",
+    "ms": 1246,
+    "created": 0,
+    "actions": 0,
+    "stats": {
+     "clicks": 0,
+     "forms": 0,
+     "fields": 0,
+     "saved": 0,
+     "repairs": 0,
+     "noSave": 0,
+     "confirms": 0,
+     "tabs": 0,
+     "fillErrors": 0,
+     "skippedDanger": 0,
+     "refused": []
+    },
+    "jsErrors": [],
+    "consoleErrors": [
+     "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+     "ERROR ge: NG0600\n    at http://localhost:4200/main.edd4b56aa97bb5d2.js:1:1565942\n    at Et (http://localhost:4200/main.edd4b56aa97bb5d2.js:1:1445366)\n    at de (http://localhost:4200/main.edd4b56aa97bb5d2.js:1:1445406)\n ",
+     "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED"
+    ],
+    "http4xx": [],
+    "http5xx": [],
+    "loadError": ""
+   },
+   {
+    "route": "/website",
+    "ms": 2784,
+    "created": 1,
+    "actions": 0,
+    "stats": {
+     "clicks": 1,
+     "forms": 1,
+     "fields": 1,
+     "saved": 1,
+     "repairs": 0,
+     "noSave": 0,
+     "confirms": 0,
+     "tabs": 3,
+     "fillErrors": 0,
+     "skippedDanger": 0,
+     "refused": []
+    },
+    "jsErrors": [],
+    "consoleErrors": [
+     "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+     "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED"
+    ],
+    "http4xx": [],
+    "http5xx": [],
+    "loadError": ""
+   },
+   {
+    "route": "/workflow",
+    "ms": 2817,
+    "created": 0,
+    "actions": 0,
+    "stats": {
+     "clicks": 4,
+     "forms": 0,
+     "fields": 0,
+     "saved": 0,
+     "repairs": 0,
+     "noSave": 0,
+     "confirms": 0,
+     "tabs": 0,
+     "fillErrors": 0,
+     "skippedDanger": 0,
+     "refused": []
+    },
+    "jsErrors": [],
+    "consoleErrors": [
+     "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+     "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+     "ERROR TypeError: Cannot read properties of undefined (reading 'find')\n    at get selectedNode (http://localhost:4200/4097.20adb44982ee7cc3.js:1:45002)\n    at template (http://localhost:4200/4097.20adb44982ee7cc3.js:1:606",
+     "ERROR TypeError: Cannot read properties of undefined (reading 'find')\n    at get selectedNode (http://localhost:4200/4097.20adb44982ee7cc3.js:1:45002)\n    at template (http://localhost:4200/4097.20adb44982ee7cc3.js:1:606",
+     "ERROR TypeError: Cannot read properties of undefined (reading 'find')\n    at get selectedNode (http://localhost:4200/4097.20adb44982ee7cc3.js:1:45002)\n    at template (http://localhost:4200/4097.20adb44982ee7cc3.js:1:606",
+     "ERROR TypeError: Cannot read properties of undefined (reading 'find')\n    at get selectedNode (http://localhost:4200/4097.20adb44982ee7cc3.js:1:45002)\n    at template (http://localhost:4200/4097.20adb44982ee7cc3.js:1:606",
+     "ERROR ge: NG04008\n    at Ul (http://localhost:4200/main.edd4b56aa97bb5d2.js:1:1684339)\n    at u.navigate (http://localhost:4200/main.edd4b56aa97bb5d2.js:1:1684358)\n    at Object.next (http://localhost:4200/4097.20adb4498",
+     "ERROR TypeError: Cannot read properties of undefined (reading 'find')\n    at get selectedNode (http://localhost:4200/4097.20adb44982ee7cc3.js:1:45002)\n    at template (http://localhost:4200/4097.20adb44982ee7cc3.js:1:606",
+     "ERROR TypeError: Cannot read properties of undefined (reading 'find')\n    at get selectedNode (http://localhost:4200/4097.20adb44982ee7cc3.js:1:45002)\n    at template (http://localhost:4200/4097.20adb44982ee7cc3.js:1:606",
+     "ERROR TypeError: Cannot read properties of undefined (reading 'find')\n    at get selectedNode (http://localhost:4200/4097.20adb44982ee7cc3.js:1:45002)\n    at template (http://localhost:4200/4097.20adb44982ee7cc3.js:1:606"
+    ],
+    "http4xx": [],
+    "http5xx": [],
+    "loadError": ""
+   },
+   {
+    "route": "/hospital",
+    "ms": 1045,
+    "created": 0,
+    "actions": 0,
+    "stats": {
+     "clicks": 0,
+     "forms": 0,
+     "fields": 0,
+     "saved": 0,
+     "repairs": 0,
+     "noSave": 0,
+     "confirms": 0,
+     "tabs": 0,
+     "fillErrors": 0,
+     "skippedDanger": 0,
+     "refused": []
+    },
+    "jsErrors": [],
+    "consoleErrors": [
+     "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+     "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED"
+    ],
+    "http4xx": [],
+    "http5xx": [],
+    "loadError": ""
+   },
+   {
+    "route": "/calendar",
+    "ms": 2038,
+    "created": 0,
+    "actions": 0,
+    "stats": {
+     "clicks": 0,
+     "forms": 0,
+     "fields": 0,
+     "saved": 0,
+     "repairs": 0,
+     "noSave": 0,
+     "confirms": 0,
+     "tabs": 3,
+     "fillErrors": 0,
+     "skippedDanger": 0,
+     "refused": []
+    },
+    "jsErrors": [],
+    "consoleErrors": [
+     "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+     "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED"
+    ],
+    "http4xx": [],
+    "http5xx": [],
+    "loadError": ""
+   },
+   {
+    "route": "/muslim",
+    "ms": 2175,
+    "created": 0,
+    "actions": 0,
+    "stats": {
+     "clicks": 0,
+     "forms": 0,
+     "fields": 0,
+     "saved": 0,
+     "repairs": 0,
+     "noSave": 0,
+     "confirms": 0,
+     "tabs": 2,
+     "fillErrors": 0,
+     "skippedDanger": 0,
+     "refused": []
+    },
+    "jsErrors": [],
+    "consoleErrors": [
+     "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+     "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+     "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+     "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED"
+    ],
+    "http4xx": [],
+    "http5xx": [],
+    "loadError": ""
+   },
+   {
+    "route": "/custom",
+    "ms": 2339,
+    "created": 1,
+    "actions": 0,
+    "stats": {
+     "clicks": 1,
+     "forms": 1,
+     "fields": 8,
+     "saved": 1,
+     "repairs": 0,
+     "noSave": 0,
+     "confirms": 0,
+     "tabs": 0,
+     "fillErrors": 0,
+     "skippedDanger": 0,
+     "refused": []
+    },
+    "jsErrors": [],
+    "consoleErrors": [
+     "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+     "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED"
+    ],
+    "http4xx": [],
+    "http5xx": [],
+    "loadError": ""
+   },
+   {
+    "route": "/reports",
+    "ms": 1172,
+    "created": 0,
+    "actions": 0,
+    "stats": {
+     "clicks": 0,
+     "forms": 0,
+     "fields": 0,
+     "saved": 0,
+     "repairs": 0,
+     "noSave": 0,
+     "confirms": 0,
+     "tabs": 0,
+     "fillErrors": 0,
+     "skippedDanger": 0,
+     "refused": []
+    },
+    "jsErrors": [],
+    "consoleErrors": [
+     "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+     "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED"
+    ],
+    "http4xx": [],
+    "http5xx": [],
+    "loadError": ""
+   },
+   {
+    "route": "/assistant",
+    "ms": 1163,
+    "created": 0,
+    "actions": 0,
+    "stats": {
+     "clicks": 0,
+     "forms": 0,
+     "fields": 0,
+     "saved": 0,
+     "repairs": 0,
+     "noSave": 0,
+     "confirms": 0,
+     "tabs": 0,
+     "fillErrors": 0,
+     "skippedDanger": 0,
+     "refused": []
+    },
+    "jsErrors": [],
+    "consoleErrors": [
+     "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+     "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED"
+    ],
+    "http4xx": [],
+    "http5xx": [],
+    "loadError": ""
+   },
+   {
+    "route": "/admin",
+    "ms": 41666,
+    "created": 0,
+    "actions": 0,
+    "stats": {
+     "clicks": 3,
+     "forms": 1,
+     "fields": 8,
+     "saved": 0,
+     "repairs": 3,
+     "noSave": 0,
+     "confirms": 2,
+     "tabs": 6,
+     "fillErrors": 0,
+     "skippedDanger": 4,
+     "refused": [
+      "new#0: form stayed open",
+      "row0:Edit user: form stayed open",
+      "row1:Edit user: form stayed open"
+     ]
+    },
+    "jsErrors": [],
+    "consoleErrors": [
+     "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+     "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED"
+    ],
+    "http4xx": [],
+    "http5xx": [],
+    "loadError": ""
+   },
+   {
+    "route": "/documents?scope=all",
+    "ms": 3848,
+    "created": 0,
+    "actions": 0,
+    "stats": {
+     "clicks": 4,
+     "forms": 0,
+     "fields": 0,
+     "saved": 0,
+     "repairs": 0,
+     "noSave": 0,
+     "confirms": 0,
+     "tabs": 7,
+     "fillErrors": 0,
+     "skippedDanger": 0,
+     "refused": []
+    },
+    "jsErrors": [],
+    "consoleErrors": [
+     "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+     "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED"
+    ],
+    "http4xx": [],
+    "http5xx": [],
+    "loadError": ""
+   },
+   {
+    "route": "/new/PR",
+    "ms": 1535,
+    "created": 0,
+    "actions": 0,
+    "stats": {
+     "clicks": 1,
+     "forms": 0,
+     "fields": 0,
+     "saved": 0,
+     "repairs": 0,
+     "noSave": 0,
+     "confirms": 0,
+     "tabs": 0,
+     "fillErrors": 0,
+     "skippedDanger": 0,
+     "refused": []
+    },
+    "jsErrors": [],
+    "consoleErrors": [
+     "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+     "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED"
+    ],
+    "http4xx": [],
+    "http5xx": [],
+    "loadError": ""
+   },
+   {
+    "route": "/new/SO",
+    "ms": 1517,
+    "created": 0,
+    "actions": 0,
+    "stats": {
+     "clicks": 1,
+     "forms": 0,
+     "fields": 0,
+     "saved": 0,
+     "repairs": 0,
+     "noSave": 0,
+     "confirms": 0,
+     "tabs": 0,
+     "fillErrors": 0,
+     "skippedDanger": 0,
+     "refused": []
+    },
+    "jsErrors": [],
+    "consoleErrors": [
+     "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+     "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED"
+    ],
+    "http4xx": [],
+    "http5xx": [],
+    "loadError": ""
+   },
+   {
+    "route": "/new/TRF",
+    "ms": 1455,
+    "created": 0,
+    "actions": 0,
+    "stats": {
+     "clicks": 1,
+     "forms": 0,
+     "fields": 0,
+     "saved": 0,
+     "repairs": 0,
+     "noSave": 0,
+     "confirms": 0,
+     "tabs": 0,
+     "fillErrors": 0,
+     "skippedDanger": 0,
+     "refused": []
+    },
+    "jsErrors": [],
+    "consoleErrors": [
+     "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+     "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED"
+    ],
+    "http4xx": [],
+    "http5xx": [],
+    "loadError": ""
+   },
+   {
+    "route": "/new/PV",
+    "ms": 1450,
+    "created": 0,
+    "actions": 0,
+    "stats": {
+     "clicks": 1,
+     "forms": 0,
+     "fields": 0,
+     "saved": 0,
+     "repairs": 0,
+     "noSave": 0,
+     "confirms": 0,
+     "tabs": 0,
+     "fillErrors": 0,
+     "skippedDanger": 0,
+     "refused": []
+    },
+    "jsErrors": [],
+    "consoleErrors": [
+     "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+     "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED"
+    ],
+    "http4xx": [],
+    "http5xx": [],
+    "loadError": ""
+   },
+   {
+    "route": "/new/EXP",
+    "ms": 1411,
+    "created": 0,
+    "actions": 0,
+    "stats": {
+     "clicks": 1,
+     "forms": 0,
+     "fields": 0,
+     "saved": 0,
+     "repairs": 0,
+     "noSave": 0,
+     "confirms": 0,
+     "tabs": 0,
+     "fillErrors": 0,
+     "skippedDanger": 0,
+     "refused": []
+    },
+    "jsErrors": [],
+    "consoleErrors": [
+     "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+     "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED"
+    ],
+    "http4xx": [],
+    "http5xx": [],
+    "loadError": ""
+   },
+   {
+    "route": "/pos/sales",
+    "ms": 1177,
+    "created": 0,
+    "actions": 0,
+    "stats": {
+     "clicks": 0,
+     "forms": 0,
+     "fields": 0,
+     "saved": 0,
+     "repairs": 0,
+     "noSave": 0,
+     "confirms": 0,
+     "tabs": 0,
+     "fillErrors": 0,
+     "skippedDanger": 0,
+     "refused": []
+    },
+    "jsErrors": [],
+    "consoleErrors": [
+     "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+     "ERROR ge: NG0600\n    at http://localhost:4200/main.edd4b56aa97bb5d2.js:1:1565942\n    at Et (http://localhost:4200/main.edd4b56aa97bb5d2.js:1:1445366)\n    at de (http://localhost:4200/main.edd4b56aa97bb5d2.js:1:1445406)\n ",
+     "ERROR ge: NG0600\n    at http://localhost:4200/main.edd4b56aa97bb5d2.js:1:1565942\n    at Et (http://localhost:4200/main.edd4b56aa97bb5d2.js:1:1445366)\n    at de (http://localhost:4200/main.edd4b56aa97bb5d2.js:1:1445406)\n ",
+     "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED"
+    ],
+    "http4xx": [],
+    "http5xx": [],
+    "loadError": ""
+   },
+   {
+    "route": "/pos/products",
+    "ms": 1086,
+    "created": 0,
+    "actions": 0,
+    "stats": {
+     "clicks": 0,
+     "forms": 0,
+     "fields": 0,
+     "saved": 0,
+     "repairs": 0,
+     "noSave": 0,
+     "confirms": 0,
+     "tabs": 0,
+     "fillErrors": 0,
+     "skippedDanger": 0,
+     "refused": []
+    },
+    "jsErrors": [],
+    "consoleErrors": [
+     "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+     "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+     "ERROR TypeError: this.pos.categories(...).map is not a function\n    at Object.options (http://localhost:4200/8393.ff2ba1f8eac59f15.js:1:9106)\n    at s.optLabel (http://localhost:4200/4891.6d7c69d4d3096237.js:1:16841)\n   ",
+     "ERROR TypeError: this.pos.categories(...).map is not a function\n    at Object.options (http://localhost:4200/8393.ff2ba1f8eac59f15.js:1:9106)\n    at s.optLabel (http://localhost:4200/4891.6d7c69d4d3096237.js:1:16841)\n   ",
+     "ERROR TypeError: this.pos.categories(...).map is not a function\n    at Object.options (http://localhost:4200/8393.ff2ba1f8eac59f15.js:1:9106)\n    at s.optLabel (http://localhost:4200/4891.6d7c69d4d3096237.js:1:16841)\n   ",
+     "ERROR TypeError: this.pos.categories(...).map is not a function\n    at Object.options (http://localhost:4200/8393.ff2ba1f8eac59f15.js:1:9106)\n    at s.optLabel (http://localhost:4200/4891.6d7c69d4d3096237.js:1:16841)\n   ",
+     "ERROR TypeError: this.pos.categories(...).map is not a function\n    at Object.options (http://localhost:4200/8393.ff2ba1f8eac59f15.js:1:9106)\n    at s.optLabel (http://localhost:4200/4891.6d7c69d4d3096237.js:1:16841)\n   ",
+     "ERROR TypeError: this.pos.categories(...).map is not a function\n    at Object.options (http://localhost:4200/8393.ff2ba1f8eac59f15.js:1:9106)\n    at s.optLabel (http://localhost:4200/4891.6d7c69d4d3096237.js:1:16841)\n   "
+    ],
+    "http4xx": [],
+    "http5xx": [],
+    "loadError": ""
+   },
+   {
+    "route": "/pos/customers",
+    "ms": 910,
+    "created": 0,
+    "actions": 0,
+    "stats": {
+     "clicks": 0,
+     "forms": 0,
+     "fields": 0,
+     "saved": 0,
+     "repairs": 0,
+     "noSave": 0,
+     "confirms": 0,
+     "tabs": 0,
+     "fillErrors": 0,
+     "skippedDanger": 0,
+     "refused": []
+    },
+    "jsErrors": [],
+    "consoleErrors": [
+     "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+     "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+     "ERROR TypeError: this.all(...).filter is not a function\n    at s.shown (http://localhost:4200/4891.6d7c69d4d3096237.js:1:15569)\n    at template (http://localhost:4200/4891.6d7c69d4d3096237.js:1:22487)\n    at Rm (http://l",
+     "ERROR TypeError: this.all(...).filter is not a function\n    at s.shown (http://localhost:4200/4891.6d7c69d4d3096237.js:1:15569)\n    at template (http://localhost:4200/4891.6d7c69d4d3096237.js:1:22487)\n    at Rm (http://l",
+     "ERROR TypeError: this.all(...).filter is not a function\n    at s.shown (http://localhost:4200/4891.6d7c69d4d3096237.js:1:15569)\n    at template (http://localhost:4200/4891.6d7c69d4d3096237.js:1:22487)\n    at Rm (http://l",
+     "ERROR TypeError: this.all(...).filter is not a function\n    at s.shown (http://localhost:4200/4891.6d7c69d4d3096237.js:1:15569)\n    at template (http://localhost:4200/4891.6d7c69d4d3096237.js:1:22487)\n    at Rm (http://l"
+    ],
+    "http4xx": [],
+    "http5xx": [],
+    "loadError": ""
+   },
+   {
+    "route": "/pos/promotions",
+    "ms": 1109,
+    "created": 0,
+    "actions": 0,
+    "stats": {
+     "clicks": 0,
+     "forms": 0,
+     "fields": 0,
+     "saved": 0,
+     "repairs": 0,
+     "noSave": 0,
+     "confirms": 0,
+     "tabs": 0,
+     "fillErrors": 0,
+     "skippedDanger": 0,
+     "refused": []
+    },
+    "jsErrors": [],
+    "consoleErrors": [
+     "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+     "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+     "ERROR ge: NG0900\n    at m1.diff (http://localhost:4200/main.edd4b56aa97bb5d2.js:1:1556013)\n    at h.ngDoCheck (http://localhost:4200/main.edd4b56aa97bb5d2.js:1:1409647)\n    at qf (http://localhost:4200/main.edd4b56aa97bb",
+     "ERROR ge: NG0900\n    at m1.diff (http://localhost:4200/main.edd4b56aa97bb5d2.js:1:1556013)\n    at h.ngDoCheck (http://localhost:4200/main.edd4b56aa97bb5d2.js:1:1409647)\n    at qf (http://localhost:4200/main.edd4b56aa97bb",
+     "ERROR TypeError: this.all(...).filter is not a function\n    at s.shown (http://localhost:4200/4891.6d7c69d4d3096237.js:1:15569)\n    at template (http://localhost:4200/4891.6d7c69d4d3096237.js:1:22487)\n    at Rm (http://l",
+     "ERROR TypeError: this.all(...).filter is not a function\n    at s.shown (http://localhost:4200/4891.6d7c69d4d3096237.js:1:15569)\n    at template (http://localhost:4200/4891.6d7c69d4d3096237.js:1:22487)\n    at Rm (http://l"
+    ],
+    "http4xx": [],
+    "http5xx": [],
+    "loadError": ""
+   },
+   {
+    "route": "/hospital/overview",
+    "ms": 1119,
+    "created": 0,
+    "actions": 0,
+    "stats": {
+     "clicks": 0,
+     "forms": 0,
+     "fields": 0,
+     "saved": 0,
+     "repairs": 0,
+     "noSave": 0,
+     "confirms": 0,
+     "tabs": 0,
+     "fillErrors": 0,
+     "skippedDanger": 0,
+     "refused": []
+    },
+    "jsErrors": [],
+    "consoleErrors": [
+     "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+     "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED"
+    ],
+    "http4xx": [],
+    "http5xx": [],
+    "loadError": ""
+   },
+   {
+    "route": "/hospital/patients",
+    "ms": 3444,
+    "created": 1,
+    "actions": 0,
+    "stats": {
+     "clicks": 1,
+     "forms": 1,
+     "fields": 13,
+     "saved": 1,
+     "repairs": 0,
+     "noSave": 0,
+     "confirms": 0,
+     "tabs": 6,
+     "fillErrors": 0,
+     "skippedDanger": 0,
+     "refused": []
+    },
+    "jsErrors": [],
+    "consoleErrors": [
+     "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+     "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED"
+    ],
+    "http4xx": [],
+    "http5xx": [],
+    "loadError": ""
+   },
+   {
+    "route": "/hospital/appointments",
+    "ms": 9947,
+    "created": 0,
+    "actions": 0,
+    "stats": {
+     "clicks": 1,
+     "forms": 1,
+     "fields": 7,
+     "saved": 0,
+     "repairs": 1,
+     "noSave": 0,
+     "confirms": 0,
+     "tabs": 0,
+     "fillErrors": 0,
+     "skippedDanger": 0,
+     "refused": [
+      "new#0: Fill in the required fields."
+     ]
+    },
+    "jsErrors": [],
+    "consoleErrors": [
+     "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+     "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED"
+    ],
+    "http4xx": [],
+    "http5xx": [],
+    "loadError": ""
+   },
+   {
+    "route": "/hospital/visits",
+    "ms": 1494,
+    "created": 0,
+    "actions": 0,
+    "stats": {
+     "clicks": 0,
+     "forms": 0,
+     "fields": 0,
+     "saved": 0,
+     "repairs": 0,
+     "noSave": 0,
+     "confirms": 0,
+     "tabs": 2,
+     "fillErrors": 0,
+     "skippedDanger": 0,
+     "refused": []
+    },
+    "jsErrors": [],
+    "consoleErrors": [
+     "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+     "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED"
+    ],
+    "http4xx": [],
+    "http5xx": [],
+    "loadError": ""
+   },
+   {
+    "route": "/hospital/lab",
+    "ms": 1574,
+    "created": 0,
+    "actions": 0,
+    "stats": {
+     "clicks": 0,
+     "forms": 0,
+     "fields": 0,
+     "saved": 0,
+     "repairs": 0,
+     "noSave": 0,
+     "confirms": 0,
+     "tabs": 2,
+     "fillErrors": 0,
+     "skippedDanger": 0,
+     "refused": []
+    },
+    "jsErrors": [],
+    "consoleErrors": [
+     "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+     "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED"
+    ],
+    "http4xx": [],
+    "http5xx": [],
+    "loadError": ""
+   },
+   {
+    "route": "/hospital/pharmacy",
+    "ms": 5545,
+    "created": 0,
+    "actions": 0,
+    "stats": {
+     "clicks": 0,
+     "forms": 0,
+     "fields": 0,
+     "saved": 0,
+     "repairs": 0,
+     "noSave": 0,
+     "confirms": 0,
+     "tabs": 5,
+     "fillErrors": 0,
+     "skippedDanger": 0,
+     "refused": []
+    },
+    "jsErrors": [],
+    "consoleErrors": [
+     "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+     "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED"
+    ],
+    "http4xx": [],
+    "http5xx": [],
+    "loadError": ""
+   },
+   {
+    "route": "/hospital/wards",
+    "ms": 9917,
+    "created": 0,
+    "actions": 0,
+    "stats": {
+     "clicks": 1,
+     "forms": 1,
+     "fields": 6,
+     "saved": 0,
+     "repairs": 1,
+     "noSave": 0,
+     "confirms": 0,
+     "tabs": 0,
+     "fillErrors": 0,
+     "skippedDanger": 0,
+     "refused": [
+      "new#0: Can't reach the server."
+     ]
+    },
+    "jsErrors": [],
+    "consoleErrors": [
+     "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+     "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+     "Failed to load resource: net::ERR_CONNECTION_REFUSED",
+     "Failed to load resource: net::ERR_CONNECTION_REFUSED",
+     "Failed to load resource: net::ERR_CONNECTION_REFUSED",
+     "Failed to load resource: net::ERR_CONNECTION_REFUSED",
+     "ERROR ct",
+     "Failed to load resource: net::ERR_CONNECTION_REFUSED"
+    ],
+    "http4xx": [],
+    "http5xx": [],
+    "loadError": ""
+   },
+   {
+    "route": "/hospital/billing",
+    "ms": 40,
+    "created": 0,
+    "actions": 0,
+    "stats": {
+     "clicks": 0,
+     "forms": 0,
+     "fields": 0,
+     "saved": 0,
+     "repairs": 0,
+     "noSave": 0,
+     "confirms": 0,
+     "tabs": 0,
+     "fillErrors": 0,
+     "skippedDanger": 0,
+     "refused": []
+    },
+    "jsErrors": [],
+    "consoleErrors": [],
+    "http4xx": [],
+    "http5xx": [],
+    "loadError": "page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:4200/hospital/billing"
+   },
+   {
+    "route": "/hospital/setup",
+    "ms": 54,
+    "created": 0,
+    "actions": 0,
+    "stats": {
+     "clicks": 0,
+     "forms": 0,
+     "fields": 0,
+     "saved": 0,
+     "repairs": 0,
+     "noSave": 0,
+     "confirms": 0,
+     "tabs": 0,
+     "fillErrors": 0,
+     "skippedDanger": 0,
+     "refused": []
+    },
+    "jsErrors": [],
+    "consoleErrors": [],
+    "http4xx": [],
+    "http5xx": [],
+    "loadError": "page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:4200/hospital/setup"
+   },
+   {
+    "route": "/calendar/view",
+    "ms": 19,
+    "created": 0,
+    "actions": 0,
+    "stats": {
+     "clicks": 0,
+     "forms": 0,
+     "fields": 0,
+     "saved": 0,
+     "repairs": 0,
+     "noSave": 0,
+     "confirms": 0,
+     "tabs": 0,
+     "fillErrors": 0,
+     "skippedDanger": 0,
+     "refused": []
+    },
+    "jsErrors": [],
+    "consoleErrors": [],
+    "http4xx": [],
+    "http5xx": [],
+    "loadError": "page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:4200/calendar/view"
+   },
+   {
+    "route": "/calendar/todos",
+    "ms": 32,
+    "created": 0,
+    "actions": 0,
+    "stats": {
+     "clicks": 0,
+     "forms": 0,
+     "fields": 0,
+     "saved": 0,
+     "repairs": 0,
+     "noSave": 0,
+     "confirms": 0,
+     "tabs": 0,
+     "fillErrors": 0,
+     "skippedDanger": 0,
+     "refused": []
+    },
+    "jsErrors": [],
+    "consoleErrors": [],
+    "http4xx": [],
+    "http5xx": [],
+    "loadError": "page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:4200/calendar/todos"
+   },
+   {
+    "route": "/calendar/settings",
+    "ms": 20,
+    "created": 0,
+    "actions": 0,
+    "stats": {
+     "clicks": 0,
+     "forms": 0,
+     "fields": 0,
+     "saved": 0,
+     "repairs": 0,
+     "noSave": 0,
+     "confirms": 0,
+     "tabs": 0,
+     "fillErrors": 0,
+     "skippedDanger": 0,
+     "refused": []
+    },
+    "jsErrors": [],
+    "consoleErrors": [],
+    "http4xx": [],
+    "http5xx": [],
+    "loadError": "page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:4200/calendar/settings"
+   },
+   {
+    "route": "/tasks",
+    "ms": 34,
+    "created": 0,
+    "actions": 0,
+    "stats": {
+     "clicks": 0,
+     "forms": 0,
+     "fields": 0,
+     "saved": 0,
+     "repairs": 0,
+     "noSave": 0,
+     "confirms": 0,
+     "tabs": 0,
+     "fillErrors": 0,
+     "skippedDanger": 0,
+     "refused": []
+    },
+    "jsErrors": [],
+    "consoleErrors": [],
+    "http4xx": [],
+    "http5xx": [],
+    "loadError": "page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:4200/tasks"
+   },
+   {
+    "route": "/muslim/times",
+    "ms": 25,
+    "created": 0,
+    "actions": 0,
+    "stats": {
+     "clicks": 0,
+     "forms": 0,
+     "fields": 0,
+     "saved": 0,
+     "repairs": 0,
+     "noSave": 0,
+     "confirms": 0,
+     "tabs": 0,
+     "fillErrors": 0,
+     "skippedDanger": 0,
+     "refused": []
+    },
+    "jsErrors": [],
+    "consoleErrors": [],
+    "http4xx": [],
+    "http5xx": [],
+    "loadError": "page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:4200/muslim/times"
+   },
+   {
+    "route": "/muslim/quran",
+    "ms": 16,
+    "created": 0,
+    "actions": 0,
+    "stats": {
+     "clicks": 0,
+     "forms": 0,
+     "fields": 0,
+     "saved": 0,
+     "repairs": 0,
+     "noSave": 0,
+     "confirms": 0,
+     "tabs": 0,
+     "fillErrors": 0,
+     "skippedDanger": 0,
+     "refused": []
+    },
+    "jsErrors": [],
+    "consoleErrors": [],
+    "http4xx": [],
+    "http5xx": [],
+    "loadError": "page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:4200/muslim/quran"
+   }
+  ],
+  "error": null,
+  "ms": 119573
+ },
+ {
+  "user": "l394803w1u02",
+  "profile": "finance-ar",
+  "ws": 1,
+  "screens": [
+   {
+    "route": "/dashboard",
+    "ms": 1748,
+    "created": 0,
+    "actions": 0,
+    "stats": {
+     "clicks": 1,
+     "forms": 0,
+     "fields": 0,
+     "saved": 0,
+     "repairs": 0,
+     "noSave": 0,
+     "confirms": 0,
+     "tabs": 0,
+     "fillErrors": 0,
+     "skippedDanger": 0,
+     "refused": []
+    },
+    "jsErrors": [],
+    "consoleErrors": [
+     "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+     "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED"
+    ],
+    "http4xx": [],
+    "http5xx": [],
+    "loadError": ""
+   },
+   {
+    "route": "/approvals",
+    "ms": 1955,
+    "created": 0,
+    "actions": 0,
+    "stats": {
+     "clicks": 1,
+     "forms": 0,
+     "fields": 0,
+     "saved": 0,
+     "repairs": 0,
+     "noSave": 0,
+     "confirms": 0,
+     "tabs": 2,
+     "fillErrors": 0,
+     "skippedDanger": 0,
+     "refused": []
+    },
+    "jsErrors": [],
+    "consoleErrors": [
+     "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+     "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED"
+    ],
+    "http4xx": [],
+    "http5xx": [],
+    "loadError": ""
+   },
+   {
+    "route": "/documents",
+    "ms": 3859,
+    "created": 0,
+    "actions": 0,
+    "stats": {
+     "clicks": 4,
+     "forms": 0,
+     "fields": 0,
+     "saved": 0,
+     "repairs": 0,
+     "noSave": 0,
+     "confirms": 0,
+     "tabs": 7,
+     "fillErrors": 0,
+     "skippedDanger": 0,
+     "refused": []
+    },
+    "jsErrors": [],
+    "consoleErrors": [
+     "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+     "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED"
+    ],
+    "http4xx": [],
+    "http5xx": [],
+    "loadError": ""
+   },
+   {
+    "route": "/services",
+    "ms": 1086,
+    "created": 0,
+    "actions": 0,
+    "stats": {
+     "clicks": 0,
+     "forms": 0,
+     "fields": 0,
+     "saved": 0,
+     "repairs": 0,
+     "noSave": 0,
+     "confirms": 0,
+     "tabs": 0,
+     "fillErrors": 0,
+     "skippedDanger": 0,
+     "refused": []
+    },
+    "jsErrors": [],
+    "consoleErrors": [
+     "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+     "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED"
+    ],
+    "http4xx": [],
+    "http5xx": [],
+    "loadError": ""
+   },
+   {
+    "route": "/pos",
+    "ms": 1010,
+    "created": 0,
+    "actions": 0,
+    "stats": {
+     "clicks": 0,
+     "forms": 0,
+     "fields": 0,
+     "saved": 0,
+     "repairs": 0,
+     "noSave": 0,
+     "confirms": 0,
+     "tabs": 0,
+     "fillErrors": 0,
+     "skippedDanger": 0,
+     "refused": []
+    },
+    "jsErrors": [],
+    "consoleErrors": [
+     "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+     "ERROR ge: NG0600\n    at http://localhost:4200/main.edd4b56aa97bb5d2.js:1:1565942\n    at Et (http://localhost:4200/main.edd4b56aa97bb5d2.js:1:1445366)\n    at de (http://localhost:4200/main.edd4b56aa97bb5d2.js:1:1445406)\n ",
+     "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED"
+    ],
+    "http4xx": [],
+    "http5xx": [],
+    "loadError": ""
+   },
+   {
+    "route": "/website",
+    "ms": 2988,
+    "created": 1,
+    "actions": 0,
+    "stats": {
+     "clicks": 1,
+     "forms": 1,
+     "fields": 1,
+     "saved": 1,
+     "repairs": 0,
+     "noSave": 0,
+     "confirms": 0,
+     "tabs": 3,
+     "fillErrors": 0,
+     "skippedDanger": 0,
+     "refused": []
+    },
+    "jsErrors": [],
+    "consoleErrors": [
+     "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+     "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED"
+    ],
+    "http4xx": [],
+    "http5xx": [],
+    "loadError": ""
+   },
+   {
+    "route": "/workflow",
+    "ms": 2789,
+    "created": 0,
+    "actions": 0,
+    "stats": {
+     "clicks": 4,
+     "forms": 0,
+     "fields": 0,
+     "saved": 0,
+     "repairs": 0,
+     "noSave": 0,
+     "confirms": 0,
+     "tabs": 0,
+     "fillErrors": 0,
+     "skippedDanger": 0,
+     "refused": []
+    },
+    "jsErrors": [],
+    "consoleErrors": [
+     "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+     "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+     "ERROR TypeError: Cannot read properties of undefined (reading 'find')\n    at get selectedNode (http://localhost:4200/4097.20adb44982ee7cc3.js:1:45002)\n    at template (http://localhost:4200/4097.20adb44982ee7cc3.js:1:606",
+     "ERROR TypeError: Cannot read properties of undefined (reading 'find')\n    at get selectedNode (http://localhost:4200/4097.20adb44982ee7cc3.js:1:45002)\n    at template (http://localhost:4200/4097.20adb44982ee7cc3.js:1:606",
+     "ERROR TypeError: Cannot read properties of undefined (reading 'find')\n    at get selectedNode (http://localhost:4200/4097.20adb44982ee7cc3.js:1:45002)\n    at template (http://localhost:4200/4097.20adb44982ee7cc3.js:1:606",
+     "ERROR TypeError: Cannot read properties of undefined (reading 'find')\n    at get selectedNode (http://localhost:4200/4097.20adb44982ee7cc3.js:1:45002)\n    at template (http://localhost:4200/4097.20adb44982ee7cc3.js:1:606",
+     "ERROR ge: NG04008\n    at Ul (http://localhost:4200/main.edd4b56aa97bb5d2.js:1:1684339)\n    at u.navigate (http://localhost:4200/main.edd4b56aa97bb5d2.js:1:1684358)\n    at Object.next (http://localhost:4200/4097.20adb4498",
+     "ERROR TypeError: Cannot read properties of undefined (reading 'find')\n    at get selectedNode (http://localhost:4200/4097.20adb44982ee7cc3.js:1:45002)\n    at template (http://localhost:4200/4097.20adb44982ee7cc3.js:1:606",
+     "ERROR TypeError: Cannot read properties of undefined (reading 'find')\n    at get selectedNode (http://localhost:4200/4097.20adb44982ee7cc3.js:1:45002)\n    at template (http://localhost:4200/4097.20adb44982ee7cc3.js:1:606",
+     "ERROR TypeError: Cannot read properties of undefined (reading 'find')\n    at get selectedNode (http://localhost:4200/4097.20adb44982ee7cc3.js:1:45002)\n    at template (http://localhost:4200/4097.20adb44982ee7cc3.js:1:606"
+    ],
+    "http4xx": [],
+    "http5xx": [],
+    "loadError": ""
+   },
+   {
+    "route": "/hospital",
+    "ms": 1240,
+    "created": 0,
+    "actions": 0,
+    "stats": {
+     "clicks": 0,
+     "forms": 0,
+     "fields": 0,
+     "saved": 0,
+     "repairs": 0,
+     "noSave": 0,
+     "confirms": 0,
+     "tabs": 0,
+     "fillErrors": 0,
+     "skippedDanger": 0,
+     "refused": []
+    },
+    "jsErrors": [],
+    "consoleErrors": [
+     "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+     "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED"
+    ],
+    "http4xx": [],
+    "http5xx": [],
+    "loadError": ""
+   },
+   {
+    "route": "/calendar",
+    "ms": 1835,
+    "created": 0,
+    "actions": 0,
+    "stats": {
+     "clicks": 0,
+     "forms": 0,
+     "fields": 0,
+     "saved": 0,
+     "repairs": 0,
+     "noSave": 0,
+     "confirms": 0,
+     "tabs": 3,
+     "fillErrors": 0,
+     "skippedDanger": 0,
+     "refused": []
+    },
+    "jsErrors": [],
+    "consoleErrors": [
+     "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+     "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED"
+    ],
+    "http4xx": [],
+    "http5xx": [],
+    "loadError": ""
+   },
+   {
+    "route": "/muslim",
+    "ms": 2084,
+    "created": 0,
+    "actions": 0,
+    "stats": {
+     "clicks": 0,
+     "forms": 0,
+     "fields": 0,
+     "saved": 0,
+     "repairs": 0,
+     "noSave": 0,
+     "confirms": 0,
+     "tabs": 2,
+     "fillErrors": 0,
+     "skippedDanger": 0,
+     "refused": []
+    },
+    "jsErrors": [],
+    "consoleErrors": [
+     "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+     "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+     "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+     "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+     "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED"
+    ],
+    "http4xx": [],
+    "http5xx": [],
+    "loadError": ""
+   },
+   {
+    "route": "/custom",
+    "ms": 2388,
+    "created": 1,
+    "actions": 0,
+    "stats": {
+     "clicks": 1,
+     "forms": 1,
+     "fields": 8,
+     "saved": 1,
+     "repairs": 0,
+     "noSave": 0,
+     "confirms": 0,
+     "tabs": 0,
+     "fillErrors": 0,
+     "skippedDanger": 0,
+     "refused": []
+    },
+    "jsErrors": [],
+    "consoleErrors": [
+     "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+     "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED"
+    ],
+    "http4xx": [],
+    "http5xx": [],
+    "loadError": ""
+   },
+   {
+    "route": "/reports",
+    "ms": 1122,
+    "created": 0,
+    "actions": 0,
+    "stats": {
+     "clicks": 0,
+     "forms": 0,
+     "fields": 0,
+     "saved": 0,
+     "repairs": 0,
+     "noSave": 0,
+     "confirms": 0,
+     "tabs": 0,
+     "fillErrors": 0,
+     "skippedDanger": 0,
+     "refused": []
+    },
+    "jsErrors": [],
+    "consoleErrors": [
+     "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+     "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED"
+    ],
+    "http4xx": [],
+    "http5xx": [],
+    "loadError": ""
+   },
+   {
+    "route": "/assistant",
+    "ms": 1049,
+    "created": 0,
+    "actions": 0,
+    "stats": {
+     "clicks": 0,
+     "forms": 0,
+     "fields": 0,
+     "saved": 0,
+     "repairs": 0,
+     "noSave": 0,
+     "confirms": 0,
+     "tabs": 0,
+     "fillErrors": 0,
+     "skippedDanger": 0,
+     "refused": []
+    },
+    "jsErrors": [],
+    "consoleErrors": [
+     "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+     "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED"
+    ],
+    "http4xx": [],
+    "http5xx": [],
+    "loadError": ""
+   },
+   {
+    "route": "/admin",
+    "ms": 41658,
+    "created": 0,
+    "actions": 0,
+    "stats": {
+     "clicks": 3,
+     "forms": 1,
+     "fields": 8,
+     "saved": 0,
+     "repairs": 3,
+     "noSave": 0,
+     "confirms": 2,
+     "tabs": 6,
+     "fillErrors": 0,
+     "skippedDanger": 4,
+     "refused": [
+      "new#0: form stayed open",
+      "row0:Edit user: form stayed open",
+      "row1:Edit user: form stayed open"
+     ]
+    },
+    "jsErrors": [],
+    "consoleErrors": [
+     "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+     "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED"
+    ],
+    "http4xx": [],
+    "http5xx": [],
+    "loadError": ""
+   },
+   {
+    "route": "/documents?scope=all",
+    "ms": 3976,
+    "created": 0,
+    "actions": 0,
+    "stats": {
+     "clicks": 4,
+     "forms": 0,
+     "fields": 0,
+     "saved": 0,
+     "repairs": 0,
+     "noSave": 0,
+     "confirms": 0,
+     "tabs": 7,
+     "fillErrors": 0,
+     "skippedDanger": 0,
+     "refused": []
+    },
+    "jsErrors": [],
+    "consoleErrors": [
+     "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+     "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED"
+    ],
+    "http4xx": [],
+    "http5xx": [],
+    "loadError": ""
+   },
+   {
+    "route": "/new/PR",
+    "ms": 1375,
+    "created": 0,
+    "actions": 0,
+    "stats": {
+     "clicks": 1,
+     "forms": 0,
+     "fields": 0,
+     "saved": 0,
+     "repairs": 0,
+     "noSave": 0,
+     "confirms": 0,
+     "tabs": 0,
+     "fillErrors": 0,
+     "skippedDanger": 0,
+     "refused": []
+    },
+    "jsErrors": [],
+    "consoleErrors": [
+     "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+     "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED"
+    ],
+    "http4xx": [],
+    "http5xx": [],
+    "loadError": ""
+   },
+   {
+    "route": "/new/SO",
+    "ms": 1425,
+    "created": 0,
+    "actions": 0,
+    "stats": {
+     "clicks": 1,
+     "forms": 0,
+     "fields": 0,
+     "saved": 0,
+     "repairs": 0,
+     "noSave": 0,
+     "confirms": 0,
+     "tabs": 0,
+     "fillErrors": 0,
+     "skippedDanger": 0,
+     "refused": []
+    },
+    "jsErrors": [],
+    "consoleErrors": [
+     "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+     "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED"
+    ],
+    "http4xx": [],
+    "http5xx": [],
+    "loadError": ""
+   },
+   {
+    "route": "/new/TRF",
+    "ms": 1438,
+    "created": 0,
+    "actions": 0,
+    "stats": {
+     "clicks": 1,
+     "forms": 0,
+     "fields": 0,
+     "saved": 0,
+     "repairs": 0,
+     "noSave": 0,
+     "confirms": 0,
+     "tabs": 0,
+     "fillErrors": 0,
+     "skippedDanger": 0,
+     "refused": []
+    },
+    "jsErrors": [],
+    "consoleErrors": [
+     "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+     "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED"
+    ],
+    "http4xx": [],
+    "http5xx": [],
+    "loadError": ""
+   },
+   {
+    "route": "/new/PV",
+    "ms": 1367,
+    "created": 0,
+    "actions": 0,
+    "stats": {
+     "clicks": 1,
+     "forms": 0,
+     "fields": 0,
+     "saved": 0,
+     "repairs": 0,
+     "noSave": 0,
+     "confirms": 0,
+     "tabs": 0,
+     "fillErrors": 0,
+     "skippedDanger": 0,
+     "refused": []
+    },
+    "jsErrors": [],
+    "consoleErrors": [
+     "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+     "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED"
+    ],
+    "http4xx": [],
+    "http5xx": [],
+    "loadError": ""
+   },
+   {
+    "route": "/new/EXP",
+    "ms": 1423,
+    "created": 0,
+    "actions": 0,
+    "stats": {
+     "clicks": 1,
+     "forms": 0,
+     "fields": 0,
+     "saved": 0,
+     "repairs": 0,
+     "noSave": 0,
+     "confirms": 0,
+     "tabs": 0,
+     "fillErrors": 0,
+     "skippedDanger": 0,
+     "refused": []
+    },
+    "jsErrors": [],
+    "consoleErrors": [
+     "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+     "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED"
+    ],
+    "http4xx": [],
+    "http5xx": [],
+    "loadError": ""
+   },
+   {
+    "route": "/pos/sales",
+    "ms": 961,
+    "created": 0,
+    "actions": 0,
+    "stats": {
+     "clicks": 0,
+     "forms": 0,
+     "fields": 0,
+     "saved": 0,
+     "repairs": 0,
+     "noSave": 0,
+     "confirms": 0,
+     "tabs": 0,
+     "fillErrors": 0,
+     "skippedDanger": 0,
+     "refused": []
+    },
+    "jsErrors": [],
+    "consoleErrors": [
+     "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+     "ERROR ge: NG0600\n    at http://localhost:4200/main.edd4b56aa97bb5d2.js:1:1565942\n    at Et (http://localhost:4200/main.edd4b56aa97bb5d2.js:1:1445366)\n    at de (http://localhost:4200/main.edd4b56aa97bb5d2.js:1:1445406)\n ",
+     "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED"
+    ],
+    "http4xx": [],
+    "http5xx": [],
+    "loadError": ""
+   },
+   {
+    "route": "/pos/products",
+    "ms": 924,
+    "created": 0,
+    "actions": 0,
+    "stats": {
+     "clicks": 0,
+     "forms": 0,
+     "fields": 0,
+     "saved": 0,
+     "repairs": 0,
+     "noSave": 0,
+     "confirms": 0,
+     "tabs": 0,
+     "fillErrors": 0,
+     "skippedDanger": 0,
+     "refused": []
+    },
+    "jsErrors": [],
+    "consoleErrors": [
+     "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+     "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+     "ERROR TypeError: this.pos.categories(...).map is not a function\n    at Object.options (http://localhost:4200/8393.ff2ba1f8eac59f15.js:1:9106)\n    at s.optLabel (http://localhost:4200/4891.6d7c69d4d3096237.js:1:16841)\n   ",
+     "ERROR TypeError: this.pos.categories(...).map is not a function\n    at Object.options (http://localhost:4200/8393.ff2ba1f8eac59f15.js:1:9106)\n    at s.optLabel (http://localhost:4200/4891.6d7c69d4d3096237.js:1:16841)\n   ",
+     "ERROR TypeError: this.pos.categories(...).map is not a function\n    at Object.options (http://localhost:4200/8393.ff2ba1f8eac59f15.js:1:9106)\n    at s.optLabel (http://localhost:4200/4891.6d7c69d4d3096237.js:1:16841)\n   ",
+     "ERROR TypeError: this.pos.categories(...).map is not a function\n    at Object.options (http://localhost:4200/8393.ff2ba1f8eac59f15.js:1:9106)\n    at s.optLabel (http://localhost:4200/4891.6d7c69d4d3096237.js:1:16841)\n   ",
+     "ERROR TypeError: this.pos.categories(...).map is not a function\n    at Object.options (http://localhost:4200/8393.ff2ba1f8eac59f15.js:1:9106)\n    at s.optLabel (http://localhost:4200/4891.6d7c69d4d3096237.js:1:16841)\n   ",
+     "ERROR TypeError: this.pos.categories(...).map is not a function\n    at Object.options (http://localhost:4200/8393.ff2ba1f8eac59f15.js:1:9106)\n    at s.optLabel (http://localhost:4200/4891.6d7c69d4d3096237.js:1:16841)\n   "
+    ],
+    "http4xx": [],
+    "http5xx": [],
+    "loadError": ""
+   },
+   {
+    "route": "/pos/customers",
+    "ms": 1120,
+    "created": 0,
+    "actions": 0,
+    "stats": {
+     "clicks": 0,
+     "forms": 0,
+     "fields": 0,
+     "saved": 0,
+     "repairs": 0,
+     "noSave": 0,
+     "confirms": 0,
+     "tabs": 0,
+     "fillErrors": 0,
+     "skippedDanger": 0,
+     "refused": []
+    },
+    "jsErrors": [],
+    "consoleErrors": [
+     "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+     "ERROR TypeError: this.all(...).filter is not a function\n    at s.shown (http://localhost:4200/4891.6d7c69d4d3096237.js:1:15569)\n    at template (http://localhost:4200/4891.6d7c69d4d3096237.js:1:22487)\n    at Rm (http://l",
+     "ERROR TypeError: this.all(...).filter is not a function\n    at s.shown (http://localhost:4200/4891.6d7c69d4d3096237.js:1:15569)\n    at template (http://localhost:4200/4891.6d7c69d4d3096237.js:1:22487)\n    at Rm (http://l",
+     "ERROR TypeError: this.all(...).filter is not a function\n    at s.shown (http://localhost:4200/4891.6d7c69d4d3096237.js:1:15569)\n    at template (http://localhost:4200/4891.6d7c69d4d3096237.js:1:22487)\n    at Rm (http://l",
+     "ERROR TypeError: this.all(...).filter is not a function\n    at s.shown (http://localhost:4200/4891.6d7c69d4d3096237.js:1:15569)\n    at template (http://localhost:4200/4891.6d7c69d4d3096237.js:1:22487)\n    at Rm (http://l",
+     "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED"
+    ],
+    "http4xx": [],
+    "http5xx": [],
+    "loadError": ""
+   },
+   {
+    "route": "/pos/promotions",
+    "ms": 1158,
+    "created": 0,
+    "actions": 0,
+    "stats": {
+     "clicks": 0,
+     "forms": 0,
+     "fields": 0,
+     "saved": 0,
+     "repairs": 0,
+     "noSave": 0,
+     "confirms": 0,
+     "tabs": 0,
+     "fillErrors": 0,
+     "skippedDanger": 0,
+     "refused": []
+    },
+    "jsErrors": [],
+    "consoleErrors": [
+     "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+     "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+     "ERROR TypeError: this.all(...).filter is not a function\n    at s.shown (http://localhost:4200/4891.6d7c69d4d3096237.js:1:15569)\n    at template (http://localhost:4200/4891.6d7c69d4d3096237.js:1:22487)\n    at Rm (http://l",
+     "ERROR TypeError: this.all(...).filter is not a function\n    at s.shown (http://localhost:4200/4891.6d7c69d4d3096237.js:1:15569)\n    at template (http://localhost:4200/4891.6d7c69d4d3096237.js:1:22487)\n    at Rm (http://l",
+     "ERROR TypeError: this.all(...).filter is not a function\n    at s.shown (http://localhost:4200/4891.6d7c69d4d3096237.js:1:15569)\n    at template (http://localhost:4200/4891.6d7c69d4d3096237.js:1:22487)\n    at Rm (http://l",
+     "ERROR TypeError: this.all(...).filter is not a function\n    at s.shown (http://localhost:4200/4891.6d7c69d4d3096237.js:1:15569)\n    at template (http://localhost:4200/4891.6d7c69d4d3096237.js:1:22487)\n    at Rm (http://l",
+     "ERROR TypeError: this.all(...).filter is not a function\n    at s.shown (http://localhost:4200/4891.6d7c69d4d3096237.js:1:15569)\n    at template (http://localhost:4200/4891.6d7c69d4d3096237.js:1:22487)\n    at Rm (http://l",
+     "ERROR TypeError: this.all(...).filter is not a function\n    at s.shown (http://localhost:4200/4891.6d7c69d4d3096237.js:1:15569)\n    at template (http://localhost:4200/4891.6d7c69d4d3096237.js:1:22487)\n    at Rm (http://l",
+     "ERROR TypeError: this.all(...).filter is not a function\n    at s.shown (http://localhost:4200/4891.6d7c69d4d3096237.js:1:15569)\n    at template (http://localhost:4200/4891.6d7c69d4d3096237.js:1:22487)\n    at Rm (http://l",
+     "ERROR TypeError: this.all(...).filter is not a function\n    at s.shown (http://localhost:4200/4891.6d7c69d4d3096237.js:1:15569)\n    at template (http://localhost:4200/4891.6d7c69d4d3096237.js:1:22487)\n    at Rm (http://l",
+     "ERROR TypeError: this.all(...).filter is not a function\n    at s.shown (http://localhost:4200/4891.6d7c69d4d3096237.js:1:15569)\n    at template (http://localhost:4200/4891.6d7c69d4d3096237.js:1:22487)\n    at Rm (http://l",
+     "ERROR TypeError: this.all(...).filter is not a function\n    at s.shown (http://localhost:4200/4891.6d7c69d4d3096237.js:1:15569)\n    at template (http://localhost:4200/4891.6d7c69d4d3096237.js:1:22487)\n    at Rm (http://l",
+     "ERROR TypeError: this.all(...).filter is not a function\n    at s.shown (http://localhost:4200/4891.6d7c69d4d3096237.js:1:15569)\n    at template (http://localhost:4200/4891.6d7c69d4d3096237.js:1:22487)\n    at Rm (http://l",
+     "ERROR TypeError: this.all(...).filter is not a function\n    at s.shown (http://localhost:4200/4891.6d7c69d4d3096237.js:1:15569)\n    at template (http://localhost:4200/4891.6d7c69d4d3096237.js:1:22487)\n    at Rm (http://l",
+     "ERROR TypeError: this.all(...).filter is not a function\n    at s.shown (http://localhost:4200/4891.6d7c69d4d3096237.js:1:15569)\n    at template (http://localhost:4200/4891.6d7c69d4d3096237.js:1:22487)\n    at Rm (http://l",
+     "ERROR TypeError: this.all(...).filter is not a function\n    at s.shown (http://localhost:4200/4891.6d7c69d4d3096237.js:1:15569)\n    at template (http://localhost:4200/4891.6d7c69d4d3096237.js:1:22487)\n    at Rm (http://l"
+    ],
+    "http4xx": [],
+    "http5xx": [],
+    "loadError": ""
+   },
+   {
+    "route": "/hospital/overview",
+    "ms": 1158,
+    "created": 0,
+    "actions": 0,
+    "stats": {
+     "clicks": 0,
+     "forms": 0,
+     "fields": 0,
+     "saved": 0,
+     "repairs": 0,
+     "noSave": 0,
+     "confirms": 0,
+     "tabs": 0,
+     "fillErrors": 0,
+     "skippedDanger": 0,
+     "refused": []
+    },
+    "jsErrors": [],
+    "consoleErrors": [
+     "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+     "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED"
+    ],
+    "http4xx": [],
+    "http5xx": [],
+    "loadError": ""
+   },
+   {
+    "route": "/hospital/patients",
+    "ms": 3719,
+    "created": 1,
+    "actions": 0,
+    "stats": {
+     "clicks": 1,
+     "forms": 1,
+     "fields": 13,
+     "saved": 1,
+     "repairs": 0,
+     "noSave": 0,
+     "confirms": 0,
+     "tabs": 6,
+     "fillErrors": 0,
+     "skippedDanger": 0,
+     "refused": []
+    },
+    "jsErrors": [],
+    "consoleErrors": [
+     "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+     "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED"
+    ],
+    "http4xx": [],
+    "http5xx": [],
+    "loadError": ""
+   },
+   {
+    "route": "/hospital/appointments",
+    "ms": 9748,
+    "created": 0,
+    "actions": 0,
+    "stats": {
+     "clicks": 1,
+     "forms": 1,
+     "fields": 7,
+     "saved": 0,
+     "repairs": 1,
+     "noSave": 0,
+     "confirms": 0,
+     "tabs": 0,
+     "fillErrors": 0,
+     "skippedDanger": 0,
+     "refused": [
+      "new#0: Fill in the required fields."
+     ]
+    },
+    "jsErrors": [],
+    "consoleErrors": [
+     "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+     "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED"
+    ],
+    "http4xx": [],
+    "http5xx": [],
+    "loadError": ""
+   },
+   {
+    "route": "/hospital/visits",
+    "ms": 1297,
+    "created": 0,
+    "actions": 0,
+    "stats": {
+     "clicks": 0,
+     "forms": 0,
+     "fields": 0,
+     "saved": 0,
+     "repairs": 0,
+     "noSave": 0,
+     "confirms": 0,
+     "tabs": 2,
+     "fillErrors": 0,
+     "skippedDanger": 0,
+     "refused": []
+    },
+    "jsErrors": [],
+    "consoleErrors": [
+     "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+     "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED"
+    ],
+    "http4xx": [],
+    "http5xx": [],
+    "loadError": ""
+   },
+   {
+    "route": "/hospital/lab",
+    "ms": 1584,
+    "created": 0,
+    "actions": 0,
+    "stats": {
+     "clicks": 0,
+     "forms": 0,
+     "fields": 0,
+     "saved": 0,
+     "repairs": 0,
+     "noSave": 0,
+     "confirms": 0,
+     "tabs": 2,
+     "fillErrors": 0,
+     "skippedDanger": 0,
+     "refused": []
+    },
+    "jsErrors": [],
+    "consoleErrors": [
+     "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+     "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED"
+    ],
+    "http4xx": [],
+    "http5xx": [],
+    "loadError": ""
+   },
+   {
+    "route": "/hospital/pharmacy",
+    "ms": 5800,
+    "created": 0,
+    "actions": 0,
+    "stats": {
+     "clicks": 0,
+     "forms": 0,
+     "fields": 0,
+     "saved": 0,
+     "repairs": 0,
+     "noSave": 0,
+     "confirms": 0,
+     "tabs": 5,
+     "fillErrors": 0,
+     "skippedDanger": 0,
+     "refused": []
+    },
+    "jsErrors": [],
+    "consoleErrors": [
+     "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+     "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED"
+    ],
+    "http4xx": [],
+    "http5xx": [],
+    "loadError": ""
+   },
+   {
+    "route": "/hospital/wards",
+    "ms": 9934,
+    "created": 0,
+    "actions": 0,
+    "stats": {
+     "clicks": 1,
+     "forms": 1,
+     "fields": 6,
+     "saved": 0,
+     "repairs": 1,
+     "noSave": 0,
+     "confirms": 0,
+     "tabs": 0,
+     "fillErrors": 0,
+     "skippedDanger": 0,
+     "refused": [
+      "new#0: Can't reach the server."
+     ]
+    },
+    "jsErrors": [],
+    "consoleErrors": [
+     "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+     "Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED",
+     "Failed to load resource: net::ERR_CONNECTION_REFUSED",
+     "Failed to load resource: net::ERR_CONNECTION_REFUSED"
+    ],
+    "http4xx": [],
+    "http5xx": [],
+    "loadError": ""
+   },
+   {
+    "route": "/hospital/billing",
+    "ms": 40,
+    "created": 0,
+    "actions": 0,
+    "stats": {
+     "clicks": 0,
+     "forms": 0,
+     "fields": 0,
+     "saved": 0,
+     "repairs": 0,
+     "noSave": 0,
+     "confirms": 0,
+     "tabs": 0,
+     "fillErrors": 0,
+     "skippedDanger": 0,
+     "refused": []
+    },
+    "jsErrors": [],
+    "consoleErrors": [],
+    "http4xx": [],
+    "http5xx": [],
+    "loadError": "page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:4200/hospital/billing"
+   },
+   {
+    "route": "/hospital/setup",
+    "ms": 37,
+    "created": 0,
+    "actions": 0,
+    "stats": {
+     "clicks": 0,
+     "forms": 0,
+     "fields": 0,
+     "saved": 0,
+     "repairs": 0,
+     "noSave": 0,
+     "confirms": 0,
+     "tabs": 0,
+     "fillErrors": 0,
+     "skippedDanger": 0,
+     "refused": []
+    },
+    "jsErrors": [],
+    "consoleErrors": [],
+    "http4xx": [],
+    "http5xx": [],
+    "loadError": "page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:4200/hospital/setup"
+   },
+   {
+    "route": "/calendar/view",
+    "ms": 17,
+    "created": 0,
+    "actions": 0,
+    "stats": {
+     "clicks": 0,
+     "forms": 0,
+     "fields": 0,
+     "saved": 0,
+     "repairs": 0,
+     "noSave": 0,
+     "confirms": 0,
+     "tabs": 0,
+     "fillErrors": 0,
+     "skippedDanger": 0,
+     "refused": []
+    },
+    "jsErrors": [],
+    "consoleErrors": [],
+    "http4xx": [],
+    "http5xx": [],
+    "loadError": "page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:4200/calendar/view"
+   },
+   {
+    "route": "/calendar/todos",
+    "ms": 32,
+    "created": 0,
+    "actions": 0,
+    "stats": {
+     "clicks": 0,
+     "forms": 0,
+     "fields": 0,
+     "saved": 0,
+     "repairs": 0,
+     "noSave": 0,
+     "confirms": 0,
+     "tabs": 0,
+     "fillErrors": 0,
+     "skippedDanger": 0,
+     "refused": []
+    },
+    "jsErrors": [],
+    "consoleErrors": [],
+    "http4xx": [],
+    "http5xx": [],
+    "loadError": "page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:4200/calendar/todos"
+   },
+   {
+    "route": "/calendar/settings",
+    "ms": 23,
+    "created": 0,
+    "actions": 0,
+    "stats": {
+     "clicks": 0,
+     "forms": 0,
+     "fields": 0,
+     "saved": 0,
+     "repairs": 0,
+     "noSave": 0,
+     "confirms": 0,
+     "tabs": 0,
+     "fillErrors": 0,
+     "skippedDanger": 0,
+     "refused": []
+    },
+    "jsErrors": [],
+    "consoleErrors": [],
+    "http4xx": [],
+    "http5xx": [],
+    "loadError": "page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:4200/calendar/settings"
+   },
+   {
+    "route": "/tasks",
+    "ms": 12,
+    "created": 0,
+    "actions": 0,
+    "stats": {
+     "clicks": 0,
+     "forms": 0,
+     "fields": 0,
+     "saved": 0,
+     "repairs": 0,
+     "noSave": 0,
+     "confirms": 0,
+     "tabs": 0,
+     "fillErrors": 0,
+     "skippedDanger": 0,
+     "refused": []
+    },
+    "jsErrors": [],
+    "consoleErrors": [],
+    "http4xx": [],
+    "http5xx": [],
+    "loadError": "page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:4200/tasks"
+   },
+   {
+    "route": "/muslim/times",
+    "ms": 12,
+    "created": 0,
+    "actions": 0,
+    "stats": {
+     "clicks": 0,
+     "forms": 0,
+     "fields": 0,
+     "saved": 0,
+     "repairs": 0,
+     "noSave": 0,
+     "confirms": 0,
+     "tabs": 0,
+     "fillErrors": 0,
+     "skippedDanger": 0,
+     "refused": []
+    },
+    "jsErrors": [],
+    "consoleErrors": [],
+    "http4xx": [],
+    "http5xx": [],
+    "loadError": "page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:4200/muslim/times"
+   },
+   {
+    "route": "/muslim/quran",
+    "ms": 31,
+    "created": 0,
+    "actions": 0,
+    "stats": {
+     "clicks": 0,
+     "forms": 0,
+     "fields": 0,
+     "saved": 0,
+     "repairs": 0,
+     "noSave": 0,
+     "confirms": 0,
+     "tabs": 0,
+     "fillErrors": 0,
+     "skippedDanger": 0,
+     "refused": []
+    },
+    "jsErrors": [],
+    "consoleErrors": [],
+    "http4xx": [],
+    "http5xx": [],
+    "loadError": "page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:4200/muslim/quran"
+   }
+  ],
+  "error": null,
+  "ms": 118751
+ }
+]

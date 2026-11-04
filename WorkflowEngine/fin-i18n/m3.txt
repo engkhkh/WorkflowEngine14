@@ -1,0 +1,80 @@
+erp.st.Active || Active || نشط || Actif || Activo || فعال || Aktiv || Attivo
+erp.st.Approved || Approved || معتمد || Approuvé || Aprobado || منظور شدہ || Genehmigt || Approvato
+erp.st.Awarded || Awarded || مُرسى || Attribué || Adjudicado || تفویض شدہ || Vergeben || Aggiudicato
+erp.st.Calculated || Calculated || محسوب || Calculé || Calculado || حساب شدہ || Berechnet || Calcolato
+erp.st.Cancelled || Cancelled || ملغى || Annulé || Cancelado || منسوخ || Storniert || Annullato
+erp.st.Closed || Closed || مغلق || Clôturé || Cerrado || بند || Geschlossen || Chiuso
+erp.st.Completed || Completed || مكتمل || Terminé || Completado || مکمل || Abgeschlossen || Completato
+erp.st.Delayed || Delayed || متأخر || Retardé || Retrasado || تاخیر سے || Verzögert || In ritardo
+erp.st.Delivered || Delivered || تم التسليم || Livré || Entregado || ڈیلیور ہو گیا || Geliefert || Consegnato
+erp.st.Dispatched || Dispatched || تم الإرسال || Expédié || Despachado || روانہ کیا گیا || Versandt || Spedito
+erp.st.Down || Down || متعطل || En panne || Averiado || خراب || Ausgefallen || Fermo
+erp.st.Draft || Draft || مسودة || Brouillon || Borrador || مسودہ || Entwurf || Bozza
+erp.st.Expired || Expired || منتهي || Expiré || Vencido || ختم ہو گیا || Abgelaufen || Scaduto
+erp.st.Failed || Failed || فشل || Échec || Fallido || ناکام || Fehlgeschlagen || Fallito
+erp.st.InProgress || In progress || قيد التنفيذ || En cours || En curso || جاری || In Arbeit || In corso
+erp.st.InTransit || In transit || في الطريق || En transit || En tránsito || راستے میں || Unterwegs || In transito
+erp.st.Inactive || Inactive || غير نشط || Inactif || Inactivo || غیر فعال || Inaktiv || Inattivo
+erp.st.Invoiced || Invoiced || مفوتر || Facturé || Facturado || انوائس شدہ || Fakturiert || Fatturato
+erp.st.Lost || Lost || خسارة || Perdu || Perdido || ہار گئی || Verloren || Perso
+erp.st.Maintenance || Maintenance || صيانة || Entretien || Mantenimiento || دیکھ بھال || Wartung || Manutenzione
+erp.st.Open || Open || مفتوح || Ouvert || Abierto || کھلا || Offen || Aperto
+erp.st.Ordered || Ordered || تم الطلب || Commandé || Pedido || آرڈر کیا گیا || Bestellt || Ordinato
+erp.st.PartiallyReceived || Partially received || مستلم جزئيًا || Partiellement reçu || Recibido parcialmente || جزوی موصول || Teilweise erhalten || Ricevuto parzialmente
+erp.st.Picked || Picked || تم الالتقاط || Préparé || Recogido || چنا گیا || Kommissioniert || Prelevato
+erp.st.Planned || Planned || مخطط || Planifié || Planificado || منصوبہ شدہ || Geplant || Pianificato
+erp.st.Posted || Posted || مرحّل || Comptabilisé || Contabilizado || پوسٹ شدہ || Gebucht || Registrato
+erp.st.Published || Published || منشور || Publié || Publicado || شائع شدہ || Veröffentlicht || Pubblicato
+erp.st.Received || Received || مستلم || Reçu || Recibido || موصول || Erhalten || Ricevuto
+erp.st.Rejected || Rejected || مرفوض || Rejeté || Rechazado || مسترد || Abgelehnt || Rifiutato
+erp.st.Retired || Retired || خارج الخدمة || Retiré || Retirado || ریٹائر || Ausgemustert || Dismesso
+erp.st.Revoked || Revoked || ملغى || Révoqué || Revocado || منسوخ شدہ || Widerrufen || Revocato
+erp.st.Sent || Sent || مرسل || Envoyé || Enviado || بھیجا گیا || Gesendet || Inviato
+erp.st.Submitted || Submitted || مُقدَّم || Soumis || Enviado a aprobación || جمع شدہ || Eingereicht || Inviato
+erp.st.Success || Success || نجاح || Succès || Éxito || کامیاب || Erfolg || Successo
+erp.st.Terminated || Terminated || منتهٍ || Résilié || Terminado || ختم || Beendet || Terminato
+erp.st.Won || Won || مكسوب || Gagné || Ganado || جیت گئی || Gewonnen || Vinto
+int.docs.api || Read-only API || واجهة القراءة فقط || API en lecture seule || API de solo lectura || صرف پڑھنے والا API || Schreibgeschützte API || API di sola lettura
+int.docs.apiText || Send your API key in the X-Api-Key header. Each key only sees the modules ticked when it was created. Payroll is never exposed. || أرسل مفتاح الواجهة في ترويسة X-Api-Key. يرى كل مفتاح الوحدات المحددة عند إنشائه فقط. الرواتب غير متاحة أبدًا. || Envoyez votre clé API dans l'en-tête X-Api-Key. Chaque clé ne voit que les modules cochés à sa création. La paie n'est jamais exposée. || Envíe su clave API en el encabezado X-Api-Key. Cada clave solo ve los módulos marcados al crearla. La nómina nunca se expone. || اپنی API کلید X-Api-Key ہیڈر میں بھیجیں۔ ہر کلید صرف وہی ماڈیول دیکھتی ہے جو بناتے وقت منتخب کیے گئے۔ پے رول کبھی ظاہر نہیں ہوتا۔ || Senden Sie den API-Schlüssel im Header X-Api-Key. Jeder Schlüssel sieht nur die bei der Erstellung gewählten Module. Lohn und Gehalt wird nie bereitgestellt. || Invia la chiave API nell'header X-Api-Key. Ogni chiave vede solo i moduli selezionati alla creazione. Le paghe non sono mai esposte.
+int.docs.hooks || Webhooks || الويب هوك || Webhooks || Webhooks || ویب ہکس || Webhooks || Webhook
+int.docs.hooksText || Each delivery is a JSON POST signed with your secret. Use "*" to receive every event or list events separated by commas. || كل إرسال هو POST بصيغة JSON موقّع بسرّك. استخدم "*" لكل الأحداث أو اذكر الأحداث مفصولة بفواصل. || Chaque envoi est un POST JSON signé avec votre secret. Utilisez « * » pour tous les événements ou listez-les séparés par des virgules. || Cada envío es un POST JSON firmado con su secreto. Use «*» para todos los eventos o enumérelos separados por comas. || ہر ڈیلیوری آپ کے راز سے دستخط شدہ JSON POST ہے۔ تمام واقعات کے لیے "*" یا کوما سے الگ فہرست استعمال کریں۔ || Jede Zustellung ist ein mit Ihrem Geheimnis signierter JSON-POST. "*" für alle Ereignisse oder kommagetrennte Liste. || Ogni invio è un POST JSON firmato con il tuo segreto. Usa "*" per tutti gli eventi o elencali separati da virgola.
+int.docs.modules || Modules || الوحدات || Modules || Módulos || ماڈیولز || Module || Moduli
+int.hook || Webhook || الويب هوك || Webhook || Webhook || ویب ہک || Webhook || Webhook
+int.hook.events || Events || الأحداث || Événements || Eventos || واقعات || Ereignisse || Eventi
+int.hook.eventsHint || e.g. workorder.completed, opportunity.won or * || مثال: workorder.completed, opportunity.won أو * || ex. workorder.completed, opportunity.won ou * || p. ej. workorder.completed, opportunity.won o * || مثلاً workorder.completed, opportunity.won یا * || z. B. workorder.completed, opportunity.won oder * || es. workorder.completed, opportunity.won o *
+int.hook.new || New webhook || ويب هوك جديد || Nouveau webhook || Nuevo webhook || نیا ویب ہک || Neuer Webhook || Nuovo webhook
+int.hook.secret || Signing secret || سر التوقيع || Secret de signature || Secreto de firma || دستخطی راز || Signaturgeheimnis || Segreto di firma
+int.hook.secretHint || Used to sign the X-Signature header (HMAC-SHA256). || يُستخدم لتوقيع ترويسة X-Signature (HMAC-SHA256). || Sert à signer l'en-tête X-Signature (HMAC-SHA256). || Se usa para firmar el encabezado X-Signature (HMAC-SHA256). || X-Signature ہیڈر پر دستخط کے لیے (HMAC-SHA256)۔ || Signiert den Header X-Signature (HMAC-SHA256). || Firma l'header X-Signature (HMAC-SHA256).
+int.hook.test || Send test || إرسال اختبار || Envoyer un test || Enviar prueba || ٹیسٹ بھیجیں || Test senden || Invia test
+int.hook.url || URL || الرابط || URL || URL || URL || URL || URL
+int.key.copy || Copy this key now - it will not be shown again. || انسخ هذا المفتاح الآن - لن يظهر مرة أخرى. || Copiez cette clé maintenant - elle ne sera plus affichée. || Copie esta clave ahora: no se volverá a mostrar. || یہ کلید ابھی کاپی کریں - دوبارہ نہیں دکھائی جائے گی۔ || Diesen Schlüssel jetzt kopieren - er wird nicht erneut angezeigt. || Copia ora questa chiave: non verrà mostrata di nuovo.
+int.key.new || New API key || مفتاح واجهة جديد || Nouvelle clé API || Nueva clave API || نئی API کلید || Neuer API-Schlüssel || Nuova chiave API
+int.key.prefix || Key || المفتاح || Clé || Clave || کلید || Schlüssel || Chiave
+int.key.revoke || Revoke || إلغاء || Révoquer || Revocar || منسوخ کریں || Widerrufen || Revoca
+int.key.scopes || Modules || الوحدات || Modules || Módulos || ماڈیولز || Module || Moduli
+int.kpi.deliveries || Deliveries (7 days) || الإرسالات (7 أيام) || Envois (7 jours) || Envíos (7 días) || ڈیلیوریاں (7 دن) || Zustellungen (7 Tage) || Invii (7 giorni)
+int.kpi.failures || Failures (7 days) || الإخفاقات (7 أيام) || Échecs (7 jours) || Fallos (7 días) || ناکامیاں (7 دن) || Fehler (7 Tage) || Errori (7 giorni)
+int.kpi.hooks || Active webhooks || ويب هوك نشطة || Webhooks actifs || Webhooks activos || فعال ویب ہکس || Aktive Webhooks || Webhook attivi
+int.kpi.keys || Active API keys || مفاتيح نشطة || Clés API actives || Claves API activas || فعال API کلیدیں || Aktive API-Schlüssel || Chiavi API attive
+int.list.byEvent || Deliveries by event || الإرسالات حسب الحدث || Envois par événement || Envíos por evento || واقعے کے لحاظ سے ڈیلیوریاں || Zustellungen nach Ereignis || Invii per evento
+int.log.event || Event || الحدث || Événement || Evento || واقعہ || Ereignis || Evento
+int.log.http || HTTP || HTTP || HTTP || HTTP || HTTP || HTTP || HTTP
+int.log.message || Message || الرسالة || Message || Mensaje || پیغام || Nachricht || Messaggio
+int.nav.docs || Documentation || التوثيق || Documentation || Documentación || دستاویزات || Dokumentation || Documentazione
+int.nav.keys || API keys || مفاتيح الواجهة || Clés API || Claves API || API کلیدیں || API-Schlüssel || Chiavi API
+int.nav.logs || Delivery log || سجل الإرسال || Journal d'envoi || Registro de envíos || ڈیلیوری لاگ || Zustellprotokoll || Registro invii
+int.nav.overview || Overview || نظرة عامة || Aperçu || Resumen || جائزہ || Übersicht || Panoramica
+int.nav.webhooks || Webhooks || الويب هوك || Webhooks || Webhooks || ویب ہکس || Webhooks || Webhook
+int.sub || API keys, webhooks and delivery log || مفاتيح الواجهة والويب هوك وسجل الإرسال || Clés API, webhooks et journal d'envoi || Claves API, webhooks y registro de envíos || API کلیدیں، ویب ہکس اور ڈیلیوری لاگ || API-Schlüssel, Webhooks und Zustellprotokoll || Chiavi API, webhook e registro invii
+module.ast || Assets & Maintenance || الأصول والصيانة || Actifs et maintenance || Activos y mantenimiento || اثاثے اور دیکھ بھال || Anlagen & Instandhaltung || Cespiti e manutenzione
+module.bi || BI / Analytics / AI || ذكاء الأعمال والتحليلات || BI / Analyses / IA || BI / Analítica / IA || BI / تجزیات / AI || BI / Analytik / KI || BI / Analisi / IA
+module.bpm || Workflow / BPM || سير العمل / إدارة العمليات || Workflow / BPM || Flujo de trabajo / BPM || ورک فلو / BPM || Workflow / BPM || Workflow / BPM
+module.crm || Sales / CRM || المبيعات / CRM || Ventes / CRM || Ventas / CRM || سیلز / CRM || Vertrieb / CRM || Vendite / CRM
+module.epm || Budgeting & Planning || الميزانية والتخطيط || Budgets et planification || Presupuesto y planificación || بجٹ اور منصوبہ بندی || Budget & Planung || Budget e pianificazione
+module.int || Integration / API || التكامل / الواجهات || Intégration / API || Integración / API || انضمام / API || Integration / API || Integrazione / API
+module.mfg || Manufacturing || التصنيع || Fabrication || Manufactura || مینوفیکچرنگ || Fertigung || Produzione
+module.pay || Payroll || الرواتب || Paie || Nómina || پے رول || Lohn & Gehalt || Paghe
+module.prj || Projects || المشاريع || Projets || Proyectos || پراجیکٹس || Projekte || Progetti
+module.proc || Procurement || المشتريات || Achats || Compras || خریداری || Beschaffung || Acquisti
+module.scm || Supply Chain || سلسلة الإمداد || Chaîne logistique || Cadena de suministro || سپلائی چین || Lieferkette || Supply chain
+module.wh || Warehouse & Inventory || المستودعات والمخزون || Entrepôt et stocks || Almacén e inventario || گودام اور انوینٹری || Lager & Bestand || Magazzino e inventario

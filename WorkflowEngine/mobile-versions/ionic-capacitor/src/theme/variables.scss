@@ -1,0 +1,111 @@
+/* Ionic theme - matches portal-app's ERP palette. Light by default; dark via
+   <html data-theme="dark"> (ErpContextService, toggled from the More tab). */
+:root {
+  --ion-font-family: 'Inter', 'IBM Plex Sans Arabic', -apple-system, 'Segoe UI', sans-serif;
+
+  --ion-color-primary: #4338ca;
+  --ion-color-primary-rgb: 67, 56, 202;
+  --ion-color-primary-contrast: #ffffff;
+  --ion-color-primary-contrast-rgb: 255, 255, 255;
+  --ion-color-primary-shade: #3b31b2;
+  --ion-color-primary-tint: #564ccf;
+
+  --ion-color-secondary: #0ea5a4;
+  --ion-color-secondary-rgb: 14, 165, 164;
+  --ion-color-secondary-contrast: #ffffff;
+  --ion-color-secondary-contrast-rgb: 255, 255, 255;
+  --ion-color-secondary-shade: #0c9190;
+  --ion-color-secondary-tint: #26aead;
+
+  --ion-color-success: #0f9f6e;
+  --ion-color-success-rgb: 15, 159, 110;
+  --ion-color-success-contrast: #ffffff;
+  --ion-color-success-contrast-rgb: 255, 255, 255;
+  --ion-color-success-shade: #0d8c61;
+  --ion-color-success-tint: #27a97d;
+
+  --ion-color-danger: #d93a4b;
+  --ion-color-danger-rgb: 217, 58, 75;
+  --ion-color-danger-contrast: #ffffff;
+  --ion-color-danger-contrast-rgb: 255, 255, 255;
+  --ion-color-danger-shade: #bf3342;
+  --ion-color-danger-tint: #dd4e5d;
+
+  --ion-color-warning: #c27c0e;
+  --ion-color-warning-rgb: 194, 124, 14;
+  --ion-color-warning-contrast: #ffffff;
+  --ion-color-warning-contrast-rgb: 255, 255, 255;
+  --ion-color-warning-shade: #ab6d0c;
+  --ion-color-warning-tint: #c88926;
+
+  /* app tokens (same names as the portal so shared components read the same) */
+  --bg: #f4f6fb;
+  --surface: #ffffff;
+  --surface-2: #f8fafd;
+  --surface-3: #eef2f8;
+  --border: #e3e8f0;
+  --border-strong: #cfd7e3;
+  --text: #0f1b2d;
+  --text-2: #425066;
+  --text-dim: #6b778c;
+  --primary: #4338ca;
+  --primary-soft: #eef0ff;
+  --primary-contrast: #ffffff;
+  --ok: #0f9f6e;       --ok-soft: #e6f7f0;
+  --bad: #d93a4b;      --bad-soft: #fdecee;
+  --warn: #c27c0e;     --warn-soft: #fdf3e1;
+  --info: #2f6fde;     --info-soft: #e8f0fd;
+  --muted: #6b778c;    --muted-soft: #eef1f5;
+  --hero-1: #312e81;
+  --hero-2: #0f1a33;
+}
+
+body {
+  --ion-background-color: var(--bg);
+  --ion-text-color: var(--text);
+  --ion-item-background: var(--surface);
+  --ion-toolbar-background: var(--surface);
+  --ion-tab-bar-background: var(--surface);
+  --ion-card-background: var(--surface);
+  --ion-border-color: var(--border);
+  --ion-color-step-50: var(--surface-2);
+  --ion-color-step-100: var(--surface-3);
+  --ion-color-step-150: var(--border);
+  --ion-color-step-600: var(--text-dim);
+}
+
+:root[data-theme="dark"] {
+  --ion-color-primary: #7c83ff;
+  --ion-color-primary-rgb: 124, 131, 255;
+  --ion-color-primary-contrast: #0b1020;
+  --ion-color-primary-contrast-rgb: 11, 16, 32;
+  --ion-color-primary-shade: #6d73e0;
+  --ion-color-primary-tint: #8990ff;
+  --ion-color-success: #34d399;
+  --ion-color-success-rgb: 52, 211, 153;
+  --ion-color-success-contrast: #052e21;
+  --ion-color-danger: #f87171;
+  --ion-color-danger-rgb: 248, 113, 113;
+  --ion-color-danger-contrast: #2a0405;
+
+  --bg: #0b1020;
+  --surface: #121a2e;
+  --surface-2: #162038;
+  --surface-3: #1c2844;
+  --border: #243150;
+  --border-strong: #31416a;
+  --text: #e8edf7;
+  --text-2: #b4c0d8;
+  --text-dim: #8492b0;
+  --primary: #7c83ff;
+  --primary-soft: #222a52;
+  --primary-contrast: #0b1020;
+  --ok: #34d399;   --ok-soft: #0f2e25;
+  --bad: #f87171;  --bad-soft: #3a1820;
+  --warn: #fbbf24; --warn-soft: #3a2c0c;
+  --info: #60a5fa; --info-soft: #132a4a;
+  --muted: #8492b0; --muted-soft: #1c2640;
+  --hero-1: #1e1b4b;
+  --hero-2: #080d1a;
+  color-scheme: dark;
+}

@@ -1,0 +1,3 @@
+{ "expo": { "name": "Workflow ERP", "slug": "workflow-erp", "version": "1.0.0", "orientation": "portrait", "userInterfaceStyle": "light",
+  "ios": { "supportsTablet": true, "bundleIdentifier": "com.workflowengine.erp" },
+  "android": { "package": "com.workflowengine.erp", "usesCleartextTraffic": true } } }

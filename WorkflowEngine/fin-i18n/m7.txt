@@ -1,0 +1,26 @@
+erp.o.Low || Low || منخفضة || Basse || Baja || کم || Niedrig || Bassa
+erp.o.Normal || Normal || عادية || Normale || Normal || معمول || Normal || Normale
+erp.o.High || High || عالية || Haute || Alta || زیادہ || Hoch || Alta
+erp.o.Urgent || Urgent || عاجلة || Urgente || Urgente || فوری || Dringend || Urgente
+erp.o.Medium || Medium || متوسطة || Moyenne || Media || درمیانہ || Mittel || Media
+erp.o.Manual || Manual || يدوي || Manuel || Manual || دستی || Manuell || Manuale
+erp.o.MovingAverage || Moving average || المتوسط المتحرك || Moyenne mobile || Media móvil || متحرک اوسط || Gleitender Durchschnitt || Media mobile
+erp.o.Seasonal || Seasonal || موسمي || Saisonnier || Estacional || موسمی || Saisonal || Stagionale
+erp.o.Inbound || Inbound || وارد || Entrant || Entrante || آنے والا || Eingehend || In entrata
+erp.o.Outbound || Outbound || صادر || Sortant || Saliente || جانے والا || Ausgehend || In uscita
+erp.o.Road || Road || بري || Route || Carretera || سڑک || Straße || Strada
+erp.o.Air || Air || جوي || Air || Aéreo || فضائی || Luft || Aereo
+erp.o.Sea || Sea || بحري || Mer || Marítimo || سمندری || See || Mare
+erp.o.Rail || Rail || سككي || Rail || Ferrocarril || ریل || Schiene || Ferrovia
+erp.o.Hours || Hours || ساعات || Heures || Horas || گھنٹے || Stunden || Ore
+erp.o.Km || Km || كم || Km || Km || کلومیٹر || Km || Km
+erp.o.Cycles || Cycles || دورات || Cycles || Ciclos || سائیکل || Zyklen || Cicli
+erp.o.Preventive || Preventive || وقائية || Préventive || Preventivo || احتیاطی || Vorbeugend || Preventiva
+erp.o.Corrective || Corrective || تصحيحية || Corrective || Correctivo || اصلاحی || Korrektiv || Correttiva
+erp.o.Inspection || Inspection || فحص || Inspection || Inspección || معائنہ || Inspektion || Ispezione
+erp.o.Base || Base || أساسي || Base || Base || بنیادی || Basis || Base
+erp.o.Optimistic || Optimistic || متفائل || Optimiste || Optimista || پرامید || Optimistisch || Ottimistico
+erp.o.Pessimistic || Pessimistic || متشائم || Pessimiste || Pesimista || مایوس کن || Pessimistisch || Pessimistico
+erp.o.Warehouse || Warehouse || مستودع || Entrepôt || Almacén || گودام || Lager || Magazzino
+erp.o.Zone || Zone || منطقة || Zone || Zona || زون || Zone || Zona
+erp.o.Bin || Bin || رف || Casier || Ubicación || بن || Lagerfach || Scaffale

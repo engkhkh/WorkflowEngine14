@@ -1,0 +1,594 @@
+{
+ "reports": [
+  {
+   "id": "overview",
+   "en": "Overview",
+   "ar": "نظرة عامة",
+   "cols": [
+    {
+     "en": "Measure",
+     "ar": "البند",
+     "num": false
+    },
+    {
+     "en": "Value",
+     "ar": "القيمة",
+     "num": 1
+    }
+   ],
+   "server": true
+  },
+  {
+   "id": "tb",
+   "en": "Trial balance",
+   "ar": "ميزان المراجعة",
+   "cols": [
+    {
+     "en": "Account",
+     "ar": "الحساب",
+     "num": false
+    },
+    {
+     "en": "Name",
+     "ar": "الاسم",
+     "num": false
+    },
+    {
+     "en": "Type",
+     "ar": "النوع",
+     "num": false
+    },
+    {
+     "en": "Debit",
+     "ar": "مدين",
+     "num": 1
+    },
+    {
+     "en": "Credit",
+     "ar": "دائن",
+     "num": 1
+    },
+    {
+     "en": "Balance",
+     "ar": "الرصيد",
+     "num": 1
+    }
+   ],
+   "dates": true
+  },
+  {
+   "id": "income",
+   "en": "Income statement",
+   "ar": "قائمة الدخل",
+   "cols": [
+    {
+     "en": "Section",
+     "ar": "القسم",
+     "num": false
+    },
+    {
+     "en": "Account",
+     "ar": "الحساب",
+     "num": false
+    },
+    {
+     "en": "Name",
+     "ar": "الاسم",
+     "num": false
+    },
+    {
+     "en": "Amount",
+     "ar": "المبلغ",
+     "num": 1
+    }
+   ],
+   "dates": true
+  },
+  {
+   "id": "balance",
+   "en": "Balance sheet",
+   "ar": "الميزانية العمومية",
+   "cols": [
+    {
+     "en": "Section",
+     "ar": "القسم",
+     "num": false
+    },
+    {
+     "en": "Account",
+     "ar": "الحساب",
+     "num": false
+    },
+    {
+     "en": "Name",
+     "ar": "الاسم",
+     "num": false
+    },
+    {
+     "en": "Amount",
+     "ar": "المبلغ",
+     "num": 1
+    }
+   ],
+   "dates": true
+  },
+  {
+   "id": "ar",
+   "en": "Receivables aging",
+   "ar": "أعمار الذمم المدينة",
+   "cols": [
+    {
+     "en": "Party",
+     "ar": "الطرف",
+     "num": false
+    },
+    {
+     "en": "Current",
+     "ar": "حالي",
+     "num": 1
+    },
+    {
+     "en": "1-30",
+     "ar": "1-30",
+     "num": 1
+    },
+    {
+     "en": "31-60",
+     "ar": "31-60",
+     "num": 1
+    },
+    {
+     "en": "61-90",
+     "ar": "61-90",
+     "num": 1
+    },
+    {
+     "en": "90+",
+     "ar": "+90",
+     "num": 1
+    },
+    {
+     "en": "Total",
+     "ar": "الإجمالي",
+     "num": 1
+    }
+   ]
+  },
+  {
+   "id": "ap",
+   "en": "Payables aging",
+   "ar": "أعمار الذمم الدائنة",
+   "cols": [
+    {
+     "en": "Party",
+     "ar": "الطرف",
+     "num": false
+    },
+    {
+     "en": "Current",
+     "ar": "حالي",
+     "num": 1
+    },
+    {
+     "en": "1-30",
+     "ar": "1-30",
+     "num": 1
+    },
+    {
+     "en": "31-60",
+     "ar": "31-60",
+     "num": 1
+    },
+    {
+     "en": "61-90",
+     "ar": "61-90",
+     "num": 1
+    },
+    {
+     "en": "90+",
+     "ar": "+90",
+     "num": 1
+    },
+    {
+     "en": "Total",
+     "ar": "الإجمالي",
+     "num": 1
+    }
+   ]
+  },
+  {
+   "id": "budgets",
+   "en": "Budget vs actual",
+   "ar": "الموازنة مقابل الفعلي",
+   "cols": [
+    {
+     "en": "Cost center",
+     "ar": "مركز التكلفة",
+     "num": false
+    },
+    {
+     "en": "Account",
+     "ar": "الحساب",
+     "num": false
+    },
+    {
+     "en": "Year",
+     "ar": "السنة",
+     "num": false
+    },
+    {
+     "en": "Budget",
+     "ar": "الموازنة",
+     "num": 1
+    },
+    {
+     "en": "Actual",
+     "ar": "الفعلي",
+     "num": 1
+    },
+    {
+     "en": "Remaining",
+     "ar": "المتبقي",
+     "num": 1
+    },
+    {
+     "en": "Used %",
+     "ar": "المستخدم %",
+     "num": 1
+    }
+   ]
+  },
+  {
+   "id": "projects",
+   "en": "Project results",
+   "ar": "نتائج المشاريع",
+   "cols": [
+    {
+     "en": "Project",
+     "ar": "المشروع",
+     "num": false
+    },
+    {
+     "en": "Revenue",
+     "ar": "الإيرادات",
+     "num": 1
+    },
+    {
+     "en": "Cost",
+     "ar": "التكلفة",
+     "num": 1
+    },
+    {
+     "en": "Profit",
+     "ar": "الربح",
+     "num": 1
+    },
+    {
+     "en": "Margin %",
+     "ar": "الهامش %",
+     "num": 1
+    }
+   ]
+  },
+  {
+   "id": "assets",
+   "en": "Fixed assets",
+   "ar": "الأصول الثابتة",
+   "cols": [
+    {
+     "en": "Code",
+     "ar": "الرمز",
+     "num": false
+    },
+    {
+     "en": "Name",
+     "ar": "الاسم",
+     "num": false
+    },
+    {
+     "en": "Cost",
+     "ar": "التكلفة",
+     "num": 1
+    },
+    {
+     "en": "Accumulated",
+     "ar": "المجمّع",
+     "num": 1
+    },
+    {
+     "en": "Book value",
+     "ar": "القيمة الدفترية",
+     "num": 1
+    },
+    {
+     "en": "Monthly",
+     "ar": "شهري",
+     "num": 1
+    },
+    {
+     "en": "Months left",
+     "ar": "أشهر متبقية",
+     "num": 1
+    }
+   ]
+  },
+  {
+   "id": "bank",
+   "en": "Bank",
+   "ar": "البنك",
+   "cols": [
+    {
+     "en": "Account",
+     "ar": "الحساب",
+     "num": false
+    },
+    {
+     "en": "Date",
+     "ar": "التاريخ",
+     "num": false
+    },
+    {
+     "en": "Description",
+     "ar": "الوصف",
+     "num": false
+    },
+    {
+     "en": "Amount",
+     "ar": "المبلغ",
+     "num": 1
+    },
+    {
+     "en": "Reconciled",
+     "ar": "مطابق",
+     "num": false
+    }
+   ],
+   "actions": [
+    "reconcile",
+    "unreconcile"
+   ]
+  },
+  {
+   "id": "audit",
+   "en": "Audit trail",
+   "ar": "سجل التدقيق",
+   "cols": [
+    {
+     "en": "When",
+     "ar": "الوقت",
+     "num": false
+    },
+    {
+     "en": "User",
+     "ar": "المستخدم",
+     "num": false
+    },
+    {
+     "en": "Action",
+     "ar": "الإجراء",
+     "num": false
+    },
+    {
+     "en": "Kind",
+     "ar": "النوع",
+     "num": false
+    },
+    {
+     "en": "Code",
+     "ar": "الرمز",
+     "num": false
+    },
+    {
+     "en": "Summary",
+     "ar": "الملخص",
+     "num": false
+    }
+   ]
+  }
+ ],
+ "labels": {
+  "from": [
+   "From",
+   "من"
+  ],
+  "to": [
+   "To",
+   "إلى"
+  ],
+  "company": [
+   "Company",
+   "الشركة"
+  ],
+  "refresh": [
+   "Refresh",
+   "تحديث"
+  ],
+  "reconcile": [
+   "Reconcile",
+   "مطابقة"
+  ],
+  "unreconcile": [
+   "Undo reconcile",
+   "إلغاء المطابقة"
+  ],
+  "seed": [
+   "Create standard accounts",
+   "إنشاء الحسابات القياسية"
+  ],
+  "seeded": [
+   "Accounts created: {0}",
+   "تم إنشاء الحسابات: {0}"
+  ],
+  "title": [
+   "Finance",
+   "المالية"
+  ],
+  "empty": [
+   "No data.",
+   "لا توجد بيانات."
+  ],
+  "noperm": [
+   "You do not have access to this report.",
+   "لا تملك صلاحية هذا التقرير."
+  ],
+  "yes": [
+   "Yes",
+   "نعم"
+  ],
+  "opening": [
+   "Opening balance",
+   "الرصيد الافتتاحي"
+  ],
+  "reconciledbal": [
+   "Reconciled balance",
+   "الرصيد المطابق"
+  ],
+  "unrec": [
+   "Unreconciled items",
+   "بنود غير مطابقة"
+  ],
+  "totals": [
+   "Total",
+   "الإجمالي"
+  ],
+  "totalrev": [
+   "Total revenue",
+   "إجمالي الإيرادات"
+  ],
+  "totalexp": [
+   "Total expenses",
+   "إجمالي المصروفات"
+  ],
+  "net": [
+   "Net income",
+   "صافي الدخل"
+  ],
+  "revenue": [
+   "Revenue",
+   "الإيرادات"
+  ],
+  "expense": [
+   "Expenses",
+   "المصروفات"
+  ],
+  "assets": [
+   "Assets",
+   "الأصول"
+  ],
+  "liab": [
+   "Liabilities",
+   "الخصوم"
+  ],
+  "equity": [
+   "Equity",
+   "حقوق الملكية"
+  ],
+  "totass": [
+   "Total assets",
+   "إجمالي الأصول"
+  ],
+  "totliab": [
+   "Total liabilities",
+   "إجمالي الخصوم"
+  ],
+  "toteq": [
+   "Total equity (incl. net income)",
+   "إجمالي حقوق الملكية (شاملة صافي الدخل)"
+  ],
+  "check": [
+   "Difference (should be 0)",
+   "الفرق (يجب أن يكون 0)"
+  ],
+  "netincome": [
+   "Net income for the period",
+   "صافي دخل الفترة"
+  ]
+ },
+ "measures": [
+  [
+   "revenueYtd",
+   "Revenue (year to date)",
+   "الإيرادات منذ بداية السنة"
+  ],
+  [
+   "expenseYtd",
+   "Expenses (year to date)",
+   "المصروفات منذ بداية السنة"
+  ],
+  [
+   "profitYtd",
+   "Profit (year to date)",
+   "الربح منذ بداية السنة"
+  ],
+  [
+   "cash",
+   "Cash",
+   "النقد"
+  ],
+  [
+   "arOutstanding",
+   "Receivables outstanding",
+   "الذمم المدينة المستحقة"
+  ],
+  [
+   "arOverdue",
+   "Receivables overdue",
+   "الذمم المدينة المتأخرة"
+  ],
+  [
+   "apOutstanding",
+   "Payables outstanding",
+   "الذمم الدائنة المستحقة"
+  ],
+  [
+   "apOverdue",
+   "Payables overdue",
+   "الذمم الدائنة المتأخرة"
+  ],
+  [
+   "budgetTotal",
+   "Budget total",
+   "إجمالي الموازنة"
+  ],
+  [
+   "budgetActual",
+   "Budget actual",
+   "الفعلي من الموازنة"
+  ],
+  [
+   "journalsToApprove",
+   "Journals to approve",
+   "قيود بانتظار الاعتماد"
+  ],
+  [
+   "invoicesToApprove",
+   "Invoices to approve",
+   "فواتير بانتظار الاعتماد"
+  ],
+  [
+   "assetCount",
+   "Fixed assets",
+   "الأصول الثابتة"
+  ],
+  [
+   "assetCost",
+   "Assets cost",
+   "تكلفة الأصول"
+  ],
+  [
+   "assetAccumulated",
+   "Accumulated depreciation",
+   "مجمع الإهلاك"
+  ],
+  [
+   "activeProjects",
+   "Active projects",
+   "المشاريع النشطة"
+  ],
+  [
+   "currentPeriod",
+   "Current period",
+   "الفترة الحالية"
+  ]
+ ]
+}

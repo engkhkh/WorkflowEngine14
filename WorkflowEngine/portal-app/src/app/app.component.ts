@@ -14,19 +14,24 @@ import { OrgService } from './core/org.service';
 import { HR_ANY } from './core/hr.models';
 import { FIN_ANY } from './core/fin.models';
 import { POS_ANY } from './core/pos.models';
+import { HOS_ANY } from './hospital/hospital.service';
 import { ERP_MODULES } from './core/erp.models';
 import { LayoutService } from './core/layout.service';
 import { AppearanceService } from './core/appearance.service';
 import { LangPickerComponent } from './shared/lang-picker.component';
 import { AppearancePanelComponent } from './shared/appearance-panel.component';
 import { IconComponent } from './shared/ui';
+import { ToastHostComponent } from './shared/toast-host.component';
+import { CustomService } from './custom/custom.service';
+import { MuslimService } from './muslim/muslim.service';
+import { CalReminderService } from './calendar/cal-reminder.service';
 import { ApiStatusComponent } from './core/api/api-status.component';
 import { AssistantPanelComponent } from './assistant/assistant-panel.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [CommonModule, FormsModule, RouterOutlet, RouterLink, RouterLinkActive, TranslatePipe, IconComponent, AssistantPanelComponent, LangPickerComponent, AppearancePanelComponent, ApiStatusComponent],
+  imports: [CommonModule, FormsModule, RouterOutlet, RouterLink, RouterLinkActive, TranslatePipe, IconComponent, AssistantPanelComponent, LangPickerComponent, AppearancePanelComponent, ApiStatusComponent, ToastHostComponent],
   template: `
     <app-api-status />
     <div class="shell" *ngIf="auth.currentUser() as user; else bare" [class.collapsed]="ctx.sidebarCollapsed()" [class.mobile-open]="mobileNav">
@@ -57,6 +62,30 @@ import { AssistantPanelComponent } from './assistant/assistant-panel.component';
           </a>
           <a *ngIf="showPos()" routerLink="/pos" routerLinkActive="on" [title]="'module.pos' | translate">
             <app-icon name="store"></app-icon><span>{{ 'module.pos' | translate }}</span><i class="dot" style="background:#f43f5e"></i>
+          </a>
+
+          <a *ngIf="auth.can('web.view')" routerLink="/website" routerLinkActive="on" [title]="'module.website' | translate">
+            <app-icon name="globe"></app-icon><span>{{ 'module.website' | translate }}</span><i class="dot" style="background:#0ea5e9"></i>
+          </a>
+          <a *ngIf="auth.can('wf.view')" routerLink="/workflow" routerLinkActive="on" [title]="'module.workflow' | translate">
+            <app-icon name="flow"></app-icon><span>{{ 'module.workflow' | translate }}</span><i class="dot" style="background:#8b5cf6"></i>
+          </a>
+          <a *ngIf="showHospital()" routerLink="/hospital" routerLinkActive="on" [title]="'module.hospital' | translate">
+            <app-icon name="heart"></app-icon><span>{{ 'module.hospital' | translate }}</span><i class="dot" style="background:#dc2626"></i>
+          </a>
+
+          <a *ngIf="showCalendar()" routerLink="/calendar" routerLinkActive="on" [title]="'module.calendar' | translate">
+            <app-icon name="calendar"></app-icon><span>{{ 'module.calendar' | translate }}</span><i class="dot" style="background:#2563eb"></i>
+          </a>
+          <a *ngIf="showMuslim()" routerLink="/muslim" routerLinkActive="on" [title]="'module.muslim' | translate">
+            <app-icon name="moon"></app-icon><span>{{ 'module.muslim' | translate }}</span><i class="dot" style="background:#059669"></i>
+          </a>
+
+          <a *ngFor="let m of custom.modules()" [routerLink]="['/custom', m.key]" routerLinkActive="on" [title]="custom.title(m)">
+            <app-icon [name]="m.def.icon"></app-icon><span>{{ custom.title(m) }}</span><i class="dot" [style.background]="m.def.color"></i>
+          </a>
+          <a *ngIf="auth.can('cus.view') && !custom.modules().length && auth.can('cus.design')" routerLink="/custom" routerLinkActive="on" [title]="'module.custom' | translate">
+            <app-icon name="layers"></app-icon><span>{{ 'module.custom' | translate }}</span><i class="dot" style="background:#6366f1"></i>
           </a>
 
           <a *ngFor="let m of erpMods()" [routerLink]="m.route" routerLinkActive="on" [title]="m.titleKey | translate">
@@ -134,7 +163,11 @@ import { AssistantPanelComponent } from './assistant/assistant-panel.component';
           </div>
         </header>
 
+        <a class="setup-banner no-print" *ngIf="auth.can('org.manage') && org.tenant()?.setupDone === false" routerLink="/setup">
+          <app-icon name="sparkles" [size]="15"></app-icon>{{ 'setup.banner' | translate }}
+        </a>
         <main><router-outlet /></main>
+        <app-toast-host />
       </div>
 
       <!-- ===== AI assistant drawer ===== -->
@@ -163,6 +196,7 @@ import { AssistantPanelComponent } from './assistant/assistant-panel.component';
     <ng-template #bare><router-outlet /></ng-template>
   `,
   styles: [`
+    .setup-banner { display: flex; gap: 8px; align-items: center; padding: 9px 18px; background: #eef2ff; color: #3730a3; font-size: 13px; font-weight: 600; text-decoration: none; }
     .shell { display: flex; min-height: 100vh; --side-w: 248px; }
     .shell.collapsed { --side-w: 72px; }
 
@@ -260,6 +294,9 @@ export class AppComponent implements OnInit, OnDestroy {
   layout = inject(LayoutService);
   visibleModules = computed(() => MODULES.filter(m => !this.layout.isNavHidden(m.key)).filter(m => m.key === 'hr' ? this.auth.canAny(...HR_ANY) : m.key === 'finance' ? (this.auth.can('finance.view') || this.auth.canAny(...FIN_ANY)) : this.auth.can(m.key + '.view')));
   erpMods = computed(() => Object.values(ERP_MODULES).filter(m => !this.layout.isNavHidden(m.id) && this.auth.canAny(...m.any)));
+  showHospital = computed(() => !this.layout.isNavHidden('hospital') && this.auth.canAny(...HOS_ANY));
+  showCalendar = computed(() => !this.layout.isNavHidden('calendar') && this.auth.can('cal.view'));
+  showMuslim = computed(() => !this.layout.isNavHidden('muslim') && this.auth.can('mus.view'));
   showPos = computed(() => !this.layout.isNavHidden('pos') && this.auth.canAny(...POS_ANY));
   linkFor(key: string): string[] { return key === 'hr' ? ['/hr'] : key === 'finance' && this.auth.canAny(...FIN_ANY) ? ['/finance'] : ['/m', key]; }
   q = '';
@@ -272,8 +309,13 @@ export class AppComponent implements OnInit, OnDestroy {
   constructor(
     public auth: AuthService, private router: Router, public i18n: I18nService,
     public ctx: ErpContextService, public data: ErpDataService, public ai: AssistantService,
-    public org: OrgService, public look: AppearanceService
+    public org: OrgService, public look: AppearanceService,
+    private muslim: MuslimService, private calRem: CalReminderService, public custom: CustomService
   ) {
+    effect(() => { if (this.auth.can('cus.view') && this.auth.currentUser()) untracked(() => this.custom.load().subscribe({ error: () => {} })); else untracked(() => this.custom.modules.set([])); });
+    // reminders (prayer times, events, meetings, to-dos) run while the portal is open and the user holds the privilege
+    effect(() => { if (this.auth.can('mus.view') && this.auth.currentUser()) untracked(() => this.muslim.start()); else untracked(() => this.muslim.stop()); });
+    effect(() => { if (this.auth.can('cal.view') && this.auth.currentUser()) untracked(() => this.calRem.start()); else untracked(() => this.calRem.stop()); });
     // each user gets their own saved design (Design studio) as soon as they are signed in
     effect(() => { if (this.auth.currentUser()) untracked(() => this.look.reloadForUser()); });
     // load once whenever someone is signed in (also right after login)

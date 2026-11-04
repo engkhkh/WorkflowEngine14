@@ -1,0 +1,704 @@
+{
+ "version": 1,
+ "common": [
+  {
+   "key": "name",
+   "label": "Name",
+   "kind": "text"
+  },
+  {
+   "key": "description",
+   "label": "Description / instructions",
+   "kind": "textarea"
+  }
+ ],
+ "nodes": [
+  {
+   "type": "Start",
+   "label": "Start",
+   "color": "#37c26f",
+   "icon": "▶",
+   "origin": "camunda",
+   "note": "BPMN start event",
+   "category": "BPMN Elements",
+   "shape": "circle",
+   "props": []
+  },
+  {
+   "type": "End",
+   "label": "End",
+   "color": "#e0555c",
+   "icon": "■",
+   "origin": "camunda",
+   "note": "BPMN end event",
+   "category": "BPMN Elements",
+   "shape": "circle",
+   "props": []
+  },
+  {
+   "type": "Condition",
+   "label": "Decision",
+   "color": "#e0a83a",
+   "icon": "◆",
+   "origin": "camunda",
+   "note": "BPMN exclusive gateway / Skelta Rule activity",
+   "category": "BPMN Elements",
+   "shape": "diamond",
+   "props": [
+    {
+     "key": "conditionExpression",
+     "label": "Expression",
+     "kind": "text",
+     "hint": "e.g. days > 5 && leaveType == Annual. Operators == != > < >= <=, chain with all && or all ||. Outgoing edges are True / False.",
+     "test": "condition"
+    }
+   ]
+  },
+  {
+   "type": "Switch",
+   "label": "Switch",
+   "color": "#e0a83a",
+   "icon": "⑄",
+   "origin": "n8n",
+   "note": "n8n Switch node - branch on a field's value, more than just True/False",
+   "category": "BPMN Elements",
+   "shape": "diamond",
+   "props": [
+    {
+     "key": "switchField",
+     "label": "Field to branch on",
+     "kind": "text"
+    }
+   ]
+  },
+  {
+   "type": "ParallelSplit",
+   "label": "Parallel Split",
+   "color": "#e0a83a",
+   "icon": "⑂",
+   "origin": "camunda",
+   "note": "BPMN parallel gateway (fork)",
+   "category": "BPMN Elements",
+   "shape": "diamond",
+   "props": []
+  },
+  {
+   "type": "ParallelJoin",
+   "label": "Parallel Join",
+   "color": "#e0a83a",
+   "icon": "⑃",
+   "origin": "camunda",
+   "note": "BPMN parallel gateway (join/sync)",
+   "category": "BPMN Elements",
+   "shape": "diamond",
+   "props": []
+  },
+  {
+   "type": "FormTask",
+   "label": "Form Task",
+   "color": "#f0a3a8",
+   "icon": "📝",
+   "origin": "skelta",
+   "note": "Skelta Web/InfoPath form activity",
+   "category": "Human Activities",
+   "shape": "rect",
+   "props": [
+    {
+     "key": "assignee",
+     "label": "Assignees (roles / users)",
+     "kind": "assignees",
+     "hint": "Multiple targets: whoever acts first completes it for all."
+    },
+    {
+     "key": "priority",
+     "label": "Priority",
+     "kind": "select",
+     "options": [
+      "Low",
+      "Normal",
+      "High",
+      "Urgent"
+     ]
+    },
+    {
+     "key": "escalateAfterMinutes",
+     "label": "Escalate after (minutes)",
+     "kind": "number"
+    },
+    {
+     "key": "escalationMode",
+     "label": "If it times out",
+     "kind": "select",
+     "options": [
+      "Reassign",
+      "AutoComplete",
+      "Notify"
+     ]
+    },
+    {
+     "key": "useBusinessHours",
+     "label": "Count business hours only",
+     "kind": "bool"
+    },
+    {
+     "key": "escalateTo",
+     "label": "Escalate to",
+     "kind": "assignee1",
+     "showIf": {
+      "key": "escalationMode",
+      "ne": "AutoComplete"
+     }
+    },
+    {
+     "key": "timeoutDecision",
+     "label": "Outcome to auto-fire",
+     "kind": "text",
+     "showIf": {
+      "key": "escalationMode",
+      "eq": "AutoComplete"
+     },
+     "hint": "Must match one of this node's outgoing edge labels."
+    },
+    {
+     "key": "form",
+     "label": "Form",
+     "kind": "form"
+    }
+   ]
+  },
+  {
+   "type": "ApprovalTask",
+   "label": "Task / Approval",
+   "color": "#f0a3a8",
+   "icon": "✓",
+   "origin": "skelta",
+   "note": "Skelta Task/Approval activity - any number of custom outcome buttons",
+   "category": "Human Activities",
+   "shape": "rect",
+   "props": [
+    {
+     "key": "assignee",
+     "label": "Assignees (roles / users)",
+     "kind": "assignees",
+     "hint": "Multiple targets: whoever acts first completes it for all."
+    },
+    {
+     "key": "priority",
+     "label": "Priority",
+     "kind": "select",
+     "options": [
+      "Low",
+      "Normal",
+      "High",
+      "Urgent"
+     ]
+    },
+    {
+     "key": "escalateAfterMinutes",
+     "label": "Escalate after (minutes)",
+     "kind": "number"
+    },
+    {
+     "key": "escalationMode",
+     "label": "If it times out",
+     "kind": "select",
+     "options": [
+      "Reassign",
+      "AutoComplete",
+      "Notify"
+     ]
+    },
+    {
+     "key": "useBusinessHours",
+     "label": "Count business hours only",
+     "kind": "bool"
+    },
+    {
+     "key": "escalateTo",
+     "label": "Escalate to",
+     "kind": "assignee1",
+     "showIf": {
+      "key": "escalationMode",
+      "ne": "AutoComplete"
+     }
+    },
+    {
+     "key": "timeoutDecision",
+     "label": "Outcome to auto-fire",
+     "kind": "text",
+     "showIf": {
+      "key": "escalationMode",
+      "eq": "AutoComplete"
+     },
+     "hint": "Must match one of this node's outgoing edge labels."
+    },
+    {
+     "key": "form",
+     "label": "Form",
+     "kind": "form"
+    }
+   ]
+  },
+  {
+   "type": "WebhookCall",
+   "label": "Invoke Web API",
+   "color": "#f0a3a8",
+   "icon": "🌐",
+   "origin": "n8n",
+   "note": "n8n HTTP Request node / Skelta Invoke Web API (REST) - really calls it",
+   "category": "Integration Activities",
+   "shape": "rect",
+   "props": [
+    {
+     "key": "webhookUrl",
+     "label": "URL",
+     "kind": "text"
+    },
+    {
+     "key": "webhookMethod",
+     "label": "Method",
+     "kind": "select",
+     "options": [
+      "GET",
+      "POST",
+      "PUT",
+      "DELETE"
+     ]
+    },
+    {
+     "key": "resultVariable",
+     "label": "Store response in data key",
+     "kind": "text"
+    },
+    {
+     "key": "defaultOutcome",
+     "label": "Outcome to take (must match an outgoing edge label)",
+     "kind": "text",
+     "hint": "Stub nodes cannot judge success, so they always follow the edge with this label."
+    }
+   ]
+  },
+  {
+   "type": "InvokeSoapService",
+   "label": "InvokeWebService",
+   "color": "#f0a3a8",
+   "icon": "🧷",
+   "origin": "skelta",
+   "note": "Skelta Integration Activity (SOAP/XML) - really calls it",
+   "category": "Integration Activities",
+   "shape": "rect",
+   "props": [
+    {
+     "key": "webhookUrl",
+     "label": "Service URL",
+     "kind": "text"
+    },
+    {
+     "key": "soapAction",
+     "label": "SOAPAction",
+     "kind": "text"
+    },
+    {
+     "key": "soapEnvelope",
+     "label": "SOAP envelope",
+     "kind": "textarea"
+    },
+    {
+     "key": "resultVariable",
+     "label": "Store response in data key",
+     "kind": "text"
+    },
+    {
+     "key": "defaultOutcome",
+     "label": "Outcome to take (must match an outgoing edge label)",
+     "kind": "text",
+     "hint": "Stub nodes cannot judge success, so they always follow the edge with this label."
+    }
+   ]
+  },
+  {
+   "type": "Automation",
+   "label": "Script",
+   "color": "#f0a3a8",
+   "icon": "⚙",
+   "origin": "n8n",
+   "note": "n8n code/script node / Skelta Script activity - JS/C# really execute",
+   "category": "Integration Activities",
+   "shape": "rect",
+   "props": [
+    {
+     "key": "scriptLanguage",
+     "label": "Script language",
+     "kind": "select",
+     "options": [
+      "",
+      "JavaScript",
+      "CSharp"
+     ],
+     "hint": "JavaScript is sandboxed. C# runs with FULL trust - only publish scripts an admin reviewed. Empty = stub."
+    },
+    {
+     "key": "scriptBody",
+     "label": "Script",
+     "kind": "textarea",
+     "showIf": {
+      "key": "scriptLanguage",
+      "ne": ""
+     }
+    },
+    {
+     "key": "defaultOutcome",
+     "label": "Outcome to take (must match an outgoing edge label)",
+     "kind": "text",
+     "hint": "Stub nodes cannot judge success, so they always follow the edge with this label."
+    }
+   ]
+  },
+  {
+   "type": "FileOperations",
+   "label": "File Operations",
+   "color": "#f0a3a8",
+   "icon": "🗂",
+   "origin": "skelta",
+   "note": "Skelta Integration Activity - read/write/copy/delete a file (stub)",
+   "category": "Integration Activities",
+   "shape": "rect",
+   "props": [
+    {
+     "key": "fileOperation",
+     "label": "Operation",
+     "kind": "select",
+     "options": [
+      "Read",
+      "Write",
+      "Copy",
+      "Move",
+      "Delete"
+     ]
+    },
+    {
+     "key": "filePath",
+     "label": "File path",
+     "kind": "text"
+    },
+    {
+     "key": "defaultOutcome",
+     "label": "Outcome to take (must match an outgoing edge label)",
+     "kind": "text",
+     "hint": "Stub nodes cannot judge success, so they always follow the edge with this label."
+    }
+   ]
+  },
+  {
+   "type": "XmlAction",
+   "label": "XML Action",
+   "color": "#f0a3a8",
+   "icon": "{x}",
+   "origin": "skelta",
+   "note": "Skelta Integration Activity - query/transform XML (stub)",
+   "category": "Integration Activities",
+   "shape": "rect",
+   "props": [
+    {
+     "key": "xmlXPath",
+     "label": "XPath",
+     "kind": "text"
+    },
+    {
+     "key": "xmlSourceVariable",
+     "label": "Source data key",
+     "kind": "text"
+    },
+    {
+     "key": "defaultOutcome",
+     "label": "Outcome to take (must match an outgoing edge label)",
+     "kind": "text",
+     "hint": "Stub nodes cannot judge success, so they always follow the edge with this label."
+    }
+   ]
+  },
+  {
+   "type": "DocumentGeneration",
+   "label": "Create-Open-Office-Document",
+   "color": "#f0a3a8",
+   "icon": "📄",
+   "origin": "skelta",
+   "note": "Skelta document-generation activity (stub)",
+   "category": "Integration Activities",
+   "shape": "rect",
+   "props": [
+    {
+     "key": "documentTemplate",
+     "label": "Template",
+     "kind": "text"
+    },
+    {
+     "key": "documentName",
+     "label": "Document name",
+     "kind": "text"
+    },
+    {
+     "key": "defaultOutcome",
+     "label": "Outcome to take (must match an outgoing edge label)",
+     "kind": "text",
+     "hint": "Stub nodes cannot judge success, so they always follow the edge with this label."
+    }
+   ]
+  },
+  {
+   "type": "DatabaseActivity",
+   "label": "Database Activity",
+   "color": "#6d8cf0",
+   "icon": "🗄",
+   "origin": "skelta",
+   "note": "Skelta Engine Activity - run a query (stub - a real trust decision, same as C# scripting)",
+   "category": "Engine Activities",
+   "shape": "rect",
+   "props": [
+    {
+     "key": "databaseConnectionName",
+     "label": "Connection name",
+     "kind": "text"
+    },
+    {
+     "key": "databaseQuery",
+     "label": "Query",
+     "kind": "textarea"
+    },
+    {
+     "key": "defaultOutcome",
+     "label": "Outcome to take (must match an outgoing edge label)",
+     "kind": "text",
+     "hint": "Stub nodes cannot judge success, so they always follow the edge with this label."
+    }
+   ]
+  },
+  {
+   "type": "Logger",
+   "label": "Logger",
+   "color": "#6d8cf0",
+   "icon": "🪵",
+   "origin": "skelta",
+   "note": "Skelta Engine Activity - really logs a message to the instance history",
+   "category": "Engine Activities",
+   "shape": "rect",
+   "props": [
+    {
+     "key": "logMessage",
+     "label": "Message",
+     "kind": "text"
+    }
+   ]
+  },
+  {
+   "type": "SubWorkflow",
+   "label": "End Child Workflow Execution",
+   "color": "#6d8cf0",
+   "icon": "⧉",
+   "origin": "camunda",
+   "note": "Camunda Call Activity - invoke another workflow (stub)",
+   "category": "Engine Activities",
+   "shape": "rect",
+   "props": [
+    {
+     "key": "subWorkflowDefinitionId",
+     "label": "Workflow to invoke",
+     "kind": "workflow"
+    },
+    {
+     "key": "defaultOutcome",
+     "label": "Outcome to take (must match an outgoing edge label)",
+     "kind": "text",
+     "hint": "Stub nodes cannot judge success, so they always follow the edge with this label."
+    }
+   ]
+  },
+  {
+   "type": "Timer",
+   "label": "Time Trigger",
+   "color": "#8f97ff",
+   "icon": "⏱",
+   "origin": "skelta",
+   "note": "Skelta TimerTriggerAction (delay / retry wait) - really waits",
+   "category": "Scheduler Activities",
+   "shape": "rect",
+   "props": [
+    {
+     "key": "durationSeconds",
+     "label": "Duration (seconds)",
+     "kind": "number"
+    },
+    {
+     "key": "defaultOutcome",
+     "label": "Outcome to take (must match an outgoing edge label)",
+     "kind": "text",
+     "hint": "Stub nodes cannot judge success, so they always follow the edge with this label."
+    }
+   ]
+  },
+  {
+   "type": "Email",
+   "label": "Email",
+   "color": "#f08fd0",
+   "icon": "✉",
+   "origin": "skelta",
+   "note": "Skelta Information/Email activity - really sends via SMTP",
+   "category": "Communication",
+   "shape": "rect",
+   "props": [
+    {
+     "key": "emailTo",
+     "label": "To",
+     "kind": "text"
+    },
+    {
+     "key": "emailSubject",
+     "label": "Subject",
+     "kind": "text"
+    },
+    {
+     "key": "emailBody",
+     "label": "Body",
+     "kind": "textarea"
+    },
+    {
+     "key": "emailIsHtml",
+     "label": "Body is HTML",
+     "kind": "bool"
+    },
+    {
+     "key": "defaultOutcome",
+     "label": "Outcome to take (must match an outgoing edge label)",
+     "kind": "text",
+     "hint": "Stub nodes cannot judge success, so they always follow the edge with this label."
+    }
+   ]
+  },
+  {
+   "type": "Notification",
+   "label": "Notification",
+   "color": "#f08fd0",
+   "icon": "🔔",
+   "origin": "skelta",
+   "note": "Skelta Communication activity - in-app/push notification (stub)",
+   "category": "Communication",
+   "shape": "rect",
+   "props": [
+    {
+     "key": "notificationTo",
+     "label": "To",
+     "kind": "text"
+    },
+    {
+     "key": "notificationMessage",
+     "label": "Message",
+     "kind": "textarea"
+    },
+    {
+     "key": "defaultOutcome",
+     "label": "Outcome to take (must match an outgoing edge label)",
+     "kind": "text",
+     "hint": "Stub nodes cannot judge success, so they always follow the edge with this label."
+    }
+   ]
+  },
+  {
+   "type": "SendSms",
+   "label": "Send SMS",
+   "color": "#f08fd0",
+   "icon": "📱",
+   "origin": "skelta",
+   "note": "Skelta Communication activity - sends an SMS (stub)",
+   "category": "Communication",
+   "shape": "rect",
+   "props": [
+    {
+     "key": "smsTo",
+     "label": "To (phone)",
+     "kind": "text"
+    },
+    {
+     "key": "smsMessage",
+     "label": "Message",
+     "kind": "textarea"
+    },
+    {
+     "key": "defaultOutcome",
+     "label": "Outcome to take (must match an outgoing edge label)",
+     "kind": "text",
+     "hint": "Stub nodes cannot judge success, so they always follow the edge with this label."
+    }
+   ]
+  },
+  {
+   "type": "CancelWorkflow",
+   "label": "Cancel Approval Workflow",
+   "color": "#e0555c",
+   "icon": "🚫",
+   "origin": "skelta",
+   "note": "Skelta Security activity - really cancels the running instance from within the flow",
+   "category": "Security",
+   "shape": "rect",
+   "props": [
+    {
+     "key": "cancelReason",
+     "label": "Reason",
+     "kind": "text"
+    }
+   ]
+  }
+ ],
+ "categories": [
+  "BPMN Elements",
+  "Human Activities",
+  "Integration Activities",
+  "Engine Activities",
+  "Scheduler Activities",
+  "Communication",
+  "Security"
+ ],
+ "fieldTypes": [
+  "Text",
+  "TextArea",
+  "Number",
+  "Date",
+  "Select",
+  "Checkbox",
+  "Email"
+ ],
+ "nodeSize": {
+  "rect": [
+   140,
+   60
+  ],
+  "circle": [
+   60,
+   60
+  ],
+  "diamond": [
+   140,
+   80
+  ]
+ },
+ "edgeDefaults": {
+  "ApprovalTask": [
+   "Approve",
+   "Reject"
+  ],
+  "Condition": [
+   "True",
+   "False"
+  ],
+  "default": "Default"
+ },
+ "conditionLabels": [
+  "True",
+  "False"
+ ],
+ "permissions": {
+  "view": "wf.view",
+  "design": "wf.design",
+  "publish": "wf.publish",
+  "instances": "wf.instances.view"
+ }
+}

@@ -21,10 +21,10 @@ export const apiInterceptor: HttpInterceptorFn = (req, next) => {
   if (!req.url.startsWith(environment.apiBaseUrl)) return next(req);
   const auth = inject(AuthService), router = inject(Router), gw = inject(ApiGateway), i18n = inject(I18nService);
   const token = auth.getToken();
-  const headers: Record<string, string> = { 'X-Correlation-Id': newId(), 'Accept-Language': i18n.lang() };
+  const headers: Record<string, string> = { 'X-Correlation-Id': newId(), 'Accept-Language': i18n.lang(), 'X-Tz-Offset': String(-new Date().getTimezoneOffset()) };
   if (token) headers['Authorization'] = `Bearer ${token}`;
   const authed = req.clone({ setHeaders: headers });
-  const isGet = req.method === 'GET', isLogin = /\/auth\/login$|\/tenants\/signup$/.test(req.url);
+  const isGet = req.method === 'GET', isLogin = /\/auth\/login$|\/tenants\/signup$|\/auth\/accept-invite$/.test(req.url);
 
   gw.begin();
   let stream = next(authed);

@@ -83,6 +83,7 @@ export class FinSetupComponent implements OnInit {
     { key: 'code', label: 'fin.f.code', required: true, table: true, lockOnEdit: true },
     { key: 'name', label: 'fin.f.name', required: true, table: true },
     { key: 'rate', label: 'fin.tax.rate', type: 'number', required: true, table: true },
+    { key: 'category', label: 'fin.tax.category', type: 'select', def: 'S', table: true, options: () => ['S', 'Z', 'E', 'O'].map(v => ({ value: v, label: this.i18n.t('fin.tax.cat.' + v) })) },
     { key: 'status', label: 'fin.f.status', type: 'status', def: 'Active', table: true, options: () => ['Active', 'Inactive'].map(v => ({ value: v, label: this.i18n.t('fin.st.' + v) })) },
   ];
   ccFields: CrudField[] = [

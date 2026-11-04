@@ -1,0 +1,1 @@
+bill.check || Check payment || تحقق من الدفع || Vérifier le paiement || Comprobar pago || ادائیگی چیک کریں || Zahlung prüfen || Verifica pagamento

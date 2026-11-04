@@ -1,0 +1,1688 @@
+{
+ "methods": [
+  {
+   "id": "mwl",
+   "name": "Muslim World League",
+   "fajr": 18,
+   "isha": 17
+  },
+  {
+   "id": "isna",
+   "name": "ISNA (North America)",
+   "fajr": 15,
+   "isha": 15
+  },
+  {
+   "id": "egypt",
+   "name": "Egyptian General Authority",
+   "fajr": 19.5,
+   "isha": 17.5
+  },
+  {
+   "id": "makkah",
+   "name": "Umm al-Qura (Makkah)",
+   "fajr": 18.5,
+   "isha": {
+    "min": 90
+   }
+  },
+  {
+   "id": "karachi",
+   "name": "Univ. of Islamic Sciences, Karachi",
+   "fajr": 18,
+   "isha": 18
+  },
+  {
+   "id": "tehran",
+   "name": "Institute of Geophysics, Tehran",
+   "fajr": 17.7,
+   "isha": 14,
+   "maghrib": 4.5
+  },
+  {
+   "id": "jafari",
+   "name": "Shia Ithna-Ashari (Jafari)",
+   "fajr": 16,
+   "isha": 14,
+   "maghrib": 4
+  },
+  {
+   "id": "gulf",
+   "name": "Gulf Region",
+   "fajr": 19.5,
+   "isha": {
+    "min": 90
+   }
+  },
+  {
+   "id": "dubai",
+   "name": "UAE (Dubai)",
+   "fajr": 18.2,
+   "isha": 18.2
+  },
+  {
+   "id": "kuwait",
+   "name": "Kuwait",
+   "fajr": 18,
+   "isha": 17.5
+  },
+  {
+   "id": "qatar",
+   "name": "Qatar",
+   "fajr": 18,
+   "isha": {
+    "min": 90
+   }
+  },
+  {
+   "id": "singapore",
+   "name": "Singapore / Indonesia / Malaysia",
+   "fajr": 20,
+   "isha": 18
+  },
+  {
+   "id": "turkey",
+   "name": "Turkey (Diyanet)",
+   "fajr": 18,
+   "isha": 17
+  },
+  {
+   "id": "france",
+   "name": "France (UOIF)",
+   "fajr": 12,
+   "isha": 12
+  },
+  {
+   "id": "morocco",
+   "name": "Morocco",
+   "fajr": 19,
+   "isha": 17
+  }
+ ],
+ "defaultMethod": {
+  "SA": "makkah",
+  "EG": "egypt",
+  "AE": "dubai",
+  "KW": "kuwait",
+  "QA": "qatar",
+  "BH": "makkah",
+  "OM": "makkah",
+  "YE": "makkah",
+  "JO": "egypt",
+  "PS": "egypt",
+  "LB": "egypt",
+  "SY": "egypt",
+  "IQ": "egypt",
+  "IR": "tehran",
+  "TR": "turkey",
+  "LY": "egypt",
+  "TN": "mwl",
+  "DZ": "mwl",
+  "MA": "morocco",
+  "MR": "mwl",
+  "SD": "egypt",
+  "SO": "egypt",
+  "ET": "mwl",
+  "KE": "mwl",
+  "TZ": "mwl",
+  "NG": "mwl",
+  "SN": "mwl",
+  "ML": "mwl",
+  "NE": "mwl",
+  "GH": "mwl",
+  "ZA": "mwl",
+  "PK": "karachi",
+  "AF": "karachi",
+  "IN": "karachi",
+  "BD": "karachi",
+  "LK": "karachi",
+  "ID": "singapore",
+  "MY": "singapore",
+  "SG": "singapore",
+  "BN": "singapore",
+  "TH": "mwl",
+  "PH": "mwl",
+  "CN": "mwl",
+  "JP": "mwl",
+  "KR": "mwl",
+  "AU": "mwl",
+  "NZ": "mwl",
+  "KZ": "mwl",
+  "UZ": "mwl",
+  "AZ": "mwl",
+  "RU": "mwl",
+  "GB": "mwl",
+  "IE": "mwl",
+  "FR": "france",
+  "DE": "mwl",
+  "NL": "mwl",
+  "BE": "mwl",
+  "ES": "mwl",
+  "IT": "mwl",
+  "SE": "mwl",
+  "NO": "mwl",
+  "DK": "mwl",
+  "FI": "mwl",
+  "AT": "mwl",
+  "CH": "mwl",
+  "PL": "mwl",
+  "GR": "mwl",
+  "BA": "mwl",
+  "AL": "mwl",
+  "US": "isna",
+  "CA": "isna",
+  "MX": "mwl",
+  "BR": "mwl",
+  "AR": "mwl"
+ },
+ "hanafi": [
+  "PK",
+  "AF",
+  "IN",
+  "BD",
+  "KZ",
+  "UZ"
+ ],
+ "cities": {
+  "SA": [
+   [
+    "Makkah",
+    21.3891,
+    39.8579,
+    "Asia/Riyadh"
+   ],
+   [
+    "Madinah",
+    24.4686,
+    39.6142,
+    "Asia/Riyadh"
+   ],
+   [
+    "Riyadh",
+    24.7136,
+    46.6753,
+    "Asia/Riyadh"
+   ],
+   [
+    "Jeddah",
+    21.5433,
+    39.1728,
+    "Asia/Riyadh"
+   ],
+   [
+    "Dammam",
+    26.4207,
+    50.0888,
+    "Asia/Riyadh"
+   ],
+   [
+    "Abha",
+    18.2164,
+    42.5053,
+    "Asia/Riyadh"
+   ],
+   [
+    "Tabuk",
+    28.3838,
+    36.5662,
+    "Asia/Riyadh"
+   ]
+  ],
+  "EG": [
+   [
+    "Cairo",
+    30.0444,
+    31.2357,
+    "Africa/Cairo"
+   ],
+   [
+    "Alexandria",
+    31.2001,
+    29.9187,
+    "Africa/Cairo"
+   ],
+   [
+    "Giza",
+    30.0131,
+    31.2089,
+    "Africa/Cairo"
+   ],
+   [
+    "Luxor",
+    25.6872,
+    32.6396,
+    "Africa/Cairo"
+   ],
+   [
+    "Aswan",
+    24.0889,
+    32.8998,
+    "Africa/Cairo"
+   ],
+   [
+    "Mansoura",
+    31.0409,
+    31.3785,
+    "Africa/Cairo"
+   ],
+   [
+    "Port Said",
+    31.2653,
+    32.3019,
+    "Africa/Cairo"
+   ],
+   [
+    "Suez",
+    29.9668,
+    32.5498,
+    "Africa/Cairo"
+   ],
+   [
+    "Tanta",
+    30.7865,
+    31.0004,
+    "Africa/Cairo"
+   ],
+   [
+    "Assiut",
+    27.1809,
+    31.1837,
+    "Africa/Cairo"
+   ]
+  ],
+  "AE": [
+   [
+    "Dubai",
+    25.2048,
+    55.2708,
+    "Asia/Dubai"
+   ],
+   [
+    "Abu Dhabi",
+    24.4539,
+    54.3773,
+    "Asia/Dubai"
+   ],
+   [
+    "Sharjah",
+    25.3463,
+    55.4209,
+    "Asia/Dubai"
+   ],
+   [
+    "Al Ain",
+    24.2075,
+    55.7447,
+    "Asia/Dubai"
+   ]
+  ],
+  "KW": [
+   [
+    "Kuwait City",
+    29.3759,
+    47.9774,
+    "Asia/Kuwait"
+   ]
+  ],
+  "QA": [
+   [
+    "Doha",
+    25.2854,
+    51.531,
+    "Asia/Qatar"
+   ]
+  ],
+  "BH": [
+   [
+    "Manama",
+    26.2285,
+    50.586,
+    "Asia/Bahrain"
+   ]
+  ],
+  "OM": [
+   [
+    "Muscat",
+    23.588,
+    58.3829,
+    "Asia/Muscat"
+   ],
+   [
+    "Salalah",
+    17.0151,
+    54.0924,
+    "Asia/Muscat"
+   ]
+  ],
+  "YE": [
+   [
+    "Sanaa",
+    15.3694,
+    44.191,
+    "Asia/Aden"
+   ],
+   [
+    "Aden",
+    12.7855,
+    45.0187,
+    "Asia/Aden"
+   ]
+  ],
+  "JO": [
+   [
+    "Amman",
+    31.9454,
+    35.9284,
+    "Asia/Amman"
+   ],
+   [
+    "Irbid",
+    32.5556,
+    35.8479,
+    "Asia/Amman"
+   ],
+   [
+    "Aqaba",
+    29.5321,
+    35.0063,
+    "Asia/Amman"
+   ]
+  ],
+  "PS": [
+   [
+    "Jerusalem",
+    31.7683,
+    35.2137,
+    "Asia/Jerusalem"
+   ],
+   [
+    "Gaza",
+    31.5017,
+    34.4668,
+    "Asia/Gaza"
+   ],
+   [
+    "Ramallah",
+    31.9038,
+    35.2034,
+    "Asia/Hebron"
+   ],
+   [
+    "Nablus",
+    32.2211,
+    35.2544,
+    "Asia/Hebron"
+   ]
+  ],
+  "LB": [
+   [
+    "Beirut",
+    33.8938,
+    35.5018,
+    "Asia/Beirut"
+   ],
+   [
+    "Tripoli",
+    34.4367,
+    35.8497,
+    "Asia/Beirut"
+   ]
+  ],
+  "SY": [
+   [
+    "Damascus",
+    33.5138,
+    36.2765,
+    "Asia/Damascus"
+   ],
+   [
+    "Aleppo",
+    36.2021,
+    37.1343,
+    "Asia/Damascus"
+   ],
+   [
+    "Homs",
+    34.7324,
+    36.7137,
+    "Asia/Damascus"
+   ]
+  ],
+  "IQ": [
+   [
+    "Baghdad",
+    33.3152,
+    44.3661,
+    "Asia/Baghdad"
+   ],
+   [
+    "Basra",
+    30.5085,
+    47.7804,
+    "Asia/Baghdad"
+   ],
+   [
+    "Mosul",
+    36.3489,
+    43.1577,
+    "Asia/Baghdad"
+   ],
+   [
+    "Erbil",
+    36.1911,
+    44.0092,
+    "Asia/Baghdad"
+   ],
+   [
+    "Najaf",
+    32.0259,
+    44.3462,
+    "Asia/Baghdad"
+   ],
+   [
+    "Karbala",
+    32.616,
+    44.0249,
+    "Asia/Baghdad"
+   ]
+  ],
+  "IR": [
+   [
+    "Tehran",
+    35.6892,
+    51.389,
+    "Asia/Tehran"
+   ],
+   [
+    "Mashhad",
+    36.2605,
+    59.6168,
+    "Asia/Tehran"
+   ],
+   [
+    "Isfahan",
+    32.6546,
+    51.668,
+    "Asia/Tehran"
+   ],
+   [
+    "Shiraz",
+    29.5918,
+    52.5837,
+    "Asia/Tehran"
+   ],
+   [
+    "Qom",
+    34.6416,
+    50.8746,
+    "Asia/Tehran"
+   ],
+   [
+    "Tabriz",
+    38.08,
+    46.2919,
+    "Asia/Tehran"
+   ]
+  ],
+  "TR": [
+   [
+    "Istanbul",
+    41.0082,
+    28.9784,
+    "Europe/Istanbul"
+   ],
+   [
+    "Ankara",
+    39.9334,
+    32.8597,
+    "Europe/Istanbul"
+   ],
+   [
+    "Izmir",
+    38.4237,
+    27.1428,
+    "Europe/Istanbul"
+   ],
+   [
+    "Bursa",
+    40.1885,
+    29.061,
+    "Europe/Istanbul"
+   ],
+   [
+    "Konya",
+    37.8746,
+    32.4932,
+    "Europe/Istanbul"
+   ]
+  ],
+  "LY": [
+   [
+    "Tripoli",
+    32.8872,
+    13.1913,
+    "Africa/Tripoli"
+   ],
+   [
+    "Benghazi",
+    32.1167,
+    20.0667,
+    "Africa/Tripoli"
+   ]
+  ],
+  "TN": [
+   [
+    "Tunis",
+    36.8065,
+    10.1815,
+    "Africa/Tunis"
+   ],
+   [
+    "Sfax",
+    34.7406,
+    10.7603,
+    "Africa/Tunis"
+   ],
+   [
+    "Kairouan",
+    35.6781,
+    10.0963,
+    "Africa/Tunis"
+   ]
+  ],
+  "DZ": [
+   [
+    "Algiers",
+    36.7538,
+    3.0588,
+    "Africa/Algiers"
+   ],
+   [
+    "Oran",
+    35.6971,
+    -0.6308,
+    "Africa/Algiers"
+   ],
+   [
+    "Constantine",
+    36.365,
+    6.6147,
+    "Africa/Algiers"
+   ]
+  ],
+  "MA": [
+   [
+    "Casablanca",
+    33.5731,
+    -7.5898,
+    "Africa/Casablanca"
+   ],
+   [
+    "Rabat",
+    34.0209,
+    -6.8416,
+    "Africa/Casablanca"
+   ],
+   [
+    "Marrakesh",
+    31.6295,
+    -7.9811,
+    "Africa/Casablanca"
+   ],
+   [
+    "Fes",
+    34.0181,
+    -5.0078,
+    "Africa/Casablanca"
+   ],
+   [
+    "Tangier",
+    35.7595,
+    -5.834,
+    "Africa/Casablanca"
+   ]
+  ],
+  "MR": [
+   [
+    "Nouakchott",
+    18.0735,
+    -15.9582,
+    "Africa/Nouakchott"
+   ]
+  ],
+  "SD": [
+   [
+    "Khartoum",
+    15.5007,
+    32.5599,
+    "Africa/Khartoum"
+   ],
+   [
+    "Omdurman",
+    15.6445,
+    32.4777,
+    "Africa/Khartoum"
+   ],
+   [
+    "Port Sudan",
+    19.6158,
+    37.2164,
+    "Africa/Khartoum"
+   ]
+  ],
+  "SO": [
+   [
+    "Mogadishu",
+    2.0469,
+    45.3182,
+    "Africa/Mogadishu"
+   ]
+  ],
+  "ET": [
+   [
+    "Addis Ababa",
+    9.03,
+    38.74,
+    "Africa/Addis_Ababa"
+   ]
+  ],
+  "KE": [
+   [
+    "Nairobi",
+    -1.2921,
+    36.8219,
+    "Africa/Nairobi"
+   ],
+   [
+    "Mombasa",
+    -4.0435,
+    39.6682,
+    "Africa/Nairobi"
+   ]
+  ],
+  "TZ": [
+   [
+    "Dar es Salaam",
+    -6.7924,
+    39.2083,
+    "Africa/Dar_es_Salaam"
+   ],
+   [
+    "Zanzibar",
+    -6.1659,
+    39.2026,
+    "Africa/Dar_es_Salaam"
+   ]
+  ],
+  "NG": [
+   [
+    "Lagos",
+    6.5244,
+    3.3792,
+    "Africa/Lagos"
+   ],
+   [
+    "Kano",
+    12.0022,
+    8.5919,
+    "Africa/Lagos"
+   ],
+   [
+    "Abuja",
+    9.0765,
+    7.3986,
+    "Africa/Lagos"
+   ]
+  ],
+  "SN": [
+   [
+    "Dakar",
+    14.7167,
+    -17.4677,
+    "Africa/Dakar"
+   ]
+  ],
+  "ML": [
+   [
+    "Bamako",
+    12.6392,
+    -8.0029,
+    "Africa/Bamako"
+   ]
+  ],
+  "NE": [
+   [
+    "Niamey",
+    13.5116,
+    2.1254,
+    "Africa/Niamey"
+   ]
+  ],
+  "GH": [
+   [
+    "Accra",
+    5.6037,
+    -0.187,
+    "Africa/Accra"
+   ]
+  ],
+  "ZA": [
+   [
+    "Johannesburg",
+    -26.2041,
+    28.0473,
+    "Africa/Johannesburg"
+   ],
+   [
+    "Cape Town",
+    -33.9249,
+    18.4241,
+    "Africa/Johannesburg"
+   ],
+   [
+    "Durban",
+    -29.8587,
+    31.0218,
+    "Africa/Johannesburg"
+   ]
+  ],
+  "PK": [
+   [
+    "Karachi",
+    24.8607,
+    67.0011,
+    "Asia/Karachi"
+   ],
+   [
+    "Lahore",
+    31.5204,
+    74.3587,
+    "Asia/Karachi"
+   ],
+   [
+    "Islamabad",
+    33.6844,
+    73.0479,
+    "Asia/Karachi"
+   ],
+   [
+    "Peshawar",
+    34.0151,
+    71.5249,
+    "Asia/Karachi"
+   ],
+   [
+    "Quetta",
+    30.1798,
+    66.975,
+    "Asia/Karachi"
+   ]
+  ],
+  "AF": [
+   [
+    "Kabul",
+    34.5553,
+    69.2075,
+    "Asia/Kabul"
+   ],
+   [
+    "Kandahar",
+    31.628,
+    65.7372,
+    "Asia/Kabul"
+   ]
+  ],
+  "IN": [
+   [
+    "Delhi",
+    28.6139,
+    77.209,
+    "Asia/Kolkata"
+   ],
+   [
+    "Mumbai",
+    19.076,
+    72.8777,
+    "Asia/Kolkata"
+   ],
+   [
+    "Hyderabad",
+    17.385,
+    78.4867,
+    "Asia/Kolkata"
+   ],
+   [
+    "Kolkata",
+    22.5726,
+    88.3639,
+    "Asia/Kolkata"
+   ],
+   [
+    "Lucknow",
+    26.8467,
+    80.9462,
+    "Asia/Kolkata"
+   ],
+   [
+    "Chennai",
+    13.0827,
+    80.2707,
+    "Asia/Kolkata"
+   ]
+  ],
+  "BD": [
+   [
+    "Dhaka",
+    23.8103,
+    90.4125,
+    "Asia/Dhaka"
+   ],
+   [
+    "Chittagong",
+    22.3569,
+    91.7832,
+    "Asia/Dhaka"
+   ]
+  ],
+  "LK": [
+   [
+    "Colombo",
+    6.9271,
+    79.8612,
+    "Asia/Colombo"
+   ]
+  ],
+  "ID": [
+   [
+    "Jakarta",
+    -6.2088,
+    106.8456,
+    "Asia/Jakarta"
+   ],
+   [
+    "Surabaya",
+    -7.2575,
+    112.7521,
+    "Asia/Jakarta"
+   ],
+   [
+    "Medan",
+    3.5952,
+    98.6722,
+    "Asia/Jakarta"
+   ],
+   [
+    "Makassar",
+    -5.1477,
+    119.4327,
+    "Asia/Makassar"
+   ]
+  ],
+  "MY": [
+   [
+    "Kuala Lumpur",
+    3.139,
+    101.6869,
+    "Asia/Kuala_Lumpur"
+   ],
+   [
+    "Penang",
+    5.4141,
+    100.3288,
+    "Asia/Kuala_Lumpur"
+   ]
+  ],
+  "SG": [
+   [
+    "Singapore",
+    1.3521,
+    103.8198,
+    "Asia/Singapore"
+   ]
+  ],
+  "BN": [
+   [
+    "Bandar Seri Begawan",
+    4.9031,
+    114.9398,
+    "Asia/Brunei"
+   ]
+  ],
+  "TH": [
+   [
+    "Bangkok",
+    13.7563,
+    100.5018,
+    "Asia/Bangkok"
+   ]
+  ],
+  "PH": [
+   [
+    "Manila",
+    14.5995,
+    120.9842,
+    "Asia/Manila"
+   ]
+  ],
+  "CN": [
+   [
+    "Beijing",
+    39.9042,
+    116.4074,
+    "Asia/Shanghai"
+   ],
+   [
+    "Shanghai",
+    31.2304,
+    121.4737,
+    "Asia/Shanghai"
+   ],
+   [
+    "Urumqi",
+    43.8256,
+    87.6168,
+    "Asia/Urumqi"
+   ]
+  ],
+  "JP": [
+   [
+    "Tokyo",
+    35.6762,
+    139.6503,
+    "Asia/Tokyo"
+   ]
+  ],
+  "KR": [
+   [
+    "Seoul",
+    37.5665,
+    126.978,
+    "Asia/Seoul"
+   ]
+  ],
+  "AU": [
+   [
+    "Sydney",
+    -33.8688,
+    151.2093,
+    "Australia/Sydney"
+   ],
+   [
+    "Melbourne",
+    -37.8136,
+    144.9631,
+    "Australia/Melbourne"
+   ],
+   [
+    "Perth",
+    -31.9505,
+    115.8605,
+    "Australia/Perth"
+   ],
+   [
+    "Brisbane",
+    -27.4698,
+    153.0251,
+    "Australia/Brisbane"
+   ]
+  ],
+  "NZ": [
+   [
+    "Auckland",
+    -36.8485,
+    174.7633,
+    "Pacific/Auckland"
+   ]
+  ],
+  "KZ": [
+   [
+    "Astana",
+    51.1694,
+    71.4491,
+    "Asia/Almaty"
+   ],
+   [
+    "Almaty",
+    43.222,
+    76.8512,
+    "Asia/Almaty"
+   ]
+  ],
+  "UZ": [
+   [
+    "Tashkent",
+    41.2995,
+    69.2401,
+    "Asia/Tashkent"
+   ],
+   [
+    "Samarkand",
+    39.627,
+    66.975,
+    "Asia/Samarkand"
+   ]
+  ],
+  "AZ": [
+   [
+    "Baku",
+    40.4093,
+    49.8671,
+    "Asia/Baku"
+   ]
+  ],
+  "RU": [
+   [
+    "Moscow",
+    55.7558,
+    37.6173,
+    "Europe/Moscow"
+   ],
+   [
+    "Kazan",
+    55.7887,
+    49.1221,
+    "Europe/Moscow"
+   ]
+  ],
+  "GB": [
+   [
+    "London",
+    51.5074,
+    -0.1278,
+    "Europe/London"
+   ],
+   [
+    "Birmingham",
+    52.4862,
+    -1.8904,
+    "Europe/London"
+   ],
+   [
+    "Manchester",
+    53.4808,
+    -2.2426,
+    "Europe/London"
+   ],
+   [
+    "Glasgow",
+    55.8642,
+    -4.2518,
+    "Europe/London"
+   ]
+  ],
+  "IE": [
+   [
+    "Dublin",
+    53.3498,
+    -6.2603,
+    "Europe/Dublin"
+   ]
+  ],
+  "FR": [
+   [
+    "Paris",
+    48.8566,
+    2.3522,
+    "Europe/Paris"
+   ],
+   [
+    "Marseille",
+    43.2965,
+    5.3698,
+    "Europe/Paris"
+   ],
+   [
+    "Lyon",
+    45.764,
+    4.8357,
+    "Europe/Paris"
+   ]
+  ],
+  "DE": [
+   [
+    "Berlin",
+    52.52,
+    13.405,
+    "Europe/Berlin"
+   ],
+   [
+    "Munich",
+    48.1351,
+    11.582,
+    "Europe/Berlin"
+   ],
+   [
+    "Hamburg",
+    53.5511,
+    9.9937,
+    "Europe/Berlin"
+   ],
+   [
+    "Frankfurt",
+    50.1109,
+    8.6821,
+    "Europe/Berlin"
+   ]
+  ],
+  "NL": [
+   [
+    "Amsterdam",
+    52.3676,
+    4.9041,
+    "Europe/Amsterdam"
+   ]
+  ],
+  "BE": [
+   [
+    "Brussels",
+    50.8503,
+    4.3517,
+    "Europe/Brussels"
+   ]
+  ],
+  "ES": [
+   [
+    "Madrid",
+    40.4168,
+    -3.7038,
+    "Europe/Madrid"
+   ],
+   [
+    "Barcelona",
+    41.3874,
+    2.1686,
+    "Europe/Madrid"
+   ]
+  ],
+  "IT": [
+   [
+    "Rome",
+    41.9028,
+    12.4964,
+    "Europe/Rome"
+   ],
+   [
+    "Milan",
+    45.4642,
+    9.19,
+    "Europe/Rome"
+   ]
+  ],
+  "SE": [
+   [
+    "Stockholm",
+    59.3293,
+    18.0686,
+    "Europe/Stockholm"
+   ]
+  ],
+  "NO": [
+   [
+    "Oslo",
+    59.9139,
+    10.7522,
+    "Europe/Oslo"
+   ],
+   [
+    "Tromso",
+    69.6492,
+    18.9553,
+    "Europe/Oslo"
+   ]
+  ],
+  "DK": [
+   [
+    "Copenhagen",
+    55.6761,
+    12.5683,
+    "Europe/Copenhagen"
+   ]
+  ],
+  "FI": [
+   [
+    "Helsinki",
+    60.1699,
+    24.9384,
+    "Europe/Helsinki"
+   ]
+  ],
+  "AT": [
+   [
+    "Vienna",
+    48.2082,
+    16.3738,
+    "Europe/Vienna"
+   ]
+  ],
+  "CH": [
+   [
+    "Zurich",
+    47.3769,
+    8.5417,
+    "Europe/Zurich"
+   ]
+  ],
+  "PL": [
+   [
+    "Warsaw",
+    52.2297,
+    21.0122,
+    "Europe/Warsaw"
+   ]
+  ],
+  "GR": [
+   [
+    "Athens",
+    37.9838,
+    23.7275,
+    "Europe/Athens"
+   ]
+  ],
+  "BA": [
+   [
+    "Sarajevo",
+    43.8563,
+    18.4131,
+    "Europe/Sarajevo"
+   ]
+  ],
+  "AL": [
+   [
+    "Tirana",
+    41.3275,
+    19.8187,
+    "Europe/Tirane"
+   ]
+  ],
+  "US": [
+   [
+    "New York",
+    40.7128,
+    -74.006,
+    "America/New_York"
+   ],
+   [
+    "Washington",
+    38.9072,
+    -77.0369,
+    "America/New_York"
+   ],
+   [
+    "Dearborn",
+    42.3223,
+    -83.1763,
+    "America/Detroit"
+   ],
+   [
+    "Chicago",
+    41.8781,
+    -87.6298,
+    "America/Chicago"
+   ],
+   [
+    "Houston",
+    29.7604,
+    -95.3698,
+    "America/Chicago"
+   ],
+   [
+    "Los Angeles",
+    34.0522,
+    -118.2437,
+    "America/Los_Angeles"
+   ]
+  ],
+  "CA": [
+   [
+    "Toronto",
+    43.6532,
+    -79.3832,
+    "America/Toronto"
+   ],
+   [
+    "Montreal",
+    45.5017,
+    -73.5673,
+    "America/Toronto"
+   ],
+   [
+    "Vancouver",
+    49.2827,
+    -123.1207,
+    "America/Vancouver"
+   ]
+  ],
+  "MX": [
+   [
+    "Mexico City",
+    19.4326,
+    -99.1332,
+    "America/Mexico_City"
+   ]
+  ],
+  "BR": [
+   [
+    "Sao Paulo",
+    -23.5505,
+    -46.6333,
+    "America/Sao_Paulo"
+   ]
+  ],
+  "AR": [
+   [
+    "Buenos Aires",
+    -34.6037,
+    -58.3816,
+    "America/Argentina/Buenos_Aires"
+   ]
+  ]
+ },
+ "prayers": [
+  "fajr",
+  "sunrise",
+  "dhuhr",
+  "asr",
+  "maghrib",
+  "isha"
+ ],
+ "mushaf": {
+  "pages": 604,
+  "surahStart": [
+   1,
+   2,
+   50,
+   77,
+   106,
+   128,
+   151,
+   177,
+   187,
+   208,
+   221,
+   235,
+   249,
+   255,
+   262,
+   267,
+   282,
+   293,
+   305,
+   312,
+   322,
+   332,
+   342,
+   350,
+   359,
+   367,
+   377,
+   385,
+   396,
+   404,
+   411,
+   415,
+   418,
+   428,
+   434,
+   440,
+   446,
+   453,
+   458,
+   467,
+   477,
+   483,
+   489,
+   496,
+   499,
+   502,
+   507,
+   511,
+   515,
+   518,
+   520,
+   523,
+   526,
+   528,
+   531,
+   534,
+   537,
+   542,
+   545,
+   549,
+   551,
+   553,
+   554,
+   556,
+   558,
+   560,
+   562,
+   564,
+   566,
+   568,
+   570,
+   572,
+   574,
+   575,
+   577,
+   578,
+   580,
+   582,
+   583,
+   585,
+   586,
+   587,
+   587,
+   589,
+   590,
+   591,
+   591,
+   592,
+   593,
+   594,
+   595,
+   595,
+   596,
+   596,
+   597,
+   597,
+   598,
+   598,
+   599,
+   599,
+   600,
+   600,
+   601,
+   601,
+   601,
+   602,
+   602,
+   602,
+   603,
+   603,
+   603,
+   604,
+   604,
+   604
+  ],
+  "juzStart": [
+   1,
+   22,
+   42,
+   62,
+   82,
+   102,
+   121,
+   142,
+   162,
+   182,
+   201,
+   222,
+   242,
+   262,
+   282,
+   302,
+   322,
+   342,
+   362,
+   382,
+   402,
+   422,
+   442,
+   462,
+   482,
+   502,
+   522,
+   542,
+   562,
+   582
+  ],
+  "surahAr": [
+   "الفاتحة",
+   "البقرة",
+   "آل عمران",
+   "النساء",
+   "المائدة",
+   "الأنعام",
+   "الأعراف",
+   "الأنفال",
+   "التوبة",
+   "يونس",
+   "هود",
+   "يوسف",
+   "الرعد",
+   "إبراهيم",
+   "الحجر",
+   "النحل",
+   "الإسراء",
+   "الكهف",
+   "مريم",
+   "طه",
+   "الأنبياء",
+   "الحج",
+   "المؤمنون",
+   "النور",
+   "الفرقان",
+   "الشعراء",
+   "النمل",
+   "القصص",
+   "العنكبوت",
+   "الروم",
+   "لقمان",
+   "السجدة",
+   "الأحزاب",
+   "سبأ",
+   "فاطر",
+   "يس",
+   "الصافات",
+   "ص",
+   "الزمر",
+   "غافر",
+   "فصلت",
+   "الشورى",
+   "الزخرف",
+   "الدخان",
+   "الجاثية",
+   "الأحقاف",
+   "محمد",
+   "الفتح",
+   "الحجرات",
+   "ق",
+   "الذاريات",
+   "الطور",
+   "النجم",
+   "القمر",
+   "الرحمن",
+   "الواقعة",
+   "الحديد",
+   "المجادلة",
+   "الحشر",
+   "الممتحنة",
+   "الصف",
+   "الجمعة",
+   "المنافقون",
+   "التغابن",
+   "الطلاق",
+   "التحريم",
+   "الملك",
+   "القلم",
+   "الحاقة",
+   "المعارج",
+   "نوح",
+   "الجن",
+   "المزمل",
+   "المدثر",
+   "القيامة",
+   "الإنسان",
+   "المرسلات",
+   "النبأ",
+   "النازعات",
+   "عبس",
+   "التكوير",
+   "الانفطار",
+   "المطففين",
+   "الانشقاق",
+   "البروج",
+   "الطارق",
+   "الأعلى",
+   "الغاشية",
+   "الفجر",
+   "البلد",
+   "الشمس",
+   "الليل",
+   "الضحى",
+   "الشرح",
+   "التين",
+   "العلق",
+   "القدر",
+   "البينة",
+   "الزلزلة",
+   "العاديات",
+   "القارعة",
+   "التكاثر",
+   "العصر",
+   "الهمزة",
+   "الفيل",
+   "قريش",
+   "الماعون",
+   "الكوثر",
+   "الكافرون",
+   "النصر",
+   "المسد",
+   "الإخلاص",
+   "الفلق",
+   "الناس"
+  ],
+  "base": "https://cdn.jsdelivr.net/gh/GovarJabbar/Quran-PNG@master/",
+  "juzAr": [
+   "الأول",
+   "الثاني",
+   "الثالث",
+   "الرابع",
+   "الخامس",
+   "السادس",
+   "السابع",
+   "الثامن",
+   "التاسع",
+   "العاشر",
+   "الحادي عشر",
+   "الثاني عشر",
+   "الثالث عشر",
+   "الرابع عشر",
+   "الخامس عشر",
+   "السادس عشر",
+   "السابع عشر",
+   "الثامن عشر",
+   "التاسع عشر",
+   "العشرون",
+   "الحادي والعشرون",
+   "الثاني والعشرون",
+   "الثالث والعشرون",
+   "الرابع والعشرون",
+   "الخامس والعشرون",
+   "السادس والعشرون",
+   "السابع والعشرون",
+   "الثامن والعشرون",
+   "التاسع والعشرون",
+   "الثلاثون"
+  ]
+ }
+}

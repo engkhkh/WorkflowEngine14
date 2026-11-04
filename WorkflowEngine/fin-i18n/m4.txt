@@ -1,0 +1,96 @@
+mfg.bom.new || New bill of materials || قائمة مواد جديدة || Nouvelle nomenclature || Nueva lista de materiales || نیا بل آف میٹریلز || Neue Stückliste || Nuova distinta base
+mfg.bom.none || No bills of materials yet. || لا توجد قوائم مواد بعد. || Aucune nomenclature. || Aún no hay listas de materiales. || ابھی کوئی بل آف میٹریلز نہیں۔ || Noch keine Stücklisten. || Nessuna distinta base.
+mfg.cost.labor || Labor || العمالة || Main-d'œuvre || Mano de obra || محنت || Lohn || Manodopera
+mfg.cost.material || Material || المواد || Matières || Material || مواد || Material || Materiale
+mfg.cost.overhead || Overhead || التكاليف غير المباشرة || Frais généraux || Gastos generales || اوور ہیڈ || Gemeinkosten || Costi generali
+mfg.cost.standard || Standard || المعياري || Standard || Estándar || معیاری || Standard || Standard
+mfg.cost.standardCost || Standard cost || التكلفة المعيارية || Coût standard || Costo estándar || معیاری لاگت || Standardkosten || Costo standard
+mfg.cost.total || Total cost || إجمالي التكلفة || Coût total || Costo total || کل لاگت || Gesamtkosten || Costo totale
+mfg.cost.unit || Unit cost || تكلفة الوحدة || Coût unitaire || Costo unitario || فی یونٹ لاگت || Stückkosten || Costo unitario
+mfg.cost.variance || Variance || الانحراف || Écart || Desviación || فرق || Abweichung || Scostamento
+mfg.f.capacity || Capacity (h/day) || الطاقة (ساعة/يوم) || Capacité (h/jour) || Capacidad (h/día) || گنجائش (گھنٹے/دن) || Kapazität (Std./Tag) || Capacità (h/giorno)
+mfg.f.capacityHint || Hours available per day. || الساعات المتاحة يوميًا. || Heures disponibles par jour. || Horas disponibles por día. || روزانہ دستیاب گھنٹے۔ || Verfügbare Stunden pro Tag. || Ore disponibili al giorno.
+mfg.f.component || Component || المكوّن || Composant || Componente || جزو || Komponente || Componente
+mfg.f.components || Components || المكونات || Composants || Componentes || اجزاء || Komponenten || Componenti
+mfg.f.costHour || Cost per hour || التكلفة لكل ساعة || Coût horaire || Costo por hora || فی گھنٹہ لاگت || Kosten pro Stunde || Costo orario
+mfg.f.defects || Defects found || العيوب المكتشفة || Défauts constatés || Defectos encontrados || پائے گئے نقائص || Gefundene Fehler || Difetti riscontrati
+mfg.f.inspector || Inspector || المفتش || Inspecteur || Inspector || انسپکٹر || Prüfer || Ispettore
+mfg.f.machine || Machine || الآلة || Machine || Máquina || مشین || Maschine || Macchina
+mfg.f.mtCost || Cost || التكلفة || Coût || Costo || لاگت || Kosten || Costo
+mfg.f.mtType || Maintenance type || نوع الصيانة || Type d'entretien || Tipo de mantenimiento || دیکھ بھال کی قسم || Wartungsart || Tipo di manutenzione
+mfg.f.outQty || Output quantity || كمية الإنتاج || Quantité produite || Cantidad producida || پیداواری مقدار || Ausbringungsmenge || Quantità prodotta
+mfg.f.outQtyHint || Components below are for this quantity. || المكونات أدناه لهذه الكمية. || Les composants ci-dessous sont pour cette quantité. || Los componentes siguientes son para esta cantidad. || نیچے اجزاء اسی مقدار کے لیے ہیں۔ || Die Komponenten unten gelten für diese Menge. || I componenti sotto sono per questa quantità.
+mfg.f.parts || Parts || القطع || Pièces || Piezas || پرزے || Teile || Parti
+mfg.f.product || Product || المنتج || Produit || Producto || مصنوعات || Produkt || Prodotto
+mfg.f.purchaseCost || Purchase cost || تكلفة الشراء || Coût d'achat || Costo de compra || خرید لاگت || Anschaffungskosten || Costo d'acquisto
+mfg.f.purchased || Purchased on || تاريخ الشراء || Acheté le || Comprado el || خریداری کی تاریخ || Gekauft am || Acquistato il
+mfg.f.qcType || Inspection type || نوع الفحص || Type d'inspection || Tipo de inspección || معائنہ کی قسم || Prüfart || Tipo di ispezione
+mfg.f.qtyPer || Qty per || الكمية لكل || Qté par || Cant. por || فی مقدار || Menge je || Qtà per
+mfg.f.routing || Routing || مسار التصنيع || Gamme || Ruta de fabricación || روٹنگ || Arbeitsplan || Ciclo di lavorazione
+mfg.f.routingHint || Operations in order, with the work centre and hours for each. || العمليات بالترتيب مع مركز العمل والساعات لكل منها. || Opérations dans l'ordre, avec le poste de charge et les heures. || Operaciones en orden, con centro de trabajo y horas. || ترتیب وار آپریشنز، ہر ایک کا ورک سنٹر اور گھنٹے۔ || Arbeitsgänge der Reihe nach mit Arbeitsplatz und Stunden. || Operazioni in ordine, con centro di lavoro e ore.
+mfg.f.sample || Sample size || حجم العينة || Taille d'échantillon || Tamaño de muestra || نمونے کا سائز || Stichprobengröße || Dimensione campione
+mfg.f.scrapPct || Scrap % || الهالك % || Rebut % || Merma % || ضائع % || Ausschuss % || Scarto %
+mfg.f.serial || Serial number || الرقم التسلسلي || N° de série || N.º de serie || سیریل نمبر || Seriennummer || Numero di serie
+mfg.f.technician || Technician || الفني || Technicien || Técnico || ٹیکنیشن || Techniker || Tecnico
+mfg.f.workCenter || Work center || مركز العمل || Poste de charge || Centro de trabajo || ورک سنٹر || Arbeitsplatz || Centro di lavoro
+mfg.f.workOrder || Work order || أمر العمل || Ordre de fabrication || Orden de trabajo || ورک آرڈر || Fertigungsauftrag || Ordine di produzione
+mfg.kpi.costMonth || Production cost (month) || تكلفة الإنتاج (الشهر) || Coût de production (mois) || Costo de producción (mes) || پیداواری لاگت (ماہ) || Produktionskosten (Monat) || Costo di produzione (mese)
+mfg.kpi.inProgress || In progress || قيد التنفيذ || En cours || En curso || جاری || In Arbeit || In corso
+mfg.kpi.late || Late orders || أوامر متأخرة || Ordres en retard || Órdenes atrasadas || تاخیر سے آرڈرز || Verspätete Aufträge || Ordini in ritardo
+mfg.kpi.maintenanceOpen || Open maintenance || صيانة مفتوحة || Entretiens ouverts || Mantenimiento abierto || کھلی دیکھ بھال || Offene Wartung || Manutenzioni aperte
+mfg.kpi.open || Open orders || أوامر مفتوحة || Ordres ouverts || Órdenes abiertas || کھلے آرڈرز || Offene Aufträge || Ordini aperti
+mfg.kpi.passRate || Quality pass rate || نسبة نجاح الجودة || Taux de conformité || Tasa de aprobación || کوالٹی پاس ریٹ || Qualitätsquote || Tasso di conformità
+mfg.kpi.producedMonth || Produced (month) || المُنتَج (الشهر) || Produit (mois) || Producido (mes) || پیداوار (ماہ) || Produziert (Monat) || Prodotto (mese)
+mfg.kpi.scrapMonth || Scrap (month) || الهالك (الشهر) || Rebut (mois) || Merma (mes) || ضائع (ماہ) || Ausschuss (Monat) || Scarto (mese)
+mfg.kpi.variance || Cost variance || انحراف التكلفة || Écart de coût || Desviación de costo || لاگت کا فرق || Kostenabweichung || Scostamento di costo
+mfg.list.byProduct || Output by product || الإنتاج حسب المنتج || Production par produit || Producción por producto || مصنوعات کے لحاظ سے پیداوار || Ausbringung nach Produkt || Produzione per prodotto
+mfg.list.byStatus || Orders by status || الأوامر حسب الحالة || Ordres par statut || Órdenes por estado || حالت کے لحاظ سے آرڈرز || Aufträge nach Status || Ordini per stato
+mfg.machine.new || New machine || آلة جديدة || Nouvelle machine || Nueva máquina || نئی مشین || Neue Maschine || Nuova macchina
+mfg.machines || Machines || الآلات || Machines || Máquinas || مشینیں || Maschinen || Macchine
+mfg.mrp.action || Action || الإجراء || Action || Acción || کارروائی || Aktion || Azione
+mfg.mrp.createWo || Create work orders || إنشاء أوامر عمل || Créer des ordres de fabrication || Crear órdenes de trabajo || ورک آرڈرز بنائیں || Fertigungsaufträge erzeugen || Crea ordini di produzione
+mfg.mrp.created || {n} work order(s) created. || تم إنشاء {n} أمر عمل. || {n} ordre(s) de fabrication créé(s). || Se crearon {n} orden(es) de trabajo. || {n} ورک آرڈر بنائے گئے۔ || {n} Fertigungsauftrag/-aufträge erzeugt. || {n} ordine/i di produzione creato/i.
+mfg.mrp.demand || Demand || الطلب || Demande || Demanda || طلب || Bedarf || Domanda
+mfg.mrp.exportBuy || Export purchase list || تصدير قائمة الشراء || Exporter la liste d'achat || Exportar lista de compra || خریداری فہرست برآمد کریں || Einkaufsliste exportieren || Esporta lista acquisti
+mfg.mrp.gross || Gross requirement || الاحتياج الإجمالي || Besoin brut || Necesidad bruta || مجموعی ضرورت || Bruttobedarf || Fabbisogno lordo
+mfg.mrp.net || Net requirement || الاحتياج الصافي || Besoin net || Necesidad neta || خالص ضرورت || Nettobedarf || Fabbisogno netto
+mfg.mrp.none || Nothing to plan - enter demand above. || لا شيء للتخطيط - أدخل الطلب أعلاه. || Rien à planifier - saisissez la demande ci-dessus. || Nada que planificar: introduzca la demanda arriba. || منصوبہ بندی کے لیے کچھ نہیں - اوپر طلب درج کریں۔ || Nichts zu planen - Bedarf oben eingeben. || Niente da pianificare: inserisci la domanda sopra.
+mfg.mrp.onHand || On hand || المتوفر || En stock || Disponible || موجود || Bestand || Disponibile
+mfg.mrp.result || Material plan || خطة المواد || Plan matières || Plan de materiales || مواد کا منصوبہ || Materialplan || Piano materiali
+mfg.mrp.scheduled || Scheduled receipts || المستلمات المجدولة || Réceptions prévues || Recepciones programadas || طے شدہ وصولیاں || Geplante Zugänge || Ricevimenti programmati
+mfg.mrp.sub || Explodes the multi-level BOMs against stock and tells you what to make and what to buy. || يفكك قوائم المواد متعددة المستويات مقابل المخزون ويحدد ما يُصنَّع وما يُشترى. || Éclate les nomenclatures multi-niveaux sur le stock et indique quoi fabriquer et quoi acheter. || Explota las listas de materiales multinivel contra el stock e indica qué fabricar y qué comprar. || کثیر سطحی BOM کو اسٹاک کے مقابل توڑ کر بتاتا ہے کیا بنانا اور کیا خریدنا ہے۔ || Löst mehrstufige Stücklisten gegen den Bestand auf und zeigt, was zu fertigen und zu kaufen ist. || Esplode le distinte multilivello rispetto alle giacenze e indica cosa produrre e cosa acquistare.
+mfg.mrp.useStock || Use available stock || استخدام المخزون المتاح || Utiliser le stock disponible || Usar stock disponible || دستیاب اسٹاک استعمال کریں || Verfügbaren Bestand nutzen || Usa le giacenze disponibili
+mfg.mt.new || New maintenance task || مهمة صيانة جديدة || Nouvelle tâche d'entretien || Nueva tarea de mantenimiento || نیا دیکھ بھال کام || Neue Wartungsaufgabe || Nuova attività di manutenzione
+mfg.mt.none || No maintenance tasks. || لا توجد مهام صيانة. || Aucune tâche d'entretien. || Sin tareas de mantenimiento. || کوئی دیکھ بھال کام نہیں۔ || Keine Wartungsaufgaben. || Nessuna attività di manutenzione.
+mfg.nav.bom || Bills of materials || قوائم المواد || Nomenclatures || Listas de materiales || بل آف میٹریلز || Stücklisten || Distinte base
+mfg.nav.costing || Costing || التكاليف || Coûts de revient || Costeo || لاگت کاری || Kalkulation || Costi
+mfg.nav.maintenance || Maintenance || الصيانة || Entretien || Mantenimiento || دیکھ بھال || Wartung || Manutenzione
+mfg.nav.orders || Production orders || أوامر الإنتاج || Ordres de fabrication || Órdenes de producción || پیداواری آرڈرز || Fertigungsaufträge || Ordini di produzione
+mfg.nav.overview || Overview || نظرة عامة || Aperçu || Resumen || جائزہ || Übersicht || Panoramica
+mfg.nav.planning || Planning (MRP) || التخطيط (MRP) || Planification (MRP) || Planificación (MRP) || منصوبہ بندی (MRP) || Planung (MRP) || Pianificazione (MRP)
+mfg.nav.quality || Quality || الجودة || Qualité || Calidad || کوالٹی || Qualität || Qualità
+mfg.nav.setup || Setup || الإعداد || Configuration || Configuración || سیٹ اپ || Einrichtung || Impostazioni
+mfg.nav.workcenters || Work centers || مراكز العمل || Postes de charge || Centros de trabajo || ورک سنٹرز || Arbeitsplätze || Centri di lavoro
+mfg.qc.new || New inspection || فحص جديد || Nouvelle inspection || Nueva inspección || نیا معائنہ || Neue Prüfung || Nuova ispezione
+mfg.qc.none || No inspections yet. || لا توجد فحوصات بعد. || Aucune inspection. || Aún no hay inspecciones. || ابھی کوئی معائنہ نہیں۔ || Noch keine Prüfungen. || Nessuna ispezione.
+mfg.setup.negStock || Allow negative stock when issuing materials || السماح بمخزون سالب عند صرف المواد || Autoriser le stock négatif lors des sorties matières || Permitir stock negativo al consumir materiales || مواد جاری کرتے وقت منفی اسٹاک کی اجازت دیں || Negativen Bestand bei Materialentnahme erlauben || Consenti giacenza negativa nel prelievo materiali
+mfg.setup.overhead || Overhead % of material + labor || التكاليف غير المباشرة % من المواد والعمالة || Frais généraux % matières + main-d'œuvre || Gastos generales % de material + mano de obra || اوور ہیڈ % مواد + محنت کا || Gemeinkosten % von Material + Lohn || Costi generali % di materiale + manodopera
+mfg.setup.overheadHint || Added to every work order's cost. || تُضاف إلى تكلفة كل أمر عمل. || Ajouté au coût de chaque ordre. || Se suma al costo de cada orden. || ہر ورک آرڈر کی لاگت میں شامل ہوتا ہے۔ || Wird auf die Kosten jedes Auftrags aufgeschlagen. || Si aggiunge al costo di ogni ordine.
+mfg.sub || Bills of materials, production orders, planning and costing || قوائم المواد وأوامر الإنتاج والتخطيط والتكاليف || Nomenclatures, ordres de fabrication, planification et coûts || Listas de materiales, órdenes de producción, planificación y costeo || بل آف میٹریلز، پیداواری آرڈرز، منصوبہ بندی اور لاگت || Stücklisten, Fertigungsaufträge, Planung und Kalkulation || Distinte base, ordini di produzione, pianificazione e costi
+mfg.wc.new || New work center || مركز عمل جديد || Nouveau poste de charge || Nuevo centro de trabajo || نیا ورک سنٹر || Neuer Arbeitsplatz || Nuovo centro di lavoro
+mfg.wo.actual || Actual cost || التكلفة الفعلية || Coût réel || Costo real || اصل لاگت || Istkosten || Costo effettivo
+mfg.wo.cancel || Cancel || إلغاء || Annuler || Cancelar || منسوخ کریں || Stornieren || Annulla
+mfg.wo.complete || Complete || إكمال || Terminer || Completar || مکمل کریں || Abschließen || Completa
+mfg.wo.good || Good quantity || الكمية الجيدة || Quantité bonne || Cantidad buena || اچھی مقدار || Gutmenge || Quantità buona
+mfg.wo.have || On hand || المتوفر || En stock || Disponible || موجود || Bestand || Disponibile
+mfg.wo.hours || Hours worked || ساعات العمل || Heures travaillées || Horas trabajadas || کام کے گھنٹے || Geleistete Stunden || Ore lavorate
+mfg.wo.materials || Materials || المواد || Matières || Materiales || مواد || Material || Materiali
+mfg.wo.need || Required || المطلوب || Requis || Requerido || درکار || Benötigt || Richiesto
+mfg.wo.new || New production order || أمر إنتاج جديد || Nouvel ordre de fabrication || Nueva orden de producción || نیا پیداواری آرڈر || Neuer Fertigungsauftrag || Nuovo ordine di produzione
+mfg.wo.none || No production orders yet. || لا توجد أوامر إنتاج بعد. || Aucun ordre de fabrication. || Aún no hay órdenes de producción. || ابھی کوئی پیداواری آرڈر نہیں۔ || Noch keine Fertigungsaufträge. || Nessun ordine di produzione.
+mfg.wo.priority || Priority || الأولوية || Priorité || Prioridad || ترجیح || Priorität || Priorità
+mfg.wo.qty || Planned quantity || الكمية المخططة || Quantité prévue || Cantidad planificada || منصوبہ مقدار || Planmenge || Quantità pianificata
+mfg.wo.release || Release || إطلاق || Lancer || Liberar || جاری کریں || Freigeben || Rilascia
+mfg.wo.scrap || Scrap quantity || كمية الهالك || Quantité rebutée || Cantidad de merma || ضائع مقدار || Ausschussmenge || Quantità scarto
+mfg.wo.start || Start || بدء || Démarrer || Iniciar || شروع کریں || Starten || Avvia
+mfg.wo.variance || Variance || الانحراف || Écart || Desviación || فرق || Abweichung || Scostamento

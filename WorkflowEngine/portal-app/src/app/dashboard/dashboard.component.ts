@@ -82,7 +82,7 @@ import { LayoutService } from '../core/layout.service';
               <strong>{{ t.nodeName }}</strong>
               <small class="dim">{{ docFor(t.instanceId)?.number }} · {{ docFor(t.instanceId)?.party }}</small>
             </span>
-            <span class="q-amt">{{ docFor(t.instanceId)?.total | money:(docFor(t.instanceId)?.currency || 'SAR') }}</span>
+            <span class="q-amt">{{ docFor(t.instanceId)?.total | money:(docFor(t.instanceId)?.currency || '') }}</span>
           </a>
           <div class="empty" *ngIf="!data.tasks().length">{{ 'tasks.none' | translate }}</div>
         </div>

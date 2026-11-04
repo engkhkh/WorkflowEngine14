@@ -1,0 +1,26 @@
+bill.tab || Billing || الفواتير والاشتراك || Facturation || Facturación || بلنگ || Abrechnung || Fatturazione
+bill.users || Active users || المستخدمون النشطون || Utilisateurs actifs || Usuarios activos || فعال صارفین || Aktive Benutzer || Utenti attivi
+bill.rate || Price per user || السعر لكل مستخدم || Prix par utilisateur || Precio por usuario || فی صارف قیمت || Preis pro Benutzer || Prezzo per utente
+bill.perUserMonth || per month || شهرياً || par mois || al mes || ماہانہ || pro Monat || al mese
+bill.estimate || This month's invoice || فاتورة هذا الشهر || Facture du mois || Factura de este mes || اس مہینے کا بل || Rechnung dieses Monats || Fattura del mese
+bill.next || Next invoice || الفاتورة القادمة || Prochaine facture || Próxima factura || اگلا بل || Nächste Rechnung || Prossima fattura
+bill.balance || Balance due || الرصيد المستحق || Solde dû || Saldo pendiente || واجب الادا رقم || Offener Betrag || Saldo dovuto
+bill.open || unpaid || غير مسددة || impayée(s) || sin pagar || غیر ادا شدہ || offen || non pagate
+bill.pricing || {p} USD per user per month; when the workspace has more than {n} users, every user costs {v} USD. || {p} دولار لكل مستخدم شهرياً؛ وإذا زاد عدد المستخدمين عن {n} يصبح سعر كل مستخدم {v} دولار. || {p} USD par utilisateur et par mois ; au-delà de {n} utilisateurs, chaque utilisateur coûte {v} USD. || {p} USD por usuario al mes; con más de {n} usuarios, cada usuario cuesta {v} USD. || {p} امریکی ڈالر فی صارف ماہانہ؛ {n} سے زیادہ صارفین ہوں تو ہر صارف {v} ڈالر۔ || {p} USD pro Benutzer und Monat; bei mehr als {n} Benutzern kostet jeder Benutzer {v} USD. || {p} USD per utente al mese; oltre {n} utenti ogni utente costa {v} USD.
+bill.byBranch || Users by branch || المستخدمون حسب الفرع || Utilisateurs par succursale || Usuarios por sucursal || شاخ کے لحاظ سے صارفین || Benutzer je Filiale || Utenti per filiale
+bill.usersShort || Users || المستخدمون || Utilisateurs || Usuarios || صارفین || Benutzer || Utenti
+bill.invoices || Monthly invoices || الفواتير الشهرية || Factures mensuelles || Facturas mensuales || ماہانہ بل || Monatsrechnungen || Fatture mensili
+bill.number || Invoice || الفاتورة || Facture || Factura || بل || Rechnung || Fattura
+bill.period || Month || الشهر || Mois || Mes || مہینہ || Monat || Mese
+bill.total || Total || الإجمالي || Total || Total || کل || Gesamt || Totale
+bill.due || Due || الاستحقاق || Échéance || Vencimiento || آخری تاریخ || Fällig || Scadenza
+bill.paid || Paid || مسددة || Payée || Pagada || ادا شدہ || Bezahlt || Pagata
+bill.unpaid || Unpaid || غير مسددة || Impayée || Sin pagar || غیر ادا شدہ || Offen || Non pagata
+bill.overdue || Overdue || متأخرة || En retard || Vencida || تاخیر شدہ || Überfällig || Scaduta
+bill.pay || Pay now || ادفع الآن || Payer || Pagar || ابھی ادا کریں || Jetzt zahlen || Paga ora
+bill.print || Print invoice || طباعة الفاتورة || Imprimer la facture || Imprimir factura || بل پرنٹ کریں || Rechnung drucken || Stampa fattura
+bill.testMode || Test payment || دفع تجريبي || Paiement test || Pago de prueba || ٹیسٹ ادائیگی || Testzahlung || Pagamento di prova
+bill.testHint || No payment provider is connected yet, so this is a test: no card is charged. || لم يتم ربط مزود دفع بعد، لذلك هذه عملية تجريبية ولن يتم خصم أي مبلغ. || Aucun prestataire de paiement n'est connecté : ceci est un test, aucune carte n'est débitée. || Aún no hay proveedor de pago conectado: es una prueba y no se cobra ninguna tarjeta. || ابھی کوئی ادائیگی فراہم کنندہ منسلک نہیں، یہ ٹیسٹ ہے اور کارڈ سے رقم نہیں کٹے گی۔ || Noch kein Zahlungsanbieter verbunden: Dies ist ein Test, es wird keine Karte belastet. || Nessun fornitore di pagamento collegato: è un test, nessuna carta viene addebitata.
+bill.markPaid || Mark as paid (test) || تحديد كمسددة (تجريبي) || Marquer comme payée (test) || Marcar como pagada (prueba) || ادا شدہ نشان زد کریں (ٹیسٹ) || Als bezahlt markieren (Test) || Segna come pagata (test)
+bill.thanks || Payment received. Thank you! || تم استلام الدفعة. شكراً لك! || Paiement reçu. Merci ! || Pago recibido. ¡Gracias! || ادائیگی موصول ہوئی۔ شکریہ! || Zahlung erhalten. Vielen Dank! || Pagamento ricevuto. Grazie!
+bill.notPaid || The payment was not completed. You can try again. || لم تكتمل عملية الدفع. يمكنك المحاولة مرة أخرى. || Le paiement n'a pas abouti. Vous pouvez réessayer. || El pago no se completó. Puedes intentarlo de nuevo. || ادائیگی مکمل نہیں ہوئی۔ دوبارہ کوشش کریں۔ || Die Zahlung wurde nicht abgeschlossen. Sie können es erneut versuchen. || Il pagamento non è stato completato. Puoi riprovare.

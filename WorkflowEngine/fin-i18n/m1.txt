@@ -1,0 +1,80 @@
+ast.asset.new || New asset || أصل جديد || Nouvel actif || Nuevo activo || نیا اثاثہ || Neues Anlagegut || Nuovo cespite
+ast.f.asset || Asset || الأصل || Actif || Activo || اثاثہ || Anlagegut || Cespite
+ast.f.criticality || Criticality || الأهمية || Criticité || Criticidad || اہمیت || Kritikalität || Criticità
+ast.f.finAsset || Finance asset code || رمز الأصل المالي || Code actif comptable || Código de activo contable || مالیاتی اثاثہ کوڈ || Finanz-Anlagencode || Codice cespite contabile
+ast.f.finAssetHint || Optional link to the fixed asset in Finance (depreciation lives there). || ربط اختياري بالأصل الثابت في المالية (الإهلاك هناك). || Lien facultatif vers l'immobilisation en Finance (l'amortissement s'y trouve). || Vínculo opcional con el activo fijo en Finanzas (la depreciación está allí). || مالیات میں مقررہ اثاثے سے اختیاری ربط (فرسودگی وہیں ہے)۔ || Optionale Verknüpfung zum Anlagegut in der Finanzbuchhaltung (die Abschreibung liegt dort). || Collegamento facoltativo al cespite in Contabilità (l'ammortamento è lì).
+ast.f.lastService || Last service || آخر صيانة || Dernier entretien || Último servicio || آخری سروس || Letzte Wartung || Ultimo intervento
+ast.f.location || Location || الموقع || Emplacement || Ubicación || مقام || Standort || Ubicazione
+ast.f.tag || Asset tag || رقم الأصل || Numéro d'actif || Etiqueta de activo || اثاثہ ٹیگ || Anlagen-Nr. || Matricola cespite
+ast.kpi.assetValue || Asset value || قيمة الأصول || Valeur des actifs || Valor de activos || اثاثوں کی قدر || Anlagenwert || Valore cespiti
+ast.kpi.assets || Assets || الأصول || Actifs || Activos || اثاثے || Anlagen || Cespiti
+ast.kpi.down || Assets down || أصول متعطلة || Actifs en panne || Activos averiados || خراب اثاثے || Ausgefallene Anlagen || Cespiti fermi
+ast.kpi.dueMaintenance || Maintenance due || صيانة مستحقة || Entretien dû || Mantenimiento pendiente || واجب الادا دیکھ بھال || Fällige Wartung || Manutenzione scaduta
+ast.kpi.maintCostMonth || Maintenance cost (month) || تكلفة الصيانة (الشهر) || Coût d'entretien (mois) || Costo de mantenimiento (mes) || دیکھ بھال لاگت (ماہ) || Wartungskosten (Monat) || Costo manutenzione (mese)
+ast.kpi.openWo || Open work orders || أوامر عمل مفتوحة || OT ouverts || Órdenes abiertas || کھلے ورک آرڈر || Offene Arbeitsaufträge || Ordini di lavoro aperti
+ast.meter.new || New meter reading || قراءة عداد جديدة || Nouveau relevé || Nueva lectura || نئی ریڈنگ || Neue Zählerablesung || Nuova lettura contatore
+ast.meter.type || Meter || العداد || Compteur || Contador || میٹر || Zähler || Contatore
+ast.meter.value || Reading || القراءة || Relevé || Lectura || ریڈنگ || Stand || Lettura
+ast.nav.assets || Assets || الأصول || Actifs || Activos || اثاثے || Anlagen || Cespiti
+ast.nav.meters || Meters || العدادات || Compteurs || Contadores || میٹرز || Zähler || Contatori
+ast.nav.orders || Work orders || أوامر العمل || Ordres de travail || Órdenes de trabajo || ورک آرڈرز || Arbeitsaufträge || Ordini di lavoro
+ast.nav.overview || Overview || نظرة عامة || Aperçu || Resumen || جائزہ || Übersicht || Panoramica
+ast.nav.plans || Maintenance plans || خطط الصيانة || Plans d'entretien || Planes de mantenimiento || دیکھ بھال کے منصوبے || Wartungspläne || Piani di manutenzione
+ast.nav.setup || Setup || الإعداد || Configuration || Configuración || سیٹ اپ || Einrichtung || Impostazioni
+ast.plan.frequency || Every (days) || كل (أيام) || Tous les (jours) || Cada (días) || ہر (دن) || Alle (Tage) || Ogni (giorni)
+ast.plan.generate || Generate work order || إنشاء أمر عمل || Générer un OT || Generar orden || ورک آرڈر بنائیں || Arbeitsauftrag erzeugen || Genera ordine di lavoro
+ast.plan.new || New maintenance plan || خطة صيانة جديدة || Nouveau plan d'entretien || Nuevo plan de mantenimiento || نیا دیکھ بھال منصوبہ || Neuer Wartungsplan || Nuovo piano di manutenzione
+ast.plan.nextDue || Next due || الاستحقاق القادم || Prochaine échéance || Próximo vencimiento || اگلی تاریخ || Nächste Fälligkeit || Prossima scadenza
+ast.plan.task || Task instructions || تعليمات المهمة || Instructions || Instrucciones || ہدایات || Arbeitsanweisung || Istruzioni
+ast.setup.categories || Asset categories (comma separated) || فئات الأصول (مفصولة بفواصل) || Catégories d'actifs (séparées par des virgules) || Categorías de activos (separadas por comas) || اثاثہ زمرے (کوما سے الگ) || Anlagenkategorien (kommagetrennt) || Categorie cespiti (separate da virgola)
+ast.sub || Assets, preventive maintenance and work orders || الأصول والصيانة الوقائية وأوامر العمل || Actifs, entretien préventif et ordres de travail || Activos, mantenimiento preventivo y órdenes de trabajo || اثاثے، احتیاطی دیکھ بھال اور ورک آرڈرز || Anlagen, vorbeugende Wartung und Arbeitsaufträge || Cespiti, manutenzione preventiva e ordini di lavoro
+ast.wo.new || New work order || أمر عمل جديد || Nouvel OT || Nueva orden de trabajo || نیا ورک آرڈر || Neuer Arbeitsauftrag || Nuovo ordine di lavoro
+ast.list.byCategory || Assets by category || الأصول حسب الفئة || Actifs par catégorie || Activos por categoría || زمرے کے لحاظ سے اثاثے || Anlagen nach Kategorie || Cespiti per categoria
+ast.list.woByStatus || Work orders by status || أوامر العمل حسب الحالة || OT par statut || Órdenes por estado || حالت کے لحاظ سے ورک آرڈر || Arbeitsaufträge nach Status || Ordini di lavoro per stato
+bi.kpi.reports || Saved reports || تقارير محفوظة || Rapports enregistrés || Informes guardados || محفوظ رپورٹیں || Gespeicherte Berichte || Report salvati
+bi.nav.insights || AI insights || رؤى ذكية || Analyses IA || Análisis IA || AI بصیرتیں || KI-Einblicke || Analisi IA
+bi.nav.overview || Overview || نظرة عامة || Aperçu || Resumen || جائزہ || Übersicht || Panoramica
+bi.nav.reports || Reports || التقارير || Rapports || Informes || رپورٹیں || Berichte || Report
+bi.noInsights || Nothing needs your attention right now. || لا شيء يحتاج انتباهك الآن. || Rien ne demande votre attention pour le moment. || Nada requiere su atención ahora. || اس وقت کسی چیز پر توجہ درکار نہیں۔ || Im Moment erfordert nichts Ihre Aufmerksamkeit. || Al momento nulla richiede la tua attenzione.
+bi.open || Open || فتح || Ouvrir || Abrir || کھولیں || Öffnen || Apri
+bi.run || Run report || تشغيل التقرير || Exécuter || Ejecutar informe || رپورٹ چلائیں || Bericht ausführen || Esegui report
+bi.sub || Cross-module analytics and insights || تحليلات ورؤى عبر الوحدات || Analyses et indicateurs inter-modules || Analítica e indicadores entre módulos || ماڈیولز بھر کا تجزیہ اور بصیرت || Modulübergreifende Analysen und Einblicke || Analisi e insight tra i moduli
+bi.ins.ast.down || {n} asset(s) are down. || {n} أصل متعطل. || {n} actif(s) en panne. || {n} activo(s) averiado(s). || {n} اثاثے خراب ہیں۔ || {n} Anlage(n) ausgefallen. || {n} cespite/i fermo/i.
+bi.ins.ast.dueMaintenance || {n} maintenance plan(s) are due. || {n} خطة صيانة مستحقة. || {n} plan(s) d'entretien à échéance. || {n} plan(es) de mantenimiento vencido(s). || {n} دیکھ بھال منصوبے واجب الادا ہیں۔ || {n} Wartungsplan/-pläne fällig. || {n} piano/i di manutenzione scaduto/i.
+bi.ins.crm.activitiesDue || {n} CRM activities are overdue. || {n} أنشطة CRM متأخرة. || {n} activités CRM en retard. || {n} actividades CRM vencidas. || {n} CRM سرگرمیاں تاخیر کا شکار ہیں۔ || {n} CRM-Aktivitäten überfällig. || {n} attività CRM in ritardo.
+bi.ins.crm.lowWin || Win rate is only {n}% - review qualification. || معدل الفوز {n}% فقط - راجع التأهيل. || Taux de réussite de {n}% seulement - revoir la qualification. || La tasa de éxito es solo {n}%: revise la calificación. || جیتنے کی شرح صرف {n}% ہے - اہلیت کا جائزہ لیں۔ || Gewinnquote nur {n}% - Qualifizierung prüfen. || Tasso di vittoria solo {n}%: rivedere la qualificazione.
+bi.ins.crm.newLeads || {n} new lead(s) wait for follow-up. || {n} عميل محتمل جديد بانتظار المتابعة. || {n} nouveau(x) prospect(s) à suivre. || {n} lead(s) nuevo(s) por atender. || {n} نئے لیڈز فالو اپ کے منتظر ہیں۔ || {n} neue(r) Lead(s) warten auf Nachfassen. || {n} nuovo/i lead da seguire.
+bi.ins.crm.stale || {n} open opportunity(ies) untouched for 30+ days. || {n} فرصة مفتوحة بلا نشاط منذ 30 يومًا. || {n} opportunité(s) ouverte(s) sans activité depuis 30 jours. || {n} oportunidad(es) abierta(s) sin movimiento en 30+ días. || {n} کھلے مواقع 30+ دن سے بغیر سرگرمی ہیں۔ || {n} offene Chance(n) seit über 30 Tagen unberührt. || {n} opportunità aperta/e ferma/e da oltre 30 giorni.
+bi.ins.int.failures || {n} webhook deliveries failed this week. || فشل {n} من إرسالات الويب هوك هذا الأسبوع. || {n} envois de webhook ont échoué cette semaine. || {n} envíos de webhook fallaron esta semana. || اس ہفتے {n} ویب ہک ڈیلیوریاں ناکام ہوئیں۔ || {n} Webhook-Zustellungen diese Woche fehlgeschlagen. || {n} invii webhook falliti questa settimana.
+bi.ins.mfg.late || {n} work order(s) are past their due date. || {n} أمر عمل تجاوز موعده. || {n} OT en retard. || {n} orden(es) de trabajo vencida(s). || {n} ورک آرڈر مقررہ تاریخ سے گزر چکے ہیں۔ || {n} Arbeitsauftrag/-aufträge überfällig. || {n} ordine/i di lavoro in ritardo.
+bi.ins.mfg.maintenance || {n} machine maintenance task(s) are open. || {n} مهمة صيانة آلات مفتوحة. || {n} tâche(s) d'entretien machine ouverte(s). || {n} tarea(s) de mantenimiento de máquinas abierta(s). || {n} مشین مینٹیننس کام کھلے ہیں۔ || {n} Maschinenwartung(en) offen. || {n} attività di manutenzione macchine aperta/e.
+bi.ins.mfg.quality || Quality pass rate is {n}% - below target. || نسبة نجاح الجودة {n}% - أقل من الهدف. || Taux de conformité qualité de {n}% - sous l'objectif. || La tasa de aprobación de calidad es {n}%: bajo el objetivo. || کوالٹی پاس ریٹ {n}% ہے - ہدف سے کم۔ || Qualitäts-Bestehensquote {n}% - unter Ziel. || Tasso di superamento qualità {n}%: sotto l'obiettivo.
+bi.ins.mfg.variance || Production cost is {n} over standard. || تكلفة الإنتاج أعلى من المعيار بمقدار {n}. || Le coût de production dépasse le standard de {n}. || El costo de producción supera el estándar en {n}. || پیداواری لاگت معیار سے {n} زیادہ ہے۔ || Produktionskosten liegen {n} über dem Standard. || Il costo di produzione supera lo standard di {n}.
+bi.ins.pay.openRuns || {n} payroll run(s) are not yet posted. || {n} مسير رواتب لم يُرحَّل بعد. || {n} paie(s) pas encore comptabilisée(s). || {n} nómina(s) sin contabilizar. || {n} پے رول رنز ابھی پوسٹ نہیں ہوئے۔ || {n} Lohnlauf/-läufe noch nicht gebucht. || {n} elaborazione/i paghe non ancora registrata/e.
+bi.ins.prj.negativeMargin || Project margin is negative ({n}). || هامش المشاريع سالب ({n}). || La marge des projets est négative ({n}). || El margen de proyectos es negativo ({n}). || پراجیکٹ مارجن منفی ہے ({n})۔ || Projektmarge ist negativ ({n}). || Il margine dei progetti è negativo ({n}).
+bi.ins.prj.overBudget || {n} project(s) are over budget. || {n} مشروع تجاوز الميزانية. || {n} projet(s) en dépassement de budget. || {n} proyecto(s) sobre presupuesto. || {n} پراجیکٹ بجٹ سے تجاوز کر گئے۔ || {n} Projekt(e) über Budget. || {n} progetto/i oltre il budget.
+bi.ins.prj.pendingTs || {n} timesheet(s) wait for approval. || {n} سجل دوام بانتظار الاعتماد. || {n} feuille(s) de temps en attente d'approbation. || {n} hoja(s) de horas pendiente(s) de aprobación. || {n} ٹائم شیٹس منظوری کی منتظر ہیں۔ || {n} Zeiterfassung(en) warten auf Genehmigung. || {n} foglio/i ore in attesa di approvazione.
+bi.ins.proc.contracts || {n} supplier contract(s) expire soon. || {n} عقد مورد ينتهي قريبًا. || {n} contrat(s) fournisseur arrivent à échéance. || {n} contrato(s) de proveedor vence(n) pronto. || {n} سپلائر معاہدے جلد ختم ہو رہے ہیں۔ || {n} Lieferantenvertrag/-verträge laufen bald aus. || {n} contratto/i fornitore in scadenza.
+bi.ins.proc.latePo || {n} purchase order(s) are late. || {n} أمر شراء متأخر. || {n} commande(s) d'achat en retard. || {n} orden(es) de compra atrasada(s). || {n} خریداری آرڈر تاخیر کا شکار ہیں۔ || {n} Bestellung(en) verspätet. || {n} ordine/i d'acquisto in ritardo.
+bi.ins.proc.pendingReq || {n} purchase requisition(s) await approval. || {n} طلب شراء بانتظار الاعتماد. || {n} demande(s) d'achat en attente. || {n} solicitud(es) de compra pendiente(s). || {n} خریداری درخواستیں منظوری کی منتظر ہیں۔ || {n} Bestellanforderung(en) warten auf Freigabe. || {n} richiesta/e d'acquisto in attesa.
+bi.ins.scm.delayed || {n} shipment(s) are delayed. || {n} شحنة متأخرة. || {n} expédition(s) en retard. || {n} envío(s) retrasado(s). || {n} شپمنٹس تاخیر کا شکار ہیں۔ || {n} Lieferung(en) verspätet. || {n} spedizione/i in ritardo.
+bi.ins.scm.onTime || On-time delivery is {n}% - below target. || التسليم في الموعد {n}% - أقل من الهدف. || Livraison à temps : {n}% - sous l'objectif. || Entrega a tiempo {n}%: bajo el objetivo. || بروقت ڈیلیوری {n}% ہے - ہدف سے کم۔ || Termintreue {n}% - unter Ziel. || Consegne puntuali {n}%: sotto l'obiettivo.
+bi.ins.wh.lowStock || {n} item(s) are at or below reorder level. || {n} صنف عند حد إعادة الطلب أو أقل. || {n} article(s) au niveau de réapprovisionnement ou en dessous. || {n} artículo(s) en o bajo el punto de pedido. || {n} اشیاء دوبارہ آرڈر کی سطح پر یا اس سے کم ہیں۔ || {n} Artikel auf/unter Meldebestand. || {n} articolo/i a o sotto il punto di riordino.
+bi.ins.wh.openCounts || {n} stock count(s) are waiting to be posted. || {n} جرد بانتظار الترحيل. || {n} inventaire(s) à comptabiliser. || {n} conteo(s) de inventario por contabilizar. || {n} اسٹاک گنتیاں پوسٹ ہونے کی منتظر ہیں۔ || {n} Inventur(en) warten auf Buchung. || {n} inventario/i da registrare.
+bpm.ageH || Age (h) || العمر (ساعة) || Âge (h) || Antigüedad (h) || عمر (گھنٹے) || Alter (Std.) || Età (h)
+bpm.breached || SLA breached || تجاوز اتفاقية الخدمة || SLA dépassé || SLA incumplido || SLA کی خلاف ورزی || SLA verletzt || SLA violato
+bpm.completed || Completed || مكتملة || Terminés || Completados || مکمل || Abgeschlossen || Completati
+bpm.kpi.avgSla || Average SLA (h) || متوسط اتفاقية الخدمة (ساعة) || SLA moyen (h) || SLA promedio (h) || اوسط SLA (گھنٹے) || Ø SLA (Std.) || SLA medio (h)
+bpm.kpi.processes || Active processes || العمليات النشطة || Processus actifs || Procesos activos || فعال عمل || Aktive Prozesse || Processi attivi
+bpm.list.byOwner || Processes by owner || العمليات حسب المالك || Processus par responsable || Procesos por responsable || مالک کے لحاظ سے عمل || Prozesse nach Verantwortlichem || Processi per responsabile
+bpm.nav.monitor || Monitor || المراقبة || Suivi || Monitor || نگرانی || Überwachung || Monitoraggio
+bpm.nav.overview || Overview || نظرة عامة || Aperçu || Resumen || جائزہ || Übersicht || Panoramica
+bpm.nav.processes || Processes || العمليات || Processus || Procesos || عمل || Prozesse || Processi
+bpm.proc.new || New process || عملية جديدة || Nouveau processus || Nuevo proceso || نیا عمل || Neuer Prozess || Nuovo processo
+bpm.running || Running || قيد التنفيذ || En cours || En ejecución || جاری || Laufend || In corso
+bpm.sla || SLA (hours) || اتفاقية الخدمة (ساعات) || SLA (heures) || SLA (horas) || SLA (گھنٹے) || SLA (Stunden) || SLA (ore)
+bpm.started || Started || بدأ || Démarré || Iniciado || شروع || Gestartet || Avviato
+bpm.startedBy || Started by || بدأه || Démarré par || Iniciado por || شروع کنندہ || Gestartet von || Avviato da
+bpm.sub || Process register and workflow monitoring || سجل العمليات ومراقبة سير العمل || Registre des processus et suivi des workflows || Registro de procesos y monitoreo de flujos || عمل رجسٹر اور ورک فلو نگرانی || Prozessregister und Workflow-Überwachung || Registro processi e monitoraggio dei workflow
+bpm.terminated || Terminated || منتهية || Interrompus || Terminados || ختم شدہ || Beendet || Terminati
+bpm.workflow || Linked workflow || سير العمل المرتبط || Workflow lié || Flujo vinculado || منسلک ورک فلو || Verknüpfter Workflow || Workflow collegato

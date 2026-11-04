@@ -1,0 +1,479 @@
+{
+ "reports": [
+  {
+   "id": "mrp",
+   "en": "Material planning (MRP)",
+   "ar": "تخطيط المواد (MRP)",
+   "view": [
+    "mfg.view"
+   ],
+   "cols": [
+    {
+     "en": "Product",
+     "ar": "المنتج",
+     "num": 0
+    },
+    {
+     "en": "Gross",
+     "ar": "الإجمالي",
+     "num": 1
+    },
+    {
+     "en": "On hand",
+     "ar": "المتوفر",
+     "num": 1
+    },
+    {
+     "en": "Scheduled",
+     "ar": "المجدول",
+     "num": 1
+    },
+    {
+     "en": "Net need",
+     "ar": "الصافي",
+     "num": 1
+    },
+    {
+     "en": "Action",
+     "ar": "الإجراء",
+     "num": 0
+    }
+   ]
+  },
+  {
+   "id": "cost",
+   "en": "Standard cost",
+   "ar": "التكلفة المعيارية",
+   "view": [
+    "mfg.view"
+   ],
+   "cols": [
+    {
+     "en": "Product",
+     "ar": "المنتج",
+     "num": 0
+    },
+    {
+     "en": "Material",
+     "ar": "المواد",
+     "num": 1
+    },
+    {
+     "en": "Labor",
+     "ar": "العمالة",
+     "num": 1
+    },
+    {
+     "en": "Overhead",
+     "ar": "المصاريف غير المباشرة",
+     "num": 1
+    },
+    {
+     "en": "Total",
+     "ar": "الإجمالي",
+     "num": 1
+    },
+    {
+     "en": "Per unit",
+     "ar": "للوحدة",
+     "num": 1
+    }
+   ]
+  },
+  {
+   "id": "variance",
+   "en": "Work order variance",
+   "ar": "انحراف أوامر التصنيع",
+   "view": [
+    "mfg.view"
+   ],
+   "cols": [
+    {
+     "en": "Code",
+     "ar": "الرمز",
+     "num": 0
+    },
+    {
+     "en": "Product",
+     "ar": "المنتج",
+     "num": 0
+    },
+    {
+     "en": "Good qty",
+     "ar": "الكمية الجيدة",
+     "num": 1
+    },
+    {
+     "en": "Material",
+     "ar": "المواد",
+     "num": 1
+    },
+    {
+     "en": "Labor",
+     "ar": "العمالة",
+     "num": 1
+    },
+    {
+     "en": "Overhead",
+     "ar": "المصاريف غير المباشرة",
+     "num": 1
+    },
+    {
+     "en": "Actual",
+     "ar": "الفعلي",
+     "num": 1
+    },
+    {
+     "en": "Standard",
+     "ar": "المعياري",
+     "num": 1
+    },
+    {
+     "en": "Variance",
+     "ar": "الانحراف",
+     "num": 1
+    }
+   ]
+  },
+  {
+   "id": "projbill",
+   "en": "Project billing",
+   "ar": "فوترة المشاريع",
+   "view": [
+    "prj.view"
+   ],
+   "cols": [
+    {
+     "en": "Project",
+     "ar": "المشروع",
+     "num": 0
+    },
+    {
+     "en": "Customer",
+     "ar": "العميل",
+     "num": 0
+    },
+    {
+     "en": "Billing",
+     "ar": "الفوترة",
+     "num": 0
+    },
+    {
+     "en": "Ready to bill",
+     "ar": "جاهز للفوترة",
+     "num": 1
+    },
+    {
+     "en": "Billed",
+     "ar": "تمت فوترته",
+     "num": 1
+    }
+   ]
+  },
+  {
+   "id": "vat",
+   "en": "VAT return",
+   "ar": "إقرار ضريبة القيمة المضافة",
+   "view": [
+    "gov.vat.view",
+    "finance.reports.view"
+   ],
+   "cols": [
+    {
+     "en": "Side",
+     "ar": "الجانب",
+     "num": 0
+    },
+    {
+     "en": "Category / code",
+     "ar": "الفئة / الرمز",
+     "num": 0
+    },
+    {
+     "en": "Count",
+     "ar": "العدد",
+     "num": 1
+    },
+    {
+     "en": "Net",
+     "ar": "الصافي",
+     "num": 1
+    },
+    {
+     "en": "VAT",
+     "ar": "الضريبة",
+     "num": 1
+    }
+   ]
+  },
+  {
+   "id": "zatca",
+   "en": "ZATCA seller profile",
+   "ar": "ملف البائع (هيئة الزكاة)",
+   "view": [
+    "gov.zatca.manage",
+    "finance.setup",
+    "finance.view"
+   ],
+   "cols": []
+  }
+ ],
+ "labels": {
+  "title": [
+   "Operations",
+   "التشغيل"
+  ],
+  "refresh": [
+   "Refresh",
+   "تحديث"
+  ],
+  "product": [
+   "Product",
+   "المنتج"
+  ],
+  "qty": [
+   "Quantity",
+   "الكمية"
+  ],
+  "due": [
+   "Due",
+   "الاستحقاق"
+  ],
+  "add": [
+   "Add",
+   "إضافة"
+  ],
+  "remove": [
+   "Remove selected",
+   "حذف المحدد"
+  ],
+  "useStock": [
+   "Use stock on hand and open work orders",
+   "احتساب المخزون وأوامر التصنيع المفتوحة"
+  ],
+  "make": [
+   "Make",
+   "تصنيع"
+  ],
+  "buy": [
+   "Buy",
+   "شراء"
+  ],
+  "ok": [
+   "Covered",
+   "مغطى"
+  ],
+  "createWo": [
+   "Create {0} work orders",
+   "إنشاء {0} أمر تصنيع"
+  ],
+  "created": [
+   "{0} work orders created",
+   "تم إنشاء {0} أمر تصنيع"
+  ],
+  "exportBuy": [
+   "Export purchase list",
+   "تصدير قائمة الشراء"
+  ],
+  "mrpHint": [
+   "Enter what must be produced; the plan explodes every bill of materials and nets it against stock.",
+   "أدخل ما يجب إنتاجه؛ تفكك الخطة كل قوائم المواد وتخصم المخزون."
+  ],
+  "overheadPct": [
+   "Overhead % of labor",
+   "نسبة المصاريف غير المباشرة من العمالة"
+  ],
+  "createInvoice": [
+   "Create invoice",
+   "إنشاء فاتورة"
+  ],
+  "date": [
+   "Invoice date",
+   "تاريخ الفاتورة"
+  ],
+  "terms": [
+   "Payment terms (days)",
+   "مدة السداد (أيام)"
+  ],
+  "tax": [
+   "Tax %",
+   "نسبة الضريبة"
+  ],
+  "billDone": [
+   "Invoice {0} drafted for {1}",
+   "تم إعداد الفاتورة {0} بمبلغ {1}"
+  ],
+  "noReady": [
+   "Nothing is ready to bill, or the project has no customer.",
+   "لا يوجد ما يمكن فوترته أو لا يوجد عميل للمشروع."
+  ],
+  "bm.tm": [
+   "Time and material",
+   "وقت ومواد"
+  ],
+  "bm.fixed": [
+   "Fixed price",
+   "سعر ثابت"
+  ],
+  "bm.milestone": [
+   "Milestones",
+   "مراحل"
+  ],
+  "from": [
+   "From",
+   "من"
+  ],
+  "to": [
+   "To",
+   "إلى"
+  ],
+  "run": [
+   "Run",
+   "تشغيل"
+  ],
+  "csv": [
+   "Export CSV",
+   "تصدير CSV"
+  ],
+  "out": [
+   "Output VAT (sales)",
+   "ضريبة المخرجات (المبيعات)"
+  ],
+  "in": [
+   "Input VAT (purchases)",
+   "ضريبة المدخلات (المشتريات)"
+  ],
+  "netDue": [
+   "Net VAT due",
+   "صافي الضريبة المستحقة"
+  ],
+  "netRefund": [
+   "VAT refund",
+   "استرداد الضريبة"
+  ],
+  "einv": [
+   "E-invoiced",
+   "فواتير إلكترونية"
+  ],
+  "notEinv": [
+   "{0} sales invoices were not e-invoiced.",
+   "{0} فاتورة مبيعات لم تصدر إلكترونيا."
+  ],
+  "missingCode": [
+   "{0} lines have no tax code.",
+   "{0} سطر بدون رمز ضريبة."
+  ],
+  "sales": [
+   "Sales",
+   "المبيعات"
+  ],
+  "purchases": [
+   "Purchases",
+   "المشتريات"
+  ],
+  "total": [
+   "Total",
+   "الإجمالي"
+  ],
+  "byCode": [
+   "By tax code",
+   "حسب رمز الضريبة"
+  ],
+  "save": [
+   "Save",
+   "حفظ"
+  ],
+  "saved": [
+   "Saved",
+   "تم الحفظ"
+  ],
+  "empty": [
+   "Nothing to show.",
+   "لا توجد بيانات."
+  ],
+  "noperm": [
+   "No operations reports are available for your privileges.",
+   "لا توجد تقارير متاحة لصلاحياتك."
+  ],
+  "profileHint": [
+   "The seller details printed on e-invoices.",
+   "بيانات البائع التي تظهر في الفواتير الإلكترونية."
+  ],
+  "vatLen": [
+   "VAT number must be 15 digits.",
+   "يجب أن يتكون الرقم الضريبي من 15 رقما."
+  ],
+  "sellerReq": [
+   "Seller name is required.",
+   "اسم البائع مطلوب."
+  ],
+  "canManage": [
+   "Needs mfg.orders.manage",
+   "يتطلب صلاحية إدارة أوامر التصنيع"
+  ]
+ },
+ "zatca": [
+  {
+   "key": "sellerName",
+   "en": "Seller name",
+   "ar": "اسم البائع",
+   "max": 0
+  },
+  {
+   "key": "sellerNameAr",
+   "en": "Seller name (Arabic)",
+   "ar": "اسم البائع (عربي)",
+   "max": 0
+  },
+  {
+   "key": "vatNo",
+   "en": "VAT number",
+   "ar": "الرقم الضريبي",
+   "max": 15
+  },
+  {
+   "key": "crNo",
+   "en": "Commercial registration",
+   "ar": "السجل التجاري",
+   "max": 0
+  },
+  {
+   "key": "street",
+   "en": "Street",
+   "ar": "الشارع",
+   "max": 0
+  },
+  {
+   "key": "building",
+   "en": "Building",
+   "ar": "المبنى",
+   "max": 0
+  },
+  {
+   "key": "district",
+   "en": "District",
+   "ar": "الحي",
+   "max": 0
+  },
+  {
+   "key": "city",
+   "en": "City",
+   "ar": "المدينة",
+   "max": 0
+  },
+  {
+   "key": "postalCode",
+   "en": "Postal code",
+   "ar": "الرمز البريدي",
+   "max": 5
+  },
+  {
+   "key": "country",
+   "en": "Country (2 letters)",
+   "ar": "الدولة (حرفان)",
+   "max": 2
+  }
+ ],
+ "defaultOverheadPct": 15,
+ "defaultTax": 15
+}

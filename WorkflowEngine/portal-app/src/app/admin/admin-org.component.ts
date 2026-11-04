@@ -1,3 +1,4 @@
+import { defaultCurrency } from '../core/region';
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -20,14 +21,14 @@ import { Branch, Company, CURRENCIES } from '../core/erp.config';
 
     <div class="bar">
       <h3>{{ 'org.companies' | translate }}</h3><span class="spacer"></span>
-      <button class="primary" (click)="newCompany()"><app-icon name="plus" [size]="15"></app-icon>{{ 'org.addCompany' | translate }}</button>
+      <button class="primary" *ngIf="!org.companyLimitReached()" (click)="newCompany()"><app-icon name="plus" [size]="15"></app-icon>{{ 'org.addCompany' | translate }}</button>
     </div>
 
     <div class="co card" *ngFor="let c of org.companies()">
       <div class="card-head">
         <span class="ic"><app-icon name="building" [size]="17"></app-icon></span>
         <h3>{{ i18n.nm(c) }} <span class="mono dim">{{ c.code }}</span>
-          <span class="sub">{{ c.currency }}<span *ngIf="c.taxNo"> · {{ c.taxNo }}</span> · {{ 'org.branchCount' | translate: { n: org.branchesOf(c.code).length } }}</span></h3>
+          <span class="sub">{{ c.currency }}<span *ngIf="c.country"> · {{ c.country }}</span><span *ngIf="c.taxNo"> · {{ c.taxNo }}</span> · {{ 'org.branchCount' | translate: { n: org.branchesOf(c.code).length } }}</span></h3>
         <button class="ghost sm" (click)="editCompany(c)" [title]="'common.edit' | translate"><app-icon name="edit" [size]="15"></app-icon></button>
         <button class="ghost sm danger-i" (click)="askDeleteCompany(c)" [title]="'common.delete' | translate" [disabled]="org.companies().length < 2"><app-icon name="trash" [size]="15"></app-icon></button>
       </div>
@@ -57,7 +58,8 @@ import { Branch, Company, CURRENCIES } from '../core/erp.config';
             <select [(ngModel)]="co.currency"><option *ngFor="let c of currencies" [value]="c">{{ c }}</option></select></div>
           <div class="full"><label class="lbl">{{ 'org.name' | translate }}</label><input [(ngModel)]="co.name" /></div>
           <div class="full"><label class="lbl">{{ 'org.nameAr' | translate }}</label><input [(ngModel)]="co.nameAr" dir="rtl" /></div>
-          <div class="full"><label class="lbl">{{ 'org.taxNo' | translate }}</label><input [(ngModel)]="co.taxNo" /></div>
+          <div><label class="lbl">{{ 'setup.country' | translate }}</label><input [(ngModel)]="co.country" /></div>
+          <div><label class="lbl">{{ 'org.taxNo' | translate }}</label><input [(ngModel)]="co.taxNo" /></div>
         </div><p class="flash bad" *ngIf="formError">{{ formError }}</p></div>
         <div class="modal-foot"><button (click)="co = null">{{ 'common.cancel' | translate }}</button>
           <button class="primary" (click)="saveCompany()" [disabled]="saving">{{ 'admin.save' | translate }}</button></div>
@@ -111,7 +113,7 @@ import { Branch, Company, CURRENCIES } from '../core/erp.config';
   `]
 })
 export class AdminOrgComponent {
-  currencies = [...CURRENCIES, 'GBP', 'PKR', 'EGP', 'SAR'].filter((v, i, a) => a.indexOf(v) === i);
+  currencies = [...CURRENCIES].filter((v, i, a) => a.indexOf(v) === i);
   co: Company | null = null; coNew = false; coOriginal = '';
   br: Branch | null = null; brNew = false; brOriginal = '';
   del: { kind: 'company' | 'branch'; code: string; name: string } | null = null;
@@ -121,7 +123,7 @@ export class AdminOrgComponent {
 
   clean(v: string) { return (v || '').toUpperCase().replace(/[^A-Z0-9_-]/g, ''); }
 
-  newCompany() { this.co = { code: '', name: '', nameAr: '', currency: this.org.companies()[0]?.currency ?? 'SAR', taxNo: '' }; this.coNew = true; this.formError = ''; }
+  newCompany() { this.co = { code: '', name: '', nameAr: '', currency: this.org.companies()[0]?.currency ?? defaultCurrency(), taxNo: '' }; this.coNew = true; this.formError = ''; }
   editCompany(c: Company) { this.co = { ...c }; this.coNew = false; this.coOriginal = c.code; this.formError = ''; }
   saveCompany() {
     const c = this.co!;

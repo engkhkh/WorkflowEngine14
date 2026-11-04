@@ -1,3 +1,4 @@
+import { defaultCurrency } from '../core/region';
 import { Component, OnInit, computed, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
@@ -13,10 +14,10 @@ import { AuthService } from '../core/auth.service';
 import { OrgService } from '../core/org.service';
 import { I18nService } from '../core/i18n.service';
 import { TranslatePipe } from '../core/translate.pipe';
-import { AdminUser } from '../core/models';
+import { AdminUser, BillingSummary, Invoice } from '../core/models';
 import { Branch, Company } from '../core/erp.config';
 
-type Tab = 'users' | 'org' | 'ws';
+type Tab = 'users' | 'org' | 'billing' | 'ws';
 
 /** Administration on mobile: users & privileges, companies & branches, workspace usage. */
 @Component({
@@ -31,13 +32,14 @@ type Tab = 'users' | 'org' | 'ws';
         <ion-title>{{ 'nav.administration' | translate }}</ion-title>
         <ion-buttons slot="end">
           <ion-button *ngIf="tab() === 'users'" (click)="newUser()"><ion-icon slot="icon-only" name="add-outline"></ion-icon></ion-button>
-          <ion-button *ngIf="tab() === 'org'" (click)="addCompany()"><ion-icon slot="icon-only" name="add-outline"></ion-icon></ion-button>
+          <ion-button *ngIf="tab() === 'org' && !org.companyLimitReached()" (click)="addCompany()"><ion-icon slot="icon-only" name="add-outline"></ion-icon></ion-button>
         </ion-buttons>
       </ion-toolbar>
       <ion-toolbar>
         <ion-segment [value]="tab()" (ionChange)="tab.set($any($event).detail.value)">
           <ion-segment-button value="users" *ngIf="auth.can('admin.users')"><ion-label>{{ 'admin.usersTab' | translate }}</ion-label></ion-segment-button>
           <ion-segment-button value="org" *ngIf="auth.can('org.manage')"><ion-label>{{ 'admin.orgTab' | translate }}</ion-label></ion-segment-button>
+          <ion-segment-button value="billing" *ngIf="auth.can('org.manage')"><ion-label>{{ 'bill.tab' | translate }}</ion-label></ion-segment-button>
           <ion-segment-button value="ws"><ion-label>{{ 'admin.wsTab' | translate }}</ion-label></ion-segment-button>
         </ion-segment>
       </ion-toolbar>
@@ -85,6 +87,24 @@ type Tab = 'users' | 'org' | 'ws';
       </ng-container>
 
       <!-- workspace -->
+      <ng-container *ngIf="tab() === 'billing'">
+        <div class="ws" *ngIf="bill() as s">
+          <div class="ws-head"><div><strong>{{ s.users }} {{ 'bill.users' | translate }}</strong><small class="dim">\${{ s.unitPrice }} {{ 'bill.perUserMonth' | translate }}</small></div>
+            <span class="plan">\${{ s.estimate }}</span></div>
+          <p class="dim note">{{ 'bill.pricing' | translate: { p: s.pricePerUser, v: s.volumePrice, n: s.volumeFrom } }}</p>
+          <div class="mh" *ngFor="let l of s.lines"><span>{{ l.branchName }} · {{ l.users }}</span><strong>\${{ l.amount }}</strong></div>
+        </div>
+        <ion-list class="boxed" lines="full">
+          <ion-item *ngFor="let i of invoices()">
+            <ion-label><h3>{{ i.number }} · \${{ i.total }}</h3>
+              <p>{{ i.period }} · {{ (i.status === 'paid' ? 'bill.paid' : (i.overdue ? 'bill.overdue' : 'bill.unpaid')) | translate }}<span *ngIf="i.method"> · {{ i.method }}</span></p></ion-label>
+            <ion-button slot="end" size="small" *ngIf="i.status === 'open'" (click)="payInvoice(i)">{{ 'bill.pay' | translate }}</ion-button>
+            <ion-button slot="end" size="small" fill="outline" *ngIf="i.status === 'open' && i.id === waiting" (click)="checkInvoice(i)">{{ 'bill.check' | translate }}</ion-button>
+          </ion-item>
+        </ion-list>
+        <p class="empty-state" *ngIf="!invoices().length">{{ 'common.noData' | translate }}</p>
+      </ng-container>
+
       <ng-container *ngIf="tab() === 'ws'">
         <div class="ws" *ngIf="org.tenant() as t">
           <div class="ws-head"><div><strong>{{ t.name }}</strong><small class="dim">{{ 'ws.id' | translate }}: {{ t.id }}</small></div>
@@ -136,6 +156,9 @@ export class AdminPage implements OnInit, ViewWillEnter {
     const q = this.q().trim().toLowerCase();
     return this.users().filter(u => !q || (u.displayName + ' ' + u.username + ' ' + u.email).toLowerCase().includes(q));
   });
+  bill = signal<BillingSummary | null>(null);
+  invoices = signal<Invoice[]>([]);
+  waiting = '';
   meters = computed(() => {
     const t = this.org.tenant();
     return t ? [
@@ -157,8 +180,22 @@ export class AdminPage implements OnInit, ViewWillEnter {
 
   refresh(ev?: any) {
     if (this.auth.can('admin.users')) this.api.adminListUsers().subscribe({ next: u => this.users.set(u), error: e => this.toast(this.msg(e), true) });
+    if (this.auth.can('org.manage')) { this.api.billingSummary().subscribe(s => this.bill.set(s)); this.api.billingInvoices().subscribe(l => this.invoices.set(l)); }
     this.org.load().subscribe(() => ev?.target?.complete());
   }
+
+  payInvoice(i: Invoice) {
+    this.api.billingPay(i.id, `${location.origin}/admin?tab=billing`).subscribe({
+      next: async r => {
+        if (r.url) { this.waiting = i.id; window.open(r.url, '_blank'); return; }
+        const a = await this.alerts.create({ header: this.i18n.t('bill.testMode'), message: this.i18n.t('bill.testHint'),
+          buttons: [{ text: this.i18n.t('common.cancel'), role: 'cancel' }, { text: this.i18n.t('bill.markPaid'), handler: () => this.api.billingSandboxPay(i.id).subscribe(() => { this.toast(this.i18n.t('bill.thanks')); this.refresh(); }) }] });
+        await a.present();
+      },
+      error: e => this.toast(this.msg(e), true)
+    });
+  }
+  checkInvoice(i: Invoice) { this.api.billingConfirm(i.id).subscribe(r => { this.toast(this.i18n.t(r.status === 'paid' ? 'bill.thanks' : 'bill.notPaid'), r.status !== 'paid'); this.refresh(); }); }
 
   initials(n: string) { return n.split(/\s+/).map(p => p[0]).slice(0, 2).join('').toUpperCase(); }
   newUser() { this.router.navigate(['/admin/user', 'new']); }
@@ -175,13 +212,13 @@ export class AdminPage implements OnInit, ViewWillEnter {
         { name: 'code', placeholder: t('org.code'), value: c?.code ?? '', disabled: !!c },
         { name: 'name', placeholder: t('org.name'), value: c?.name ?? '' },
         { name: 'nameAr', placeholder: t('org.nameAr'), value: c?.nameAr ?? '' },
-        { name: 'currency', placeholder: t('org.currency'), value: c?.currency ?? this.org.companies()[0]?.currency ?? 'SAR' },
+        { name: 'currency', placeholder: t('org.currency'), value: c?.currency ?? this.org.companies()[0]?.currency ?? defaultCurrency() },
         { name: 'taxNo', placeholder: t('org.taxNo'), value: c?.taxNo ?? '' },
       ],
       buttons: [{ text: t('common.cancel'), role: 'cancel' }, { text: t('admin.save'), handler: (v: any) => {
         const code = (v.code || '').toUpperCase().replace(/[^A-Z0-9_-]/g, '');
         if (!code || !(v.name || '').trim()) { this.toast(t('org.required'), true); return false; }
-        this.org.saveCompany({ code, name: v.name.trim(), nameAr: (v.nameAr || '').trim() || v.name.trim(), currency: (v.currency || 'SAR').toUpperCase(), taxNo: v.taxNo }, !c, c?.code)
+        this.org.saveCompany({ code, name: v.name.trim(), nameAr: (v.nameAr || '').trim() || v.name.trim(), currency: (v.currency || defaultCurrency()).toUpperCase(), taxNo: v.taxNo }, !c, c?.code)
           .subscribe({ next: () => this.toast(t('org.saved')), error: e => this.toast(this.msg(e), true) });
         return true;
       } }]

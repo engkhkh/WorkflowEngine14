@@ -8,7 +8,7 @@ import { addIcons } from 'ionicons';
 import {
   businessOutline, gitBranchOutline, globeOutline, moonOutline, barChartOutline, sparklesOutline, sendOutline, logOutOutline,
   trendingUpOutline, cartOutline, cubeOutline, walletOutline, peopleOutline, settingsOutline, colorPaletteOutline, shieldCheckmarkOutline,
-  constructOutline, briefcaseOutline, locateOutline, layersOutline, buildOutline, keyOutline, storefrontOutline, gitBranchOutline as gitBranch2
+  gitNetworkOutline, constructOutline, briefcaseOutline, locateOutline, layersOutline, buildOutline, keyOutline, storefrontOutline, gitBranchOutline as gitBranch2
 } from 'ionicons/icons';
 import { AuthService } from '../core/auth.service';
 import { I18nService } from '../core/i18n.service';
@@ -53,6 +53,7 @@ const ICONS: Record<string, string> = { factory: 'construct-outline', briefcase:
         <ion-list-header>{{ 'more.workspace' | translate }}</ion-list-header>
         <ion-item button detail="true" *ngIf="auth.can('reports.view')" (click)="go('/reports')"><ion-icon name="bar-chart-outline" slot="start"></ion-icon><ion-label>{{ 'nav.reports' | translate }}</ion-label></ion-item>
         <ion-item button detail="true" *ngIf="auth.can('assistant.use')" (click)="go('/assistant')"><ion-icon name="sparkles-outline" slot="start"></ion-icon><ion-label>{{ 'nav.assistant' | translate }}</ion-label></ion-item>
+        <ion-item button detail="true" *ngIf="auth.canAny('wf.view', 'wf.instances.view')" (click)="go('/workflow')"><ion-icon name="git-network-outline" slot="start"></ion-icon><ion-label>{{ 'module.workflow' | translate }}</ion-label></ion-item>
         <ion-item button detail="true" (click)="go('/services')"><ion-icon name="send-outline" slot="start"></ion-icon><ion-label>{{ 'nav.services' | translate }}</ion-label></ion-item>
       </ion-list>
 
@@ -110,12 +111,13 @@ export class MorePage {
     if (!L.isNavHidden('hr') && a.canAny(...HR_ANY)) out.push({ route: '/hr', title: 'module.hr', icon: 'people-outline' });
     if (!L.isNavHidden('finance') && (a.can('finance.view') || a.canAny(...FIN_ANY))) out.push({ route: '/finance', title: 'module.finance', icon: 'wallet-outline' });
     if (!L.isNavHidden('pos') && a.canAny(...POS_ANY)) out.push({ route: '/pos', title: 'module.pos', icon: ICONS['store'] });
+    if (!L.isNavHidden('muslim') && a.can('mus.view')) out.push({ route: '/muslim', title: 'module.muslim', icon: 'moon-outline' });
     for (const m of Object.values(ERP_MODULES)) if (!L.isNavHidden(m.id) && a.canAny(...m.any)) out.push({ route: m.route, title: m.titleKey, icon: ICONS[m.icon] ?? 'apps-outline' });
     return out;
   });
   constructor(public auth: AuthService, public i18n: I18nService, public ctx: ErpContextService, public data: ErpDataService,
               private ai: AssistantService, private router: Router, public org: OrgService) {
-    addIcons({ businessOutline, gitBranchOutline, globeOutline, moonOutline, barChartOutline, sparklesOutline, sendOutline, logOutOutline,
+    addIcons({ gitNetworkOutline, businessOutline, gitBranchOutline, globeOutline, moonOutline, barChartOutline, sparklesOutline, sendOutline, logOutOutline,
       trendingUpOutline, cartOutline, cubeOutline, walletOutline, peopleOutline, settingsOutline, colorPaletteOutline, shieldCheckmarkOutline,
       constructOutline, briefcaseOutline, locateOutline, layersOutline, buildOutline, keyOutline, storefrontOutline });
   }

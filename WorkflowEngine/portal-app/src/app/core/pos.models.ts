@@ -11,12 +11,13 @@ export interface PosRec<D = Record<string, any>> {
   createdBy?: string | null; createdAt?: string; updatedAt?: string | null;
 }
 
+import { defaultVat } from './region';
 export interface PosSettings {
   taxRate?: number; pricesIncludeTax?: boolean; pointsPerCurrency?: number; pointValue?: number;
   requireShift?: boolean; allowNegativeStock?: boolean; maxDiscountPct?: number; receiptHeader?: string; receiptFooter?: string;
 }
 export const POS_DEFAULTS: Required<PosSettings> = {
-  taxRate: 15, pricesIncludeTax: true, pointsPerCurrency: 1, pointValue: 0.05, requireShift: true, allowNegativeStock: false, maxDiscountPct: 20, receiptHeader: '', receiptFooter: ''
+  taxRate: defaultVat(), pricesIncludeTax: true, pointsPerCurrency: 1, pointValue: 0.05, requireShift: true, allowNegativeStock: false, maxDiscountPct: 20, receiptHeader: '', receiptFooter: ''
 };
 
 export interface CartLine { sku: string; qty: number; discountPct: number; }

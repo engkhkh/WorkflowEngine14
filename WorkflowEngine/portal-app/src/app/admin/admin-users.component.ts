@@ -44,11 +44,12 @@ import { PrivilegeEditorComponent } from './privilege-editor.component';
             <tr *ngFor="let u of shown()">
               <td>
                 <div class="who"><span class="av">{{ initials(u.displayName) }}</span>
-                  <div><strong>{{ u.displayName }}</strong> <span class="chip" *ngIf="u.username === auth.currentUser()?.username">{{ 'admin.you' | translate }}</span>
+                  <div><strong>{{ u.displayName }}</strong> <span class="chip" *ngIf="u.username === auth.currentUser()?.username">{{ 'admin.you' | translate }}</span> <span class="chip warn" *ngIf="u.invitePending">{{ 'invite.pending' | translate }}</span>
                     <div class="dim mono">{{ u.username }}</div></div></div>
               </td>
               <td class="dim">{{ u.email || '—' }}</td>
-              <td><span class="chip">{{ u.role }}</span></td>
+              <td><span class="chip">{{ u.role }}</span>
+                <div class="dim" style="font-size:11px;margin-top:3px">{{ (u.branches?.length ? u.branches!.join(', ') : 'invite.allBranches') | translate }}</div></td>
               <td>
                 <span class="chip" [class.warn]="u.permissions !== null">{{ (u.permissions === null ? 'admin.roleDefaults' : 'admin.custom') | translate }}</span>
                 <span class="dim"> · {{ 'admin.count' | translate: { n: u.effectivePermissions.length } }}</span>
@@ -56,6 +57,7 @@ import { PrivilegeEditorComponent } from './privilege-editor.component';
               <td><span class="dotted" [class.on]="u.isActive"></span>{{ (u.isActive ? 'admin.active' : 'admin.inactive') | translate }}</td>
               <td class="act">
                 <button class="ghost sm" (click)="edit(u)" [title]="'admin.edit' | translate"><app-icon name="edit" [size]="15"></app-icon></button>
+                <button class="ghost sm" *ngIf="u.invitePending" (click)="reinvite(u)" [title]="'invite.resend' | translate"><app-icon name="mail" [size]="15"></app-icon></button>
                 <button class="ghost sm" (click)="startReset(u)" [title]="'admin.resetPassword' | translate"><app-icon name="key" [size]="15"></app-icon></button>
                 <button class="ghost sm danger-i" (click)="confirmDelete(u)" [title]="'admin.delete' | translate" [disabled]="u.username === auth.currentUser()?.username"><app-icon name="trash" [size]="15"></app-icon></button>
               </td>
@@ -80,10 +82,16 @@ import { PrivilegeEditorComponent } from './privilege-editor.component';
             <div><label class="lbl">{{ 'admin.role' | translate }}</label>
               <input [(ngModel)]="form.role" list="roles-list" />
               <datalist id="roles-list"><option *ngFor="let r of roles()" [value]="r"></option></datalist></div>
-            <div *ngIf="!editingId"><label class="lbl">{{ 'admin.password' | translate }}</label>
+            <div class="check" *ngIf="!editingId"><label><input type="checkbox" [(ngModel)]="form.invite" /> {{ 'invite.sendInvite' | translate }}</label></div>
+            <div *ngIf="!editingId && !form.invite"><label class="lbl">{{ 'admin.password' | translate }}</label>
               <input type="password" [(ngModel)]="form.password" autocomplete="new-password" />
               <div class="hint">{{ 'admin.passwordHint' | translate }}</div></div>
             <div class="check"><label><input type="checkbox" [(ngModel)]="form.isActive" /> {{ 'admin.active' | translate }}</label></div>
+          </div>
+          <h4 class="sec">{{ 'invite.branchAccess' | translate }}</h4>
+          <div class="hint">{{ 'invite.branchHint' | translate }}</div>
+          <div class="brs">
+            <label class="chip pick" *ngFor="let b of org.branches()"><input type="checkbox" [checked]="hasBranch(b.code)" (change)="toggleBranch(b.code)" /> {{ b.name }} <span class="mono dim">{{ b.code }}</span></label>
           </div>
           <h4 class="sec">{{ 'admin.privileges' | translate }}</h4>
           <app-privilege-editor [catalog]="catalog()!" [role]="form.role" [(value)]="form.permissions"></app-privilege-editor>
@@ -93,6 +101,18 @@ import { PrivilegeEditorComponent } from './privilege-editor.component';
           <button (click)="form = null">{{ 'common.cancel' | translate }}</button>
           <button class="primary" (click)="save()" [disabled]="saving">{{ (saving ? 'admin.saving' : 'admin.save') | translate }}</button>
         </div>
+      </div>
+    </div>
+
+    <!-- invitation link -->
+    <div class="modal-scrim" *ngIf="inviteLink" (click)="inviteLink = ''">
+      <div class="modal" style="max-width:520px" (click)="$event.stopPropagation()">
+        <div class="modal-head"><h3>{{ 'invite.title' | translate }}</h3><button class="ghost icon-btn" (click)="inviteLink = ''"><app-icon name="x"></app-icon></button></div>
+        <div class="modal-body">
+          <p class="dim">{{ 'invite.linkHint' | translate }}</p>
+          <input readonly [value]="inviteLink" (focus)="$any($event.target).select()" />
+        </div>
+        <div class="modal-foot"><button class="primary" (click)="copyLink()">{{ (copied ? 'invite.copied' : 'invite.copy') | translate }}</button></div>
       </div>
     </div>
 
@@ -137,6 +157,8 @@ import { PrivilegeEditorComponent } from './privilege-editor.component';
     .danger-i { color: var(--bad); }
     .check { display: flex; align-items: flex-end; padding-bottom: 8px; }
     .check label { display: flex; gap: 8px; align-items: center; font-size: 13px; }
+    .brs { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 8px; }
+    .brs .pick { display: inline-flex; align-items: center; gap: 6px; cursor: pointer; }
     .sec { margin: 20px 0 10px; font-size: 13px; font-weight: 650; }
   `]
 })
@@ -165,8 +187,10 @@ export class AdminUsersComponent implements OnInit {
   resetFor: AdminUser | null = null;
   newPassword = '';
   deleting: AdminUser | null = null;
+  inviteLink = '';
+  copied = false;
 
-  constructor(private api: PortalApiService, public auth: AuthService, private i18n: I18nService, private org: OrgService) {}
+  constructor(private api: PortalApiService, public auth: AuthService, private i18n: I18nService, public org: OrgService) {}
 
   ngOnInit() {
     this.api.getPermissionCatalog().subscribe(c => this.catalog.set(c));
@@ -179,32 +203,45 @@ export class AdminUsersComponent implements OnInit {
 
   startNew() {
     this.editingId = ''; this.formError = '';
-    this.form = { username: '', displayName: '', email: '', role: 'employee', isActive: true, password: '', permissions: null };
+    this.form = { username: '', displayName: '', email: '', role: 'employee', isActive: true, password: '', permissions: null, branches: null, invite: true };
   }
 
   edit(u: AdminUser) {
     this.editingId = u.id; this.formError = '';
     this.form = { username: u.username, displayName: u.displayName, email: u.email, role: u.role, isActive: u.isActive, password: '',
-      permissions: u.permissions ? [...u.permissions] : null };
+      permissions: u.permissions ? [...u.permissions] : null, branches: u.branches ? [...u.branches] : null };
   }
 
   save() {
     if (!this.form) return;
     this.saving = true; this.formError = '';
     const f = this.form;
-    const payload: SaveUserPayload = { username: f.username, displayName: f.displayName, email: f.email, role: f.role, isActive: f.isActive, permissions: f.permissions };
-    if (!this.editingId) payload.password = f.password;
+    const payload: SaveUserPayload = { username: f.username, displayName: f.displayName, email: f.email, role: f.role, isActive: f.isActive, permissions: f.permissions, branches: f.branches?.length ? f.branches : null };
+    if (!this.editingId) { if (f.invite) { payload.invite = true; payload.appUrl = location.origin; } else payload.password = f.password; }
     const call = this.editingId ? this.api.adminUpdateUser(this.editingId, payload) : this.api.adminCreateUser(payload);
     call.subscribe({
       next: saved => {
         this.saving = false; this.form = null;
         this.flash(this.i18n.t('admin.saved'));
+        if (saved.inviteToken) this.showLink(saved.inviteToken);
         this.reload();
         this.org.load().subscribe();                      // usage counters
         if (saved.username === this.auth.currentUser()?.username) this.auth.refreshMe().subscribe();
       },
       error: e => { this.saving = false; this.formError = this.msg(e); }
     });
+  }
+
+  hasBranch(c: string) { return !!this.form?.branches?.includes(c); }
+  toggleBranch(c: string) {
+    if (!this.form) return;
+    const cur = this.form.branches ?? [];
+    this.form.branches = cur.includes(c) ? cur.filter(x => x !== c) : [...cur, c];
+  }
+  showLink(token: string) { this.copied = false; this.inviteLink = `${location.origin}/accept-invite?token=${encodeURIComponent(token)}`; }
+  copyLink() { navigator.clipboard?.writeText(this.inviteLink).then(() => this.copied = true).catch(() => {}); }
+  reinvite(u: AdminUser) {
+    this.api.adminInviteUser(u.id, location.origin).subscribe({ next: r => { if (r.inviteToken) this.showLink(r.inviteToken); this.reload(); }, error: e => this.fail(e) });
   }
 
   startReset(u: AdminUser) { this.resetFor = u; this.newPassword = ''; this.formError = ''; }

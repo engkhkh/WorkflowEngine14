@@ -81,7 +81,7 @@ export class FlowComponent {
   @Input() stages: StageKey[] = STAGES;
   @Input() counts: Record<StageKey, { count: number; value: number }> | null = null;
   @Input() active: StageKey | null = null;
-  @Input() currency = 'SAR';
+  @Input() currency = '';
   @Output() pick = new EventEmitter<StageKey>();
   icon(s: StageKey) { return STAGE_ICON[s]; }
 }
@@ -223,7 +223,7 @@ export class TrendChartComponent {
   @Input() points: { label: string; a: number; b: number }[] = [];
   @Input() labelA = '';
   @Input() labelB = '';
-  @Input() currency = 'SAR';
+  @Input() currency = '';
   W = 640; H = 230; padL = 52; padB = 24; padT = 8;
   constructor(private i18n: I18nService) {}
   compact(v: number) { return new Intl.NumberFormat('en-US', { notation: 'compact', maximumFractionDigits: 1 }).format(v); }

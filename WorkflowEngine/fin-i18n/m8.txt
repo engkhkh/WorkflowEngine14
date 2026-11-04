@@ -1,0 +1,1 @@
+proc.invoice || Create supplier invoice || إنشاء فاتورة مورد || Créer la facture fournisseur || Crear factura de proveedor || سپلائر انوائس بنائیں || Eingangsrechnung erzeugen || Crea fattura fornitore

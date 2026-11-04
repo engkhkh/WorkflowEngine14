@@ -61,10 +61,22 @@ const finRoute: any = {
     ]
   };
 
+const muslimRoute: any = {
+    // Muslim: prayer times (reminders, Qibla) and the Holy Quran as Mushaf pages
+    path: 'muslim', canActivate: [authGuard, permGuard('mus.view')],
+    loadComponent: () => import('./muslim/muslim-shell.component').then(m => m.MuslimShellComponent),
+    children: [
+      { path: '', pathMatch: 'full', redirectTo: 'times' },
+      { path: 'times', loadComponent: () => import('./muslim/muslim-times.component').then(m => m.MuslimTimesComponent) },
+      { path: 'quran', loadComponent: () => import('./muslim/muslim-quran.component').then(m => m.MuslimQuranComponent) },
+      { path: 'quran/:n', loadComponent: () => import('./muslim/muslim-quran.component').then(m => m.MuslimQuranComponent) },
+    ]
+  };
+
 const wrap = (r: any) => ({
   path: r.path, canActivate: r.canActivate,
   loadComponent: () => import('./shared/workspace-host.page').then(m => m.WorkspaceHostPage),
   children: [{ path: '', data: r.data, loadComponent: r.loadComponent, children: r.children }]
 });
 
-export const WORKSPACE_ROUTES: Routes = [hrRoute, posRoute, finRoute, ...ERP_ROUTES].map(wrap);
+export const WORKSPACE_ROUTES: Routes = [hrRoute, posRoute, finRoute, muslimRoute, ...ERP_ROUTES].map(wrap);

@@ -20,6 +20,8 @@ const EXTRA: Partial<Record<Lang, Record<string, string>>> = { fr: FR, es: ES, u
 export class I18nService {
   languages = LANGUAGES;
   lang = signal<Lang>(this.loadInitial());
+  /** labels the user renamed from the assistant ("rename Employees to Staff"), per language, kept on this device */
+  private overrides = signal<Record<string, Record<string, string>>>(this.loadOverrides());
 
   constructor() {
     effect(() => this.applyDom(this.lang()));
@@ -41,12 +43,30 @@ export class I18nService {
     const lang = this.lang();
     const entry = DICTIONARY[key];
     let s: string;
-    if (!entry) s = key;
+    const ov = this.overrides()[lang]?.[key];
+    if (ov !== undefined) s = ov;
+    else if (!entry) s = key;
     else if (lang === 'en' || lang === 'ar') s = entry[lang];
     else s = EXTRA[lang]?.[key] ?? entry.en;
     if (params) for (const p in params) s = s.split('{' + p + '}').join(String(params[p]));
     return s;
   }
+
+  private baseText(key: string, lang: Lang): string {
+    const entry = DICTIONARY[key]; if (!entry) return '';
+    return lang === 'en' || lang === 'ar' ? entry[lang] : EXTRA[lang]?.[key] ?? entry.en;
+  }
+  /** Show `to` wherever a label currently reads exactly `from` (current language). Returns how many labels changed. */
+  renameText(from: string, to: string): number {
+    const lang = this.lang(); const f = from.trim().toLowerCase(); if (!f || !to.trim()) return 0;
+    const cur = { ...(this.overrides()[lang] ?? {}) }; let n = 0;
+    for (const key of Object.keys(DICTIONARY)) if ((cur[key] ?? this.baseText(key, lang)).trim().toLowerCase() === f) { cur[key] = to.trim(); n++; }
+    if (n) this.saveOverrides({ ...this.overrides(), [lang]: cur });
+    return n;
+  }
+  clearOverrides() { this.saveOverrides({}); }
+  private saveOverrides(v: Record<string, Record<string, string>>) { this.overrides.set(v); try { localStorage.setItem('portal_labels', JSON.stringify(v)); } catch { /* storage unavailable */ } }
+  private loadOverrides(): Record<string, Record<string, string>> { try { return JSON.parse(localStorage.getItem('portal_labels') || '{}'); } catch { return {}; } }
 
   /** Inline English/Arabic text; every other language falls back to the English text. Prefer t(). */
   pick(en: string, ar: string): string { return this.lang() === 'ar' ? ar : en; }

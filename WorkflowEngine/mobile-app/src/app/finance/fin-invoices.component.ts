@@ -13,6 +13,7 @@ import { invoiceOutstanding, invoiceTotal, matchInvoice, round2 } from '../core/
 import { TranslatePipe } from '../core/translate.pipe';
 import { IconComponent, LocalDatePipe, NumPipe, StatusComponent } from '../shared/ui';
 import { FinHistoryComponent } from './fin-audit.component';
+import { ZatcaInvoiceComponent } from './zatca-invoice.component';
 import { errMsg, finPill, recLabel, recName, todayStr } from './fin-util';
 
 type Side = 'ap' | 'ar';
@@ -32,7 +33,7 @@ interface IForm {
 @Component({
   selector: 'app-fin-invoices',
   standalone: true,
-  imports: [CommonModule, FormsModule, TranslatePipe, IconComponent, NumPipe, LocalDatePipe, StatusComponent, FinHistoryComponent],
+  imports: [CommonModule, FormsModule, TranslatePipe, IconComponent, NumPipe, LocalDatePipe, StatusComponent, FinHistoryComponent, ZatcaInvoiceComponent],
   template: `
     <div class="bar">
       <input class="search" [placeholder]="'common.search' | translate" [ngModel]="q()" (ngModelChange)="q.set($event)" />
@@ -84,6 +85,7 @@ interface IForm {
               <button class="ghost sm danger-i" *ngIf="canManage && (r.status === 'Draft' || (r.status === 'Issued' && !r.data['paid']))" (click)="setStatus(r, 'Cancelled')">{{ 'fin.ar.cancel' | translate }}</button>
             </ng-container>
             <button class="ghost sm" *ngIf="canGl && postable(r)" (click)="postGl(r)" [title]="'fin.inv.toGl' | translate">GL</button>
+            <button class="ghost sm" *ngIf="side === 'ar' && canZatca && ['Issued', 'Paid'].includes(r.status ?? '')" (click)="einv = r" [title]="'gov.zatca.title' | translate"><app-icon name="send" [size]="15"></app-icon></button>
             <button class="ghost sm" *ngIf="canAudit" (click)="history = r" [title]="'fin.audit.history' | translate"><app-icon name="clock" [size]="15"></app-icon></button>
             <button class="ghost sm" *ngIf="canManage && editable(r)" (click)="open(r)" [title]="'admin.edit' | translate"><app-icon name="edit" [size]="15"></app-icon></button>
             <button class="ghost sm danger-i" *ngIf="canManage && deletable(r)" (click)="deleting = r; error = ''" [title]="'admin.delete' | translate"><app-icon name="trash" [size]="15"></app-icon></button>
@@ -170,6 +172,7 @@ interface IForm {
       </div>
     </div>
     <app-fin-history *ngIf="history" [kind]="kind" [recordId]="history.id" [title]="history.code || ''" (closed)="history = null"></app-fin-history>
+    <app-zatca-invoice *ngIf="einv" [invoice]="einv" [canIssue]="canManage" (closed)="einv = null; $event && load()"></app-zatca-invoice>
   `,
   styles: [`
     .bar { display: flex; gap: 10px; align-items: center; margin-bottom: 12px; flex-wrap: wrap; } .search { max-width: 260px; } .bar select { width: auto; } .grow { flex: 1; }
@@ -191,7 +194,7 @@ export class FinInvoicesComponent implements OnInit {
 
   all = signal<FinRec[]>([]);
   q = signal(''); status = signal('');
-  form: IForm | null = null; deleting: FinRec | null = null; history: FinRec | null = null;
+  form: IForm | null = null; deleting: FinRec | null = null; history: FinRec | null = null; einv: FinRec | null = null; canZatca = false;
   dialog: { inv: FinRec; amount: number; date: string; bank: string } | null = null;
   saving = false; error = ''; msg = '';
 
@@ -226,6 +229,7 @@ export class FinInvoicesComponent implements OnInit {
     this.canGl = this.auth.can('finance.gl.manage');
     this.canBank = this.auth.can('finance.bank.manage');
     this.canAudit = this.auth.can('finance.audit.view');
+    this.canZatca = this.auth.can('finance.ar.view') || this.auth.can('gov.zatca.manage');
     this.fin.loadRefs(['bankaccount'], this.ctx.company()).subscribe(() => this.banks.set(this.fin.ref('bankaccount')));
     this.load(true);
   }

@@ -1,0 +1,111 @@
+pay.adj.new || New adjustment || تعديل جديد || Nouvel ajustement || Nuevo ajuste || نئی ایڈجسٹمنٹ || Neue Anpassung || Nuova rettifica
+pay.calc.fixed || Fixed amount || مبلغ ثابت || Montant fixe || Importe fijo || مقررہ رقم || Fester Betrag || Importo fisso
+pay.calc.pctBasic || % of basic salary || % من الراتب الأساسي || % du salaire de base || % del salario base || بنیادی تنخواہ کا % || % des Grundgehalts || % dello stipendio base
+pay.el.calc || Calculation || طريقة الحساب || Calcul || Cálculo || حساب || Berechnung || Calcolo
+pay.el.new || New pay element || بند راتب جديد || Nouvel élément de paie || Nuevo concepto de pago || نیا پے عنصر || Neue Lohnart || Nuova voce di paga
+pay.el.value || Value || القيمة || Valeur || Valor || قدر || Wert || Valore
+pay.el.valueHint || Amount, or percent of basic salary. || مبلغ أو نسبة من الراتب الأساسي. || Montant ou pourcentage du salaire de base. || Importe o porcentaje del salario base. || رقم یا بنیادی تنخواہ کا فیصد۔ || Betrag oder Prozent des Grundgehalts. || Importo o percentuale dello stipendio base.
+pay.f.element || Pay element || بند الراتب || Élément de paie || Concepto || پے عنصر || Lohnart || Voce di paga
+pay.f.employee || Employee || الموظف || Employé || Empleado || ملازم || Mitarbeiter || Dipendente
+pay.kpi.elements || Pay elements || بنود الراتب || Éléments de paie || Conceptos de pago || پے عناصر || Lohnarten || Voci di paga
+pay.kpi.lastCount || Employees (last run) || الموظفون (آخر مسير) || Employés (dernière paie) || Empleados (última nómina) || ملازمین (آخری رن) || Mitarbeiter (letzter Lauf) || Dipendenti (ultima elaborazione)
+pay.kpi.lastGross || Gross (last run) || الإجمالي (آخر مسير) || Brut (dernière paie) || Bruto (última nómina) || مجموعی (آخری رن) || Brutto (letzter Lauf) || Lordo (ultima elaborazione)
+pay.kpi.lastNet || Net pay (last run) || صافي الراتب (آخر مسير) || Net à payer (dernière paie) || Neto (última nómina) || خالص تنخواہ (آخری رن) || Netto (letzter Lauf) || Netto (ultima elaborazione)
+pay.kpi.openRuns || Runs not posted || مسيرات غير مرحّلة || Paies non comptabilisées || Nóminas sin contabilizar || غیر پوسٹ شدہ رنز || Nicht gebuchte Läufe || Elaborazioni non registrate
+pay.list.netByPeriod || Net pay by period || صافي الرواتب حسب الفترة || Net à payer par période || Neto por período || مدت کے لحاظ سے خالص تنخواہ || Netto nach Periode || Netto per periodo
+pay.nav.adjustments || Adjustments || التعديلات || Ajustements || Ajustes || ایڈجسٹمنٹس || Anpassungen || Rettifiche
+pay.nav.elements || Pay elements || بنود الراتب || Éléments de paie || Conceptos de pago || پے عناصر || Lohnarten || Voci di paga
+pay.nav.overview || Overview || نظرة عامة || Aperçu || Resumen || جائزہ || Übersicht || Panoramica
+pay.nav.payslips || Payslips || قسائم الراتب || Bulletins de paie || Nóminas || پے سلپس || Gehaltsabrechnungen || Cedolini
+pay.nav.runs || Payroll runs || مسيرات الرواتب || Paies || Procesos de nómina || پے رول رنز || Lohnläufe || Elaborazioni paghe
+pay.nav.setup || Setup || الإعداد || Configuration || Configuración || سیٹ اپ || Einrichtung || Impostazioni
+pay.run.calculate || Calculate || احتساب || Calculer || Calcular || حساب کریں || Berechnen || Calcola
+pay.run.employees || Employees || الموظفون || Employés || Empleados || ملازمین || Mitarbeiter || Dipendenti
+pay.run.new || New payroll run || مسير رواتب جديد || Nouvelle paie || Nuevo proceso de nómina || نیا پے رول رن || Neuer Lohnlauf || Nuova elaborazione paghe
+pay.run.none || No payroll runs yet. || لا توجد مسيرات رواتب بعد. || Aucune paie. || Aún no hay procesos de nómina. || ابھی کوئی پے رول رن نہیں۔ || Noch keine Lohnläufe. || Nessuna elaborazione paghe.
+pay.run.post || Post to Finance || ترحيل إلى المالية || Comptabiliser en Finance || Contabilizar en Finanzas || مالیات میں پوسٹ کریں || In Finanzen buchen || Registra in Contabilità
+pay.setup.deduction || Deductions payable account || حساب الاستقطاعات المستحقة || Compte des retenues à payer || Cuenta de deducciones por pagar || قابل ادا کٹوتی اکاؤنٹ || Konto Verbindlichkeiten Abzüge || Conto trattenute da pagare
+pay.setup.expense || Salaries expense account || حساب مصروف الرواتب || Compte de charges de salaires || Cuenta de gasto de sueldos || تنخواہ اخراجات اکاؤنٹ || Konto Gehaltsaufwand || Conto costo stipendi
+pay.setup.payable || Net salaries payable account || حساب صافي الرواتب المستحقة || Compte des salaires nets à payer || Cuenta de sueldos netos por pagar || قابل ادا خالص تنخواہ اکاؤنٹ || Konto Nettogehälter || Conto stipendi netti da pagare
+pay.slip.basic || Basic salary || الراتب الأساسي || Salaire de base || Salario base || بنیادی تنخواہ || Grundgehalt || Stipendio base
+pay.slip.deductions || Deductions || الاستقطاعات || Retenues || Deducciones || کٹوتیاں || Abzüge || Trattenute
+pay.slip.earnings || Earnings || المستحقات || Gains || Ingresos || آمدنی || Bezüge || Competenze
+pay.slip.gross || Gross pay || الإجمالي || Salaire brut || Bruto || مجموعی تنخواہ || Brutto || Lordo
+pay.slip.net || Net pay || صافي الراتب || Net à payer || Neto a pagar || خالص تنخواہ || Netto || Netto
+pay.slip.none || No payslips to show. || لا توجد قسائم راتب. || Aucun bulletin à afficher. || No hay nóminas que mostrar. || دکھانے کے لیے کوئی پے سلپ نہیں۔ || Keine Abrechnungen vorhanden. || Nessun cedolino da mostrare.
+pay.slip.print || Print || طباعة || Imprimer || Imprimir || پرنٹ || Drucken || Stampa
+pay.slip.title || Payslip || قسيمة راتب || Bulletin de paie || Nómina || پے سلپ || Gehaltsabrechnung || Cedolino
+pay.slip.totalDed || Total deductions || إجمالي الاستقطاعات || Total retenues || Total deducciones || کل کٹوتیاں || Summe Abzüge || Totale trattenute
+pay.sub || Payroll runs, pay elements and payslips || مسيرات الرواتب وبنود الراتب وقسائم الراتب || Paies, éléments de paie et bulletins || Procesos de nómina, conceptos y recibos || پے رول رنز، پے عناصر اور پے سلپس || Lohnläufe, Lohnarten und Abrechnungen || Elaborazioni paghe, voci e cedolini
+pay.type.deduction || Deduction || استقطاع || Retenue || Deducción || کٹوتی || Abzug || Trattenuta
+pay.type.earning || Earning || استحقاق || Gain || Ingreso || آمدنی || Bezug || Competenza
+perm.group.assets || Assets & Maintenance || الأصول والصيانة || Actifs et maintenance || Activos y mantenimiento || اثاثے اور دیکھ بھال || Anlagen & Instandhaltung || Cespiti e manutenzione
+perm.group.bi || BI / Analytics / AI || ذكاء الأعمال والتحليلات || BI / Analyses / IA || BI / Analítica / IA || BI / تجزیات / AI || BI / Analytik / KI || BI / Analisi / IA
+perm.group.bpm || Workflow / BPM || سير العمل / BPM || Workflow / BPM || Flujo de trabajo / BPM || ورک فلو / BPM || Workflow / BPM || Workflow / BPM
+perm.group.crm || Sales / CRM || المبيعات / CRM || Ventes / CRM || Ventas / CRM || سیلز / CRM || Vertrieb / CRM || Vendite / CRM
+perm.group.epm || Budgeting & Planning || الميزانية والتخطيط || Budgets et planification || Presupuesto y planificación || بجٹ اور منصوبہ بندی || Budget & Planung || Budget e pianificazione
+perm.group.integration || Integration / API || التكامل / الواجهات || Intégration / API || Integración / API || انضمام / API || Integration / API || Integrazione / API
+perm.group.manufacturing || Manufacturing || التصنيع || Fabrication || Manufactura || مینوفیکچرنگ || Fertigung || Produzione
+perm.group.payroll || Payroll || الرواتب || Paie || Nómina || پے رول || Lohn & Gehalt || Paghe
+perm.group.procurement || Procurement || المشتريات || Achats || Compras || خریداری || Beschaffung || Acquisti
+perm.group.projects || Projects || المشاريع || Projets || Proyectos || پراجیکٹس || Projekte || Progetti
+perm.group.supplychain || Supply Chain || سلسلة الإمداد || Chaîne logistique || Cadena de suministro || سپلائی چین || Lieferkette || Supply chain
+perm.group.warehouse || Warehouse & Inventory || المستودعات والمخزون || Entrepôt et stocks || Almacén e inventario || گودام اور انوینٹری || Lager & Bestand || Magazzino e inventario
+perm.ast.assets.manage || Manage assets || إدارة الأصول || Gérer les actifs || Gestionar activos || اثاثے منظم کریں || Anlagen verwalten || Gestire cespiti
+perm.ast.orders.manage || Manage maintenance work orders || إدارة أوامر الصيانة || Gérer les ordres de maintenance || Gestionar órdenes de mantenimiento || دیکھ بھال ورک آرڈر منظم کریں || Wartungsaufträge verwalten || Gestire ordini di manutenzione
+perm.ast.plans.manage || Manage maintenance plans || إدارة خطط الصيانة || Gérer les plans d'entretien || Gestionar planes de mantenimiento || دیکھ بھال منصوبے منظم کریں || Wartungspläne verwalten || Gestire piani di manutenzione
+perm.ast.reports.view || View asset reports || عرض تقارير الأصول || Voir les rapports d'actifs || Ver informes de activos || اثاثہ رپورٹیں دیکھیں || Anlagenberichte ansehen || Vedere report cespiti
+perm.ast.setup || Asset setup || إعداد الأصول || Configuration des actifs || Configuración de activos || اثاثہ سیٹ اپ || Anlagen-Einrichtung || Impostazioni cespiti
+perm.ast.view || View assets & maintenance || عرض الأصول والصيانة || Voir actifs et maintenance || Ver activos y mantenimiento || اثاثے اور دیکھ بھال دیکھیں || Anlagen & Wartung ansehen || Vedere cespiti e manutenzione
+perm.bi.ai.use || Use AI insights || استخدام الرؤى الذكية || Utiliser les analyses IA || Usar análisis de IA || AI بصیرتیں استعمال کریں || KI-Einblicke nutzen || Usare analisi IA
+perm.bi.reports.manage || Build & export reports || بناء وتصدير التقارير || Créer et exporter des rapports || Crear y exportar informes || رپورٹیں بنائیں اور برآمد کریں || Berichte erstellen & exportieren || Creare ed esportare report
+perm.bi.view || View analytics || عرض التحليلات || Voir les analyses || Ver analítica || تجزیات دیکھیں || Analysen ansehen || Vedere analisi
+perm.bpm.manage || Manage process register || إدارة سجل العمليات || Gérer le registre des processus || Gestionar registro de procesos || عمل رجسٹر منظم کریں || Prozessregister verwalten || Gestire registro processi
+perm.bpm.monitor || Monitor workflows || مراقبة سير العمل || Suivre les workflows || Monitorear flujos || ورک فلو کی نگرانی || Workflows überwachen || Monitorare workflow
+perm.bpm.view || View processes || عرض العمليات || Voir les processus || Ver procesos || عمل دیکھیں || Prozesse ansehen || Vedere processi
+perm.crm.accounts.manage || Manage accounts & contacts || إدارة الحسابات وجهات الاتصال || Gérer comptes et contacts || Gestionar cuentas y contactos || اکاؤنٹس اور رابطے منظم کریں || Konten & Kontakte verwalten || Gestire account e contatti
+perm.crm.activities.manage || Manage CRM activities || إدارة أنشطة CRM || Gérer les activités CRM || Gestionar actividades CRM || CRM سرگرمیاں منظم کریں || CRM-Aktivitäten verwalten || Gestire attività CRM
+perm.crm.campaigns.manage || Manage campaigns || إدارة الحملات || Gérer les campagnes || Gestionar campañas || مہمات منظم کریں || Kampagnen verwalten || Gestire campagne
+perm.crm.leads.manage || Manage leads || إدارة العملاء المحتملين || Gérer les prospects || Gestionar leads || لیڈز منظم کریں || Leads verwalten || Gestire lead
+perm.crm.opps.manage || Manage opportunities || إدارة الفرص || Gérer les opportunités || Gestionar oportunidades || مواقع منظم کریں || Chancen verwalten || Gestire opportunità
+perm.crm.quotes.manage || Manage quotes || إدارة عروض الأسعار || Gérer les devis || Gestionar cotizaciones || کوٹیشنز منظم کریں || Angebote verwalten || Gestire preventivi
+perm.crm.reports.view || View CRM reports || عرض تقارير CRM || Voir les rapports CRM || Ver informes CRM || CRM رپورٹیں دیکھیں || CRM-Berichte ansehen || Vedere report CRM
+perm.crm.setup || CRM setup || إعداد CRM || Configuration CRM || Configuración de CRM || CRM سیٹ اپ || CRM-Einrichtung || Impostazioni CRM
+perm.crm.view || View CRM || عرض CRM || Voir le CRM || Ver CRM || CRM دیکھیں || CRM ansehen || Vedere CRM
+perm.epm.forecast.manage || Manage forecasts || إدارة التوقعات || Gérer les prévisions || Gestionar pronósticos || پیشگوئیاں منظم کریں || Prognosen verwalten || Gestire previsioni
+perm.epm.plans.approve || Approve budget plans || اعتماد خطط الميزانية || Approuver les plans budgétaires || Aprobar planes presupuestarios || بجٹ منصوبے منظور کریں || Budgetpläne genehmigen || Approvare piani di budget
+perm.epm.plans.manage || Manage budget plans || إدارة خطط الميزانية || Gérer les plans budgétaires || Gestionar planes presupuestarios || بجٹ منصوبے منظم کریں || Budgetpläne verwalten || Gestire piani di budget
+perm.epm.publish || Publish plans to Finance budgets || نشر الخطط إلى ميزانيات المالية || Publier les plans vers les budgets Finance || Publicar planes en presupuestos de Finanzas || منصوبے مالیاتی بجٹ میں شائع کریں || Pläne in Finanzbudgets veröffentlichen || Pubblicare piani nei budget contabili
+perm.epm.reports.view || View planning reports || عرض تقارير التخطيط || Voir les rapports de planification || Ver informes de planificación || منصوبہ بندی رپورٹیں دیکھیں || Planungsberichte ansehen || Vedere report di pianificazione
+perm.epm.setup || Planning setup || إعداد التخطيط || Configuration de la planification || Configuración de planificación || منصوبہ بندی سیٹ اپ || Planungs-Einrichtung || Impostazioni pianificazione
+perm.epm.view || View planning || عرض التخطيط || Voir la planification || Ver planificación || منصوبہ بندی دیکھیں || Planung ansehen || Vedere pianificazione
+perm.int.hooks.manage || Manage webhooks || إدارة الويب هوك || Gérer les webhooks || Gestionar webhooks || ویب ہکس منظم کریں || Webhooks verwalten || Gestire webhook
+perm.int.keys.manage || Manage API keys || إدارة مفاتيح الواجهة || Gérer les clés API || Gestionar claves API || API کلیدیں منظم کریں || API-Schlüssel verwalten || Gestire chiavi API
+perm.int.view || View integration || عرض التكامل || Voir l'intégration || Ver integración || انضمام دیکھیں || Integration ansehen || Vedere integrazione
+perm.mfg.bom.manage || Manage bills of materials & work centers || إدارة قوائم المواد ومراكز العمل || Gérer nomenclatures et postes de charge || Gestionar listas de materiales y centros || BOM اور ورک سنٹرز منظم کریں || Stücklisten & Arbeitsplätze verwalten || Gestire distinte e centri di lavoro
+perm.mfg.costing.view || View production costing || عرض تكاليف الإنتاج || Voir les coûts de production || Ver costeo de producción || پیداواری لاگت دیکھیں || Fertigungskalkulation ansehen || Vedere costi di produzione
+perm.mfg.maintenance.manage || Manage machine maintenance || إدارة صيانة الآلات || Gérer l'entretien des machines || Gestionar mantenimiento de máquinas || مشین دیکھ بھال منظم کریں || Maschinenwartung verwalten || Gestire manutenzione macchine
+perm.mfg.orders.execute || Run production orders (start / complete) || تنفيذ أوامر الإنتاج (بدء / إكمال) || Exécuter les ordres de fabrication (démarrer / terminer) || Ejecutar órdenes de producción (iniciar / completar) || پیداواری آرڈر چلائیں (شروع / مکمل) || Fertigungsaufträge ausführen (starten / abschließen) || Eseguire ordini di produzione (avvia / completa)
+perm.mfg.orders.manage || Create & release production orders || إنشاء وإطلاق أوامر الإنتاج || Créer et lancer les ordres de fabrication || Crear y liberar órdenes de producción || پیداواری آرڈر بنائیں اور جاری کریں || Fertigungsaufträge anlegen & freigeben || Creare e rilasciare ordini di produzione
+perm.mfg.planning || Run material planning (MRP) || تشغيل تخطيط المواد (MRP) || Lancer la planification (MRP) || Ejecutar planificación de materiales (MRP) || مواد کی منصوبہ بندی (MRP) چلائیں || Materialplanung (MRP) ausführen || Eseguire pianificazione materiali (MRP)
+perm.mfg.quality.manage || Manage quality inspections || إدارة فحوصات الجودة || Gérer les inspections qualité || Gestionar inspecciones de calidad || کوالٹی معائنے منظم کریں || Qualitätsprüfungen verwalten || Gestire ispezioni qualità
+perm.mfg.reports.view || View manufacturing reports || عرض تقارير التصنيع || Voir les rapports de fabrication || Ver informes de manufactura || مینوفیکچرنگ رپورٹیں دیکھیں || Fertigungsberichte ansehen || Vedere report di produzione
+perm.mfg.setup || Manufacturing setup || إعداد التصنيع || Configuration de la fabrication || Configuración de manufactura || مینوفیکچرنگ سیٹ اپ || Fertigungs-Einrichtung || Impostazioni produzione
+perm.mfg.view || View manufacturing || عرض التصنيع || Voir la fabrication || Ver manufactura || مینوفیکچرنگ دیکھیں || Fertigung ansehen || Vedere produzione
+perm.pay.payslips.view || View all payslips || عرض كل قسائم الراتب || Voir tous les bulletins || Ver todas las nóminas || تمام پے سلپس دیکھیں || Alle Abrechnungen ansehen || Vedere tutti i cedolini
+perm.pay.post || Post payroll to Finance || ترحيل الرواتب إلى المالية || Comptabiliser la paie en Finance || Contabilizar nómina en Finanzas || پے رول مالیات میں پوسٹ کریں || Lohn in Finanzen buchen || Registrare paghe in Contabilità
+perm.pay.reports.view || View payroll reports || عرض تقارير الرواتب || Voir les rapports de paie || Ver informes de nómina || پے رول رپورٹیں دیکھیں || Lohnberichte ansehen || Vedere report paghe
+perm.pay.run.approve || Approve payroll runs || اعتماد مسيرات الرواتب || Approuver les paies || Aprobar procesos de nómina || پے رول رنز منظور کریں || Lohnläufe genehmigen || Approvare elaborazioni paghe
+perm.pay.run.manage || Prepare payroll runs & adjustments || إعداد مسيرات الرواتب والتعديلات || Préparer paies et ajustements || Preparar nóminas y ajustes || پے رول رنز اور ایڈجسٹمنٹس تیار کریں || Lohnläufe & Anpassungen vorbereiten || Preparare elaborazioni e rettifiche
+perm.pay.self || View my own payslips || عرض قسائم راتبي || Voir mes propres bulletins || Ver mis propias nóminas || اپنی پے سلپس دیکھیں || Eigene Abrechnungen ansehen || Vedere i miei cedolini
+perm.pay.setup || Payroll setup || إعداد الرواتب || Configuration de la paie || Configuración de nómina || پے رول سیٹ اپ || Lohn-Einrichtung || Impostazioni paghe
+perm.pay.view || View payroll || عرض الرواتب || Voir la paie || Ver nómina || پے رول دیکھیں || Lohn ansehen || Vedere paghe
+perm.prj.billing || Bill projects || فوترة المشاريع || Facturer les projets || Facturar proyectos || پراجیکٹس کا بل بنائیں || Projekte abrechnen || Fatturare progetti
+perm.prj.costs.manage || Manage project costs || إدارة تكاليف المشاريع || Gérer les coûts projet || Gestionar costos de proyectos || پراجیکٹ لاگت منظم کریں || Projektkosten verwalten || Gestire costi progetto
+perm.prj.manage || Manage projects || إدارة المشاريع || Gérer les projets || Gestionar proyectos || پراجیکٹس منظم کریں || Projekte verwalten || Gestire progetti
+perm.prj.reports.view || View project reports || عرض تقارير المشاريع || Voir les rapports projet || Ver informes de proyectos || پراجیکٹ رپورٹیں دیکھیں || Projektberichte ansehen || Vedere report progetti
+perm.prj.resources.manage || Manage project resources || إدارة موارد المشاريع || Gérer les ressources projet || Gestionar recursos de proyectos || پراجیکٹ وسائل منظم کریں || Projektressourcen verwalten || Gestire risorse progetto
+perm.prj.tasks.manage || Manage project tasks || إدارة مهام المشاريع || Gérer les tâches projet || Gestionar tareas de proyectos || پراجیکٹ کام منظم کریں || Projektaufgaben verwalten || Gestire attività progetto
+perm.prj.time.approve || Approve timesheets || اعتماد سجلات الدوام || Approuver les feuilles de temps || Aprobar hojas de horas || ٹائم شیٹس منظور کریں || Zeiterfassung genehmigen || Approvare fogli ore
+perm.prj.time.log || Log my time || تسجيل وقتي || Saisir mon temps || Registrar mis horas || اپنا وقت درج کریں || Eigene Zeit erfassen || Registrare le mie ore
+perm.prj.view || View projects || عرض المشاريع || Voir les projets || Ver proyectos || پراجیکٹس دیکھیں || Projekte ansehen || Vedere progetti

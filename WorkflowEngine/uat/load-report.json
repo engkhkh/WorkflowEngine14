@@ -1,0 +1,59 @@
+{
+  "run": "173282",
+  "api": "http://127.0.0.1:5055",
+  "records": [
+    {
+      "ws": 1,
+      "n": 0,
+      "profile": "core",
+      "id": "C-00",
+      "title": "Create workspace",
+      "status": "FAIL",
+      "note": "workspace 1 signup: HTTP 0 fetch failed",
+      "ms": 0
+    }
+  ],
+  "serverErrors": [
+    {
+      "who": "l173282w1u00",
+      "method": "POST",
+      "route": "/api/tenants/signup",
+      "status": 0,
+      "text": "fetch failed"
+    }
+  ],
+  "phases": [
+    {
+      "name": "1 create workspaces",
+      "s": "0.1"
+    },
+    {
+      "name": "2 create and sign in users",
+      "s": "0.0"
+    },
+    {
+      "name": "3 setup per workspace",
+      "s": "0.0"
+    },
+    {
+      "name": "4 0 users work at the same time",
+      "s": "0.0"
+    },
+    {
+      "name": "5 permission probes (each user against every other module)",
+      "s": "0.0"
+    },
+    {
+      "name": "6 contention: 20 parallel creates per workspace (unique codes)",
+      "s": "0.0"
+    },
+    {
+      "name": "7 isolation between workspaces",
+      "s": "0.0"
+    },
+    {
+      "name": "8 plan limit (Starter = 25 users)",
+      "s": "0.0"
+    }
+  ]
+}

@@ -1,0 +1,35 @@
+collab.notes || Notes || الملاحظات || Notes || Notas || نوٹس || Notizen || Note
+collab.files || Attachments || المرفقات || Pièces jointes || Adjuntos || منسلکات || Anhänge || Allegati
+collab.notePh || Write a note... || اكتب ملاحظة... || Écrire une note... || Escribe una nota... || نوٹ لکھیں... || Notiz schreiben... || Scrivi una nota...
+collab.send || Post || نشر || Publier || Publicar || پوسٹ کریں || Senden || Pubblica
+collab.noNotes || No notes yet. || لا توجد ملاحظات بعد. || Aucune note. || Aún no hay notas. || ابھی کوئی نوٹ نہیں۔ || Noch keine Notizen. || Nessuna nota.
+collab.attach || Attach files || إرفاق ملفات || Joindre des fichiers || Adjuntar archivos || فائلیں منسلک کریں || Dateien anhängen || Allega file
+collab.maxSize || Up to 4 MB per file. || حتى 4 ميغابايت لكل ملف. || Jusqu'à 4 Mo par fichier. || Hasta 4 MB por archivo. || ہر فائل زیادہ سے زیادہ 4 ایم بی۔ || Bis zu 4 MB pro Datei. || Fino a 4 MB per file.
+collab.noFiles || No attachments. || لا توجد مرفقات. || Aucune pièce jointe. || Sin adjuntos. || کوئی منسلکات نہیں۔ || Keine Anhänge. || Nessun allegato.
+collab.tooBig || {name} is larger than 4 MB. || {name} أكبر من 4 ميغابايت. || {name} dépasse 4 Mo. || {name} supera los 4 MB. || {name} 4 ایم بی سے بڑی ہے۔ || {name} ist größer als 4 MB. || {name} supera i 4 MB.
+collab.created || Record created. || تم إنشاء السجل. || Enregistrement créé. || Registro creado. || ریکارڈ بن گیا۔ || Datensatz erstellt. || Record creato.
+collab.savedFilters || Saved filters || المرشحات المحفوظة || Filtres enregistrés || Filtros guardados || محفوظ فلٹرز || Gespeicherte Filter || Filtri salvati
+collab.saveFilter || Save current filter || حفظ المرشح الحالي || Enregistrer le filtre || Guardar filtro actual || موجودہ فلٹر محفوظ کریں || Aktuellen Filter speichern || Salva filtro corrente
+collab.filterName || Filter name || اسم المرشح || Nom du filtre || Nombre del filtro || فلٹر کا نام || Filtername || Nome del filtro
+collab.shareWorkspace || Share with everyone in the workspace || مشاركة مع الجميع في مساحة العمل || Partager avec tout l'espace de travail || Compartir con todo el espacio de trabajo || ورک اسپیس میں سب کے ساتھ شیئر کریں || Mit allen im Arbeitsbereich teilen || Condividi con tutto lo spazio di lavoro
+collab.reportDesigner || Report designer || مصمم التقارير || Concepteur de rapports || Diseñador de informes || رپورٹ ڈیزائنر || Berichtsdesigner || Designer di report
+collab.savedReports || Saved layouts || التخطيطات المحفوظة || Mises en page enregistrées || Diseños guardados || محفوظ لے آؤٹ || Gespeicherte Layouts || Layout salvati
+collab.rep.title || Title || العنوان || Titre || Título || عنوان || Titel || Titolo
+collab.rep.subtitle || Subtitle || عنوان فرعي || Sous-titre || Subtítulo || ذیلی عنوان || Untertitel || Sottotitolo
+collab.rep.header || Header text || نص الترويسة || Texte d'en-tête || Texto de encabezado || ہیڈر متن || Kopfzeilentext || Testo intestazione
+collab.rep.footer || Footer text || نص التذييل || Texte de pied de page || Texto de pie || فوٹر متن || Fußzeilentext || Testo piè di pagina
+collab.rep.orientation || Page orientation || اتجاه الصفحة || Orientation || Orientación || صفحے کا رخ || Seitenausrichtung || Orientamento
+collab.rep.portrait || Portrait || عمودي || Portrait || Vertical || عمودی || Hochformat || Verticale
+collab.rep.landscape || Landscape || أفقي || Paysage || Horizontal || افقی || Querformat || Orizzontale
+collab.rep.groupBy || Group by || تجميع حسب || Grouper par || Agrupar por || گروپ بنائیں || Gruppieren nach || Raggruppa per
+collab.rep.totals || Show totals || إظهار المجاميع || Afficher les totaux || Mostrar totales || مجموعے دکھائیں || Summen anzeigen || Mostra totali
+collab.rep.rowNumbers || Row numbers || ترقيم الصفوف || Numéros de ligne || Numeración de filas || قطار نمبر || Zeilennummern || Numeri di riga
+collab.rep.showDate || Print date || تاريخ الطباعة || Date d'impression || Fecha de impresión || چھاپنے کی تاریخ || Druckdatum || Data di stampa
+collab.rep.showUser || Printed by || طُبع بواسطة || Imprimé par || Impreso por || چھاپنے والا || Gedruckt von || Stampato da
+collab.rep.columns || Columns (order and visibility) || الأعمدة (الترتيب والظهور) || Colonnes (ordre et visibilité) || Columnas (orden y visibilidad) || کالم (ترتیب اور نمائش) || Spalten (Reihenfolge und Sichtbarkeit) || Colonne (ordine e visibilità)
+collab.rep.layoutName || Layout name || اسم التخطيط || Nom de la mise en page || Nombre del diseño || لے آؤٹ کا نام || Layoutname || Nome del layout
+collab.rep.saveLayout || Save layout || حفظ التخطيط || Enregistrer la mise en page || Guardar diseño || لے آؤٹ محفوظ کریں || Layout speichern || Salva layout
+collab.rep.print || Print / Save as PDF || طباعة / حفظ PDF || Imprimer / PDF || Imprimir / Guardar PDF || پرنٹ / پی ڈی ایف || Drucken / als PDF speichern || Stampa / Salva PDF
+collab.rep.subtotal || Subtotal || المجموع الفرعي || Sous-total || Subtotal || ذیلی کل || Zwischensumme || Subtotale
+collab.rep.total || Total || الإجمالي || Total || Total || کل || Gesamt || Totale
+collab.rep.rows || rows || صفوف || lignes || filas || قطاریں || Zeilen || righe

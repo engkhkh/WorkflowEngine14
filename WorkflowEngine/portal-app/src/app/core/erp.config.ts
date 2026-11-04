@@ -1,3 +1,4 @@
+import { ALL_CURRENCIES, defaultCurrency, defaultVat } from './region';
 /**
  * ERP configuration: modules, document types and how each document type's workflow nodes map
  * onto the end-to-end business stages
@@ -121,24 +122,20 @@ export function moduleForWorkflowName(name: string): ModuleKey {
 // COMPANIES / BRANCHES are only the DEFAULTS shown before a workspace has its own - the live lists come from
 // OrgService (GET /api/org), where admins add/edit/remove companies and branches.
 
-export interface Company { code: string; name: string; nameAr: string; currency: string; taxNo?: string; }
+export interface Company { code: string; name: string; nameAr: string; currency: string; taxNo?: string; country?: string; }
 export interface Branch { code: string; company: string; name: string; nameAr: string; warehouse: string; city?: string; }
 
 export const COMPANIES: Company[] = [
-  { code: 'MAIN', name: 'Main Company', nameAr: 'الشركة الرئيسية', currency: 'SAR' },
-  { code: 'TRD', name: 'Trading Co.', nameAr: 'شركة التجارة', currency: 'SAR' },
+  { code: 'MAIN', name: 'Main Company', nameAr: 'الشركة الرئيسية', currency: defaultCurrency() },
 ];
 
 export const BRANCHES: Branch[] = [
-  { code: 'RUH', company: 'MAIN', name: 'Riyadh', nameAr: 'الرياض', warehouse: 'WH-RUH Main' },
-  { code: 'JED', company: 'MAIN', name: 'Jeddah', nameAr: 'جدة', warehouse: 'WH-JED' },
-  { code: 'DMM', company: 'MAIN', name: 'Dammam', nameAr: 'الدمام', warehouse: 'WH-DMM' },
-  { code: 'RUH2', company: 'TRD', name: 'Riyadh – Trading', nameAr: 'الرياض – التجارة', warehouse: 'WH-TRD Riyadh' },
+  { code: 'HQ', company: 'MAIN', name: 'Head Office', nameAr: 'المقر الرئيسي', warehouse: 'WH-Main' },
 ];
 
-export const WAREHOUSES = ['WH-RUH Main', 'WH-JED', 'WH-DMM', 'WH-TRD Riyadh'];
-export const CURRENCIES = ['SAR', 'USD', 'EUR', 'AED'];
-export const VAT_RATE = 15;
+export const WAREHOUSES = ['WH-Main'];
+export const CURRENCIES = ALL_CURRENCIES;
+export const VAT_RATE = defaultVat();
 
 export interface CatalogItem { sku: string; name: string; unit: string; price: number; }
 
@@ -157,9 +154,9 @@ export const ITEM_CATALOG: CatalogItem[] = [
 ];
 
 export const PARTIES: Record<DocTypeConfig['partyKind'], string[]> = {
-  vendor: ['Al-Noor Supplies', 'Gulf Tech Trading', 'Desert Office Furniture', 'Prime Logistics'],
-  customer: ['Riyadh Retail Group', 'Najd Contracting', 'Red Sea Hospitality', 'Eastern Industrial Co.'],
+  vendor: ['Northwind Supplies', 'Apex Tech Trading', 'Metro Office Furniture', 'Prime Logistics'],
+  customer: ['Harbor Retail Group', 'Summit Contracting', 'Bluewave Hospitality', 'Eastern Industrial Co.'],
   employee: [],
-  payee: ['Gulf Tech Trading', 'Electricity Utility', 'Landlord – HQ Building', 'Prime Logistics'],
+  payee: ['Apex Tech Trading', 'Electricity Utility', 'Landlord – HQ Building', 'Prime Logistics'],
   warehouse: WAREHOUSES,
 };

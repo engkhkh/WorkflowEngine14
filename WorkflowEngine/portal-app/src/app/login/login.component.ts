@@ -1,3 +1,4 @@
+import { defaultCurrency, userRegion } from '../core/region';
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -61,6 +62,10 @@ import { MODULES } from '../core/erp.config';
             <div><label class="lbl">{{ 'signup.currency' | translate }}</label>
               <select [(ngModel)]="su.currency" name="cur"><option *ngFor="let c of currencies" [value]="c">{{ c }}</option></select></div>
           </div>
+          <div class="two">
+            <div><label class="lbl">{{ 'setup.country' | translate }}</label><input [(ngModel)]="su.country" name="ctry" /></div>
+            <div><label class="lbl">{{ 'setup.taxNo' | translate }}</label><input [(ngModel)]="su.taxNo" name="tax" /></div>
+          </div>
           <label class="lbl">{{ 'signup.name' | translate }}</label>
           <input [(ngModel)]="su.displayName" name="dn" autocomplete="name" />
           <label class="lbl">{{ 'signup.email' | translate }}</label>
@@ -113,7 +118,7 @@ export class LoginComponent {
   demoUsers = ['employee', 'manager', 'senior-manager', 'procurement', 'admin-stores', 'finance', 'sales', 'hr', 'admin'];
   signupMode = false;
   currencies = CURRENCIES;
-  su = { workspaceName: '', branchName: '', displayName: '', email: '', username: '', password: '', currency: 'SAR' };
+  su = { workspaceName: '', branchName: '', displayName: '', email: '', username: '', password: '', currency: defaultCurrency(), country: userRegion(), taxNo: '' };
   username = '';
   password = '';
   error = '';
@@ -127,7 +132,7 @@ export class LoginComponent {
     this.loading = true;
     this.error = '';
     this.auth.signup({ ...s, workspaceName: s.workspaceName.trim(), username: s.username.trim() }).subscribe({
-      next: () => { this.loading = false; this.data.loadedOnce.set(false); this.router.navigate(['/dashboard']); },
+      next: () => { this.loading = false; this.data.loadedOnce.set(false); this.router.navigate(['/setup']); },
       error: e => { this.loading = false; this.error = e.status === 409 ? this.i18n.t('signup.taken') : this.i18n.t('signup.error'); }
     });
   }

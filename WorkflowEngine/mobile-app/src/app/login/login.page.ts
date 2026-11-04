@@ -1,3 +1,4 @@
+import { defaultCurrency } from '../core/region';
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -49,6 +50,8 @@ import { LangSelectComponent } from '../shared/lang-select.component';
           <ion-item><ion-input [label]="'signup.branch' | translate" labelPlacement="stacked" [(ngModel)]="su.branchName"></ion-input></ion-item>
           <ion-item><ion-select [label]="'signup.currency' | translate" labelPlacement="stacked" interface="action-sheet" [(ngModel)]="su.currency">
             <ion-select-option *ngFor="let c of currencies" [value]="c">{{ c }}</ion-select-option></ion-select></ion-item>
+          <ion-item><ion-input [label]="'setup.country' | translate" labelPlacement="stacked" [(ngModel)]="su.country"></ion-input></ion-item>
+          <ion-item><ion-input [label]="'setup.taxNo' | translate" labelPlacement="stacked" [(ngModel)]="su.taxNo"></ion-input></ion-item>
           <ion-item><ion-input [label]="'signup.name' | translate" labelPlacement="stacked" [(ngModel)]="su.displayName"></ion-input></ion-item>
           <ion-item><ion-input [label]="'signup.email' | translate" labelPlacement="stacked" type="email" [(ngModel)]="su.email"></ion-input></ion-item>
           <ion-item><ion-input [label]="'signup.username' | translate" labelPlacement="stacked" [(ngModel)]="su.username" autocapitalize="off"></ion-input></ion-item>
@@ -82,7 +85,7 @@ export class LoginPage {
   demoUsers = ['employee', 'manager', 'senior-manager', 'procurement', 'admin-stores', 'finance', 'sales', 'admin'];
   signupMode = false;
   currencies = CURRENCIES;
-  su = { workspaceName: '', branchName: '', displayName: '', email: '', username: '', password: '', currency: 'SAR' };
+  su = { workspaceName: '', branchName: '', displayName: '', email: '', username: '', password: '', currency: defaultCurrency(), country: '', taxNo: '' };
   username = '';
   password = '';
   error = '';

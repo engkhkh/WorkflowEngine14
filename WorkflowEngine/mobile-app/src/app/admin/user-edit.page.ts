@@ -33,9 +33,15 @@ import { AdminUser, PermissionCatalog, SaveUserPayload } from '../core/models';
         <ion-item><ion-input [label]="'admin.displayName' | translate" labelPlacement="stacked" [(ngModel)]="f.displayName"></ion-input></ion-item>
         <ion-item><ion-input [label]="'admin.email' | translate" labelPlacement="stacked" type="email" [(ngModel)]="f.email"></ion-input></ion-item>
         <ion-item><ion-input [label]="'admin.role' | translate" labelPlacement="stacked" [(ngModel)]="f.role" (ionInput)="role = f.role" autocapitalize="off"></ion-input></ion-item>
-        <ion-item *ngIf="isNew"><ion-input [label]="'admin.password' | translate" labelPlacement="stacked" type="password" [(ngModel)]="f.password"></ion-input></ion-item>
+        <ion-item *ngIf="isNew"><ion-toggle [(ngModel)]="f.invite">{{ 'invite.sendInvite' | translate }}</ion-toggle></ion-item>
+        <ion-item *ngIf="isNew && !f.invite"><ion-input [label]="'admin.password' | translate" labelPlacement="stacked" type="password" [(ngModel)]="f.password"></ion-input></ion-item>
         <ion-item><ion-toggle [(ngModel)]="f.isActive">{{ 'admin.active' | translate }}</ion-toggle></ion-item>
       </ion-list>
+      <div class="section-title">{{ 'invite.branchAccess' | translate }}</div>
+      <ion-list class="boxed" lines="full">
+        <ion-item *ngFor="let b of org.branches()"><ion-checkbox [checked]="hasBranch(b.code)" (ionChange)="toggleBranch(b.code)">{{ b.name }}</ion-checkbox></ion-item>
+      </ion-list>
+      <p class="hint">{{ 'invite.branchHint' | translate }}</p>
       <p class="hint" *ngIf="roleNames(c).length">{{ roleNames(c).join(' · ') }}</p>
 
       <div class="section-title">{{ 'admin.privileges' | translate }}</div>
@@ -80,10 +86,10 @@ export class UserEditPage implements OnInit {
   id = '';
   role = 'employee';
   saving = false;
-  f: SaveUserPayload & { username: string; password: string } = { username: '', displayName: '', email: '', role: 'employee', isActive: true, password: '', permissions: null };
+  f: SaveUserPayload & { username: string; password: string } = { username: '', displayName: '', email: '', role: 'employee', isActive: true, password: '', permissions: null, branches: null, invite: true };
 
   constructor(private route: ActivatedRoute, private router: Router, private api: PortalApiService, public auth: AuthService,
-              private i18n: I18nService, private org: OrgService, private alerts: AlertController, private toasts: ToastController) {}
+              private i18n: I18nService, public org: OrgService, private alerts: AlertController, private toasts: ToastController) {}
 
   ngOnInit() {
     this.id = this.route.snapshot.paramMap.get('id') ?? 'new';
@@ -93,7 +99,7 @@ export class UserEditPage implements OnInit {
       this.api.adminListUsers().subscribe(list => {
         const u = list.find(x => x.id === this.id);
         if (!u) { this.router.navigate(['/admin']); return; }
-        this.f = { username: u.username, displayName: u.displayName, email: u.email, role: u.role, isActive: u.isActive, password: '', permissions: u.permissions ? [...u.permissions] : null };
+        this.f = { username: u.username, displayName: u.displayName, email: u.email, role: u.role, isActive: u.isActive, password: '', permissions: u.permissions ? [...u.permissions] : null, branches: u.branches ? [...u.branches] : null };
         this.role = u.role;
       });
     }
@@ -111,15 +117,25 @@ export class UserEditPage implements OnInit {
     this.f.permissions = [...s];
   }
 
+  hasBranch(c: string) { return !!this.f.branches?.includes(c); }
+  toggleBranch(c: string) { const cur = this.f.branches ?? []; this.f.branches = cur.includes(c) ? cur.filter(x => x !== c) : [...cur, c]; }
+  async showLink(token: string) {
+    const link = `${location.origin}/accept-invite?token=${encodeURIComponent(token)}`;
+    const a = await this.alerts.create({ header: this.i18n.t('invite.title'), message: this.i18n.t('invite.linkHint'), inputs: [{ name: 'l', type: 'text', value: link }],
+      buttons: [{ text: this.i18n.t('invite.copy'), handler: () => { navigator.clipboard?.writeText(link).catch(() => {}); } }, { text: 'OK', role: 'cancel' }] });
+    await a.present();
+  }
+
   save() {
     this.saving = true;
     const f = this.f;
-    const payload: SaveUserPayload = { username: f.username, displayName: f.displayName, email: f.email, role: f.role, isActive: f.isActive, permissions: f.permissions };
-    if (this.isNew) payload.password = f.password;
+    const payload: SaveUserPayload = { username: f.username, displayName: f.displayName, email: f.email, role: f.role, isActive: f.isActive, permissions: f.permissions, branches: f.branches?.length ? f.branches : null };
+    if (this.isNew) { if (f.invite) { payload.invite = true; payload.appUrl = location.origin; } else payload.password = f.password; }
     (this.isNew ? this.api.adminCreateUser(payload) : this.api.adminUpdateUser(this.id, payload)).subscribe({
       next: saved => {
         this.saving = false;
         this.toast(this.i18n.t('admin.saved'));
+        if (saved.inviteToken) this.showLink(saved.inviteToken);
         this.org.load().subscribe();
         if (saved.username === this.auth.currentUser()?.username) this.auth.refreshMe().subscribe();
         this.router.navigate(['/admin']);

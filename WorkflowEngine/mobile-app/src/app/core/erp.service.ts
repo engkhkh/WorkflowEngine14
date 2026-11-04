@@ -1,8 +1,11 @@
 import { Injectable, computed, signal } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
-import { Observable, catchError, map, of, tap } from 'rxjs';
+import { Observable, catchError, map, of, shareReplay, tap } from 'rxjs';
 import { environment } from '../../environments/environment';
 import { ErpInsight, ErpItem, ErpKind, ErpLookup, ErpModule, ErpQuery, ErpRec, ErpSummary, WhStockRow } from './erp.models';
+
+/** A custom field a workspace added to a record type (Governance > Custom fields). Its value is stored under data.cf.<key>. */
+export interface ErpCustomField { key: string; labelEn: string; labelAr: string; type: 'text' | 'number' | 'date' | 'select' | 'bool'; options: string; required: boolean; order: number; }
 
 /** Manufacturing / Projects / CRM API. Every call is checked on the server against the user's privileges (mfg.* / prj.* / crm.*). */
 @Injectable({ providedIn: 'root' })
@@ -40,6 +43,20 @@ export class ErpService {
     const sig = s;
     return this.records(module, kind, { company, take: 5000 }).pipe(tap(l => sig.set(l)), catchError(() => of([] as ErpRec[])));
   }
+
+  /** custom fields of one record type; cached for the session (call clearCustomFields after changing the definitions) */
+  private cfCache = new Map<string, Observable<ErpCustomField[]>>();
+  customFields(module: ErpModule, kind: ErpKind): Observable<ErpCustomField[]> {
+    const key = module + '/' + kind;
+    let o = this.cfCache.get(key);
+    if (!o) {
+      o = this.http.get<ErpCustomField[]>(`${this.base}/${module}/customfields`, { params: new HttpParams().set('target', key) })
+        .pipe(map(l => (Array.isArray(l) ? l : [])), catchError(() => of([] as ErpCustomField[])), shareReplay(1));
+      this.cfCache.set(key, o);
+    }
+    return o;
+  }
+  clearCustomFields() { this.cfCache.clear(); }
 
   /** workspace user directory (assignee / employee pickers) */
   users(): Observable<{ username: string; displayName: string; role: string }[]> {

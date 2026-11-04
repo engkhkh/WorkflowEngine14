@@ -87,7 +87,7 @@ export class MFlowComponent {
   @Input() stages: StageKey[] = STAGES;
   @Input() counts: Record<StageKey, { count: number; value: number }> | null = null;
   @Input() active: StageKey | null = null;
-  @Input() currency = 'SAR';
+  @Input() currency = '';
   @Output() pick = new EventEmitter<StageKey>();
   icon(s: StageKey) { return STAGE_ICON[s]; }
 }

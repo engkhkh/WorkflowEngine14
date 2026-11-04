@@ -1,0 +1,78 @@
+ai.s6 || Make the dashboard dark and hide the KPI cards || اجعل لوحة القيادة داكنة وأخفِ بطاقات المؤشرات || Mets le tableau de bord en sombre et masque les cartes d'indicateurs || Pon el panel en oscuro y oculta las tarjetas de indicadores || ڈیش بورڈ کو ڈارک کریں اور KPI کارڈز چھپائیں || Dashboard dunkel machen und KPI-Karten ausblenden || Imposta la dashboard scura e nascondi le schede KPI
+ai.s7 || Open a new journal entry || افتح قيد يومية جديد || Ouvrir une nouvelle écriture comptable || Abrir un nuevo asiento contable || نئی جرنل انٹری کھولیں || Neuen Buchungssatz öffnen || Apri una nuova scrittura contabile
+ai.c.reset || Done - the screen layout and look are back to the defaults. || تم - عادت الواجهة والمظهر إلى الوضع الافتراضي. || C'est fait : la mise en page et l'apparence sont revenues aux valeurs par défaut. || Hecho: el diseño y el aspecto han vuelto a los valores predeterminados. || ہو گیا - اسکرین کی ترتیب اور شکل ڈیفالٹ پر واپس آ گئی ہے۔ || Erledigt - Layout und Aussehen sind wieder auf den Standardwerten. || Fatto: layout e aspetto sono tornati ai valori predefiniti.
+ai.c.lang || Language changed to {l}. || تم تغيير اللغة إلى {l}. || Langue changée en {l}. || Idioma cambiado a {l}. || زبان {l} میں تبدیل کر دی گئی۔ || Sprache auf {l} geändert. || Lingua cambiata in {l}.
+ai.c.navHid || Hidden from your menu: {m}. || تم إخفاؤها من قائمتك: {m}. || Masqué dans votre menu : {m}. || Oculto en tu menú: {m}. || آپ کے مینو سے چھپایا گیا: {m}۔ || In Ihrem Menü ausgeblendet: {m}. || Nascosto dal menu: {m}.
+ai.c.navShown || Shown again in your menu: {m}. || أُعيد إظهارها في قائمتك: {m}. || De nouveau visible dans votre menu : {m}. || Visible de nuevo en tu menú: {m}. || آپ کے مینو میں دوبارہ دکھایا گیا: {m}۔ || Wieder in Ihrem Menü sichtbar: {m}. || Di nuovo visibile nel menu: {m}.
+ai.c.w.sidebar || sidebar: {s} || الشريط الجانبي: {s} || barre latérale : {s} || barra lateral: {s} || سائیڈ بار: {s} || Seitenleiste: {s} || barra laterale: {s}
+ai.c.sb.dark || dark || داكن || sombre || oscuro || ڈارک || dunkel || scuro
+ai.c.sb.light || light || فاتح || clair || claro || ہلکا || hell || chiaro
+ai.c.sb.accent || accent colour || لون التمييز || couleur d'accent || color de acento || نمایاں رنگ || Akzentfarbe || colore d'accento
+ai.c.w.dark || dark mode || الوضع الداكن || mode sombre || modo oscuro || ڈارک موڈ || dunkler Modus || modalità scura
+ai.c.w.light || light mode || الوضع الفاتح || mode clair || modo claro || لائٹ موڈ || heller Modus || modalità chiara
+ai.c.w.system || follow the system theme || اتباع سمة النظام || thème du système || tema del sistema || سسٹم تھیم || Systemdesign || tema di sistema
+ai.c.w.accent || accent colour {c} || لون التمييز {c} || couleur d'accent {c} || color de acento {c} || نمایاں رنگ {c} || Akzentfarbe {c} || colore d'accento {c}
+ai.c.col.0 || indigo || نيلي || indigo || índigo || نیلا گہرا || Indigo || indaco
+ai.c.col.1 || blue || أزرق || bleu || azul || نیلا || Blau || blu
+ai.c.col.2 || teal || أخضر مزرق || sarcelle || verde azulado || سبز نیلا || Petrol || verde acqua
+ai.c.col.3 || green || أخضر || vert || verde || سبز || Grün || verde
+ai.c.col.4 || orange || برتقالي || orange || naranja || نارنجی || Orange || arancione
+ai.c.col.5 || red || أحمر || rouge || rojo || سرخ || Rot || rosso
+ai.c.col.6 || pink || وردي || rose || rosa || گلابی || Rosa || rosa
+ai.c.col.7 || purple || بنفسجي || violet || morado || جامنی || Violett || viola
+ai.c.w.font || font {f} || الخط {f} || police {f} || fuente {f} || فونٹ {f} || Schrift {f} || carattere {f}
+ai.c.w.fontAuto || automatic font || الخط التلقائي || police automatique || fuente automática || خودکار فونٹ || automatische Schrift || carattere automatico
+ai.c.w.size || text size {s} || حجم النص {s} || taille du texte {s} || tamaño de texto {s} || متن کا سائز {s} || Textgröße {s} || dimensione testo {s}
+ai.c.sz.s || small || صغير || petite || pequeño || چھوٹا || klein || piccola
+ai.c.sz.m || medium || متوسط || moyenne || mediano || درمیانہ || mittel || media
+ai.c.sz.l || large || كبير || grande || grande || بڑا || groß || grande
+ai.c.sz.xl || extra large || كبير جدًا || très grande || muy grande || بہت بڑا || sehr groß || molto grande
+ai.c.w.compact || compact density || كثافة مدمجة || densité compacte || densidad compacta || کمپیکٹ کثافت || kompakte Dichte || densità compatta
+ai.c.w.comfortable || comfortable density || كثافة مريحة || densité confortable || densidad cómoda || آرام دہ کثافت || komfortable Dichte || densità comoda
+ai.c.w.corners || {c} corners || زوايا {c} || coins {c} || esquinas {c} || {c} کنارے || {c} Ecken || angoli {c}
+ai.c.cr.sharp || sharp || حادة || droits || rectos || تیز || eckige || netti
+ai.c.cr.soft || soft || ناعمة || doux || suaves || نرم || weiche || morbidi
+ai.c.cr.round || round || مستديرة || arrondis || redondeadas || گول || runde || arrotondati
+ai.c.done || Done: {what}. || تم: {what}. || C'est fait : {what}. || Hecho: {what}. || ہو گیا: {what}۔ || Erledigt: {what}. || Fatto: {what}.
+ai.c.noPage || There is nothing on this screen that I can show or hide. Open the dashboard, a module page, HR overview or finance overview first. || لا يوجد في هذه الشاشة ما يمكنني إظهاره أو إخفاؤه. افتح لوحة القيادة أو صفحة وحدة أو نظرة الموارد البشرية أو المالية أولًا. || Il n'y a rien à afficher ou masquer sur cet écran. Ouvrez d'abord le tableau de bord, une page de module, l'aperçu RH ou finance. || No hay nada que pueda mostrar u ocultar en esta pantalla. Abre primero el panel, una página de módulo, el resumen de RR. HH. o de finanzas. || اس اسکرین پر ایسا کچھ نہیں جسے میں دکھا یا چھپا سکوں۔ پہلے ڈیش بورڈ، کوئی ماڈیول، ایچ آر یا فنانس کا جائزہ کھولیں۔ || Auf diesem Bildschirm gibt es nichts, was ich ein- oder ausblenden kann. Öffnen Sie zuerst das Dashboard, eine Modulseite, die HR- oder Finanzübersicht. || In questa schermata non c'è nulla che io possa mostrare o nascondere. Apri prima la dashboard, una pagina di modulo o la panoramica HR o finanza.
+ai.c.nothingHidden || Nothing is hidden on this screen. || لا يوجد شيء مخفي في هذه الشاشة. || Rien n'est masqué sur cet écran. || No hay nada oculto en esta pantalla. || اس اسکرین پر کچھ بھی چھپا ہوا نہیں ہے۔ || Auf diesem Bildschirm ist nichts ausgeblendet. || In questa schermata non c'è nulla di nascosto.
+ai.c.shownAll || All sections of "{p}" are visible again. || أُعيد إظهار جميع أقسام "{p}". || Toutes les sections de « {p} » sont de nouveau visibles. || Todas las secciones de «{p}» vuelven a ser visibles. || "{p}" کے تمام حصے دوبارہ نظر آ رہے ہیں۔ || Alle Bereiche von „{p}“ sind wieder sichtbar. || Tutte le sezioni di «{p}» sono di nuovo visibili.
+ai.c.noBlock || I could not tell which section you mean. On this screen you can hide or show: {list}. || لم أتمكن من تحديد القسم المقصود. في هذه الشاشة يمكنك إخفاء أو إظهار: {list}. || Je n'ai pas compris quelle section vous visez. Sur cet écran, vous pouvez masquer ou afficher : {list}. || No pude saber a qué sección te refieres. En esta pantalla puedes ocultar o mostrar: {list}. || میں سمجھ نہیں سکا کہ آپ کون سا حصہ چاہتے ہیں۔ اس اسکرین پر آپ یہ چھپا یا دکھا سکتے ہیں: {list}۔ || Ich konnte nicht erkennen, welchen Bereich Sie meinen. Auf diesem Bildschirm können Sie ein- oder ausblenden: {list}. || Non ho capito quale sezione intendi. In questa schermata puoi nascondere o mostrare: {list}.
+ai.c.hid || Hidden: {b}. Say "show {first}" or "undo" to bring it back. || تم الإخفاء: {b}. قل "أظهر {first}" أو "تراجع" لإعادته. || Masqué : {b}. Dites « afficher {first} » ou « annuler » pour le rétablir. || Oculto: {b}. Di «mostrar {first}» o «deshacer» para recuperarlo. || چھپا دیا گیا: {b}۔ واپس لانے کے لیے "{first} دکھاؤ" یا "undo" کہیں۔ || Ausgeblendet: {b}. Sagen Sie „{first} anzeigen“ oder „rückgängig“, um es zurückzuholen. || Nascosto: {b}. Di' «mostra {first}» o «annulla» per ripristinarlo.
+ai.c.shown || Shown: {b}. Say "hide {first}" or "undo" to revert. || تم الإظهار: {b}. قل "أخفِ {first}" أو "تراجع" للعودة. || Affiché : {b}. Dites « masquer {first} » ou « annuler » pour revenir en arrière. || Mostrado: {b}. Di «ocultar {first}» o «deshacer» para revertir. || دکھا دیا گیا: {b}۔ واپس کرنے کے لیے "{first} چھپاؤ" یا "undo" کہیں۔ || Eingeblendet: {b}. Sagen Sie „{first} ausblenden“ oder „rückgängig“. || Mostrato: {b}. Di' «nascondi {first}» o «annulla» per tornare indietro.
+ai.c.undone || Undone - your previous layout is back. || تم التراجع - عادت الواجهة السابقة. || Annulé : votre mise en page précédente est rétablie. || Deshecho: se ha recuperado tu diseño anterior. || واپس کر دیا - آپ کی پچھلی ترتیب بحال ہو گئی۔ || Rückgängig gemacht - Ihr vorheriges Layout ist zurück. || Annullato: il layout precedente è stato ripristinato.
+ai.c.nothingUndo || There is nothing to undo. || لا يوجد شيء للتراجع عنه. || Il n'y a rien à annuler. || No hay nada que deshacer. || واپس کرنے کے لیے کچھ نہیں ہے۔ || Es gibt nichts rückgängig zu machen. || Non c'è nulla da annullare.
+ai.c.noRight || You don't have the privilege to open that screen. Ask an administrator to grant it in Admin > Users. || ليست لديك صلاحية فتح هذه الشاشة. اطلب من المسؤول منحها من الإدارة > المستخدمون. || Vous n'avez pas le droit d'ouvrir cet écran. Demandez à un administrateur de l'accorder dans Admin > Utilisateurs. || No tienes el privilegio para abrir esa pantalla. Pide a un administrador que lo conceda en Admin > Usuarios. || آپ کو یہ اسکرین کھولنے کا استحقاق حاصل نہیں۔ ایڈمنسٹریٹر سے ایڈمن > صارفین میں دینے کو کہیں۔ || Sie haben keine Berechtigung, diesen Bildschirm zu öffnen. Bitten Sie einen Administrator, sie unter Admin > Benutzer zu erteilen. || Non hai il privilegio per aprire questa schermata. Chiedi a un amministratore di concederlo in Admin > Utenti.
+ai.c.target.employee || Employee record || سجل الموظف || Fiche employé || Ficha de empleado || ملازم کا ریکارڈ || Mitarbeiterdatensatz || Scheda dipendente
+ai.c.target.journal || Journal entry || قيد اليومية || Écriture comptable || Asiento contable || جرنل انٹری || Buchungssatz || Scrittura contabile
+ai.c.target.apinvoice || Supplier invoice || فاتورة مورد || Facture fournisseur || Factura de proveedor || سپلائر انوائس || Lieferantenrechnung || Fattura fornitore
+ai.c.target.arinvoice || Customer invoice || فاتورة عميل || Facture client || Factura de cliente || کسٹمر انوائس || Kundenrechnung || Fattura cliente
+ai.c.target.budget || Budget || الميزانية || Budget || Presupuesto || بجٹ || Budget || Budget
+ai.c.target.asset || Fixed asset || أصل ثابت || Immobilisation || Activo fijo || مستقل اثاثہ || Anlagegut || Immobilizzazione
+ai.c.open || Opening: {w}. || جارٍ فتح: {w}. || Ouverture : {w}. || Abriendo: {w}. || کھولا جا رہا ہے: {w}۔ || Öffne: {w}. || Apertura: {w}.
+ai.c.openEdit || Opening {w} {id} for editing. || جارٍ فتح {w} {id} للتعديل. || Ouverture de {w} {id} pour modification. || Abriendo {w} {id} para editar. || {w} {id} ترمیم کے لیے کھولا جا رہا ہے۔ || Öffne {w} {id} zum Bearbeiten. || Apertura di {w} {id} per la modifica.
+ai.c.needId || Which one? Open the list and pick the record, or tell me its number (for example "edit employee E1003"). || أي واحد؟ افتح القائمة واختر السجل، أو أخبرني برقمه (مثال: "عدّل الموظف E1003"). || Lequel ? Ouvrez la liste et choisissez la fiche, ou donnez-moi son numéro (par exemple « modifier employé E1003 »). || ¿Cuál? Abre la lista y elige el registro, o dime su número (por ejemplo «editar empleado E1003»). || کون سا؟ فہرست کھولیں اور ریکارڈ چنیں، یا مجھے اس کا نمبر بتائیں (مثلاً "ملازم E1003 میں ترمیم")۔ || Welchen? Öffnen Sie die Liste und wählen Sie den Datensatz oder nennen Sie mir die Nummer (z. B. „Mitarbeiter E1003 bearbeiten“). || Quale? Apri l'elenco e scegli il record, oppure dimmi il numero (ad esempio «modifica dipendente E1003»).
+blk.kpis || KPI cards || بطاقات المؤشرات || Cartes d'indicateurs || Tarjetas de indicadores || KPI کارڈز || KPI-Karten || Schede KPI
+blk.flow || Business flow || سير العمل التجاري || Flux d'activité || Flujo de negocio || کاروباری بہاؤ || Geschäftsablauf || Flusso aziendale
+blk.trend || Trend chart || مخطط الاتجاه || Graphique de tendance || Gráfico de tendencia || رجحان چارٹ || Trenddiagramm || Grafico di tendenza
+blk.insight || AI insight || رؤية الذكاء الاصطناعي || Aperçu IA || Análisis de IA || اے آئی بصیرت || KI-Einblick || Analisi IA
+blk.queue || My approvals queue || قائمة موافقاتي || Ma file d'approbations || Mi cola de aprobaciones || میری منظوریوں کی قطار || Meine Genehmigungswarteschlange || La mia coda di approvazioni
+blk.quick || Quick actions || إجراءات سريعة || Actions rapides || Acciones rápidas || فوری اقدامات || Schnellaktionen || Azioni rapide
+blk.recent || Recent documents || المستندات الأخيرة || Documents récents || Documentos recientes || حالیہ دستاویزات || Letzte Dokumente || Documenti recenti
+blk.documents || Documents || المستندات || Documents || Documentos || دستاویزات || Dokumente || Documenti
+blk.stock || Stock || المخزون || Stock || Existencias || اسٹاک || Bestand || Scorte
+blk.ledger || Ledger || دفتر الأستاذ || Grand livre || Libro mayor || کھاتہ || Hauptbuch || Libro mastro
+blk.otherFlows || Other flows || تدفقات أخرى || Autres flux || Otros flujos || دیگر بہاؤ || Weitere Abläufe || Altri flussi
+blk.hires || Hiring trend || اتجاه التوظيف || Tendance des embauches || Tendencia de contratación || بھرتی کا رجحان || Einstellungstrend || Andamento assunzioni
+blk.byUnit || By unit || حسب الوحدة || Par unité || Por unidad || یونٹ کے لحاظ سے || Nach Einheit || Per unità
+blk.byNationality || By nationality || حسب الجنسية || Par nationalité || Por nacionalidad || قومیت کے لحاظ سے || Nach Nationalität || Per nazionalità
+blk.byLocation || By location || حسب الموقع || Par site || Por ubicación || مقام کے لحاظ سے || Nach Standort || Per sede
+blk.byGender || By gender || حسب الجنس || Par genre || Por género || جنس کے لحاظ سے || Nach Geschlecht || Per genere
+blk.ratings || Performance ratings || تقييمات الأداء || Évaluations de performance || Calificaciones de desempeño || کارکردگی کی درجہ بندی || Leistungsbewertungen || Valutazioni delle performance
+blk.pnl || Revenue vs expense || الإيرادات مقابل المصروفات || Produits et charges || Ingresos y gastos || آمدنی بمقابلہ اخراجات || Erlöse und Aufwand || Ricavi e costi
+blk.cash || Cash by account || النقد حسب الحساب || Trésorerie par compte || Efectivo por cuenta || اکاؤنٹ کے لحاظ سے نقدی || Liquidität je Konto || Cassa per conto
+blk.arAging || Receivables ageing || تقادم الذمم المدينة || Balance âgée clients || Antigüedad de cuentas por cobrar || قابل وصول کی عمر || Forderungsalterung || Scadenzario crediti
+blk.apAging || Payables ageing || تقادم الذمم الدائنة || Balance âgée fournisseurs || Antigüedad de cuentas por pagar || قابل ادائیگی کی عمر || Verbindlichkeitenalterung || Scadenzario debiti
+blk.budget || Budget use || استخدام الميزانية || Consommation du budget || Uso del presupuesto || بجٹ کا استعمال || Budgetauslastung || Utilizzo budget
+blk.deptSpend || Spend by department || الإنفاق حسب القسم || Dépenses par service || Gasto por departamento || شعبے کے لحاظ سے اخراجات || Ausgaben je Abteilung || Spesa per reparto
+blk.apDue || Payments due || المدفوعات المستحقة || Paiements à échéance || Pagos vencidos o próximos || واجب الادا ادائیگیاں || Fällige Zahlungen || Pagamenti in scadenza

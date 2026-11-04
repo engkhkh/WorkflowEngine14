@@ -32,6 +32,7 @@ import { TranslatePipe } from '../core/translate.pipe';
           </div>
         </div>
       </div>
+      <div class="msg" *ngIf="ai.thinking()"><span class="av"><ion-icon name="sparkles"></ion-icon></span><div class="bubble">{{ 'ai.thinking' | translate }}</div></div>
       <div class="sugs">
         <button *ngFor="let s of ai.suggestions()" (click)="send(s)">{{ s }}</button>
       </div>
@@ -50,7 +51,7 @@ import { TranslatePipe } from '../core/translate.pipe';
     .msg { display: flex; gap: 8px; margin-bottom: 12px; align-items: flex-start; }
     .msg.me { justify-content: flex-end; }
     .av { width: 28px; height: 28px; border-radius: 9px; display: grid; place-items: center; color: #fff; background: linear-gradient(135deg, #4338ca, #0ea5a4); flex-shrink: 0; }
-    .bubble { background: var(--surface); border: 1px solid var(--border); border-radius: 14px; padding: 10px 12px; font-size: 14px; line-height: 1.5; max-width: 85%; }
+    .bubble { white-space: pre-line; background: var(--surface); border: 1px solid var(--border); border-radius: 14px; padding: 10px 12px; font-size: 14px; line-height: 1.5; max-width: 85%; }
     .me .bubble { background: var(--primary); color: var(--primary-contrast); border-color: var(--primary); }
     .acts { display: flex; gap: 6px; margin-top: 8px; flex-wrap: wrap; }
     .acts button { display: inline-flex; align-items: center; gap: 4px; border: none; border-radius: 8px; padding: 5px 10px; font-size: 12.5px; font-weight: 600; background: var(--primary-soft); color: var(--primary); font-family: inherit; }
