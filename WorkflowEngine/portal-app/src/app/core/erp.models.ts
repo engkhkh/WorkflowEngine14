@@ -2,7 +2,7 @@
  * Manufacturing, Projects and CRM data model (mirrors backend/.../Models/Modules.cs and Controllers/ModulesController.cs).
  * Every row is an ErpRec: Module / Kind / Code / Company / Branch / Status / Ref are columns, the rest is in `data`.
  */
-export type ErpModule = 'mfg' | 'prj' | 'crm' | 'proc' | 'scm' | 'wh' | 'ast' | 'pay' | 'epm' | 'bpm' | 'int' | 'bi' | 'arc' | 're' | 'so' | 'hd' | 'sub' | 'exp' | 'qa' | 'flt';
+export type ErpModule = 'mfg' | 'prj' | 'crm' | 'proc' | 'scm' | 'wh' | 'ast' | 'pay' | 'epm' | 'bpm' | 'int' | 'bi' | 'arc' | 're' | 'gov' | 'so' | 'hd' | 'sub' | 'exp' | 'qa' | 'flt';
 
 export type ErpKind =
   | 'bom' | 'workcenter' | 'machine' | 'workorder' | 'inspection' | 'maintenance' | 'plan'
@@ -13,7 +13,8 @@ export type ErpKind =
   | 'category' | 'incoming' | 'outgoing' | 'document' | 'appointment' | 'visitor' | 'todo'
   | 'property' | 'unit' | 'owner' | 'tenant' | 'lease' | 'installment' | 'sale' | 'request'
   | 'pricelist' | 'order' | 'delivery' | 'sla' | 'ticket' | 'visit' | 'subscription' | 'invoice' | 'claim' | 'ncr' | 'vehicle' | 'driver' | 'fuel' | 'service'
-  | 'setting';
+  | 'setting'
+  | 'audit' | 'rule' | 'approval' | 'delegation' | 'customfield' | 'lot' | 'trackrule';
 
 export interface ErpRec<D = Record<string, any>> {
   id: string; module: ErpModule; kind: ErpKind; code?: string | null; company?: string | null; branch?: string | null;
@@ -50,6 +51,7 @@ export const ERP_MODULES: Record<ErpModule, ErpModuleDef> = {
     nav: [
       n('overview', 'bar-chart', ['wh.reports.view'], 'wh'), n('stock', 'box', ['wh.view'], 'wh'), n('picks', 'clipboard', ['wh.view'], 'wh'), n('counts', 'check-square', ['wh.view'], 'wh'),
       n('locations', 'store', ['wh.view'], 'wh'), n('setup', 'settings', ['wh.setup'], 'wh'),
+      n('lots', 'layers', ['wh.view'], 'wh'), n('tracking', 'shield', ['wh.setup'], 'wh'),
     ],
     any: ['wh.view', 'wh.pick.manage', 'wh.count.manage', 'wh.reports.view', 'wh.setup'],
   },
@@ -108,6 +110,15 @@ export const ERP_MODULES: Record<ErpModule, ErpModuleDef> = {
       n('installments', 'wallet', ['re.view'], 're'), n('sales', 'trending-up', ['re.view'], 're'), n('requests', 'wrench', ['re.view'], 're'),
     ],
     any: ['re.view', 're.properties.manage', 're.units.manage', 're.leases.manage', 're.collect', 're.sales.manage', 're.maintenance.manage', 're.reports.view', 're.setup'],
+  },
+  gov: {
+    id: 'gov', route: '/governance', icon: 'shield', color: '#475569', titleKey: 'module.gov', subKey: 'gov.sub',
+    nav: [
+      n('overview', 'bar-chart', ['gov.view'], 'gov'), n('approvals', 'check-square', ['gov.view'], 'gov'), n('rules', 'settings', ['gov.view'], 'gov'),
+      n('delegation', 'users', ['gov.delegate'], 'gov'), n('audit', 'clipboard', ['gov.audit.view'], 'gov'), n('fields', 'layers', ['gov.fields.manage'], 'gov'),
+      n('lock', 'clock', ['gov.lock.manage'], 'gov'), n('tax', 'file', ['gov.vat.view', 'gov.zatca.manage'], 'gov'),
+    ],
+    any: ['gov.view', 'gov.audit.view', 'gov.rules.manage', 'gov.approvals.admin', 'gov.delegate', 'gov.fields.manage', 'gov.lock.manage', 'gov.zatca.manage', 'gov.vat.view'],
   },
   so: {
     id: 'so', route: '/sales-orders', icon: 'clipboard', color: '#0d9488', titleKey: 'module.so', subKey: 'so.sub',

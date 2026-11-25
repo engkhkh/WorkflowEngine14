@@ -13,6 +13,7 @@ const BIZ = new Set(['so', 'hd', 'sub', 'exp', 'qa', 'flt']);
 
 /** pages that are not the generic list page */
 const SPECIAL: Record<string, Loader> = {
+  'gov/tax': () => import('./gov-tax.component').then(m => m.GovTaxComponent),
   'mfg/orders': () => import('./mfg-orders.component').then(m => m.MfgOrdersComponent),
   'mfg/planning': () => import('./mfg-planning.component').then(m => m.MfgPlanningComponent),
   'mfg/costing': () => import('./mfg-costing.component').then(m => m.MfgCostingComponent),
