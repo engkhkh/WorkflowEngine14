@@ -2,6 +2,7 @@ using System.Text.Json;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using WorkflowEngine.Api.Models;
+using WorkflowEngine.Api.Services;
 
 namespace WorkflowEngine.Api.Controllers;
 
@@ -131,6 +132,9 @@ public partial class ModulesController
             case "bi":
                 s.Kpis.Add(K("reports", Kd("report").Count()));
                 break;
+            case "arc": ArcSummary(s, all, today); break;
+            case "re": ReSummary(s, all, today); break;
+            case "so": case "hd": case "sub": case "exp": case "qa": case "flt": BizSummary(s, module, all, today); break;
             default: return null;
         }
         return s;
@@ -166,7 +170,7 @@ public partial class ModulesController
         var tenantId = await _tenant.TenantIdOf(User);
         var res = new List<InsightDto>();
         void Add(string code, string m, string level, decimal n, string? r = null) { if (n > 0) res.Add(new InsightDto { Code = code, Module = m, Level = level, N = n, Ref = r }); }
-        var today = DateTime.UtcNow.Date;
+        var today = ClientClock.Today;
         foreach (var m in Modules.Where(x => x != "bi"))
         {
             if (!await Has(m + ".reports.view") && !(m is "bpm" or "int" && await Has(m + ".view"))) continue;
@@ -183,6 +187,8 @@ public partial class ModulesController
                 case "ast": Add("ast.dueMaintenance", m, "warn", V("dueMaintenance")); Add("ast.down", m, "bad", V("down")); break;
                 case "pay": Add("pay.openRuns", m, "info", V("openRuns")); break;
                 case "int": Add("int.failures", m, "warn", V("failures")); break;
+                case "arc": Add("arc.overdue", m, "bad", V("incomingOverdue")); Add("arc.urgent", m, "warn", V("urgent")); Add("arc.unassigned", m, "info", V("unassigned")); Add("arc.retention", m, "warn", V("retentionDue")); break;
+                case "re": Add("re.overdue", m, "bad", V("overdueCount")); Add("re.expiring", m, "warn", V("expiring")); Add("re.vacant", m, "info", V("vacant")); Add("re.requests", m, "info", V("requestsOpen")); break;
             }
         }
         // stale opportunities: open, not touched for 30 days

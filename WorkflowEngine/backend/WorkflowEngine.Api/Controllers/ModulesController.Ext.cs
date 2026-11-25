@@ -1,3 +1,4 @@
+using System.Globalization;
 using System.Net.Http.Headers;
 using System.Security.Cryptography;
 using System.Text;
@@ -53,7 +54,7 @@ public partial class ModulesController
         ("int", "apikey") => ("int.view", "int.keys.manage"),
         ("int", "webhook" or "connector" or "log") => ("int.view", "int.hooks.manage"),
         ("bi", "report") => ("bi.view", "bi.reports.manage"),
-        _ => null
+        _ => KindPermsArc(module, kind)
     };
 
     private static string? AutoPrefixExt(string module, string kind) => (module, kind) switch
@@ -62,7 +63,7 @@ public partial class ModulesController
         ("scm", "forecast") => "FC", ("scm", "shipment") => "SH", ("wh", "pick") => "PK", ("wh", "count") => "CNT",
         ("ast", "plan") => "PM", ("ast", "workorder") => "AWO", ("ast", "meter") => "MR", ("pay", "adjustment") => "ADJ", ("pay", "run") => "RUN",
         ("epm", "plan") => "BP", ("epm", "line") => "BL", ("epm", "forecast") => "FCT", ("bpm", "process") => "PRC", ("int", "webhook") => "WH", ("int", "connector") => "CN", ("bi", "report") => "RPT",
-        _ => null
+        _ => AutoPrefixArc(module, kind)
     };
 
     private static string DefaultStatusExt(string module, string kind) => (module, kind) switch
@@ -72,11 +73,11 @@ public partial class ModulesController
         ("wh", "pick") => "Open", ("wh", "count") => "Draft",
         ("ast", "workorder") => "Open", ("ast", "plan") => "Active", ("ast", "asset") => "Active",
         ("pay", "run") => "Draft", ("epm", "plan") => "Draft", ("epm", "forecast") => "Draft",
-        _ => "Active"
+        _ => DefaultStatusArc(module, kind)
     };
 
-    private static bool SystemOnly(string module, string kind) => (module, kind) is ("pay", "payslip") or ("int", "log");
-    private static bool ActionOnly(string module, string kind) => (module, kind) is ("proc", "po") or ("pay", "run") or ("ast", "workorder") or ("wh", "pick") or ("wh", "count");
+    private static bool SystemOnly(string module, string kind) => (module, kind) is ("pay", "payslip") or ("int", "log") or ("re", "installment") || BizSystemOnly(module, kind);
+    private static bool ActionOnly(string module, string kind) => (module, kind) is ("proc", "po") or ("pay", "run") or ("ast", "workorder") or ("wh", "pick") or ("wh", "count") || ArcActionOnly(module, kind) || ReActionOnly(module, kind) || BizActionOnly(module, kind);
     private static bool IsFinalExt(string module, string kind, string? status) => (module, kind, status) switch
     {
         ("proc", "po", "Received" or "Invoiced" or "PartiallyReceived") => true,
@@ -85,7 +86,7 @@ public partial class ModulesController
         ("pay", "run", "Posted" or "Approved") => true,
         ("ast", "workorder", "Completed") => true,
         ("epm", "plan", "Published") => true,
-        _ => false
+        _ => IsFinalArc(module, kind, status) || IsFinalRe(module, kind, status) || IsFinalBiz(module, kind, status)
     };
 
     private static readonly Dictionary<(string, string), string[]> Keep = new()
@@ -105,7 +106,8 @@ public partial class ModulesController
 
     private static string MergeDataExt(string module, string kind, string existing, string incoming)
     {
-        if (!Keep.TryGetValue((module, kind), out var keys)) return incoming;
+        string[]? keys;
+        if (!Keep.TryGetValue((module, kind), out keys) && !ArcKeep.TryGetValue((module, kind), out keys) && !ReKeep.TryGetValue((module, kind), out keys) && !BizKeepKeys(module, kind, out keys)) return incoming;
         var o = JsonSerializer.Deserialize<Dictionary<string, JsonElement>>(existing) ?? new();
         var n = JsonSerializer.Deserialize<Dictionary<string, JsonElement>>(incoming) ?? new();
         foreach (var k in keys) { if (o.TryGetValue(k, out var v)) n[k] = v; else n.Remove(k); }
@@ -116,6 +118,9 @@ public partial class ModulesController
     private async Task<string?> GuardExt(string module, string kind, string? oldStatus, string? newStatus)
     {
         var creating = oldStatus == null;
+        if (module == "arc") { var ag = GuardArc(kind, oldStatus, newStatus); if (ag != null) return ag; }
+        if (module == "re") { var rg = GuardRe(kind, oldStatus, newStatus); if (rg != null) return rg; }
+        if (IsBiz(module)) { var bg = GuardBiz(module, kind, oldStatus, newStatus); if (bg != null) return bg; }
         if (creating && (module, kind) == ("int", "apikey")) return "Use the key generator to create an API key.";
         if (ActionOnly(module, kind))
         {
@@ -173,6 +178,12 @@ public partial class ModulesController
                 if (Clean(r.Ref) == null) return "Choose the plan.";
                 if (FinJson.D(d, "amount") < 0) return "The amount can't be negative.";
                 break;
+            case ("arc", _):
+                return await ValidateArc(tenantId, kind, r, d);
+            case ("re", _):
+                return await ValidateRe(tenantId, kind, r, d);
+            case ("so" or "hd" or "sub" or "exp" or "qa" or "flt", _):
+                return await ValidateBiz(tenantId, module, kind, r, d);
         }
         await Task.CompletedTask;
         return null;
@@ -309,9 +320,10 @@ public partial class ModulesController
         return Ok(ErpRecordDto.From(po));
     }
 
-    [HttpPost("pos/{id}/{action}")]
-    public async Task<IActionResult> PoAction(string module, string id, string action, [FromBody] ProcReceiveDto? b)
+    [HttpPost("pos/{id}/{op}")]
+    public async Task<IActionResult> PoAction(string module, string id, string op, [FromBody] ProcReceiveDto? b)
     {
+        var action = op;   // not named "action" in the route: that name is reserved by ASP.NET routing and would always hold the C# method name
         if (module != "proc") return NotFound();
         var tenantId = await _tenant.TenantIdOf(User);
         var po = await Find(tenantId, "proc", "po", id);
@@ -481,7 +493,7 @@ public partial class ModulesController
         var plan = await Find(tenantId, "ast", "plan", id);
         if (plan == null) return NotFound();
         var d = FinJson.Obj(plan.Data);
-        var due = FinJson.TryDate(d, "nextDue", out var nd) ? nd : DateTime.UtcNow.Date;
+        var due = FinJson.TryDate(d, "nextDue", out var nd) ? nd : ClientClock.Today;
         var freq = (int)FinJson.D(d, "frequencyDays");
         var wo = new ErpRecord { TenantId = tenantId, Module = "ast", Kind = "workorder", Code = await NextCode(tenantId, "ast", "workorder", "AWO"), Company = plan.Company, Branch = plan.Branch, Status = "Open", Ref = plan.Ref, Parent = plan.Code, CreatedBy = Username,
             Data = J(new() { ["type"] = "Preventive", ["plan"] = plan.Code, ["due"] = due.ToString("yyyy-MM-dd"), ["description"] = FinJson.S(d, "task") != "" ? FinJson.S(d, "task") : FinJson.S(d, "name"), ["priority"] = "Normal" }) };
@@ -492,9 +504,10 @@ public partial class ModulesController
         return Ok(ErpRecordDto.From(wo));
     }
 
-    [HttpPost("aworkorders/{id}/{action}")]
-    public async Task<IActionResult> AssetWoAction(string module, string id, string action, [FromBody] AstCompleteDto? b)
+    [HttpPost("aworkorders/{id}/{op}")]
+    public async Task<IActionResult> AssetWoAction(string module, string id, string op, [FromBody] AstCompleteDto? b)
     {
+        var action = op;   // not named "action" in the route: that name is reserved by ASP.NET routing and would always hold the C# method name
         if (module != "ast" || !await Has("ast.orders.manage")) return Forbid();
         var tenantId = await _tenant.TenantIdOf(User);
         var wo = await Find(tenantId, "ast", "workorder", id);
@@ -525,9 +538,10 @@ public partial class ModulesController
 
     // ------------------------------------------------------------------ payroll
 
-    [HttpPost("runs/{id}/{action}")]
-    public async Task<IActionResult> RunAction(string module, string id, string action)
+    [HttpPost("runs/{id}/{op}")]
+    public async Task<IActionResult> RunAction(string module, string id, string op)
     {
+        var action = op;   // not named "action" in the route: that name is reserved by ASP.NET routing and would always hold the C# method name
         if (module != "pay") return NotFound();
         var tenantId = await _tenant.TenantIdOf(User);
         var run = await Find(tenantId, "pay", "run", id);
@@ -541,7 +555,9 @@ public partial class ModulesController
                     if (run.Status is not ("Draft" or "Calculated")) return Bad("This run can't be recalculated.");
                     var period = FinJson.S(d, "period");
                     if (period.Length != 7) return Bad("Enter the pay period as yyyy-MM.");
-                    var emps = _db.HrEmployees.AsNoTracking().Where(e => e.TenantId == tenantId && e.Status != "Terminated");
+                    if (!DateTime.TryParseExact(period + "-01", "yyyy-MM-dd", CultureInfo.InvariantCulture, DateTimeStyles.None, out var periodStart)) return Bad("Enter the pay period as yyyy-MM.");
+                    var periodEnd = periodStart.AddMonths(1).AddDays(-1);   // an employee who starts after the period ends is not paid for it
+                    var emps = _db.HrEmployees.AsNoTracking().Where(e => e.TenantId == tenantId && e.Status != "Terminated" && (e.HireDate == null || e.HireDate <= periodEnd));
                     if (!string.IsNullOrEmpty(run.Company)) emps = emps.Where(e => e.Company == run.Company || e.Company == null || e.Company == "");
                     var list = await emps.OrderBy(e => e.EmpNo).ToListAsync();
                     if (list.Count == 0) return Bad("There are no employees to pay.");

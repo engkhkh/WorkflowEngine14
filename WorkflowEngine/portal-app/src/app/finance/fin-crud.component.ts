@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges, inject, signal } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges, computed, inject, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -42,6 +42,22 @@ export interface CrudAction { label: string; show: (r: FinRec) => boolean; run: 
     <div class="bar">
       <input class="search" [placeholder]="'common.search' | translate" [ngModel]="q()" (ngModelChange)="q.set($event)" />
       <app-saved-views [view]="'fin:' + kind" [state]="filterState" (apply)="applyFilter($event)"></app-saved-views>
+      <ng-container *ngIf="parentOf">
+        <div class="seg">
+          <button type="button" [class.on]="!treeOn()" (click)="setTree(false)">{{ 'fin.tree.list' | translate }}</button>
+          <button type="button" [class.on]="treeOn()" (click)="setTree(true)">{{ 'fin.tree.tree' | translate }}</button>
+        </div>
+        <ng-container *ngIf="treeOn()">
+          <label class="lvl">{{ 'fin.tree.level' | translate }}
+            <select [ngModel]="level()" (ngModelChange)="setLevel($event)">
+              <option [ngValue]="0">{{ 'fin.tree.all' | translate }}</option>
+              <option *ngFor="let n of levelOptions()" [ngValue]="n">{{ n }}</option>
+            </select>
+          </label>
+          <button class="ghost sm" type="button" (click)="setLevel(0)">{{ 'fin.tree.expand' | translate }}</button>
+          <button class="ghost sm" type="button" (click)="setLevel(1)">{{ 'fin.tree.collapse' | translate }}</button>
+        </ng-container>
+      </ng-container>
       <span class="grow"></span>
       <ng-content select="[bar]"></ng-content>
       <button class="ghost" type="button" (click)="reportOpen = true" [title]="'collab.reportDesigner' | translate"><app-icon name="printer" [size]="15"></app-icon></button>
@@ -55,8 +71,13 @@ export interface CrudAction { label: string; show: (r: FinRec) => boolean; run: 
         <thead><tr>
           <th *ngFor="let f of cols()" [class.num]="f.type === 'number'">{{ f.label | translate }}</th><th></th></tr></thead>
         <tbody>
-          <tr *ngFor="let r of shown()">
-            <td *ngFor="let f of cols()" [class.num]="f.type === 'number'">
+          <tr *ngFor="let r of shown()" [class.grp]="treeActive() && r.data['isHeader']">
+            <td *ngFor="let f of cols(); let ci = index" [class.num]="f.type === 'number'">
+              <ng-container *ngIf="ci === 0 && treeActive()">
+                <span class="ind" [style.padding-inline-start.px]="(depthOf(r) - 1) * 20"></span>
+                <button type="button" class="caret" *ngIf="hasKids(r)" (click)="toggle(r)" [attr.aria-expanded]="!collapsed().has(r.id)">{{ collapsed().has(r.id) ? '▸' : '▾' }}</button>
+                <span class="caret sp" *ngIf="!hasKids(r)"></span>
+              </ng-container>
               <ng-container [ngSwitch]="f.type">
                 <app-status *ngSwitchCase="'status'" [status]="pillClass(r.status)" [label]="statusLabel(r.status)"></app-status>
                 <span *ngSwitchCase="'bool'">{{ val(r, f) ? '✓' : '' }}</span>
@@ -112,6 +133,12 @@ export interface CrudAction { label: string; show: (r: FinRec) => boolean; run: 
     </div>
   `,
   styles: [`
+    .seg { display: inline-flex; border: 1px solid var(--border, #d9dce3); border-radius: 8px; overflow: hidden; }
+    .seg button { border: 0; border-radius: 0; background: transparent; padding: 6px 12px; cursor: pointer; }
+    .seg button.on { background: var(--primary, #4f46e5); color: #fff; }
+    .lvl { display: inline-flex; gap: 6px; align-items: center; font-size: 13px; } .lvl select { width: auto; }
+    .caret { display: inline-block; width: 20px; border: 0; background: transparent; cursor: pointer; padding: 0; color: inherit; text-align: center; }
+    .caret.sp { cursor: default; } tr.grp td { font-weight: 600; }
     .bar { display: flex; gap: 10px; align-items: center; margin-bottom: 12px; flex-wrap: wrap; } .search { max-width: 280px; } .grow { flex: 1; }
     .act { white-space: nowrap; text-align: end; } .danger-i { color: var(--bad); }
     .danger-fill { background: var(--bad); border-color: var(--bad); color: #fff; }
@@ -129,6 +156,8 @@ export class FinCrudComponent implements OnInit, OnChanges {
   @Input() actions: CrudAction[] = [];
   @Input() autoNew = false;                        // open the "new" dialog when the page has ?new=1
   @Input() filter: (r: FinRec) => boolean = () => true;
+  /** Enables the List / Tree switch: returns the id of a row's parent (or null for a top-level row). */
+  @Input() parentOf: ((r: FinRec, all: FinRec[]) => string | null) | null = null;
   @Output() changed = new EventEmitter<FinRec[]>();
 
   private fin = inject(FinService);
@@ -139,6 +168,39 @@ export class FinCrudComponent implements OnInit, OnChanges {
   private collab = inject(CollabService);
 
   all = signal<FinRec[]>([]);
+  treeOn = signal(false); level = signal(0); collapsed = signal<Set<string>>(new Set());
+  private tinfo = computed(() => {
+    const all = this.all(); const po = this.parentOf;
+    const empty = { order: [] as { r: FinRec; depth: number }[], kids: new Map<string, FinRec[]>(), depth: new Map<string, number>(), max: 0 };
+    if (!po) return empty;
+    const ids = new Set(all.map(r => r.id)); const parent = new Map<string, string>();
+    for (const r of all) { const p = po(r, all); if (p && p !== r.id && ids.has(p)) parent.set(r.id, p); }
+    for (const r of all) { const seen = new Set([r.id]); let c = parent.get(r.id); while (c) { if (seen.has(c)) { parent.delete(r.id); break; } seen.add(c); c = parent.get(c); } }
+    const kids = new Map<string, FinRec[]>(); const roots: FinRec[] = [];
+    for (const r of all) { const p = parent.get(r.id); if (p) { if (!kids.has(p)) kids.set(p, []); kids.get(p)!.push(r); } else roots.push(r); }
+    const cmp = (a: FinRec, b: FinRec) => (a.code ?? '').localeCompare(b.code ?? '', undefined, { numeric: true });
+    roots.sort(cmp); kids.forEach(l => l.sort(cmp));
+    const order: { r: FinRec; depth: number }[] = []; const depth = new Map<string, number>(); let max = 0;
+    const walk = (r: FinRec, d: number) => { order.push({ r, depth: d }); depth.set(r.id, d); if (d > max) max = d; for (const k of kids.get(r.id) ?? []) walk(k, d + 1); };
+    roots.forEach(r => walk(r, 1));
+    return { order, kids, depth, max };
+  });
+  levelOptions = () => Array.from({ length: this.tinfo().max }, (_, i) => i + 1);
+  treeActive = () => !!this.parentOf && this.treeOn() && !this.q().trim();
+  depthOf = (r: FinRec) => this.tinfo().depth.get(r.id) ?? 1;
+  hasKids = (r: FinRec) => (this.tinfo().kids.get(r.id)?.length ?? 0) > 0;
+  toggle(r: FinRec) { const s = new Set(this.collapsed()); if (s.has(r.id)) s.delete(r.id); else s.add(r.id); this.collapsed.set(s); }
+  setTree(on: boolean) { this.treeOn.set(on); this.saveTreePref(); }
+  setLevel(n: number | string) { this.level.set(Number(n) || 0); this.applyLevel(); this.saveTreePref(); }
+  /** Level N = show rows down to depth N: every row that has children at depth >= N starts collapsed. */
+  private applyLevel() {
+    const n = this.level(); const s = new Set<string>();
+    if (n > 0) { const t = this.tinfo(); for (const { r, depth } of t.order) if (depth >= n && (t.kids.get(r.id)?.length ?? 0) > 0) s.add(r.id); }
+    this.collapsed.set(s);
+  }
+  private get prefKey() { return 'fin-tree:' + this.kind; }
+  private saveTreePref() { try { localStorage.setItem(this.prefKey, JSON.stringify({ on: this.treeOn(), level: this.level() })); } catch { /* storage unavailable */ } }
+  private loadTreePref() { try { const p = JSON.parse(localStorage.getItem(this.prefKey) || 'null'); if (p) { this.treeOn.set(!!p.on); this.level.set(Number(p.level) || 0); } } catch { /* ignore */ } }
   q = signal('');
   form: Record<string, any> | null = null;
   editing: FinRec | null = null;
@@ -173,16 +235,27 @@ export class FinCrudComponent implements OnInit, OnChanges {
   cols = () => this.fields.filter(f => f.table);
   shown = () => {
     const q = this.q().toLowerCase().trim();
+    if (this.parentOf && this.treeOn() && !q) {
+      const col = this.collapsed(); const out: FinRec[] = []; let skip = 0;
+      for (const { r, depth } of this.tinfo().order) {
+        if (skip && depth > skip) continue;
+        skip = 0;
+        if (!this.filter(r)) continue;
+        out.push(r);
+        if (col.has(r.id)) skip = depth;
+      }
+      return out;
+    }
     return this.all().filter(this.filter).filter(r => !q || this.fields.some(f => String(this.val(r, f) ?? '').toLowerCase().includes(q)));
   };
 
-  ngOnInit() { this.load(true); }
+  ngOnInit() { this.loadTreePref(); this.load(true); }
   ngOnChanges(c: SimpleChanges) { if (c['company'] && !c['company'].firstChange) this.load(false); }
 
   load(first = false) {
     this.fin.records(this.kind, COMPANY_KINDS.includes(this.kind) ? this.company : null).subscribe({
       next: l => {
-        this.all.set(l); this.changed.emit(l);
+        this.all.set(l); this.changed.emit(l); this.applyLevel();
         if (first && this.autoNew && this.route.snapshot.queryParamMap.get('new') && this.canManage) { this.openForm(null); this.router.navigate([], { queryParams: {}, replaceUrl: true }); }
       },
       error: e => this.error = errMsg(e, this.i18n)

@@ -122,6 +122,25 @@ Not included yet: ICD-10 catalogue lookup (free text + code), DICOM/imaging, ins
 - **Money display**: the `money` pipe uses the company's currency (else the region's); numbers and dates follow the UI language.
 - **Time zones**: every request carries `X-Tz-Offset` (minutes); the backend's `ClientClock.Today` (POS reports, finance overdue/aging, module summaries, hospital) uses the caller's own calendar day, UTC for integrations that send nothing.
 
+## Sales orders, helpdesk, subscriptions, expenses, quality and fleet
+
+Six modules added to close the gap with Oracle Fusion, SAP, Dynamics and Odoo. They sit on the generic ERP records engine (`api/erp/{module}/records/{kind}`) and are switchable per workspace like every other module.
+
+| Module | Screens | Actions (`POST .../bizact/{kind}/{id}/{op}`) |
+|---|---|---|
+| Sales orders (`so`) | Orders, Deliveries, Price lists | confirm, deliver (full or partial), invoice, cancel |
+| Helpdesk & field service (`hd`) | Tickets, Visits, Service contracts, SLA policies | assign, start, wait, resolve, close, reopen, cancel; visit start/complete/cancel. SLA due dates and breach flag are calculated |
+| Subscriptions (`sub`) | Subscriptions, Invoices, Plans | activate, pause, resume, cancel, generate next invoice, mark invoice paid/void |
+| Expenses (`exp`) | Claims, Categories | submit, approve, reject, pay (employees see only their own claims) |
+| Quality (`qa`) | Inspections, NCRs, Inspection plans | record inspection result (a failure opens an NCR), investigate, correct, close |
+| Fleet (`flt`) | Vehicles, Drivers, Fuel logs, Service | service start/complete; fuel logs update the odometer |
+
+Privileges (`so.*`, `hd.*`, `sub.*`, `exp.*`, `qa.*`, `flt.*`) are seeded on start; assign them in Admin > Roles. Presets: sales-orders, support-agent, quality-inspector, fleet-manager; employees get `exp.view` and `exp.claims.manage`.
+
+**Where:** web portal and mobile app have full screens including the action buttons. The desktop apps (and the mobile-versions apps) list and create/edit these records through the generic catalog screens; the status-changing actions are done from the web portal or mobile app.
+
+**Working-core limits:** no automatic stock movement or general-ledger posting from orders, deliveries, claims or subscription invoices, and no payroll link for expense payments.
+
 ## Calendar & Meetings, and Muslim (prayer times and Quran)
 
 Both are optional modules: the admin switches them on per company (Admin > Modules, or the last setup step) and gives them to users one by one

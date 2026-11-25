@@ -1,3 +1,4 @@
+using Microsoft.Extensions.Caching.Memory;
 using System.Security.Claims;
 using Microsoft.EntityFrameworkCore;
 using WorkflowEngine.Api.Data;
@@ -41,6 +42,14 @@ public static class Permissions
         ("warehouse",  new[] { "wh.view", "wh.pick.manage", "wh.count.manage", "wh.count.approve", "wh.reports.view", "wh.setup" }),
         ("assets",     new[] { "ast.view", "ast.assets.manage", "ast.plans.manage", "ast.orders.manage", "ast.reports.view", "ast.setup" }),
         ("payroll",    new[] { "pay.self", "pay.view", "pay.payslips.view", "pay.run.manage", "pay.run.approve", "pay.post", "pay.reports.view", "pay.setup" }),
+        ("archive",    new[] { "arc.view", "arc.incoming.manage", "arc.outgoing.manage", "arc.outgoing.approve", "arc.docs.manage", "arc.confidential", "arc.dispose", "arc.secretary.manage", "arc.reports.view", "arc.setup" }),
+        ("realestate", new[] { "re.view", "re.properties.manage", "re.units.manage", "re.leases.manage", "re.leases.approve", "re.collect", "re.sales.manage", "re.maintenance.manage", "re.reports.view", "re.setup" }),
+        ("salesorders", new[] { "so.view", "so.orders.manage", "so.orders.approve", "so.reports.view", "so.setup" }),
+        ("helpdesk",   new[] { "hd.view", "hd.tickets.manage", "hd.visits.manage", "hd.contracts.manage", "hd.reports.view", "hd.setup" }),
+        ("subscriptions", new[] { "sub.view", "sub.manage", "sub.billing.manage", "sub.reports.view", "sub.setup" }),
+        ("expenses",   new[] { "exp.view", "exp.claims.manage", "exp.approve", "exp.pay", "exp.reports.view", "exp.setup" }),
+        ("quality",    new[] { "qa.view", "qa.inspections.manage", "qa.ncr.manage", "qa.ncr.approve", "qa.reports.view", "qa.setup" }),
+        ("fleet",      new[] { "flt.view", "flt.vehicles.manage", "flt.drivers.manage", "flt.logs.manage", "flt.service.manage", "flt.reports.view", "flt.setup" }),
         ("epm",        new[] { "epm.view", "epm.plans.manage", "epm.plans.approve", "epm.forecast.manage", "epm.publish", "epm.reports.view", "epm.setup" }),
         ("bpm",        new[] { "bpm.view", "bpm.manage", "bpm.monitor" }),
         ("integration", new[] { "int.view", "int.keys.manage", "int.hooks.manage" }),
@@ -53,6 +62,14 @@ public static class Permissions
         ("documents",  new[] { TasksAct, DocumentsViewAll, DocumentsCancelAny }),
         ("reports",    new[] { "reports.view", "reports.export" }),
         ("assistant",  new[] { "assistant.use" }),
+        ("website",    new[] { "web.view", "web.edit", "web.publish", "web.orders.manage" }),
+        ("workflow",   new[] { "wf.view", "wf.design", "wf.publish", "wf.instances.view" }),
+        ("hospital",   new[] { "hos.view", "hos.patients.view", "hos.patients.manage", "hos.appointments.view", "hos.appointments.manage", "hos.clinical.view", "hos.clinical.manage", "hos.prescribe",
+                               "hos.lab.view", "hos.lab.order", "hos.lab.result", "hos.pharmacy.view", "hos.pharmacy.dispense", "hos.pharmacy.stock", "hos.wards.view", "hos.wards.manage",
+                               "hos.billing.view", "hos.billing.manage", "hos.reports.view", "hos.setup" }),
+        ("calendar",   new[] { "cal.view", "cal.events.manage", "cal.meetings.host", "cal.meetings.join", "cal.settings" }),
+        ("muslim",     new[] { "mus.view" }),
+        ("custom",     new[] { "cus.view", "cus.manage", "cus.design" }),
         ("org",        new[] { OrgManage }),
         ("admin",      new[] { AdminUsers }),
     };
@@ -71,7 +88,8 @@ public static class Permissions
     private static readonly string[] EmployeeDefaults =
     {
         "dashboard.view", "purchasing.view", "purchasing.create", "finance.view", "finance.create", "prj.view", "prj.time.log", "pay.self",
-        "hr.view", "hr.create", "hr.self", TasksAct, "assistant.use"
+        "hr.view", "hr.create", "hr.self", TasksAct, "assistant.use", "exp.view", "exp.claims.manage",
+        "cal.view", "cal.events.manage", "cal.meetings.host", "cal.meetings.join", "mus.view", "cus.view"
     };
 
     /// <summary>Everything in the HR workspace (HR officers and managers).</summary>
@@ -99,6 +117,22 @@ public static class Permissions
         ["hr"] = HrAll.Concat(new[] { "prj.view", "prj.time.log", "pay.self", "pay.view", "pay.payslips.view", "pay.run.manage", "pay.reports.view", "pay.setup", "dashboard.view", TasksAct, DocumentsViewAll, "reports.view", "assistant.use" }).ToArray(),
         ["it"] = new[] { "prj.view", "prj.time.log", "int.view", "int.keys.manage", "int.hooks.manage", "bpm.view", "dashboard.view", "hr.view", "hr.create", "hr.self", "operations.view", TasksAct, "assistant.use" },
         ["employee"] = EmployeeDefaults,
+        // real estate: manager (everything) and leasing agent (units, tenants, leases, collection; no approvals)
+        ["realestate"] = new[] { "re.view", "re.properties.manage", "re.units.manage", "re.leases.manage", "re.leases.approve", "re.collect", "re.sales.manage", "re.maintenance.manage", "re.reports.view", "re.setup", "dashboard.view", "hr.self", "cal.view", "crm.view", "reports.view", "assistant.use", TasksAct, DocumentsViewAll },
+        // sales orders, helpdesk, quality and fleet presets (an admin can still tailor every user's privileges one by one)
+        ["sales-orders"] = new[] { "so.view", "so.orders.manage", "so.reports.view", "crm.view", "dashboard.view", "hr.self", "cal.view", "exp.view", "exp.claims.manage", TasksAct },
+        ["support-agent"] = new[] { "hd.view", "hd.tickets.manage", "hd.visits.manage", "hd.reports.view", "dashboard.view", "hr.self", "cal.view", "exp.view", "exp.claims.manage", TasksAct },
+        ["quality-inspector"] = new[] { "qa.view", "qa.inspections.manage", "qa.ncr.manage", "qa.reports.view", "mfg.view", "dashboard.view", "hr.self", "cal.view", "exp.view", "exp.claims.manage", TasksAct },
+        ["fleet-manager"] = new[] { "flt.view", "flt.vehicles.manage", "flt.drivers.manage", "flt.logs.manage", "flt.service.manage", "flt.reports.view", "dashboard.view", "hr.self", "cal.view", "exp.view", "exp.claims.manage", TasksAct },
+        ["leasing-agent"] = new[] { "re.view", "re.units.manage", "re.leases.manage", "re.collect", "re.sales.manage", "re.maintenance.manage", "re.reports.view", "dashboard.view", "hr.self", "cal.view", TasksAct },
+        // secretary / archivist: mail in and out, the archive (not confidential papers, not disposal), appointments, visitors, to-dos
+        ["secretary"] = new[] { "arc.view", "arc.incoming.manage", "arc.outgoing.manage", "arc.docs.manage", "arc.secretary.manage", "arc.reports.view", "dashboard.view", "hr.self", "cal.view", "cal.events.manage", "cal.meetings.host", "cal.meetings.join", TasksAct, DocumentsViewAll, "reports.view", "assistant.use" },
+        // hospital staff presets (an admin can still tailor every user's privileges one by one)
+        ["doctor"] = new[] { "hos.view", "hos.patients.view", "hos.appointments.view", "hos.clinical.view", "hos.clinical.manage", "hos.prescribe", "hos.lab.view", "hos.lab.order", "hos.pharmacy.view", "hos.wards.view", "hos.reports.view", "dashboard.view", "hr.self", TasksAct, "assistant.use" },
+        ["nurse"] = new[] { "hos.view", "hos.patients.view", "hos.appointments.view", "hos.clinical.view", "hos.clinical.manage", "hos.lab.view", "hos.pharmacy.view", "hos.wards.view", "hos.wards.manage", "dashboard.view", "hr.self", TasksAct },
+        ["pharmacist"] = new[] { "hos.view", "hos.patients.view", "hos.pharmacy.view", "hos.pharmacy.dispense", "hos.pharmacy.stock", "dashboard.view", "hr.self", TasksAct },
+        ["lab-technician"] = new[] { "hos.view", "hos.patients.view", "hos.lab.view", "hos.lab.result", "dashboard.view", "hr.self", TasksAct },
+        ["receptionist"] = new[] { "hos.view", "hos.patients.view", "hos.patients.manage", "hos.appointments.view", "hos.appointments.manage", "hos.billing.view", "hos.billing.manage", "dashboard.view", "hr.self", TasksAct },
     };
 
     /// <summary>The platform-default roles as shipped in code (the seed of the RoleDefs table).</summary>
@@ -127,15 +161,20 @@ public interface IPermissionService
 public class PermissionService : IPermissionService
 {
     private readonly WorkflowDbContext _db;
-    public PermissionService(WorkflowDbContext db) { _db = db; }
+    private readonly IMemoryCache _cache;
+    public PermissionService(WorkflowDbContext db, IMemoryCache cache) { _db = db; _cache = cache; }
 
     public async Task<List<string>> EffectiveFor(ClaimsPrincipal principal)
     {
         var username = principal.FindFirstValue(ClaimTypes.Name);
         if (string.IsNullOrEmpty(username)) return new List<string>();
+        var key = "perm-eff:" + username;
+        if (_cache.TryGetValue(key, out List<string>? hit) && hit != null) return hit;
         await RbacStore.EnsureFresh(_db);
         var user = await _db.Users.AsNoTracking().FirstOrDefaultAsync(u => u.Username == username && u.IsActive);
-        return user == null ? new List<string>() : Permissions.Effective(user);
+        var res = user == null ? new List<string>() : Permissions.Effective(user);
+        _cache.Set(key, res, TimeSpan.FromSeconds(10));
+        return res;
     }
 
     public async Task<bool> Has(ClaimsPrincipal principal, string permission)

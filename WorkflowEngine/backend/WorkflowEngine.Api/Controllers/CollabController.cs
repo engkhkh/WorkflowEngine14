@@ -28,7 +28,7 @@ public class CollabController : ControllerBase
     private const int MaxFilesPerRecord = 25;
     private static readonly Dictionary<string, string> Prefix = new(StringComparer.OrdinalIgnoreCase)
     {
-        ["mfg"] = "mfg", ["prj"] = "prj", ["crm"] = "crm", ["proc"] = "proc", ["scm"] = "scm", ["wh"] = "wh", ["ast"] = "ast", ["pay"] = "pay",
+        ["mfg"] = "mfg", ["prj"] = "prj", ["crm"] = "crm", ["proc"] = "proc", ["scm"] = "scm", ["wh"] = "wh", ["ast"] = "ast", ["arc"] = "arc", ["re"] = "re", ["so"] = "so", ["hd"] = "hd", ["sub"] = "sub", ["exp"] = "exp", ["qa"] = "qa", ["flt"] = "flt", ["pay"] = "pay",
         ["epm"] = "epm", ["bpm"] = "bpm", ["int"] = "int", ["bi"] = "bi", ["hr"] = "hr", ["fin"] = "finance", ["pos"] = "pos"
     };
 

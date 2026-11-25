@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using WorkflowEngine.Api.Data;
 using WorkflowEngine.Api.Models;
+using WorkflowEngine.Api.Security;
 using WorkflowEngine.Api.Services;
 
 namespace WorkflowEngine.Api.Controllers;
@@ -49,7 +50,8 @@ public partial class ModulesController : ControllerBase
     private readonly WorkflowDbContext _db;
     private readonly IPermissionService _perms;
     private readonly ITenantScope _tenant;
-    public ModulesController(WorkflowDbContext db, IPermissionService perms, ITenantScope tenant) { _db = db; _perms = perms; _tenant = tenant; }
+    private readonly ICurrentUser _me;   // access layer: branch access of the caller
+    public ModulesController(WorkflowDbContext db, IPermissionService perms, ITenantScope tenant, ICurrentUser me) { _db = db; _perms = perms; _tenant = tenant; _me = me; }
 
     private string Username => User.FindFirstValue(ClaimTypes.Name)!;
     private Task<bool> Has(string p) => _perms.Has(User, p);
@@ -58,7 +60,7 @@ public partial class ModulesController : ControllerBase
     private static string J(Dictionary<string, object?> d) => JsonSerializer.Serialize(d);
     private BadRequestObjectResult Bad(string m) => BadRequest(new { message = m });
 
-    private static readonly string[] Modules = { "mfg", "prj", "crm", "proc", "scm", "wh", "ast", "pay", "epm", "bpm", "int", "bi" };
+    private static readonly string[] Modules = { "mfg", "prj", "crm", "proc", "scm", "wh", "ast", "pay", "epm", "bpm", "int", "bi", "arc", "re", "so", "hd", "sub", "exp", "qa", "flt" };
 
     /// <summary>(view privilege, manage privilege) for a record kind, or null when the kind does not exist in that module.</summary>
     private static (string view, string manage)? KindPerms(string module, string kind) => (module, kind) switch
@@ -90,9 +92,9 @@ public partial class ModulesController : ControllerBase
         ("mfg", "workorder") => "WO", ("mfg", "inspection") => "QC", ("mfg", "maintenance") => "MT", ("mfg", "plan") => "MRP",
         ("prj", "project") => "PRJ", ("prj", "task") => "TSK", ("prj", "timesheet") => "TS", ("prj", "cost") => "PC", ("prj", "milestone") => "MS",
         ("crm", "lead") => "LD", ("crm", "account") => "AC", ("crm", "contact") => "CT", ("crm", "opportunity") => "OP", ("crm", "activity") => "ACT", ("crm", "quote") => "QT", ("crm", "campaign") => "CMP",
-        _ => null
+        _ => AutoPrefixExt(module, kind)
     };
-    private static readonly string[] CodeRequired = { "bom", "workcenter", "machine", "setting" };
+    private static readonly string[] CodeRequired = { "bom", "workcenter", "machine", "setting", "category" };
 
     private async Task<bool> HasAny(string module) => (await _perms.EffectiveFor(User)).Any(p => p.StartsWith(module + ".", StringComparison.OrdinalIgnoreCase));
 
@@ -105,19 +107,24 @@ public partial class ModulesController : ControllerBase
         var kp = KindPerms(module, kind);
         if (kp == null) return NotFound();
         // reference lists fill the drop-downs of the other screens: any holder of a privilege of the module may read them
-        var refKind = kind is "bom" or "workcenter" or "machine" or "project" or "account" or "contact" or "setting";
+        var refKind = kind is "bom" or "workcenter" or "machine" or "project" or "account" or "contact" or "setting" or "category";
         if (!(await Has(kp.Value.view) || (refKind && await HasAny(module)))) return Forbid();
         var tenantId = await _tenant.TenantIdOf(User);
         var q = _db.ErpRecords.AsNoTracking().Where(r => r.TenantId == tenantId && r.Module == module && r.Kind == kind);
         if (!string.IsNullOrWhiteSpace(company) && company != "ALL") q = q.Where(r => r.Company == company || r.Company == null || r.Company == "");
         if (!string.IsNullOrWhiteSpace(branch) && branch != "ALL") q = q.Where(r => r.Branch == branch || r.Branch == null || r.Branch == "");
+        var allowedBr = await _me.AllowedBranchesAsync();   // a user limited to some branches never sees the others
+        if (allowedBr != null) q = q.Where(r => r.Branch == null || r.Branch == "" || allowedBr.Contains(r.Branch));
         if (!string.IsNullOrWhiteSpace(status)) q = q.Where(r => r.Status == status);
         if (!string.IsNullOrWhiteSpace(reference)) q = q.Where(r => r.Ref == reference);
         // people who may only log their own time see just their own sheets
         if (module == "prj" && kind == "timesheet" && !(await Has("prj.time.approve") || await Has("prj.reports.view") || await Has("prj.manage")))
             q = q.Where(r => r.CreatedBy == Username);
+        // people who may only raise their own expense claims see just their own
+        if (module == "exp" && kind == "claim" && !(await Has("exp.approve") || await Has("exp.pay") || await Has("exp.reports.view"))) q = q.Where(r => r.CreatedBy == Username);
         if (module == "pay" && kind == "payslip" && !(await Has("pay.payslips.view") || await Has("pay.run.manage"))) q = q.Where(r => r.Ref == Username);   // everybody may see their own payslips
         var list = await q.OrderByDescending(r => r.CreatedAt).Take(Math.Clamp(take, 1, 5000)).ToListAsync();
+        if (module == "arc") list = await ArcFilter(list);   // confidential letters and documents are for their owners and holders of arc.confidential
         return Ok(list.Select(ErpRecordDto.From));
     }
 
@@ -128,6 +135,7 @@ public partial class ModulesController : ControllerBase
         if (kp == null) return NotFound();
         if (!await Has(kp.Value.manage)) return Forbid();
         if (SystemOnly(module, kind)) return Bad("This record is created by the system.");
+        if (!await _me.CanUseBranchAsync(Clean(body.Branch))) return Forbid();
         var guardNew = await GuardExt(module, kind, null, Clean(body.Status));
         if (guardNew != null) return guardNew == "403" ? Forbid() : Bad(guardNew);
         var tenantId = await _tenant.TenantIdOf(User);
@@ -138,7 +146,15 @@ public partial class ModulesController : ControllerBase
             Data = body.Data.ValueKind == JsonValueKind.Object ? body.Data.GetRawText() : "{}"
         };
         var pre = AutoPrefix(module, kind);
-        if (pre != null && rec.Code == null) rec.Code = await NextCode(tenantId, module, kind, pre);
+        // draw the number and save under one lock, so two people creating at the same moment never draw the same number
+        IDisposable? numLock = null;
+        try
+        {
+        if (pre != null && rec.Code == null)
+        {
+            numLock = await NumberingLock.Enter(tenantId + "|erp|" + module + "|" + kind);
+            rec.Code = await NextCode(tenantId, module, kind, pre);
+        }
         if (rec.Code == null && CodeRequired.Contains(kind)) return Bad("Code is required.");
         if (rec.Code != null && await _db.ErpRecords.AnyAsync(r => r.TenantId == tenantId && r.Module == module && r.Kind == kind && r.Code == rec.Code)) return Conflict(new { message = "That code already exists." });
         var err = await Validate(tenantId, module, kind, rec, null);
@@ -146,6 +162,8 @@ public partial class ModulesController : ControllerBase
         _db.ErpRecords.Add(rec);
         await _db.SaveChangesAsync();
         return Ok(ErpRecordDto.From(rec));
+        }
+        finally { numLock?.Dispose(); }
     }
 
     [HttpPut("records/{kind}/{id}")]
@@ -156,6 +174,8 @@ public partial class ModulesController : ControllerBase
         var tenantId = await _tenant.TenantIdOf(User);
         var rec = await _db.ErpRecords.FirstOrDefaultAsync(r => r.Id == id && r.TenantId == tenantId && r.Module == module && r.Kind == kind);
         if (rec == null) return NotFound();
+        if (module == "arc" && !await ArcCanSee(rec)) return NotFound();
+        if (!await _me.CanUseBranchAsync(rec.Branch) || !await _me.CanUseBranchAsync(Clean(body.Branch))) return Forbid();
         var newStatus = Clean(body.Status) ?? rec.Status;
         var statusChanges = !string.Equals(newStatus, rec.Status, StringComparison.Ordinal);
         if (SystemOnly(module, kind)) return Bad("This record is created by the system and can't be edited.");
@@ -198,6 +218,8 @@ public partial class ModulesController : ControllerBase
         var tenantId = await _tenant.TenantIdOf(User);
         var rec = await _db.ErpRecords.FirstOrDefaultAsync(r => r.Id == id && r.TenantId == tenantId && r.Module == module && r.Kind == kind);
         if (rec == null) return NotFound();
+        if (module == "arc" && !await ArcCanSee(rec)) return NotFound();
+        if (module == "arc" && kind == "category" && await ArcCategoryInUse(tenantId, rec.Code)) return Bad("This category is used by documents or letters and can't be deleted.");
         if (rec.Status is "Billed" or "Completed" or "Won" || IsFinalExt(module, kind, rec.Status) || (SystemOnly(module, kind) && kind != "log")) return Bad("This record is final and can't be deleted.");
         if (module == "prj" && kind == "timesheet" && rec.CreatedBy != Username && !await Has("prj.time.approve")) return Forbid();
         _db.ErpRecords.Remove(rec);
@@ -281,9 +303,10 @@ public partial class ModulesController : ControllerBase
 
     private ErpRecordDto? Wrap(ErpRecord? r) => r == null ? null : ErpRecordDto.From(r);
 
-    [HttpPost("workorders/{id}/{action}")]
-    public async Task<IActionResult> WorkOrderAction(string module, string id, string action, [FromBody] MfgCompleteDto? b)
+    [HttpPost("workorders/{id}/{op}")]
+    public async Task<IActionResult> WorkOrderAction(string module, string id, string op, [FromBody] MfgCompleteDto? b)
     {
+        var action = op;   // not named "action" in the route: that name is reserved by ASP.NET routing and would always hold the C# method name
         if (module != "mfg") return NotFound();
         var tenantId = await _tenant.TenantIdOf(User);
         var wo = await _db.ErpRecords.FirstOrDefaultAsync(r => r.Id == id && r.TenantId == tenantId && r.Module == "mfg" && r.Kind == "workorder");
