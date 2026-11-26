@@ -15,7 +15,8 @@ public class CompanyDto
     public string NameAr { get; set; } = string.Empty;
     public string Currency { get; set; } = "SAR";
     public string? TaxNo { get; set; }
-    public static CompanyDto From(OrgCompany c) => new() { Code = c.Code, Name = c.Name, NameAr = c.NameAr, Currency = c.Currency, TaxNo = c.TaxNo };
+    public string? Country { get; set; }
+    public static CompanyDto From(OrgCompany c) => new() { Code = c.Code, Name = c.Name, NameAr = c.NameAr, Currency = c.Currency, TaxNo = c.TaxNo, Country = c.Country };
 }
 
 public class BranchDto
@@ -40,6 +41,8 @@ public class TenantDto
     public int Users { get; set; }
     public int Companies { get; set; }
     public int Branches { get; set; }
+    /// <summary>False until the administrator finishes the first-run setup wizard.</summary>
+    public bool SetupDone { get; set; } = true;
 }
 
 public class OrgSnapshotDto
@@ -85,11 +88,47 @@ public class OrgController : ControllerBase
                 Id = tenant.Id, Name = tenant.Name, Plan = tenant.Plan,
                 MaxUsers = tenant.MaxUsers, MaxCompanies = tenant.MaxCompanies, MaxBranches = tenant.MaxBranches,
                 Users = await _db.Users.CountAsync(u => u.TenantId == tenantId),
-                Companies = companies.Count, Branches = branches.Count
+                Companies = companies.Count, Branches = branches.Count, SetupDone = tenant.SetupDone
             },
             Companies = companies.Select(CompanyDto.From).ToList(),
             Branches = branches.Select(BranchDto.From).ToList()
         });
+    }
+
+    public class ModulesDto { public List<string> Enabled { get; set; } = new(); }
+
+    /// <summary>The business modules and which of them this workspace uses (anyone signed in may read; switching needs org.manage).</summary>
+    [HttpGet("modules")]
+    public async Task<IActionResult> GetModules()
+    {
+        var tenantId = await _tenant.TenantIdOf(User);
+        var t = await _db.Tenants.AsNoTracking().FirstOrDefaultAsync(x => x.Id == tenantId);
+        var on = t?.Modules;
+        return Ok(new { all = ModuleCatalog.All.Select(m => m.Key), enabled = on ?? ModuleCatalog.All.Select(m => m.Key).ToList(), restricted = on != null });
+    }
+
+    [HttpPut("modules")]
+    public async Task<IActionResult> SetModules([FromBody] ModulesDto dto)
+    {
+        if (!await _perms.Has(User, Permissions.OrgManage)) return Forbid();
+        var tenantId = await _tenant.TenantIdOf(User);
+        var t = await _db.Tenants.FirstOrDefaultAsync(x => x.Id == tenantId);
+        if (t == null) return NotFound();
+        t.Modules = ModuleCatalog.Sanitize(dto.Enabled);
+        await _db.SaveChangesAsync();
+        await RbacStore.Reload(_db);                         // privileges of switched-off modules disappear at once
+        return Ok(new { enabled = t.Modules });
+    }
+
+    /// <summary>The administrator finished (or skipped) the first-run setup wizard.</summary>
+    [HttpPost("setup/complete")]
+    public async Task<IActionResult> CompleteSetup()
+    {
+        if (!await _perms.Has(User, Permissions.OrgManage)) return Forbid();
+        var tenantId = await _tenant.TenantIdOf(User);
+        var t = await _db.Tenants.FirstOrDefaultAsync(x => x.Id == tenantId);
+        if (t != null) { t.SetupDone = true; await _db.SaveChangesAsync(); }
+        return NoContent();
     }
 
     // ------------------------------------------------------------ companies
@@ -111,7 +150,8 @@ public class OrgController : ControllerBase
             TenantId = tenantId, Code = code, Name = dto.Name.Trim(),
             NameAr = string.IsNullOrWhiteSpace(dto.NameAr) ? dto.Name.Trim() : dto.NameAr.Trim(),
             Currency = string.IsNullOrWhiteSpace(dto.Currency) ? "SAR" : dto.Currency.Trim().ToUpperInvariant(),
-            TaxNo = string.IsNullOrWhiteSpace(dto.TaxNo) ? null : dto.TaxNo.Trim()
+            TaxNo = string.IsNullOrWhiteSpace(dto.TaxNo) ? null : dto.TaxNo.Trim(),
+            Country = string.IsNullOrWhiteSpace(dto.Country) ? null : dto.Country.Trim()
         };
         _db.OrgCompanies.Add(c);
         await _db.SaveChangesAsync();
@@ -130,6 +170,7 @@ public class OrgController : ControllerBase
         c.NameAr = string.IsNullOrWhiteSpace(dto.NameAr) ? c.Name : dto.NameAr.Trim();
         c.Currency = string.IsNullOrWhiteSpace(dto.Currency) ? c.Currency : dto.Currency.Trim().ToUpperInvariant();
         c.TaxNo = string.IsNullOrWhiteSpace(dto.TaxNo) ? null : dto.TaxNo.Trim();
+        c.Country = string.IsNullOrWhiteSpace(dto.Country) ? null : dto.Country.Trim();
         await _db.SaveChangesAsync();
         return Ok(CompanyDto.From(c));
     }

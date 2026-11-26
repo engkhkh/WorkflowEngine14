@@ -13,6 +13,7 @@ public partial class ModulesController
 
     private async Task<SummaryDto?> BuildSummary(string tenantId, string module, string? company)
     {
+        if (module == "gov") return await GovSummary(tenantId, company);   // the audit trail is large: count it, never load it
         var q = _db.ErpRecords.AsNoTracking().Where(r => r.TenantId == tenantId && r.Module == module);
         if (!string.IsNullOrWhiteSpace(company) && company != "ALL") q = q.Where(r => r.Company == company || r.Company == null || r.Company == "");
         var all = (await q.ToListAsync()).Select(r => (r, d: FinJson.Obj(r.Data))).ToList();
@@ -90,7 +91,9 @@ public partial class ModulesController
                     decimal val(JsonElement d) => FinJson.D(d, "qty") * (prods.TryGetValue(FinJson.S(d, "sku"), out var pd) ? FinJson.D(pd, "cost") : 0m);
                     s.Kpis.AddRange(new[] { K("skus", stock.Select(x => FinJson.S(x.d, "sku")).Distinct().Count()), K("stockValue", R2(stock.Sum(x => val(x.d))), "m"),
                         K("lowStock", stock.Count(x => prods.TryGetValue(FinJson.S(x.d, "sku"), out var pd) && FinJson.D(pd, "reorder") > 0 && FinJson.D(x.d, "qty") <= FinJson.D(pd, "reorder"))),
-                        K("openPicks", Kd("pick").Count(x => x.r.Status == "Open")), K("openCounts", Kd("count").Count(x => x.r.Status == "Draft")), K("locations", Kd("location").Count(x => x.r.Status == "Active")) });
+                        K("openPicks", Kd("pick").Count(x => x.r.Status == "Open")), K("openCounts", Kd("count").Count(x => x.r.Status == "Draft")), K("locations", Kd("location").Count(x => x.r.Status == "Active")),
+                        K("lotsExpiring", Kd("lot").Count(x => x.r.Status == "Active" && FinJson.D(x.d, "qty") > 0 && FinJson.TryDate(x.d, "expiry", out var le) && le.Date >= today && le.Date <= today.AddDays(30))),
+                        K("lotsExpired", Kd("lot").Count(x => x.r.Status is "Active" or "Quarantine" && FinJson.D(x.d, "qty") > 0 && FinJson.TryDate(x.d, "expiry", out var lx) && lx.Date < today)) });
                     s.Lists.Add(S("valueByBranch", stock.GroupBy(x => x.r.Branch ?? "").Select(g => (g.Key == "" ? "—" : g.Key, g.Sum(x => val(x.d)))))); s.Lists.Add(S("picks", Cnt("pick")));
                     break;
                 }
@@ -144,7 +147,7 @@ public partial class ModulesController
     public async Task<IActionResult> Summary(string module, [FromQuery] string? company)
     {
         if (!Modules.Contains(module) || module == "bi") return NotFound();
-        if (!await Has(module + ".reports.view") && !(module is "bpm" or "int" && await Has(module + ".view"))) return Forbid();
+        if (!await Has(module + ".reports.view") && !(module is "bpm" or "int" or "gov" && await Has(module + ".view"))) return Forbid();
         var s = await BuildSummary(await _tenant.TenantIdOf(User), module, company);
         return s == null ? NotFound() : Ok(s);
     }
@@ -183,7 +186,7 @@ public partial class ModulesController
                 case "crm": Add("crm.activitiesDue", m, "warn", V("activitiesDue")); Add("crm.newLeads", m, "info", V("leadsNew")); if (V("winRate") > 0 && V("winRate") < 25) Add("crm.lowWin", m, "warn", V("winRate")); break;
                 case "proc": Add("proc.latePo", m, "warn", V("latePo")); Add("proc.pendingReq", m, "info", V("pendingReq")); Add("proc.contracts", m, "info", V("contractsExpiring")); break;
                 case "scm": Add("scm.delayed", m, "warn", V("delayed")); if (V("onTimePct") < 90) Add("scm.onTime", m, "warn", V("onTimePct")); break;
-                case "wh": Add("wh.lowStock", m, "warn", V("lowStock")); Add("wh.openCounts", m, "info", V("openCounts")); break;
+                case "wh": Add("wh.lowStock", m, "warn", V("lowStock")); Add("wh.openCounts", m, "info", V("openCounts")); Add("wh.lotsExpired", m, "bad", V("lotsExpired")); Add("wh.lotsExpiring", m, "warn", V("lotsExpiring")); break;
                 case "ast": Add("ast.dueMaintenance", m, "warn", V("dueMaintenance")); Add("ast.down", m, "bad", V("down")); break;
                 case "pay": Add("pay.openRuns", m, "info", V("openRuns")); break;
                 case "int": Add("int.failures", m, "warn", V("failures")); break;

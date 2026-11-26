@@ -18,6 +18,10 @@ public class SignupRequest
     public string Password { get; set; } = string.Empty;
     public string Currency { get; set; } = "SAR";
     public string? BranchName { get; set; }
+    /// <summary>Names of the branches to create (the wizard can add more later). Empty = one "Head Office".</summary>
+    public List<string>? Branches { get; set; }
+    public string? Country { get; set; }
+    public string? TaxNo { get; set; }
 }
 
 /// <summary>
@@ -60,13 +64,23 @@ public class TenantsController : ControllerBase
         if (slug.Length > 40) slug = slug[..40];
         if (await _db.Tenants.AnyAsync(t => t.Id == slug)) slug += "-" + Guid.NewGuid().ToString("N")[..5];
 
-        var tenant = new Tenant { Id = slug, Name = workspace };
+        var tenant = new Tenant { Id = slug, Name = workspace, SetupDone = false };
         Plans.Apply(tenant, "starter");
 
         var companyCode = Initials(workspace, 4);
         var currency = string.IsNullOrWhiteSpace(req.Currency) ? "SAR" : req.Currency.Trim().ToUpperInvariant();
-        var branchName = string.IsNullOrWhiteSpace(req.BranchName) ? "Head Office" : req.BranchName.Trim();
-        var branchCode = string.IsNullOrWhiteSpace(req.BranchName) ? "HQ" : Initials(req.BranchName, 5);
+        var branchNames = (req.Branches ?? new List<string>()).Append(req.BranchName ?? string.Empty).Select(b => (b ?? string.Empty).Trim()).Where(b => b.Length > 0)
+            .Distinct(StringComparer.OrdinalIgnoreCase).Take(tenant.MaxBranches > 0 ? tenant.MaxBranches : 20).ToList();
+        if (branchNames.Count == 0) branchNames.Add("Head Office");
+        var usedCodes = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
+        var branches = new List<OrgBranch>();
+        foreach (var name in branchNames)
+        {
+            var code = branchNames.Count == 1 && name == "Head Office" ? "HQ" : Initials(name, 5);
+            var unique = code; var n = 2;
+            while (!usedCodes.Add(unique)) unique = code + n++;
+            branches.Add(new OrgBranch { TenantId = tenant.Id, Code = unique, CompanyCode = companyCode, Name = name, NameAr = name, Warehouse = "WH-" + unique });
+        }
 
         var (hash, salt) = PasswordHasher.Hash(req.Password);
         var admin = new User
@@ -81,8 +95,8 @@ public class TenantsController : ControllerBase
         };
 
         _db.Tenants.Add(tenant);
-        _db.OrgCompanies.Add(new OrgCompany { TenantId = tenant.Id, Code = companyCode, Name = workspace, NameAr = workspace, Currency = currency });
-        _db.OrgBranches.Add(new OrgBranch { TenantId = tenant.Id, Code = branchCode, CompanyCode = companyCode, Name = branchName, NameAr = branchName, Warehouse = "WH-" + branchCode });
+        _db.OrgCompanies.Add(new OrgCompany { TenantId = tenant.Id, Code = companyCode, Name = workspace, NameAr = workspace, Currency = currency, Country = string.IsNullOrWhiteSpace(req.Country) ? null : req.Country.Trim(), TaxNo = string.IsNullOrWhiteSpace(req.TaxNo) ? null : req.TaxNo.Trim() });
+        _db.OrgBranches.AddRange(branches);
         _db.Users.Add(admin);
         await _db.SaveChangesAsync();
 

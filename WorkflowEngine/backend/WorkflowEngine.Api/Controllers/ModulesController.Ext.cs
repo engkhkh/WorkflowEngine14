@@ -11,7 +11,7 @@ using WorkflowEngine.Api.Services;
 namespace WorkflowEngine.Api.Controllers;
 
 public class ProcReceiveDto { public List<ProcReceiveLine>? Lines { get; set; } public string? Note { get; set; } }
-public class ProcReceiveLine { public string Sku { get; set; } = ""; public decimal Qty { get; set; } }
+public class ProcReceiveLine { public string Sku { get; set; } = ""; public decimal Qty { get; set; } public string? BatchNo { get; set; } public string? Expiry { get; set; } public string? Mfg { get; set; } public List<string>? Serials { get; set; } }
 public class ProcToPoDto { public string? Vendor { get; set; } }
 public class AstCompleteDto { public decimal Cost { get; set; } public decimal Hours { get; set; } public string? Note { get; set; } }
 public class IntKeyDto { public string Name { get; set; } = ""; public List<string>? Scopes { get; set; } }
@@ -60,7 +60,7 @@ public partial class ModulesController
     private static string? AutoPrefixExt(string module, string kind) => (module, kind) switch
     {
         ("proc", "requisition") => "PR", ("proc", "rfq") => "RFQ", ("proc", "po") => "PO", ("proc", "contract") => "CON", ("proc", "evaluation") => "EV",
-        ("scm", "forecast") => "FC", ("scm", "shipment") => "SH", ("wh", "pick") => "PK", ("wh", "count") => "CNT",
+        ("scm", "forecast") => "FC", ("scm", "shipment") => "SH", ("wh", "pick") => "PK", ("wh", "count") => "CNT", ("wh", "lot") => "LOT",
         ("ast", "plan") => "PM", ("ast", "workorder") => "AWO", ("ast", "meter") => "MR", ("pay", "adjustment") => "ADJ", ("pay", "run") => "RUN",
         ("epm", "plan") => "BP", ("epm", "line") => "BL", ("epm", "forecast") => "FCT", ("bpm", "process") => "PRC", ("int", "webhook") => "WH", ("int", "connector") => "CN", ("bi", "report") => "RPT",
         _ => AutoPrefixArc(module, kind)
@@ -70,14 +70,14 @@ public partial class ModulesController
     {
         ("proc", "requisition") => "Draft", ("proc", "rfq") => "Draft", ("proc", "po") => "Draft", ("proc", "contract") => "Active",
         ("scm", "shipment") => "Planned", ("scm", "forecast") => "Active",
-        ("wh", "pick") => "Open", ("wh", "count") => "Draft",
+        ("wh", "pick") => "Open", ("wh", "count") => "Draft", ("wh", "lot") => "Active", ("wh", "trackrule") => "Active",
         ("ast", "workorder") => "Open", ("ast", "plan") => "Active", ("ast", "asset") => "Active",
         ("pay", "run") => "Draft", ("epm", "plan") => "Draft", ("epm", "forecast") => "Draft",
         _ => DefaultStatusArc(module, kind)
     };
 
-    private static bool SystemOnly(string module, string kind) => (module, kind) is ("pay", "payslip") or ("int", "log") or ("re", "installment") || BizSystemOnly(module, kind);
-    private static bool ActionOnly(string module, string kind) => (module, kind) is ("proc", "po") or ("pay", "run") or ("ast", "workorder") or ("wh", "pick") or ("wh", "count") || ArcActionOnly(module, kind) || ReActionOnly(module, kind) || BizActionOnly(module, kind);
+    private static bool SystemOnly(string module, string kind) => (module, kind) is ("pay", "payslip") or ("int", "log") or ("re", "installment") || GovSystemOnly(module, kind) || BizSystemOnly(module, kind);
+    private static bool ActionOnly(string module, string kind) => (module, kind) is ("proc", "po") or ("pay", "run") or ("ast", "workorder") or ("wh", "pick") or ("wh", "count") || ArcActionOnly(module, kind) || ReActionOnly(module, kind) || LotActionOnly(module, kind) || BizActionOnly(module, kind);
     private static bool IsFinalExt(string module, string kind, string? status) => (module, kind, status) switch
     {
         ("proc", "po", "Received" or "Invoiced" or "PartiallyReceived") => true,
@@ -86,7 +86,7 @@ public partial class ModulesController
         ("pay", "run", "Posted" or "Approved") => true,
         ("ast", "workorder", "Completed") => true,
         ("epm", "plan", "Published") => true,
-        _ => IsFinalArc(module, kind, status) || IsFinalRe(module, kind, status) || IsFinalBiz(module, kind, status)
+        _ => IsFinalArc(module, kind, status) || IsFinalRe(module, kind, status) || GovFinal(module, kind, status) || IsFinalBiz(module, kind, status)
     };
 
     private static readonly Dictionary<(string, string), string[]> Keep = new()
@@ -98,7 +98,7 @@ public partial class ModulesController
         [("proc", "po")] = new[] { "receipts", "invoice", "amount", "taxAmount", "total" },
         [("proc", "requisition")] = new[] { "po" },
         [("ast", "workorder")] = new[] { "startedAt", "completedAt", "actualCost", "hours", "completeNote" },
-        [("wh", "pick")] = new[] { "pickedAt", "pickedBy" }, [("wh", "count")] = new[] { "postedAt", "postedBy", "varianceQty", "varianceValue" },
+        [("wh", "pick")] = new[] { "pickedAt", "pickedBy", "allocations" }, [("wh", "lot")] = new[] { "qty", "received", "serials", "issuedSerials", "po", "supplier", "receivedAt", "writtenOff", "writeOffReason", "writtenOffBy", "writtenOffAt" }, [("wh", "count")] = new[] { "postedAt", "postedBy", "varianceQty", "varianceValue" },
         [("pay", "run")] = new[] { "gross", "deductions", "net", "count", "calculatedBy", "approvedBy", "journal" },
         [("epm", "plan")] = new[] { "approvedBy", "publishedAt" },
         [("int", "apikey")] = new[] { "hash", "prefix", "lastUsed" },
@@ -107,7 +107,7 @@ public partial class ModulesController
     private static string MergeDataExt(string module, string kind, string existing, string incoming)
     {
         string[]? keys;
-        if (!Keep.TryGetValue((module, kind), out keys) && !ArcKeep.TryGetValue((module, kind), out keys) && !ReKeep.TryGetValue((module, kind), out keys) && !BizKeepKeys(module, kind, out keys)) return incoming;
+        if (!Keep.TryGetValue((module, kind), out keys) && !ArcKeep.TryGetValue((module, kind), out keys) && !ReKeep.TryGetValue((module, kind), out keys) && !GovKeep.TryGetValue((module, kind), out keys) && !BizKeepKeys(module, kind, out keys)) return incoming;
         var o = JsonSerializer.Deserialize<Dictionary<string, JsonElement>>(existing) ?? new();
         var n = JsonSerializer.Deserialize<Dictionary<string, JsonElement>>(incoming) ?? new();
         foreach (var k in keys) { if (o.TryGetValue(k, out var v)) n[k] = v; else n.Remove(k); }
@@ -174,6 +174,8 @@ public partial class ModulesController
             case ("wh", "count" or "pick"):
                 if (FinJson.Lines(d).Count() == 0) return "Add at least one line.";
                 break;
+            case ("wh", "lot" or "trackrule"):
+                return await ValidateLots(tenantId, kind, r, d);
             case ("epm", "line"):
                 if (Clean(r.Ref) == null) return "Choose the plan.";
                 if (FinJson.D(d, "amount") < 0) return "The amount can't be negative.";
@@ -182,6 +184,8 @@ public partial class ModulesController
                 return await ValidateArc(tenantId, kind, r, d);
             case ("re", _):
                 return await ValidateRe(tenantId, kind, r, d);
+            case ("gov", _):
+                return await ValidateGov(tenantId, kind, r, d, !await _db.ErpRecords.AnyAsync(x => x.Id == r.Id));
             case ("so" or "hd" or "sub" or "exp" or "qa" or "flt", _):
                 return await ValidateBiz(tenantId, module, kind, r, d);
         }
@@ -335,6 +339,7 @@ public partial class ModulesController
                 if (!await Has("proc.po.approve")) return Forbid();
                 if (po.Status != "Draft") return Bad("Only a draft order can be approved.");
                 if (string.Equals(po.CreatedBy, Username, StringComparison.OrdinalIgnoreCase) && !await Has("proc.po.selfApprove")) return Bad("Somebody else must approve the order you created.");
+                { var gm = await GovGate(tenantId, "proc", "po", po, "Approved"); if (gm != null) return Bad(gm); }
                 po.Status = "Approved"; break;
             case "send":
                 if (!await Has("proc.po.manage")) return Forbid();
@@ -404,7 +409,9 @@ public partial class ModulesController
                 var avg = onHand + w.Qty == 0 ? price : (onHand * old + w.Qty * price) / (onHand + w.Qty);
                 prod.Data = FinJson.WithValues(prod.Data, new() { ["cost"] = R2(avg) }); prod.UpdatedAt = DateTime.UtcNow;
             }
-            done.Add(new { sku = w.Sku, qty = w.Qty, price });
+            var lotErr = await LotReceive(tenantId, po, w);
+            if (lotErr != null) return lotErr;
+            done.Add(new { sku = w.Sku, qty = w.Qty, price, batchNo = Clean(w.BatchNo) });
         }
         var full = lines.All(l => JD(l, "received") + 0.00001m >= JD(l, "qty"));
         var receipts = new List<object>();
@@ -444,15 +451,19 @@ public partial class ModulesController
         if (pk.Status != "Open") return Bad("This pick list was already confirmed.");
         var cfg = FinJson.Obj((await _db.ErpRecords.AsNoTracking().FirstOrDefaultAsync(r => r.TenantId == tenantId && r.Module == "wh" && r.Kind == "setting" && r.Code == "defaults"))?.Data);
         var neg = cfg.ValueKind == JsonValueKind.Object && FinJson.B(cfg, "allowNegativeStock");
+        var allocations = new List<object>();
         foreach (var l in FinJson.Lines(FinJson.Obj(pk.Data)))
         {
             var sku = FinJson.S(l, "sku"); var qty = FinJson.D(l, "qty");
             var st = await StockRec(tenantId, pk.Company, pk.Branch, sku);
             var have = FinJson.D(FinJson.Obj(st.Data), "qty");
             if (!neg && have < qty) return Bad($"Not enough {sku} in stock (need {qty}, have {have}).");
+            var (alloc, lotErr) = await LotPick(tenantId, pk.Branch, sku, qty);     // batch / expiry: first-expiry-first-out
+            if (lotErr != null) return Bad(lotErr);
+            if (alloc != null) allocations.Add(alloc);
             StockMove(tenantId, st, pk.Company, pk.Branch, sku, -qty, "pick", pk.Code ?? "");
         }
-        pk.Status = "Picked"; pk.UpdatedAt = DateTime.UtcNow; pk.Data = FinJson.WithValues(pk.Data, new() { ["pickedAt"] = DateTime.UtcNow, ["pickedBy"] = Username });
+        pk.Status = "Picked"; pk.UpdatedAt = DateTime.UtcNow; pk.Data = FinJson.WithValues(pk.Data, new() { ["pickedAt"] = DateTime.UtcNow, ["pickedBy"] = Username, ["allocations"] = allocations });
         await _db.SaveChangesAsync();
         return Ok(ErpRecordDto.From(pk));
     }
@@ -597,6 +608,7 @@ public partial class ModulesController
                     if (!await Has("pay.run.approve")) return Forbid();
                     if (run.Status != "Calculated") return Bad("Calculate the run first.");
                     if (string.Equals(FinJson.S(d, "calculatedBy"), Username, StringComparison.OrdinalIgnoreCase)) return Bad("A different person must approve the payroll run.");
+                    { var gm = await GovGate(tenantId, "pay", "run", run, "Approved"); if (gm != null) return Bad(gm); }
                     run.Status = "Approved"; run.Data = FinJson.WithValues(run.Data, new() { ["approvedBy"] = Username });
                     var slips = await _db.ErpRecords.Where(r => r.TenantId == tenantId && r.Module == "pay" && r.Kind == "payslip" && r.Parent == run.Id).ToListAsync();
                     foreach (var s in slips) s.Status = "Approved";
@@ -664,6 +676,8 @@ public partial class ModulesController
         var plan = await Find(tenantId, "epm", "plan", id);
         if (plan == null) return NotFound();
         if (plan.Status != "Draft") return Bad("Only a draft plan can be approved.");
+        var planGate = await GovGate(tenantId, "epm", "plan", plan, "Approved");
+        if (planGate != null) return Bad(planGate);
         plan.Status = "Approved"; plan.UpdatedAt = DateTime.UtcNow; plan.Data = FinJson.WithValues(plan.Data, new() { ["approvedBy"] = Username });
         await _db.SaveChangesAsync();
         return Ok(ErpRecordDto.From(plan));

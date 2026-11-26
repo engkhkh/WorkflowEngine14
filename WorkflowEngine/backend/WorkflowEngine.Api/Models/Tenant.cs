@@ -16,6 +16,10 @@ public class Tenant
     public int MaxUsers { get; set; }
     public int MaxCompanies { get; set; }
     public int MaxBranches { get; set; }
+    /// <summary>False after self-service sign-up until the administrator finishes the setup wizard (company, branches, team).</summary>
+    public bool SetupDone { get; set; } = true;
+    /// <summary>Modules the workspace uses (see ModuleCatalog). null = all modules.</summary>
+    public List<string>? Modules { get; set; }
     public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
 }
 
@@ -29,6 +33,7 @@ public class OrgCompany
     public string NameAr { get; set; } = string.Empty;
     public string Currency { get; set; } = "SAR";
     public string? TaxNo { get; set; }
+    public string? Country { get; set; }
 }
 
 /// <summary>A branch (with its warehouse) of a company - the "branches" users add from the Admin module.</summary>

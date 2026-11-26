@@ -20,9 +20,10 @@ builder.Services.AddEndpointsApiExplorer();
 // --- SQL Server via EF Core ---
 var connectionString = builder.Configuration.GetConnectionString("WorkflowDb")
     ?? throw new InvalidOperationException("Missing ConnectionStrings:WorkflowDb in appsettings.json.");
+{ var csb = new Microsoft.Data.SqlClient.SqlConnectionStringBuilder(connectionString); if (csb.MaxPoolSize < 300) csb.MaxPoolSize = 300; connectionString = csb.ConnectionString; }   // many users at once
 
 builder.Services.AddDbContext<WorkflowDbContext>(options =>
-    options.UseSqlServer(connectionString, sql => sql.EnableRetryOnFailure()));
+    options.UseSqlServer(connectionString, sql => { sql.EnableRetryOnFailure(); sql.CommandTimeout(90); }));
 
 builder.Services.AddScoped<IWorkflowEngineService, WorkflowEngineService>();
 builder.Services.AddScoped<IJwtTokenService, JwtTokenService>();
@@ -34,6 +35,13 @@ builder.Services.AddSingleton<IScriptRunner, ScriptRunner>();
 builder.Services.AddSingleton<IActivityFileLogger, ActivityFileLogger>();
 builder.Services.AddSingleton<IBusinessHoursCalculator, BusinessHoursCalculator>();
 builder.Services.AddHostedService<TaskEscalationHostedService>();
+
+// Billing: monthly invoices (5 USD per user, 3 USD above 100 users) paid by Visa / mada through a hosted payment page
+builder.Services.AddScoped<IBillingService, BillingService>();
+builder.Services.AddSingleton<IPaymentGateway, SandboxGateway>();
+builder.Services.AddHttpClient<MoyasarGateway>();
+builder.Services.AddScoped<IPaymentGateway>(sp => sp.GetRequiredService<MoyasarGateway>());
+builder.Services.AddHostedService<BillingHostedService>();
 
 // Used by WorkflowCall nodes to make real HTTP calls (see WorkflowEngineService.CallWebhookAsync).
 builder.Services.AddHttpClient("workflow-webhook", client =>
@@ -103,8 +111,10 @@ using (var scope = app.Services.CreateScope())
     await ErpSeedData.SeedErpWorkflows(db); // ERP business flows used by portal-app / mobile-app
 }
 
+_ = Task.Run(() => SchemaUpgrade.ApplyOptionalIndexes(connectionString));   // performance indexes: quiet, in the background
 app.UseMiddleware<SecurityErrorMiddleware>();
 app.UseCors(AngularDevCors);
+app.Use(async (ctx, next) => { ClientClock.Set(ctx.Request.Headers["X-Tz-Offset"].FirstOrDefault()); await next(); });   // caller's time zone
 app.UseHttpsRedirection();
 app.UseAuthentication();
 app.UseMiddleware<SessionValidationMiddleware>();   // token's user must still exist and be active

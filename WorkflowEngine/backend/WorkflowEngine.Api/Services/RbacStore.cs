@@ -18,6 +18,8 @@ public static class RbacStore
         public HashSet<string> Active { get; init; } = new(StringComparer.OrdinalIgnoreCase);     // built-in active keys + every custom key
         public HashSet<string> Disabled { get; init; } = new(StringComparer.OrdinalIgnoreCase);   // "tenant|key" switched off by a workspace
         public Dictionary<string, string[]> Roles { get; init; } = new(StringComparer.OrdinalIgnoreCase);   // "tenant|role"
+        /// <summary>tenant id -> modules it switched on (a tenant that is absent has every module)</summary>
+        public Dictionary<string, HashSet<string>> Modules { get; init; } = new(StringComparer.OrdinalIgnoreCase);
         public DateTime LoadedAt { get; init; } = DateTime.UtcNow;
     }
 
@@ -66,8 +68,10 @@ public static class RbacStore
         {
             var defs = await db.PermissionDefs.AsNoTracking().OrderBy(d => d.SortOrder).ToListAsync();
             var roles = await db.RoleDefs.AsNoTracking().ToListAsync();
+            var tenants = await db.Tenants.AsNoTracking().Select(t => new { t.Id, t.Modules }).ToListAsync();
             var snap = new Snapshot
             {
+                Modules = tenants.Where(t => t.Modules != null).ToDictionary(t => t.Id, t => t.Modules!.ToHashSet(StringComparer.OrdinalIgnoreCase), StringComparer.OrdinalIgnoreCase),
                 Defs = defs,
                 Active = defs.Where(d => (d.TenantId == "" && d.IsActive) || d.IsCustom).Select(d => d.Key).ToHashSet(StringComparer.OrdinalIgnoreCase),
                 Disabled = defs.Where(d => d.TenantId != "" && !d.IsActive).Select(d => d.TenantId + "|" + d.Key).ToHashSet(StringComparer.OrdinalIgnoreCase),
@@ -86,13 +90,20 @@ public static class RbacStore
 
     /// <summary>The workspace's view of the catalog: a workspace's own row for a key wins over the built-in one.</summary>
     public static IEnumerable<PermissionDef> DefsFor(string tenantId)
-        => (_snap?.Defs ?? new List<PermissionDef>()).Where(d => d.TenantId == "" || d.TenantId == tenantId)
+        => (_snap?.Defs ?? new List<PermissionDef>()).Where(d => (d.TenantId == "" || d.TenantId == tenantId) && ModuleOn(tenantId, d.Key))
             .GroupBy(d => d.Key, StringComparer.OrdinalIgnoreCase).Select(g => g.OrderByDescending(x => x.TenantId == tenantId && tenantId != "").First())
             .OrderBy(d => d.SortOrder);
 
     /// <summary>Keeps only privileges that exist and that the workspace has not switched off.</summary>
     public static bool IsOn(string tenantId, string key)
-        => _snap == null || (_snap.Active.Contains(key) && !_snap.Disabled.Contains(tenantId + "|" + key));
+        => _snap == null || (_snap.Active.Contains(key) && !_snap.Disabled.Contains(tenantId + "|" + key) && ModuleOn(tenantId, key));
+
+    /// <summary>False when the privilege belongs to a module the workspace has not switched on.</summary>
+    public static bool ModuleOn(string tenantId, string key)
+        => _snap == null || !_snap.Modules.TryGetValue(tenantId, out var on) || ModuleCatalog.Allowed(on, key);
+
+    /// <summary>Modules the workspace uses (null = all).</summary>
+    public static HashSet<string>? ModulesOf(string tenantId) => _snap != null && _snap.Modules.TryGetValue(tenantId, out var on) ? on : null;
 
     /// <summary>Active privileges of a workspace grouped for the admin screen.</summary>
     public static List<(string Group, string[] Keys)> CatalogFor(string tenantId)

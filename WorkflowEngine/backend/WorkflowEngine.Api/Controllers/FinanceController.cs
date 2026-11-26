@@ -221,7 +221,12 @@ public class FinanceController : ControllerBase
         };
 
         var auto = AutoPrefix(kind);
-        if (auto != null && rec.Code == null) rec.Code = await NextCode(tenantId, kind, auto);
+        var autoCoded = false;
+        // draw the number and save under one lock, so two people creating at the same moment never draw the same number
+        IDisposable? numLock = null;
+        try
+        {
+        if (auto != null && rec.Code == null) { numLock = await NumberingLock.Enter(tenantId + "|fin|" + kind); rec.Code = await NextCode(tenantId, kind, auto); autoCoded = true; }
         if (CodeRequired.Contains(kind) && rec.Code == null) return BadRequest("Code is required.");
         if (rec.Code != null && await CodeTaken(tenantId, kind, rec.Code, rec.Company, null)) return Conflict("That code already exists.");
 
@@ -232,6 +237,8 @@ public class FinanceController : ControllerBase
         _db.FinAudits.Add(Audit(tenantId, rec, "Created", $"{kind} {rec.Code} created as {rec.Status}"));
         await _db.SaveChangesAsync();
         return Ok(FinRecordDto.From(rec));
+        }
+        finally { numLock?.Dispose(); }
     }
 
     [HttpPut("records/{kind}/{id}")]
@@ -258,6 +265,21 @@ public class FinanceController : ControllerBase
         else if (kind == "apinvoice" && oldStatus == "Paid") return BadRequest("A paid invoice can't be changed.");
         else if (kind == "period" && oldStatus == "Closed" && newStatus == "Closed") newData = rec.Data;
 
+        // an invoice that has its ZATCA e-invoice keeps it, and its figures can't change any more (cancel it and issue a new one)
+        if (kind == "arinvoice")
+        {
+            var od = FinJson.Obj(oldData);
+            if (od.ValueKind == JsonValueKind.Object && od.TryGetProperty("zatca", out var oz) && oz.ValueKind == JsonValueKind.Object)
+            {
+                var nd = FinJson.Obj(newData);
+                foreach (var k in new[] { "amount", "taxAmount", "total" })
+                    if (FinJson.D(od, k) != FinJson.D(nd, k)) return BadRequest("This invoice already has its ZATCA e-invoice, so its amounts can't change. Cancel it and issue a new invoice.");
+                foreach (var k in new[] { "customer", "date", "currency" })
+                    if (FinJson.S(od, k) != FinJson.S(nd, k)) return BadRequest("This invoice already has its ZATCA e-invoice, so it can't change. Cancel it and issue a new invoice.");
+                newData = FinJson.WithValues(newData, new() { ["zatca"] = oz });
+            }
+        }
+
         var code = Clean(body.Code) ?? rec.Code;
         var company = body.Company != null ? Clean(body.Company) : rec.Company;
         if (code != null && (code != rec.Code || company != rec.Company) && await CodeTaken(tenantId, kind, code, company, rec.Id))
@@ -266,6 +288,11 @@ public class FinanceController : ControllerBase
         var probe = new FinRecord { TenantId = tenantId, Kind = kind, Code = code, Company = company, Status = newStatus, Data = newData, CreatedBy = rec.CreatedBy, ApprovedBy = rec.ApprovedBy, Id = rec.Id };
         var err = await Gate(tenantId, probe, oldStatus, newStatus);
         if (err != null) return Fail(err);
+        if (oldStatus != newStatus && newStatus is "Approved" or "Posted" or "Paid" && kind != "period")
+        {   // the approval matrix (Governance module): amount-based multi-step approval
+            var apprMsg = await WorkflowEngine.Api.Services.ApprovalGate.Check(_db, User, tenantId, "finance/" + kind, rec.Id, rec.Code, rec.Company, probe.Data, newStatus);
+            if (apprMsg != null) return BadRequest(apprMsg);
+        }
 
         var summary = Diff(oldStatus, newStatus, oldData, probe.Data);
         rec.Code = code; rec.Company = company; rec.Status = newStatus; rec.Data = probe.Data; rec.ApprovedBy = probe.ApprovedBy;
@@ -290,6 +317,7 @@ public class FinanceController : ControllerBase
         if (kind == "apinvoice" && st is not ("Draft" or "Rejected" or "Held")) return BadRequest("Only draft, held or rejected invoices can be deleted.");
         if (kind == "arinvoice" && st is not ("Draft" or "Cancelled")) return BadRequest("Only draft or cancelled invoices can be deleted.");
         if (kind == "period" && st == "Closed") return BadRequest("Reopen the period before deleting it.");
+        if (kind == "arinvoice" && rec.Data.Contains("\"zatca\"")) return BadRequest("This invoice has a ZATCA e-invoice and can't be deleted.");
         if (kind == "account" && rec.Code != null)
         {
             var needle = "\"" + rec.Code + "\"";
@@ -363,7 +391,8 @@ public class FinanceController : ControllerBase
     {
         if (!await Has("finance.audit.view")) return Forbid();
         var tenantId = await _tenant.TenantIdOf(User);
-        var q = _db.FinAudits.AsNoTracking().Where(a => a.TenantId == tenantId);
+        // read without waiting for writers (an audit listing may lag a moment, but must never hang)
+        var q = _db.FinAudits.FromSqlRaw("SELECT * FROM dbo.FinAudits WITH (NOLOCK)").AsNoTracking().Where(a => a.TenantId == tenantId);
         if (!string.IsNullOrWhiteSpace(kind)) q = q.Where(a => a.Kind == kind);
         if (!string.IsNullOrWhiteSpace(recordId)) q = q.Where(a => a.RecordId == recordId);
         return Ok(await q.OrderByDescending(a => a.At).Take(Math.Clamp(limit, 1, 1000)).ToListAsync());
@@ -587,7 +616,7 @@ public class FinanceController : ControllerBase
         bool Mine(FinRecord r) => string.IsNullOrWhiteSpace(company) || company == "ALL" || r.Company == company || string.IsNullOrEmpty(r.Company);
         var recs = all.Where(Mine).ToList();
         var s = new FinSummaryDto();
-        var today = DateTime.UtcNow.Date;
+        var today = ClientClock.Today;
         var year = today.Year;
 
         // account types

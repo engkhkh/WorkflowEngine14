@@ -39,20 +39,20 @@ public partial class ModulesController
         ("re", "installment") => ("re.view", "re.collect"),
         ("re", "sale") => ("re.view", "re.sales.manage"),
         ("re", "request") => ("re.view", "re.maintenance.manage"),
-        _ => KindPermsBiz(module, kind)
+        _ => KindPermsLots(module, kind)
     };
 
     private static string? AutoPrefixRe(string module, string kind) => (module, kind) switch
     {
         ("re", "property") => "PRP", ("re", "unit") => "UNT", ("re", "owner") => "OWN", ("re", "tenant") => "TEN", ("re", "lease") => "LSE",
         ("re", "installment") => "INS", ("re", "sale") => "SAL", ("re", "request") => "MNT",
-        _ => AutoPrefixBiz(module, kind)
+        _ => AutoPrefixGov(module, kind)
     };
 
     private static string DefaultStatusRe(string module, string kind) => (module, kind) switch
     {
         ("re", "unit") => "Available", ("re", "lease") => "Draft", ("re", "installment") => "Due", ("re", "sale") => "Reservation", ("re", "request") => "New",
-        _ => DefaultStatusBiz(module, kind)
+        _ => DefaultStatusGov(module, kind)
     };
 
     /// <summary>Kinds whose status only moves through the action buttons.</summary>
@@ -189,6 +189,7 @@ public partial class ModulesController
                 case ("lease", "activate"):
                     {
                         if (rec.Status != "Draft") return Bad("Only a draft lease can be activated.");
+                        { var gm = await GovGate(tenantId, "re", "lease", rec, "Active"); if (gm != null) return Bad(gm); }
                         var unit = await ReByCode(tenantId, "unit", FinJson.S(d, "unit"), true); if (unit == null) return Bad("The unit of this lease doesn't exist any more.");
                         if (unit.Status != "Available" && unit.Status != "Reserved") return Bad($"Unit {unit.Code} is {unit.Status}; only an available unit can be rented.");
                         if (!FinJson.TryDate(d, "startDate", out var st) || !FinJson.TryDate(d, "endDate", out var en)) return Bad("Enter the start and end dates.");

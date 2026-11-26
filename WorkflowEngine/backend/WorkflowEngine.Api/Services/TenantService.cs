@@ -17,7 +17,7 @@ public static class Plans
         {
             "business" => (50, 5, 25),
             "enterprise" => (0, 0, 0),
-            _ => (5, 1, 3),            // starter
+            _ => (25, 1, 10),          // starter: ONE company, up to 10 branches, 25 users
         };
     }
 }

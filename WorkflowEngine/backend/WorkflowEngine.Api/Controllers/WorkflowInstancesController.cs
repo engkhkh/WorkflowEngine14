@@ -65,7 +65,9 @@ public class WorkflowInstancesController : ControllerBase
     public async Task<ActionResult<WorkflowInstance>> Start([FromBody] StartInstanceRequest request)
     {
         // ERP documents need the module's "create" privilege (e.g. purchasing.create).
-        var defName = await _db.Definitions.Where(d => d.Id == request.DefinitionId).Select(d => d.Name).FirstOrDefaultAsync();
+        var myTenant = await _tenant.TenantIdOf(User);
+        var defName = await _db.Definitions.Where(d => d.Id == request.DefinitionId && (d.TenantId == myTenant || (d.TenantId == Tenant.DefaultId && d.IsPublished))).Select(d => d.Name).FirstOrDefaultAsync();
+        if (defName == null) return NotFound("Unknown workflow.");
         var needed = defName != null ? ErpSeedData.CreatePermissionFor(defName) : null;
         if (needed != null && !await _perms.Has(User, needed))
             return StatusCode(403, $"You don't have the privilege '{needed}'.");

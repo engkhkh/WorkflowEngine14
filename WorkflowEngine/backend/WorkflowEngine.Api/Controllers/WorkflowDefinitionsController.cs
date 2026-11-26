@@ -33,28 +33,42 @@ public class TestConditionRequest
 public class WorkflowDefinitionsController : ControllerBase
 {
     private readonly WorkflowDbContext _db;
+    private readonly ITenantScope _tenant;
+    private readonly IPermissionService _perms;
 
-    public WorkflowDefinitionsController(WorkflowDbContext db)
+    public WorkflowDefinitionsController(WorkflowDbContext db, ITenantScope tenant, IPermissionService perms)
     {
         _db = db;
+        _tenant = tenant;
+        _perms = perms;
     }
+
+    /// <summary>Every flow belongs to one workspace; the designer privileges (wf.design / wf.publish) are set per user in Admin.</summary>
+    private async Task<bool> Can(string perm) => await _perms.Has(User, perm);
 
     [HttpGet]
     public async Task<ActionResult<IEnumerable<WorkflowDefinition>>> GetAll()
-        => Ok(await _db.Definitions.OrderByDescending(d => d.UpdatedAt).ToListAsync());
+    {
+        var t = await _tenant.TenantIdOf(User);
+        // own flows + the published templates every workspace gets from the platform ("default" workspace); templates are read-only for others
+        return Ok(await _db.Definitions.Where(d => d.TenantId == t || (d.TenantId == Tenant.DefaultId && d.IsPublished)).OrderByDescending(d => d.UpdatedAt).ToListAsync());
+    }
 
     [HttpGet("{id}")]
     public async Task<ActionResult<WorkflowDefinition>> Get(string id)
     {
-        var def = await _db.Definitions.FirstOrDefaultAsync(d => d.Id == id);
+        var t = await _tenant.TenantIdOf(User);
+        var def = await _db.Definitions.FirstOrDefaultAsync(d => d.Id == id && (d.TenantId == t || (d.TenantId == Tenant.DefaultId && d.IsPublished)));
         return def is null ? NotFound() : Ok(def);
     }
 
     [HttpPost]
     public async Task<ActionResult<WorkflowDefinition>> Create([FromBody] WorkflowDefinitionInput input)
     {
+        if (!await Can("wf.design")) return Forbid();
         var definition = new WorkflowDefinition
         {
+            TenantId = await _tenant.TenantIdOf(User),
             Name = input.Name,
             Description = input.Description,
             Nodes = input.Nodes,
@@ -70,7 +84,9 @@ public class WorkflowDefinitionsController : ControllerBase
     [HttpPut("{id}")]
     public async Task<ActionResult<WorkflowDefinition>> Update(string id, [FromBody] WorkflowDefinitionInput input)
     {
-        var existing = await _db.Definitions.FirstOrDefaultAsync(d => d.Id == id);
+        if (!await Can("wf.design")) return Forbid();
+        var t = await _tenant.TenantIdOf(User);
+        var existing = await _db.Definitions.FirstOrDefaultAsync(d => d.Id == id && d.TenantId == t);
         if (existing is null) return NotFound();
 
         existing.Name = input.Name;
@@ -84,10 +100,11 @@ public class WorkflowDefinitionsController : ControllerBase
     }
 
     [HttpPost("{id}/publish")]
-    [Authorize(Roles = "admin")]
     public async Task<ActionResult<WorkflowDefinition>> Publish(string id)
     {
-        var def = await _db.Definitions.FirstOrDefaultAsync(d => d.Id == id);
+        if (!await Can("wf.publish")) return Forbid();
+        var t = await _tenant.TenantIdOf(User);
+        var def = await _db.Definitions.FirstOrDefaultAsync(d => d.Id == id && d.TenantId == t);
         if (def is null) return NotFound();
 
         if (def.Nodes.Count(n => n.Type == NodeType.Start) != 1)
@@ -109,10 +126,11 @@ public class WorkflowDefinitionsController : ControllerBase
         => Ok(ConditionEvaluator.EvaluateDetailed(request.Expression, request.Data));
 
     [HttpDelete("{id}")]
-    [Authorize(Roles = "admin")]
     public async Task<IActionResult> Delete(string id)
     {
-        var def = await _db.Definitions.FirstOrDefaultAsync(d => d.Id == id);
+        if (!await Can("wf.publish")) return Forbid();
+        var t = await _tenant.TenantIdOf(User);
+        var def = await _db.Definitions.FirstOrDefaultAsync(d => d.Id == id && d.TenantId == t);
         if (def is null) return NotFound();
         _db.Definitions.Remove(def);
         await _db.SaveChangesAsync();

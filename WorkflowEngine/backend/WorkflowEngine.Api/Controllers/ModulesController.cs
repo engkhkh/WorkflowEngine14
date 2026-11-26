@@ -60,7 +60,7 @@ public partial class ModulesController : ControllerBase
     private static string J(Dictionary<string, object?> d) => JsonSerializer.Serialize(d);
     private BadRequestObjectResult Bad(string m) => BadRequest(new { message = m });
 
-    private static readonly string[] Modules = { "mfg", "prj", "crm", "proc", "scm", "wh", "ast", "pay", "epm", "bpm", "int", "bi", "arc", "re", "so", "hd", "sub", "exp", "qa", "flt" };
+    private static readonly string[] Modules = { "mfg", "prj", "crm", "proc", "scm", "wh", "ast", "pay", "epm", "bpm", "int", "bi", "arc", "re", "gov", "so", "hd", "sub", "exp", "qa", "flt" };
 
     /// <summary>(view privilege, manage privilege) for a record kind, or null when the kind does not exist in that module.</summary>
     private static (string view, string manage)? KindPerms(string module, string kind) => (module, kind) switch
@@ -125,6 +125,7 @@ public partial class ModulesController : ControllerBase
         if (module == "pay" && kind == "payslip" && !(await Has("pay.payslips.view") || await Has("pay.run.manage"))) q = q.Where(r => r.Ref == Username);   // everybody may see their own payslips
         var list = await q.OrderByDescending(r => r.CreatedAt).Take(Math.Clamp(take, 1, 5000)).ToListAsync();
         if (module == "arc") list = await ArcFilter(list);   // confidential letters and documents are for their owners and holders of arc.confidential
+        if (module == "gov" && kind == "approval") list = await GovApprovalView(tenantId, list);   // approvers see their requests; auditors see all
         return Ok(list.Select(ErpRecordDto.From));
     }
 
@@ -159,6 +160,10 @@ public partial class ModulesController : ControllerBase
         if (rec.Code != null && await _db.ErpRecords.AnyAsync(r => r.TenantId == tenantId && r.Module == module && r.Kind == kind && r.Code == rec.Code)) return Conflict(new { message = "That code already exists." });
         var err = await Validate(tenantId, module, kind, rec, null);
         if (err != null) return Bad(err);
+        var lockErr = await GovLockCheck(tenantId, module, kind, rec.Company, null, rec.Data);
+        if (lockErr != null) return Bad(lockErr);
+        var cfErr = await GovCustomCheck(tenantId, module, kind, rec.Data);
+        if (cfErr != null) return Bad(cfErr);
         _db.ErpRecords.Add(rec);
         await _db.SaveChangesAsync();
         return Ok(ErpRecordDto.From(rec));
@@ -199,11 +204,24 @@ public partial class ModulesController : ControllerBase
         if (module == "prj" && kind == "cost" && newStatus == "Billed") return Bad("Billing is done by the billing action.");
         if (module == "prj" && kind == "milestone" && newStatus == "Billed") return Bad("Billing is done by the billing action.");
 
+        // governance: period lock, then the approval matrix for the new status (nothing of the record is changed yet)
+        var newRaw = body.Data.ValueKind == JsonValueKind.Object ? body.Data.GetRawText() : null;
+        var lockErr = await GovLockCheck(tenantId, module, kind, rec.Company, rec.Data, newRaw ?? rec.Data);
+        if (lockErr != null) return Bad(lockErr);
+        if (statusChanges && module != "gov")
+        {
+            var merged = newRaw != null ? MergeDataExt(module, kind, rec.Data, newRaw) : rec.Data;
+            var gateMsg = await ApprovalGate.Check(_db, User, tenantId, module + "/" + kind, rec.Id, rec.Code, rec.Company, merged, newStatus ?? "");
+            if (gateMsg != null) return Bad(gateMsg);
+        }
+
         rec.Company = Clean(body.Company) ?? rec.Company; rec.Branch = Clean(body.Branch) ?? rec.Branch;
         rec.Status = newStatus; rec.Ref = Clean(body.Ref) ?? rec.Ref; rec.Parent = Clean(body.Parent) ?? rec.Parent;
         if (body.Data.ValueKind == JsonValueKind.Object) rec.Data = MergeDataExt(module, kind, rec.Data, body.Data.GetRawText());
         var err = await Validate(tenantId, module, kind, rec, rec.Id);
         if (err != null) return Bad(err);
+        var cfErr = await GovCustomCheck(tenantId, module, kind, rec.Data);
+        if (cfErr != null) return Bad(cfErr);
         rec.UpdatedAt = DateTime.UtcNow;
         await _db.SaveChangesAsync();
         return Ok(ErpRecordDto.From(rec));
@@ -222,6 +240,8 @@ public partial class ModulesController : ControllerBase
         if (module == "arc" && kind == "category" && await ArcCategoryInUse(tenantId, rec.Code)) return Bad("This category is used by documents or letters and can't be deleted.");
         if (rec.Status is "Billed" or "Completed" or "Won" || IsFinalExt(module, kind, rec.Status) || (SystemOnly(module, kind) && kind != "log")) return Bad("This record is final and can't be deleted.");
         if (module == "prj" && kind == "timesheet" && rec.CreatedBy != Username && !await Has("prj.time.approve")) return Forbid();
+        var delLock = await GovLockCheck(tenantId, module, kind, rec.Company, rec.Data, null);
+        if (delLock != null) return Bad(delLock);
         _db.ErpRecords.Remove(rec);
         await _db.SaveChangesAsync();
         return NoContent();

@@ -29,12 +29,19 @@ public class AdminUserDto
     /// <summary>null = the user follows their role's default privileges.</summary>
     public List<string>? Permissions { get; set; }
     public List<string> EffectivePermissions { get; set; } = new();
+    /// <summary>Branches the user is limited to; null = all.</summary>
+    public List<string>? Branches { get; set; }
+    /// <summary>Invited but has not chosen a password yet.</summary>
+    public bool InvitePending { get; set; }
+    /// <summary>Set only in the answer to create / invite: the token behind the invitation link.</summary>
+    public string? InviteToken { get; set; }
 
     public static AdminUserDto From(User u) => new()
     {
         Id = u.Id, Username = u.Username, DisplayName = u.DisplayName, Email = u.Email, Role = u.Role,
         IsActive = u.IsActive, CreatedAt = u.CreatedAt, Permissions = u.Permissions,
-        EffectivePermissions = WorkflowEngine.Api.Services.Permissions.Effective(u)
+        EffectivePermissions = WorkflowEngine.Api.Services.Permissions.Effective(u),
+        Branches = u.Branches != null && u.Branches.Count > 0 ? u.Branches : null, InvitePending = string.IsNullOrEmpty(u.PasswordHash)
     };
 }
 
@@ -48,6 +55,12 @@ public class SaveUserRequest
     public string? Password { get; set; }          // create only (use reset-password afterwards)
     /// <summary>null = use role defaults; a list (even empty) = custom privileges.</summary>
     public List<string>? Permissions { get; set; }
+    /// <summary>Limit the user to these branches (null / empty = all).</summary>
+    public List<string>? Branches { get; set; }
+    /// <summary>Create the account without a password and return an invitation link instead (like Odoo's invite).</summary>
+    public bool Invite { get; set; }
+    /// <summary>Address of the web app, used to build the link in the invitation e-mail.</summary>
+    public string? AppUrl { get; set; }
 }
 
 public class ResetPasswordRequest { public string Password { get; set; } = string.Empty; }
@@ -68,12 +81,25 @@ public class UsersController : ControllerBase
     private readonly WorkflowDbContext _db;
     private readonly IPermissionService _perms;
     private readonly ITenantScope _tenant;
+    private readonly IConfiguration _config;
+    private readonly IEmailSender _email;
 
-    public UsersController(WorkflowDbContext db, IPermissionService perms, ITenantScope tenant)
+    public UsersController(WorkflowDbContext db, IPermissionService perms, ITenantScope tenant, IConfiguration config, IEmailSender email)
     {
         _db = db;
         _perms = perms;
         _tenant = tenant;
+        _config = config;
+        _email = email;
+    }
+
+    /// <summary>Keeps only branch codes that exist in the workspace; empty = no restriction.</summary>
+    private async Task<List<string>?> CleanBranches(string tenantId, List<string>? wanted)
+    {
+        if (wanted == null || wanted.Count == 0) return null;
+        var known = await _db.OrgBranches.AsNoTracking().Where(b => b.TenantId == tenantId).Select(b => b.Code).ToListAsync();
+        var list = wanted.Select(w => (w ?? string.Empty).Trim()).Where(w => known.Contains(w)).Distinct().ToList();
+        return list.Count == 0 ? null : list;
     }
 
     private string Username => User.FindFirstValue(ClaimTypes.Name)!;
@@ -131,14 +157,14 @@ public class UsersController : ControllerBase
         if (!await _perms.Has(User, Permissions.AdminUsers)) return Forbid();
         var username = (req.Username ?? string.Empty).Trim();
         if (username.Length < 2) return BadRequest("Username is required.");
-        if (string.IsNullOrWhiteSpace(req.Password) || req.Password.Length < 6) return BadRequest("Password must be at least 6 characters.");
+        if (!req.Invite && (string.IsNullOrWhiteSpace(req.Password) || req.Password.Length < 6)) return BadRequest("Password must be at least 6 characters.");
         if (await _db.Users.AnyAsync(u => u.Username == username)) return Conflict("That username already exists.");
 
         var tenantId = await _tenant.TenantIdOf(User);
         var (withinLimit, limitMessage) = await _tenant.CheckLimit(tenantId, PlanLimit.Users);
         if (!withinLimit) return StatusCode(402, limitMessage);
 
-        var (hash, salt) = PasswordHasher.Hash(req.Password);
+        var (hash, salt) = req.Invite ? (string.Empty, string.Empty) : PasswordHasher.Hash(req.Password!);
         var user = new User
         {
             Username = username,
@@ -149,11 +175,14 @@ public class UsersController : ControllerBase
             TenantId = tenantId,
             PasswordHash = hash,
             PasswordSalt = salt,
-            Permissions = req.Permissions == null ? null : Permissions.Sanitize(req.Permissions)
+            Permissions = req.Permissions == null ? null : Permissions.Sanitize(req.Permissions),
+            Branches = await CleanBranches(tenantId, req.Branches)
         };
         _db.Users.Add(user);
         await _db.SaveChangesAsync();
-        return Ok(AdminUserDto.From(user));
+        var dto = AdminUserDto.From(user);
+        if (req.Invite) { dto.InviteToken = InviteTokens.Create(_config, user); await TrySendInvite(user, dto.InviteToken, req.AppUrl); }
+        return Ok(dto);
     }
 
     [HttpPut("admin/{id}")]
@@ -179,8 +208,35 @@ public class UsersController : ControllerBase
         user.Role = candidate.Role;
         user.IsActive = req.IsActive;
         user.Permissions = newPerms;
+        user.Branches = await CleanBranches(tenantId, req.Branches);
         await _db.SaveChangesAsync();
         return Ok(AdminUserDto.From(user));
+    }
+
+    /// <summary>(Re)issues the invitation link of a user who has not chosen a password yet, and e-mails it when SMTP is configured.</summary>
+    [HttpPost("admin/{id}/invite")]
+    public async Task<ActionResult<AdminUserDto>> Invite(string id, [FromBody] SaveUserRequest req)
+    {
+        if (!await _perms.Has(User, Permissions.AdminUsers)) return Forbid();
+        var tenantId = await _tenant.TenantIdOf(User);
+        var user = await _db.Users.FirstOrDefaultAsync(u => u.Id == id && u.TenantId == tenantId);
+        if (user == null) return NotFound();
+        if (!string.IsNullOrEmpty(user.PasswordHash)) return BadRequest("This user already has a password. Use reset password instead.");
+        var dto = AdminUserDto.From(user);
+        dto.InviteToken = InviteTokens.Create(_config, user);
+        await TrySendInvite(user, dto.InviteToken, req?.AppUrl);
+        return Ok(dto);
+    }
+
+    private async Task TrySendInvite(User user, string token, string? appUrl)
+    {
+        if (!_email.IsConfigured || string.IsNullOrWhiteSpace(user.Email) || string.IsNullOrWhiteSpace(appUrl)) return;
+        try
+        {
+            var link = appUrl.TrimEnd('/') + "/accept-invite?token=" + Uri.EscapeDataString(token);
+            await _email.SendAsync(user.Email, "You have been invited", "Hello " + user.DisplayName + ",\n\nYou have been invited to join. Open this link to choose your password (valid for 7 days):\n" + link + "\n\nYour username is: " + user.Username, false);
+        }
+        catch { /* the link is also shown to the administrator, who can share it by hand */ }
     }
 
     [HttpPost("admin/{id}/reset-password")]

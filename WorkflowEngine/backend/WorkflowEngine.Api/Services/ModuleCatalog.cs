@@ -31,6 +31,7 @@ public static class ModuleCatalog
         new("exp",       "exp",     "expenses",    "credit-card"),
         new("qa",        "qa",      "quality",     "shield"),
         new("flt",       "flt",     "fleet",       "box"),
+        new("gov",       "gov",     "governance",  "shield"),
         new("pay",       "pay",     "payroll",     "wallet"),
         new("epm",       "epm",     "epm",         "bar-chart"),
         new("bpm",       "bpm",     "bpm",         "grid"),

@@ -50,7 +50,7 @@ public static partial class SeedData
 
     private static FormField Company() => F("company", "Company", FormFieldType.Select, true, false, null, "Main Company", "Trading Co.");
     private static FormField Branch() => F("branch", "Branch", FormFieldType.Select, true, false, null, "HQ - Riyadh", "Jeddah Branch", "Dammam Branch");
-    private static FormField Currency() => F("currency", "Currency", FormFieldType.Select, true, false, null, "SAR", "USD", "EUR");
+    private static FormField Currency() => F("currency", "Currency", FormFieldType.Select, true, false, null, "USD", "EUR", "GBP", "SAR", "AED", "KWD", "QAR", "EGP", "TRY", "INR", "PKR", "CNY", "JPY", "AUD", "CAD", "CHF", "ZAR", "BRL", "MXN");
     private static FormField Warehouse(string key, string label) => F(key, label, FormFieldType.Select, true, false, null, "Main Warehouse - Riyadh", "Jeddah Warehouse", "Dammam Warehouse");
 
     private static FormDefinition Form(string title, params FormField[] fields) => new() { Title = title, Fields = fields.ToList() };

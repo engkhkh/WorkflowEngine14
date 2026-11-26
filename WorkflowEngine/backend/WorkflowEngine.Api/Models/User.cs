@@ -21,6 +21,9 @@ public class User
     // the column to an existing database automatically on startup (no migration needed).
     public List<string>? Permissions { get; set; }
 
+    // Branches this user may work in (Odoo's "allowed companies"). null / empty = every branch of the workspace. Column added by SchemaUpgrade.
+    public List<string>? Branches { get; set; }
+
     // SaaS workspace this user belongs to (Tenant.Id). Existing users belong to "default".
     // Column is added automatically on startup (Services/SchemaUpgrade.cs).
     public string TenantId { get; set; } = Tenant.DefaultId;

@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using WorkflowEngine.Api.Data;
 using WorkflowEngine.Api.Models;
+using WorkflowEngine.Api.Security;
 using WorkflowEngine.Api.Services;
 
 namespace WorkflowEngine.Api.Controllers;
@@ -71,7 +72,8 @@ public class PosController : ControllerBase
     private readonly IPermissionService _perms;
     private readonly ITenantScope _tenant;
 
-    public PosController(WorkflowDbContext db, IPermissionService perms, ITenantScope tenant) { _db = db; _perms = perms; _tenant = tenant; }
+    private readonly ICurrentUser _me;   // access layer: branch access of the caller
+    public PosController(WorkflowDbContext db, IPermissionService perms, ITenantScope tenant, ICurrentUser me) { _db = db; _perms = perms; _tenant = tenant; _me = me; }
 
     private string Username => User.FindFirstValue(ClaimTypes.Name)!;
     private Task<bool> Has(string p) => _perms.Has(User, p);
@@ -111,6 +113,8 @@ public class PosController : ControllerBase
         var q = _db.PosRecords.AsNoTracking().Where(r => r.TenantId == tenantId && r.Kind == kind);
         if (!string.IsNullOrWhiteSpace(company) && company != "ALL") q = q.Where(r => r.Company == company || r.Company == null || r.Company == "");
         if (!string.IsNullOrWhiteSpace(branch) && branch != "ALL") q = q.Where(r => r.Branch == branch || r.Branch == null || r.Branch == "");
+        var allowedBr = await _me.AllowedBranchesAsync();   // a user limited to some branches never sees the others
+        if (allowedBr != null) q = q.Where(r => r.Branch == null || r.Branch == "" || allowedBr.Contains(r.Branch));
         if (!string.IsNullOrWhiteSpace(status)) q = q.Where(r => r.Status == status);
         if (DateTime.TryParse(dateFrom, out var f)) q = q.Where(r => r.CreatedAt >= f.Date);
         if (DateTime.TryParse(dateTo, out var t)) q = q.Where(r => r.CreatedAt < t.Date.AddDays(1));
@@ -126,6 +130,7 @@ public class PosController : ControllerBase
     {
         if (!Configurable.Contains(kind)) return NotFound();
         if (!await Has(KindPerms(kind)!.Value.manage)) return Forbid();
+        if (!await _me.CanUseBranchAsync(Clean(body.Branch))) return Forbid();
         var tenantId = await _tenant.TenantIdOf(User);
         var rec = Build(tenantId, kind, body);
         if (kind == "customer" && rec.Code == null) rec.Code = await NextCode(tenantId, "customer", "C");
@@ -173,6 +178,7 @@ public class PosController : ControllerBase
         var tenantId = await _tenant.TenantIdOf(User);
         var rec = await _db.PosRecords.FirstOrDefaultAsync(r => r.Id == id && r.TenantId == tenantId && r.Kind == kind);
         if (rec == null) return NotFound();
+        if (!await _me.CanUseBranchAsync(rec.Branch) || !await _me.CanUseBranchAsync(Clean(body.Branch))) return Forbid();
         rec.Company = Clean(body.Company); rec.Branch = Clean(body.Branch);
         rec.Status = Clean(body.Status) ?? rec.Status;
         if (body.Data.ValueKind == JsonValueKind.Object) rec.Data = body.Data.GetRawText();
@@ -294,6 +300,7 @@ public class PosController : ControllerBase
     public async Task<IActionResult> Open([FromBody] PosOpenShiftDto b)
     {
         if (!await Has("pos.sell")) return Forbid();
+        if (!await _me.CanUseBranchAsync(Clean(b.Branch))) return Forbid();
         var tenantId = await _tenant.TenantIdOf(User);
         if (b.OpeningCash < 0) return Bad("Opening cash can't be negative.");
         if (await OpenShift(tenantId, null) != null) return Conflict(new { message = "You already have an open shift. Close it first." });
@@ -398,7 +405,7 @@ public class PosController : ControllerBase
 
     private static bool InWindow(JsonElement p)
     {
-        var now = DateTime.UtcNow.Date;
+        var now = ClientClock.Today;
         if (FinJson.TryDate(p, "from", out var f) && now < f.Date) return false;
         if (FinJson.TryDate(p, "to", out var t) && now > t.Date) return false;
         return true;
@@ -432,6 +439,7 @@ public class PosController : ControllerBase
     public async Task<IActionResult> Checkout([FromBody] PosCheckoutDto b)
     {
         if (!await Has("pos.sell")) return Forbid();
+        if (!await _me.CanUseBranchAsync(Clean(b.Branch))) return Forbid();
         var tenantId = await _tenant.TenantIdOf(User);
         if (b.Lines.Count == 0) return Bad("The basket is empty.");
         if (b.Lines.Any(l => l.Qty <= 0)) return Bad("Quantities must be positive.");
@@ -744,7 +752,7 @@ public class PosController : ControllerBase
         if (!await Has("pos.reports.view")) return Forbid();
         var tenantId = await _tenant.TenantIdOf(User);
         days = Math.Clamp(days, 1, 90);
-        var since = DateTime.UtcNow.Date.AddDays(-(days - 1));
+        var since = ClientClock.Today.AddDays(-(days - 1));
         IQueryable<PosRecord> Scope(string kind)
         {
             var q = _db.PosRecords.AsNoTracking().Where(r => r.TenantId == tenantId && r.Kind == kind);
@@ -753,7 +761,7 @@ public class PosController : ControllerBase
             return q;
         }
         var sales = (await Scope("sale").Where(r => r.CreatedAt >= since && r.Status != "Voided").ToListAsync()).Select(r => (r, d: FinJson.Obj(r.Data))).ToList();
-        var today = DateTime.UtcNow.Date;
+        var today = ClientClock.Today;
         decimal Sum(IEnumerable<(PosRecord r, JsonElement d)> x, string type) => x.Where(s => FinJson.S(s.d, "type") == type).Sum(s => FinJson.D(s.d, "total"));
         var todaySales = sales.Where(s => s.r.CreatedAt >= today).ToList();
         var salesToday = Sum(todaySales, "Sale"); var returnsToday = -Sum(todaySales, "Return");
@@ -781,7 +789,7 @@ public class PosController : ControllerBase
         var byBranch = sales.Where(s => FinJson.S(s.d, "type") == "Sale").GroupBy(s => s.r.Branch ?? "").Select(g => new { name = g.Key, value = g.Sum(s => FinJson.D(s.d, "total")) }).OrderByDescending(x => x.value).ToList();
 
         var stock = (await Scope("stock").ToListAsync()).Select(r => (r, d: FinJson.Obj(r.Data))).ToList();
-        var products = (await Scope("product").ToListAsync()).ToDictionary(p => p.Code ?? "", p => FinJson.Obj(p.Data), StringComparer.OrdinalIgnoreCase);
+        var products = (await _db.PosRecords.AsNoTracking().Where(r => r.TenantId == tenantId && r.Kind == "product").ToListAsync()).ToDictionary(p => p.Code ?? "", p => FinJson.Obj(p.Data), StringComparer.OrdinalIgnoreCase);
         var low = stock.Where(s => FinJson.D(s.d, "qty") <= FinJson.D(products.GetValueOrDefault(FinJson.S(s.d, "sku")), "reorder"))
             .Select(s => new { sku = FinJson.S(s.d, "sku"), name = FinJson.S(products.GetValueOrDefault(FinJson.S(s.d, "sku")), "name"), branch = s.r.Branch ?? "", qty = FinJson.D(s.d, "qty") })
             .Where(x => products.ContainsKey(x.sku)).Take(25).ToList();

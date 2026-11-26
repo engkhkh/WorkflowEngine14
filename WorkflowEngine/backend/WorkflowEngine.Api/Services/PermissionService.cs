@@ -39,7 +39,7 @@ public static class Permissions
         ("crm",        new[] { "crm.view", "crm.leads.manage", "crm.accounts.manage", "crm.opps.manage", "crm.activities.manage", "crm.quotes.manage", "crm.campaigns.manage", "crm.reports.view", "crm.setup" }),
         ("procurement", new[] { "proc.view", "proc.req.manage", "proc.req.approve", "proc.rfq.manage", "proc.po.manage", "proc.po.approve", "proc.po.selfApprove", "proc.receive", "proc.invoice", "proc.contracts.manage", "proc.suppliers.manage", "proc.reports.view", "proc.setup" }),
         ("supplychain", new[] { "scm.view", "scm.planning", "scm.shipments.manage", "scm.reports.view", "scm.setup" }),
-        ("warehouse",  new[] { "wh.view", "wh.pick.manage", "wh.count.manage", "wh.count.approve", "wh.reports.view", "wh.setup" }),
+        ("warehouse",  new[] { "wh.view", "wh.pick.manage", "wh.count.manage", "wh.count.approve", "wh.lots.manage", "wh.reports.view", "wh.setup" }),
         ("assets",     new[] { "ast.view", "ast.assets.manage", "ast.plans.manage", "ast.orders.manage", "ast.reports.view", "ast.setup" }),
         ("payroll",    new[] { "pay.self", "pay.view", "pay.payslips.view", "pay.run.manage", "pay.run.approve", "pay.post", "pay.reports.view", "pay.setup" }),
         ("archive",    new[] { "arc.view", "arc.incoming.manage", "arc.outgoing.manage", "arc.outgoing.approve", "arc.docs.manage", "arc.confidential", "arc.dispose", "arc.secretary.manage", "arc.reports.view", "arc.setup" }),
@@ -50,6 +50,7 @@ public static class Permissions
         ("expenses",   new[] { "exp.view", "exp.claims.manage", "exp.approve", "exp.pay", "exp.reports.view", "exp.setup" }),
         ("quality",    new[] { "qa.view", "qa.inspections.manage", "qa.ncr.manage", "qa.ncr.approve", "qa.reports.view", "qa.setup" }),
         ("fleet",      new[] { "flt.view", "flt.vehicles.manage", "flt.drivers.manage", "flt.logs.manage", "flt.service.manage", "flt.reports.view", "flt.setup" }),
+        ("governance", new[] { "gov.view", "gov.audit.view", "gov.rules.manage", "gov.approvals.admin", "gov.delegate", "gov.fields.manage", "gov.lock.manage", "gov.lock.override", "gov.zatca.manage", "gov.vat.view" }),
         ("epm",        new[] { "epm.view", "epm.plans.manage", "epm.plans.approve", "epm.forecast.manage", "epm.publish", "epm.reports.view", "epm.setup" }),
         ("bpm",        new[] { "bpm.view", "bpm.manage", "bpm.monitor" }),
         ("integration", new[] { "int.view", "int.keys.manage", "int.hooks.manage" }),
@@ -83,7 +84,16 @@ public static class Permissions
     public static (string Group, string[] Keys)[] Catalog => CodeCatalog;
 
     private static readonly string[] Everything = CodeCatalog.SelectMany(g => g.Keys).ToArray();
-    private static readonly string[] AllButAdmin = Everything.Where(k => k != AdminUsers && k != OrgManage).ToArray();
+    // approving anything / overriding a locked period stay with the administrator unless a role is given them on purpose
+    private static readonly string[] AllButAdmin = Everything.Where(k => k != AdminUsers && k != OrgManage && k != "gov.approvals.admin" && k != "gov.lock.override").ToArray();
+
+    // everybody can see their approval requests and hand their approvals to a colleague while away
+    static Permissions()
+    {
+        foreach (var role in CodeRoleDefaults.Keys.ToList())
+            CodeRoleDefaults[role] = CodeRoleDefaults[role].Concat(new[] { "gov.view", "gov.delegate" }).Distinct(StringComparer.OrdinalIgnoreCase).ToArray();
+        CodeRoleDefaults["finance"] = CodeRoleDefaults["finance"].Concat(new[] { "gov.audit.view", "gov.vat.view", "gov.zatca.manage" }).Distinct(StringComparer.OrdinalIgnoreCase).ToArray();
+    }
 
     private static readonly string[] EmployeeDefaults =
     {
@@ -112,18 +122,18 @@ public static class Permissions
         ["procurement"] = new[] { "proc.view", "proc.req.manage", "proc.req.approve", "proc.rfq.manage", "proc.po.manage", "proc.po.approve", "proc.receive", "proc.invoice", "proc.contracts.manage", "proc.suppliers.manage", "proc.reports.view", "scm.view", "scm.planning", "scm.shipments.manage", "scm.reports.view", "scm.setup", "wh.view", "wh.reports.view", "bi.view", "mfg.view", "mfg.planning", "mfg.bom.manage", "prj.view", "prj.costs.manage", "finance.ap.view", "finance.ap.manage", "dashboard.view", "hr.self", "purchasing.view", "purchasing.create", "inventory.view", "finance.view",
                                   TasksAct, DocumentsViewAll, "reports.view", "assistant.use" },
         ["sales"] = new[] { "scm.view", "bi.view", "crm.view", "crm.leads.manage", "crm.accounts.manage", "crm.opps.manage", "crm.activities.manage", "crm.quotes.manage", "crm.campaigns.manage", "crm.reports.view", "prj.view", "pos.view", "pos.sell", "pos.stock.view", "finance.ar.view", "finance.ar.manage", "dashboard.view", "hr.self", "sales.view", "sales.create", "inventory.view", TasksAct, "reports.view", "assistant.use" },
-        ["admin-stores"] = new[] { "proc.view", "proc.receive", "scm.view", "scm.shipments.manage", "wh.view", "wh.pick.manage", "wh.count.manage", "wh.count.approve", "wh.reports.view", "ast.view", "ast.orders.manage", "ast.assets.manage", "ast.plans.manage", "ast.reports.view", "mfg.view", "mfg.orders.execute", "mfg.quality.manage", "mfg.maintenance.manage", "pos.view", "pos.stock.view", "pos.stock.manage", "pos.products.manage", "dashboard.view", "hr.self", "inventory.view", "inventory.create", "purchasing.view", "sales.view",
+        ["admin-stores"] = new[] { "proc.view", "proc.receive", "scm.view", "scm.shipments.manage", "wh.view", "wh.pick.manage", "wh.count.manage", "wh.count.approve", "wh.lots.manage", "wh.reports.view", "ast.view", "ast.orders.manage", "ast.assets.manage", "ast.plans.manage", "ast.reports.view", "mfg.view", "mfg.orders.execute", "mfg.quality.manage", "mfg.maintenance.manage", "pos.view", "pos.stock.view", "pos.stock.manage", "pos.products.manage", "dashboard.view", "hr.self", "inventory.view", "inventory.create", "purchasing.view", "sales.view",
                                    TasksAct, DocumentsViewAll, "reports.view", "assistant.use" },
-        ["hr"] = HrAll.Concat(new[] { "prj.view", "prj.time.log", "pay.self", "pay.view", "pay.payslips.view", "pay.run.manage", "pay.reports.view", "pay.setup", "dashboard.view", TasksAct, DocumentsViewAll, "reports.view", "assistant.use" }).ToArray(),
-        ["it"] = new[] { "prj.view", "prj.time.log", "int.view", "int.keys.manage", "int.hooks.manage", "bpm.view", "dashboard.view", "hr.view", "hr.create", "hr.self", "operations.view", TasksAct, "assistant.use" },
-        ["employee"] = EmployeeDefaults,
-        // real estate: manager (everything) and leasing agent (units, tenants, leases, collection; no approvals)
-        ["realestate"] = new[] { "re.view", "re.properties.manage", "re.units.manage", "re.leases.manage", "re.leases.approve", "re.collect", "re.sales.manage", "re.maintenance.manage", "re.reports.view", "re.setup", "dashboard.view", "hr.self", "cal.view", "crm.view", "reports.view", "assistant.use", TasksAct, DocumentsViewAll },
         // sales orders, helpdesk, quality and fleet presets (an admin can still tailor every user's privileges one by one)
         ["sales-orders"] = new[] { "so.view", "so.orders.manage", "so.reports.view", "crm.view", "dashboard.view", "hr.self", "cal.view", "exp.view", "exp.claims.manage", TasksAct },
         ["support-agent"] = new[] { "hd.view", "hd.tickets.manage", "hd.visits.manage", "hd.reports.view", "dashboard.view", "hr.self", "cal.view", "exp.view", "exp.claims.manage", TasksAct },
         ["quality-inspector"] = new[] { "qa.view", "qa.inspections.manage", "qa.ncr.manage", "qa.reports.view", "mfg.view", "dashboard.view", "hr.self", "cal.view", "exp.view", "exp.claims.manage", TasksAct },
         ["fleet-manager"] = new[] { "flt.view", "flt.vehicles.manage", "flt.drivers.manage", "flt.logs.manage", "flt.service.manage", "flt.reports.view", "dashboard.view", "hr.self", "cal.view", "exp.view", "exp.claims.manage", TasksAct },
+        ["hr"] = HrAll.Concat(new[] { "prj.view", "prj.time.log", "pay.self", "pay.view", "pay.payslips.view", "pay.run.manage", "pay.reports.view", "pay.setup", "dashboard.view", TasksAct, DocumentsViewAll, "reports.view", "assistant.use" }).ToArray(),
+        ["it"] = new[] { "prj.view", "prj.time.log", "int.view", "int.keys.manage", "int.hooks.manage", "bpm.view", "dashboard.view", "hr.view", "hr.create", "hr.self", "operations.view", TasksAct, "assistant.use" },
+        ["employee"] = EmployeeDefaults,
+        // real estate: manager (everything) and leasing agent (units, tenants, leases, collection; no approvals)
+        ["realestate"] = new[] { "re.view", "re.properties.manage", "re.units.manage", "re.leases.manage", "re.leases.approve", "re.collect", "re.sales.manage", "re.maintenance.manage", "re.reports.view", "re.setup", "dashboard.view", "hr.self", "cal.view", "crm.view", "reports.view", "assistant.use", TasksAct, DocumentsViewAll },
         ["leasing-agent"] = new[] { "re.view", "re.units.manage", "re.leases.manage", "re.collect", "re.sales.manage", "re.maintenance.manage", "re.reports.view", "dashboard.view", "hr.self", "cal.view", TasksAct },
         // secretary / archivist: mail in and out, the archive (not confidential papers, not disposal), appointments, visitors, to-dos
         ["secretary"] = new[] { "arc.view", "arc.incoming.manage", "arc.outgoing.manage", "arc.docs.manage", "arc.secretary.manage", "arc.reports.view", "dashboard.view", "hr.self", "cal.view", "cal.events.manage", "cal.meetings.host", "cal.meetings.join", TasksAct, DocumentsViewAll, "reports.view", "assistant.use" },

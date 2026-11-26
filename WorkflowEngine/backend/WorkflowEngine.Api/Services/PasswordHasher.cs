@@ -17,6 +17,7 @@ public static class PasswordHasher
 
     public static bool Verify(string password, string storedHash, string storedSalt)
     {
+        if (string.IsNullOrEmpty(storedHash) || string.IsNullOrEmpty(storedSalt)) return false;   // invited, password not chosen yet
         var salt = Convert.FromBase64String(storedSalt);
         var expected = Convert.FromBase64String(storedHash);
         var actual = Rfc2898DeriveBytes.Pbkdf2(password, salt, Iterations, HashAlgorithmName.SHA256, HashSize);

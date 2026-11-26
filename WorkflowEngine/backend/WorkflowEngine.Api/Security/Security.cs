@@ -38,6 +38,10 @@ public interface ICurrentUser
     Task<bool> HasAnyAsync(params string[] permissions);
     /// <summary>Passes when the user holds ANY of the privileges, otherwise throws <see cref="AccessDeniedException"/>.</summary>
     Task RequireAsync(params string[] anyOf);
+    /// <summary>Branches the user is limited to, or null when they may work in every branch.</summary>
+    Task<List<string>?> AllowedBranchesAsync();
+    /// <summary>May the user read / write records of this branch? Empty branch (company-wide) is always fine.</summary>
+    Task<bool> CanUseBranchAsync(string? branch);
 }
 
 public class CurrentUser : ICurrentUser
@@ -45,10 +49,13 @@ public class CurrentUser : ICurrentUser
     private readonly IHttpContextAccessor _http;
     private readonly IPermissionService _perms;
     private readonly ITenantScope _tenant;
+    private readonly WorkflowDbContext _db;
+    private bool _branchesLoaded;
+    private List<string>? _branches;
     private string? _tenantId;
     private List<string>? _permissions;
 
-    public CurrentUser(IHttpContextAccessor http, IPermissionService perms, ITenantScope tenant) { _http = http; _perms = perms; _tenant = tenant; }
+    public CurrentUser(IHttpContextAccessor http, IPermissionService perms, ITenantScope tenant, WorkflowDbContext db) { _http = http; _perms = perms; _tenant = tenant; _db = db; }
 
     public ClaimsPrincipal Principal => _http.HttpContext?.User ?? new ClaimsPrincipal();
     public bool IsAuthenticated => Principal.Identity?.IsAuthenticated == true;
@@ -75,6 +82,25 @@ public class CurrentUser : ICurrentUser
         if (permissions.Length == 0) return IsAuthenticated;
         var mine = await PermissionsAsync();
         return permissions.Any(p => mine.Contains(p, StringComparer.OrdinalIgnoreCase));
+    }
+
+    public async Task<List<string>?> AllowedBranchesAsync()
+    {
+        if (!_branchesLoaded)
+        {
+            var name = Username;
+            _branches = await _db.Users.AsNoTracking().Where(u => u.Username == name && u.IsActive).Select(u => u.Branches).FirstOrDefaultAsync();
+            if (_branches != null && _branches.Count == 0) _branches = null;
+            _branchesLoaded = true;
+        }
+        return _branches;
+    }
+
+    public async Task<bool> CanUseBranchAsync(string? branch)
+    {
+        if (string.IsNullOrWhiteSpace(branch) || branch == "ALL") return true;
+        var allowed = await AllowedBranchesAsync();
+        return allowed == null || allowed.Contains(branch, StringComparer.OrdinalIgnoreCase);
     }
 
     public async Task RequireAsync(params string[] anyOf)

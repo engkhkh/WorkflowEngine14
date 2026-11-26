@@ -222,6 +222,8 @@ public class WorkflowEdge
 public class WorkflowDefinition
 {
     public string Id { get; set; } = Guid.NewGuid().ToString("N");
+    /// <summary>Workspace that owns the flow ("default" for the flows that were there before workspaces).</summary>
+    public string TenantId { get; set; } = Tenant.DefaultId;
     public string Name { get; set; } = string.Empty;
     public string Description { get; set; } = string.Empty;
     public bool IsPublished { get; set; }
