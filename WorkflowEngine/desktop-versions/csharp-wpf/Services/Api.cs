@@ -282,6 +282,8 @@ public sealed class Api
     public async Task<JsonObject> WfStart(string defId) => await Call(HttpMethod.Post, "/instances/start", new JsonObject { ["definitionId"] = defId }) as JsonObject ?? new JsonObject();
     public async Task<JsonObject> WfCancel(string id) => await Call(HttpMethod.Post, $"/instances/{id}/cancel", new { }) as JsonObject ?? new JsonObject();
 
+    public Task BizAction(string module, string kind, string id, string op, JsonObject body) => Call(HttpMethod.Post, $"/erp/{module}/bizact/{kind}/{id}/{op}", body);
+
     public async Task<List<ErpRec>> Records(string module, string kind)
     {
         if (module == "adm") return await AdmRecords(kind);

@@ -307,5 +307,6 @@ public final class Api {
     public Map<String, Object> posCash(String id, String type, double amount, String reason) { return Json.obj(call("POST", "/pos/shifts/" + id + "/cash", map("type", type, "amount", amount, "reason", reason))); }
     public Map<String, Object> posClose(String id, double counted, String note) { return Json.obj(call("POST", "/pos/shifts/" + id + "/close", map("countedCash", counted, "note", note))); }
 
+    public void bizAction(String module, String kind, String id, String op, Map<String, Object> body) { call("POST", "/erp/" + module + "/bizact/" + kind + "/" + id + "/" + op, body); }
     public void approvalAct(String id, String op, String note) { call("POST", "/erp/gov/approvals/" + id + "/" + op, map("note", note)); }
 }

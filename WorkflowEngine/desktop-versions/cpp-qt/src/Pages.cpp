@@ -9,6 +9,14 @@
 #include <QGridLayout>
 #include <QHBoxLayout>
 #include <QJsonDocument>
+#include <QCursor>
+#include <QDialog>
+#include <QDialogButtonBox>
+#include <QFormLayout>
+#include <QJsonArray>
+#include <QLineEdit>
+#include <QMenu>
+#include <QMap>
 #include <QRegularExpression>
 #include <QSplitter>
 
@@ -396,6 +404,9 @@ ErpPage::ErpPage() {
     btnNew = Ui::button("+ " + t("erp.new"), [this] { create(); });
     btnNew->setEnabled(false);
     bar->addWidget(btnNew);
+    btnAct = Ui::button(t("erp.actions"), [this] { actMenu(); }, "ghost");
+    btnAct->setVisible(false);
+    bar->addWidget(btnAct);
     bar->addWidget(Ui::button(QString::fromUtf8("🖨"), [this] { printReport(); }, "ghost"));
     bar->addWidget(Ui::button(t("common.refresh"), [this] { load(); }, "ghost"));
     rl->addLayout(bar);
@@ -437,6 +448,7 @@ void ErpPage::picked(QTreeWidgetItem* item) {
     hasKind = true;
     head->setText(I18n::name(module) + " › " + I18n::name(kind));
     btnNew->setEnabled(Api::I().can(kind.value("manage").toString()) && !kind.value("readOnly").toBool());
+    btnAct->setVisible(!kind.value("actions").toArray().isEmpty());
     { QSignalBlocker b1(search), b2(status); search->clear(); status->setCurrentIndex(0); }
     loadFilters();
     load();
@@ -566,6 +578,59 @@ void ErpPage::edit() {
     if (!hasKind || !Ui::selected(table, r)) return;
     RecordDialog dlg(this, module, kind, r, false);
     if (dlg.exec()) load();
+}
+
+// ---- workflow actions of the newer modules (sales orders, helpdesk, subscriptions, expenses, quality, fleet)
+void ErpPage::actMenu() {
+    QJsonObject r;
+    if (!hasKind || !Ui::selected(table, r)) return;
+    const QString st = r.value("status").toString();
+    QMenu menu(this);
+    int n = 0;
+    for (const QJsonValue& v : kind.value("actions").toArray()) {
+        const QJsonObject a = v.toObject();
+        bool when = false;
+        for (const QJsonValue& w : a.value("when").toArray()) if (w.toString() == st) when = true;
+        if (!when || !Api::I().can(a.value("priv").toString())) continue;
+        menu.addAction(I18n::name(a), this, [this, r, a] { runAct(r, a); });
+        n++;
+    }
+    if (n == 0) { Ui::warn(this, t("erp.noActions")); return; }
+    menu.exec(QCursor::pos());
+}
+
+void ErpPage::runAct(const QJsonObject& rec, const QJsonObject& act) {
+    QJsonObject body;
+    const QJsonArray ask = act.value("ask").toArray();
+    if (!ask.isEmpty()) {
+        QDialog dlg(this);
+        dlg.setWindowTitle(I18n::name(act));
+        auto* form = new QFormLayout(&dlg);
+        QMap<QString, QLineEdit*> edits;
+        const bool ar = I18n::rtl();
+        for (const QJsonValue& f : ask) {
+            const QString k = f.toString();
+            QString title = k == "note" ? act.value(ar ? "noteAr" : "noteEn").toString() : QString();
+            if (title.isEmpty()) title = t(k == "note" ? "erp.note" : k == "user" ? "erp.actUser" : k == "method" ? "erp.actMethod" : k == "amount" ? "erp.actHours" : "erp.actCost");
+            auto* e = new QLineEdit(k == "method" ? "Transfer" : (k == "amount" || k == "cost") ? "0" : "");
+            edits[k] = e;
+            form->addRow(title, e);
+        }
+        auto* bb = new QDialogButtonBox(QDialogButtonBox::Ok | QDialogButtonBox::Cancel);
+        QObject::connect(bb, &QDialogButtonBox::accepted, &dlg, &QDialog::accept);
+        QObject::connect(bb, &QDialogButtonBox::rejected, &dlg, &QDialog::reject);
+        form->addRow(bb);
+        if (!dlg.exec()) return;
+        for (auto it = edits.begin(); it != edits.end(); ++it) {
+            const QString v = it.value()->text().trimmed();
+            if (it.key() == "amount" || it.key() == "cost") body[it.key()] = v.toDouble();
+            else if (!v.isEmpty()) body[it.key()] = v;
+        }
+    } else if (act.value("danger").toBool() && !Ui::ask(this, I18n::name(act) + "?", t("common.yes"), t("common.no"))) {
+        return;
+    }
+    const QString path = "/erp/" + module.value("id").toString() + "/bizact/" + kind.value("kind").toString() + "/" + rec.value("id").toString() + "/" + act.value("op").toString();
+    Api::I().call("POST", path, body, this, [this](const QJsonValue&) { load(); }, [this](const QString& e) { Ui::warn(this, e); });
 }
 
 void ErpPage::reload() { if (hasKind) load(); }

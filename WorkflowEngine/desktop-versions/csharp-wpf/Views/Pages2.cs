@@ -13,7 +13,7 @@ public sealed class ErpView : PageView
     private readonly TextBox _search = new() { Padding = new Thickness(6), Margin = new Thickness(0, 0, 8, 0), MinWidth = 260 };
     private readonly System.Windows.Controls.DataGrid _grid = Ui.Grid(Loc.T("erp.code"), Loc.T("erp.name"), Loc.T("erp.status"), Loc.T("erp.company"));
     private readonly TextBlock _msg = Ui.Text("", 13, false, Ui.Dim);
-    private readonly Button _btnNew, _btnDelF;
+    private readonly Button _btnNew, _btnDelF, _btnAct;
     private readonly ComboBox _status = new() { MinWidth = 120, Margin = new Thickness(0, 0, 8, 0), Padding = new Thickness(6) };
     private readonly ComboBox _saved = new() { MinWidth = 150, Margin = new Thickness(0, 0, 8, 0), Padding = new Thickness(6) };
     private bool _busy;
@@ -34,6 +34,8 @@ public sealed class ErpView : PageView
 
         _btnNew = Ui.Btn("+ " + Loc.T("erp.new"), New);
         _btnNew.IsEnabled = false;
+        _btnAct = Ui.Btn(Loc.T("erp.actions"), ActMenu, "ghost");
+        _btnAct.Visibility = Visibility.Collapsed;
         _search.TextChanged += (_, _) => { if (!_busy) Refill(); };
         _status.SelectionChanged += (_, _) => { if (!_busy) Refill(); };
         _saved.SelectionChanged += (_, _) => { if (!_busy) ApplySaved(); };
@@ -50,7 +52,7 @@ public sealed class ErpView : PageView
         var bar = new StackPanel { Orientation = Orientation.Horizontal, Margin = new Thickness(0, 4, 0, 8) };
         bar.Children.Add(_search); bar.Children.Add(_status); bar.Children.Add(_saved);
         bar.Children.Add(Ui.Btn("🔖", () => _ = SaveFilter(), "ghost")); bar.Children.Add(_btnDelF);
-        bar.Children.Add(_btnNew); bar.Children.Add(Ui.Btn("🖨", PrintReport, "ghost")); bar.Children.Add(Ui.Btn(Loc.T("common.refresh"), () => _ = Reload(), "ghost"));
+        bar.Children.Add(_btnNew); bar.Children.Add(_btnAct); bar.Children.Add(Ui.Btn("🖨", PrintReport, "ghost")); bar.Children.Add(Ui.Btn(Loc.T("common.refresh"), () => _ = Reload(), "ghost"));
         right.Children.Add(bar);
         right.Children.Add(_grid);
         right.Children.Add(_msg);
@@ -92,6 +94,7 @@ public sealed class ErpView : PageView
         _module = m; _kind = k;
         _head.Text = $"{m.Name(Loc.Rtl)} › {k.Name(Loc.Rtl)}";
         _btnNew.IsEnabled = Api.I.Can(k.Manage) && !k.ReadOnly;
+        _btnAct.Visibility = k.Actions.Count > 0 ? Visibility.Visible : Visibility.Collapsed;
         _busy = true; _search.Text = ""; SetStatuses(new List<string>(), ""); _busy = false;
         _ = LoadFilters();
         _ = Reload();
@@ -228,6 +231,56 @@ public sealed class ErpView : PageView
             ["code"] = r.Code ?? "", ["name"] = r.Str("name") ?? r.Str("title") ?? r.Str("description") ?? r.Ref ?? "", ["status"] = r.Status ?? "", ["company"] = r.Company ?? ""
         }).ToList();
         Report.Show(ViewKey, _kind.Name(Loc.Rtl), cols, rows, Api.I.Session?.DisplayName ?? "");
+    }
+
+
+    // ---- workflow actions of the newer modules (sales orders, helpdesk, subscriptions, expenses, quality, fleet)
+    private void ActMenu()
+    {
+        var r = Ui.Selected<ErpRec>(_grid);
+        if (r == null || _kind == null) return;
+        var acts = _kind.Actions.Where(a => a.When.Contains(r.Status ?? "") && Api.I.Can(a.Priv)).ToList();
+        if (acts.Count == 0) { Ui.Warn(Loc.T("erp.noActions")); return; }
+        var menu = new ContextMenu { PlacementTarget = _btnAct, Placement = System.Windows.Controls.Primitives.PlacementMode.Bottom };
+        foreach (var a in acts)
+        {
+            var item = new MenuItem { Header = a.Name(Loc.Rtl) };
+            var act = a;
+            item.Click += (_, _) => RunAct(r, act);
+            menu.Items.Add(item);
+        }
+        menu.IsOpen = true;
+    }
+
+    private async void RunAct(ErpRec r, CatalogAction a)
+    {
+        if (_module == null || _kind == null) return;
+        var body = new JsonObject();
+        if (a.Ask.Count > 0)
+        {
+            var w = Ui.Dialog(a.Name(Loc.Rtl), 420, 120 + 70 * a.Ask.Count, out var panel);
+            var boxes = new Dictionary<string, TextBox>();
+            foreach (var f in a.Ask)
+            {
+                var title = f == "note" ? (Loc.Rtl ? a.NoteAr : a.NoteEn) ?? Loc.T("erp.note") : Loc.T(f == "user" ? "erp.actUser" : f == "method" ? "erp.actMethod" : f == "amount" ? "erp.actHours" : "erp.actCost");
+                var tb = Ui.Input(f == "method" ? "Transfer" : f == "amount" || f == "cost" ? "0" : "");
+                boxes[f] = tb;
+                panel.Children.Add(Ui.Labeled(title, tb));
+            }
+            var ok = false;
+            panel.Children.Add(Ui.Row(Ui.Btn(Loc.T("common.save"), () => { ok = true; w.Close(); }), Ui.Btn(Loc.T("common.cancel"), () => w.Close(), "ghost")));
+            w.ShowDialog();
+            if (!ok) return;
+            foreach (var kv in boxes)
+            {
+                var v = kv.Value.Text.Trim();
+                if (kv.Key == "amount" || kv.Key == "cost") body[kv.Key] = double.TryParse(v, System.Globalization.NumberStyles.Any, System.Globalization.CultureInfo.InvariantCulture, out var d) ? d : 0;
+                else if (v.Length > 0) body[kv.Key] = v;
+            }
+        }
+        else if (a.Danger && !Ui.Ask(a.Name(Loc.Rtl) + "?", Loc.T("common.yes"), Loc.T("common.no"))) return;
+        try { await Api.I.BizAction(_module.Id, _kind.Kind, r.Id, a.Op, body); await Reload(); }
+        catch (Exception ex) { Ui.Warn(ex.Message); }
     }
 
     private async void New()

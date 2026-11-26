@@ -2,7 +2,8 @@ import json
 import re
 
 from PySide6.QtCore import Qt, Signal
-from PySide6.QtWidgets import (QCheckBox, QComboBox, QTabWidget, QDialog, QFormLayout, QFrame, QGridLayout, QHBoxLayout, QLabel, QLineEdit, QSplitter,
+from PySide6.QtGui import QCursor
+from PySide6.QtWidgets import (QCheckBox, QComboBox, QMenu, QDialogButtonBox, QTabWidget, QDialog, QFormLayout, QFrame, QGridLayout, QHBoxLayout, QLabel, QLineEdit, QSplitter,
                                QTextEdit, QTreeWidget, QTreeWidgetItem, QVBoxLayout, QWidget, QTableWidget, QTableWidgetItem, QAbstractItemView, QHeaderView)
 
 from . import i18n
@@ -503,6 +504,8 @@ class ErpPage(Page):
         bar.addWidget(self.btn_delf)
         self.btn_new = button('+ ' + t('erp.new'), self.new)
         bar.addWidget(self.btn_new)
+        self.btn_act = button(t('erp.actions'), self.act_menu, 'ghost')
+        bar.addWidget(self.btn_act)
         bar.addWidget(button('🖨', self.print_report, 'ghost'))
         bar.addWidget(button(t('common.refresh'), self.load, 'ghost'))
         rl.addLayout(bar)
@@ -515,6 +518,7 @@ class ErpPage(Page):
         split.setStretchFactor(1, 1)
         self.lay.addWidget(split)
         self.btn_new.setEnabled(False)
+        self.btn_act.setVisible(False)
 
     def select(self, module_id, kind_id):
         for i in range(self.tree.topLevelItemCount()):
@@ -541,6 +545,7 @@ class ErpPage(Page):
         self.module, self.kind = m, k
         self.head.setText(f'{name(m)} › {name(k)}')
         self.btn_new.setEnabled(api.can(k['manage']) and not k.get('readOnly'))
+        self.btn_act.setVisible(bool(k.get('actions')))
         self.search.blockSignals(True)
         self.search.clear()
         self.search.blockSignals(False)
@@ -657,6 +662,55 @@ class ErpPage(Page):
         r = current_payload(self.table)
         if r and RecordDialog(self, self.module, self.kind, r).exec():
             self.load()
+
+    # ---- workflow actions of the newer modules (sales orders, helpdesk, subscriptions, expenses, quality, fleet)
+    def act_menu(self):
+        r = current_payload(self.table)
+        if not r or not self.kind:
+            return
+        acts = [a for a in (self.kind.get('actions') or []) if (r.get('status') or '') in a.get('when', []) and api.can(a.get('priv', ''))]
+        if not acts:
+            warn(self, t('erp.noActions'))
+            return
+        menu = QMenu(self)
+        for a in acts:
+            menu.addAction(name(a), lambda a=a, r=r: self.run_act(r, a))
+        menu.exec(QCursor.pos())
+
+    def run_act(self, r, a):
+        body = {}
+        fields = a.get('ask') or []
+        if fields:
+            dlg = QDialog(self)
+            dlg.setWindowTitle(name(a))
+            form = QFormLayout(dlg)
+            edits = {}
+            lang_ar = i18n.lang == 'ar' if hasattr(i18n, 'lang') and isinstance(i18n.lang, str) else False
+            titles = {'note': (a.get('noteAr') if lang_ar else a.get('noteEn')) or t('erp.note'), 'user': t('erp.actUser'), 'method': t('erp.actMethod'),
+                      'amount': t('erp.actHours'), 'cost': t('erp.actCost')}
+            for f in fields:
+                e = QLineEdit('Transfer' if f == 'method' else ('0' if f in ('amount', 'cost') else ''))
+                edits[f] = e
+                form.addRow(titles.get(f, f), e)
+            bb = QDialogButtonBox(QDialogButtonBox.Ok | QDialogButtonBox.Cancel)
+            bb.accepted.connect(dlg.accept)
+            bb.rejected.connect(dlg.reject)
+            form.addRow(bb)
+            if not dlg.exec():
+                return
+            for f, e in edits.items():
+                v = e.text().strip()
+                if f in ('amount', 'cost'):
+                    try:
+                        body[f] = float(v or 0)
+                    except ValueError:
+                        body[f] = 0
+                elif v:
+                    body[f] = v
+        elif a.get('danger') and not ask(self, name(a) + '?', t('common.yes'), t('common.no')):
+            return
+        m, k = self.module['id'], self.kind['kind']
+        run_async(lambda: api.biz_action(m, k, r['id'], a['op'], body), lambda _: self.load(), lambda e: warn(self, e))
 
     def reload(self):
         if self.kind:

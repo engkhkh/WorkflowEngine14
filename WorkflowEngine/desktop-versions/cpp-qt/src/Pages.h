@@ -67,6 +67,8 @@ private:
     void refill();
     void create();
     void edit();
+    void actMenu();
+    void runAct(const QJsonObject& rec, const QJsonObject& act);
     void printReport();
     QList<QStringList> shownRows;
     QString viewKey() const;
@@ -80,6 +82,7 @@ private:
     QLabel *head, *msg;
     QLineEdit* search;
     QPushButton* btnNew;
+    QPushButton* btnAct = nullptr;
     QTableWidget* table;
     QJsonObject module, kind;
     bool hasKind = false;

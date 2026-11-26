@@ -215,7 +215,61 @@
               }
             ],
             "notes": ""
-          }
+          },
+          "actions": [
+            {
+              "op": "confirm",
+              "en": "Confirm",
+              "ar": "تأكيد",
+              "when": [
+                "Draft"
+              ],
+              "priv": "so.orders.approve"
+            },
+            {
+              "op": "deliver",
+              "en": "Deliver remaining",
+              "ar": "تسليم المتبقي",
+              "when": [
+                "Confirmed",
+                "PartiallyDelivered"
+              ],
+              "priv": "so.orders.manage",
+              "ask": [
+                "note"
+              ]
+            },
+            {
+              "op": "invoice",
+              "en": "Mark invoiced",
+              "ar": "تم الفوترة",
+              "when": [
+                "Delivered"
+              ],
+              "priv": "so.orders.manage",
+              "ask": [
+                "note"
+              ],
+              "noteEn": "Invoice no.",
+              "noteAr": "رقم الفاتورة"
+            },
+            {
+              "op": "cancel",
+              "en": "Cancel",
+              "ar": "إلغاء",
+              "when": [
+                "Draft",
+                "Confirmed"
+              ],
+              "priv": "so.orders.manage",
+              "ask": [
+                "note"
+              ],
+              "danger": true,
+              "noteEn": "Reason",
+              "noteAr": "السبب"
+            }
+          ]
         },
         {
           "kind": "delivery",
@@ -260,7 +314,100 @@
             "priority": "Normal",
             "category": "",
             "description": ""
-          }
+          },
+          "actions": [
+            {
+              "op": "assign",
+              "en": "Assign",
+              "ar": "إسناد",
+              "when": [
+                "New",
+                "Assigned",
+                "InProgress",
+                "Waiting"
+              ],
+              "priv": "hd.tickets.manage",
+              "ask": [
+                "user"
+              ]
+            },
+            {
+              "op": "start",
+              "en": "Start",
+              "ar": "بدء",
+              "when": [
+                "New",
+                "Assigned",
+                "Waiting"
+              ],
+              "priv": "hd.tickets.manage"
+            },
+            {
+              "op": "wait",
+              "en": "Wait for customer",
+              "ar": "انتظار العميل",
+              "when": [
+                "InProgress"
+              ],
+              "priv": "hd.tickets.manage",
+              "ask": [
+                "note"
+              ]
+            },
+            {
+              "op": "resolve",
+              "en": "Resolve",
+              "ar": "حل",
+              "when": [
+                "New",
+                "Assigned",
+                "InProgress",
+                "Waiting"
+              ],
+              "priv": "hd.tickets.manage",
+              "ask": [
+                "note"
+              ],
+              "noteEn": "Resolution",
+              "noteAr": "الحل"
+            },
+            {
+              "op": "close",
+              "en": "Close",
+              "ar": "إغلاق",
+              "when": [
+                "Resolved"
+              ],
+              "priv": "hd.tickets.manage"
+            },
+            {
+              "op": "reopen",
+              "en": "Reopen",
+              "ar": "إعادة فتح",
+              "when": [
+                "Resolved",
+                "Closed"
+              ],
+              "priv": "hd.tickets.manage"
+            },
+            {
+              "op": "cancel",
+              "en": "Cancel",
+              "ar": "إلغاء",
+              "when": [
+                "New",
+                "Assigned",
+                "Waiting"
+              ],
+              "priv": "hd.tickets.manage",
+              "ask": [
+                "note"
+              ],
+              "danger": true,
+              "noteEn": "Reason",
+              "noteAr": "السبب"
+            }
+          ]
         },
         {
           "kind": "visit",
@@ -276,7 +423,50 @@
             "location": "",
             "ticket": "",
             "notes": ""
-          }
+          },
+          "actions": [
+            {
+              "op": "start",
+              "en": "Start",
+              "ar": "بدء",
+              "when": [
+                "Scheduled"
+              ],
+              "priv": "hd.visits.manage"
+            },
+            {
+              "op": "complete",
+              "en": "Complete",
+              "ar": "إنهاء",
+              "when": [
+                "InProgress"
+              ],
+              "priv": "hd.visits.manage",
+              "ask": [
+                "amount",
+                "cost",
+                "note"
+              ],
+              "noteEn": "Resolution",
+              "noteAr": "الحل"
+            },
+            {
+              "op": "cancel",
+              "en": "Cancel",
+              "ar": "إلغاء",
+              "when": [
+                "Scheduled",
+                "InProgress"
+              ],
+              "priv": "hd.visits.manage",
+              "ask": [
+                "note"
+              ],
+              "danger": true,
+              "noteEn": "Reason",
+              "noteAr": "السبب"
+            }
+          ]
         },
         {
           "kind": "contract",
@@ -326,7 +516,62 @@
             "startDate": "",
             "qty": 1,
             "price": 0
-          }
+          },
+          "actions": [
+            {
+              "op": "activate",
+              "en": "Activate",
+              "ar": "تفعيل",
+              "when": [
+                "Draft"
+              ],
+              "priv": "sub.manage"
+            },
+            {
+              "op": "bill",
+              "en": "Generate next invoice",
+              "ar": "إصدار الفاتورة التالية",
+              "when": [
+                "Active"
+              ],
+              "priv": "sub.billing.manage"
+            },
+            {
+              "op": "pause",
+              "en": "Pause",
+              "ar": "إيقاف مؤقت",
+              "when": [
+                "Active"
+              ],
+              "priv": "sub.manage"
+            },
+            {
+              "op": "resume",
+              "en": "Resume",
+              "ar": "استئناف",
+              "when": [
+                "Paused"
+              ],
+              "priv": "sub.manage"
+            },
+            {
+              "op": "cancel",
+              "en": "Cancel",
+              "ar": "إلغاء",
+              "when": [
+                "Draft",
+                "Active",
+                "Paused"
+              ],
+              "priv": "sub.manage",
+              "ask": [
+                "note"
+              ],
+              "danger": true,
+              "noteEn": "Reason",
+              "noteAr": "السبب"
+            }
+          ]
         },
         {
           "kind": "invoice",
@@ -335,7 +580,36 @@
           "view": "sub.view",
           "manage": "sub.billing.manage",
           "readOnly": false,
-          "template": {}
+          "template": {},
+          "actions": [
+            {
+              "op": "markpaid",
+              "en": "Mark paid",
+              "ar": "تم الدفع",
+              "when": [
+                "Unpaid"
+              ],
+              "priv": "sub.billing.manage",
+              "ask": [
+                "method"
+              ]
+            },
+            {
+              "op": "void",
+              "en": "Void",
+              "ar": "إبطال",
+              "when": [
+                "Unpaid"
+              ],
+              "priv": "sub.billing.manage",
+              "ask": [
+                "note"
+              ],
+              "danger": true,
+              "noteEn": "Reason",
+              "noteAr": "السبب"
+            }
+          ]
         },
         {
           "kind": "plan",
@@ -376,7 +650,55 @@
               }
             ],
             "notes": ""
-          }
+          },
+          "actions": [
+            {
+              "op": "submit",
+              "en": "Submit",
+              "ar": "إرسال",
+              "when": [
+                "Draft",
+                "Rejected"
+              ],
+              "priv": "exp.claims.manage"
+            },
+            {
+              "op": "approve",
+              "en": "Approve",
+              "ar": "اعتماد",
+              "when": [
+                "Submitted"
+              ],
+              "priv": "exp.approve"
+            },
+            {
+              "op": "reject",
+              "en": "Reject",
+              "ar": "رفض",
+              "when": [
+                "Submitted"
+              ],
+              "priv": "exp.approve",
+              "ask": [
+                "note"
+              ],
+              "danger": true,
+              "noteEn": "Reason",
+              "noteAr": "السبب"
+            },
+            {
+              "op": "pay",
+              "en": "Pay",
+              "ar": "صرف",
+              "when": [
+                "Approved"
+              ],
+              "priv": "exp.pay",
+              "ask": [
+                "method"
+              ]
+            }
+          ]
         },
         {
           "kind": "category",
@@ -409,7 +731,42 @@
             "item": "",
             "lotNo": "",
             "results": []
-          }
+          },
+          "actions": [
+            {
+              "op": "evaluate",
+              "en": "Evaluate results",
+              "ar": "تقييم النتائج",
+              "when": [
+                "Pending"
+              ],
+              "priv": "qa.inspections.manage"
+            },
+            {
+              "op": "pass",
+              "en": "Pass",
+              "ar": "نجاح",
+              "when": [
+                "Pending"
+              ],
+              "priv": "qa.inspections.manage"
+            },
+            {
+              "op": "fail",
+              "en": "Fail",
+              "ar": "رسوب",
+              "when": [
+                "Pending"
+              ],
+              "priv": "qa.inspections.manage",
+              "ask": [
+                "note"
+              ],
+              "danger": true,
+              "noteEn": "Reason",
+              "noteAr": "السبب"
+            }
+          ]
         },
         {
           "kind": "ncr",
@@ -424,7 +781,45 @@
             "description": "",
             "lotNo": "",
             "cost": 0
-          }
+          },
+          "actions": [
+            {
+              "op": "investigate",
+              "en": "Investigate",
+              "ar": "تحقيق",
+              "when": [
+                "Open"
+              ],
+              "priv": "qa.ncr.manage",
+              "ask": [
+                "user"
+              ]
+            },
+            {
+              "op": "correct",
+              "en": "Corrective action",
+              "ar": "إجراء تصحيحي",
+              "when": [
+                "Open",
+                "Investigating"
+              ],
+              "priv": "qa.ncr.manage",
+              "ask": [
+                "note"
+              ],
+              "noteEn": "Corrective action",
+              "noteAr": "الإجراء التصحيحي"
+            },
+            {
+              "op": "close",
+              "en": "Close",
+              "ar": "إغلاق",
+              "when": [
+                "Corrected"
+              ],
+              "priv": "qa.ncr.approve"
+            }
+          ]
         },
         {
           "kind": "plan",
@@ -503,7 +898,49 @@
             "date": "",
             "cost": 0,
             "odometer": 0
-          }
+          },
+          "actions": [
+            {
+              "op": "start",
+              "en": "Start",
+              "ar": "بدء",
+              "when": [
+                "Scheduled"
+              ],
+              "priv": "flt.service.manage"
+            },
+            {
+              "op": "complete",
+              "en": "Complete",
+              "ar": "إنهاء",
+              "when": [
+                "InProgress"
+              ],
+              "priv": "flt.service.manage",
+              "ask": [
+                "cost",
+                "note"
+              ],
+              "noteEn": "Resolution",
+              "noteAr": "الحل"
+            },
+            {
+              "op": "cancel",
+              "en": "Cancel",
+              "ar": "إلغاء",
+              "when": [
+                "Scheduled",
+                "InProgress"
+              ],
+              "priv": "flt.service.manage",
+              "ask": [
+                "note"
+              ],
+              "danger": true,
+              "noteEn": "Reason",
+              "noteAr": "السبب"
+            }
+          ]
         }
       ]
     },

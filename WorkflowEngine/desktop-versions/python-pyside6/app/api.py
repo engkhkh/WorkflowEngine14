@@ -313,6 +313,7 @@ class Api:
     def pos_cash(self, sid, typ, amount, reason): return self._call('POST', f'/pos/shifts/{sid}/cash', {'type': typ, 'amount': amount, 'reason': reason})
     def pos_close(self, sid, counted, note): return self._call('POST', f'/pos/shifts/{sid}/close', {'countedCash': counted, 'note': note})
 
+    def biz_action(self, module, kind, rid, op, body): return self._call('POST', f'/erp/{module}/bizact/{kind}/{rid}/{op}', body or {})
     def approval_act(self, aid, op, note): return self._call('POST', f'/erp/gov/approvals/{aid}/{op}', {'note': note})
 
 

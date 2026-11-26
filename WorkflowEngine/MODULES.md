@@ -137,7 +137,7 @@ Six modules added to close the gap with Oracle Fusion, SAP, Dynamics and Odoo. T
 
 Privileges (`so.*`, `hd.*`, `sub.*`, `exp.*`, `qa.*`, `flt.*`) are seeded on start; assign them in Admin > Roles. Presets: sales-orders, support-agent, quality-inspector, fleet-manager; employees get `exp.view` and `exp.claims.manage`.
 
-**Where:** web portal and mobile app have full screens including the action buttons. The desktop apps (and the mobile-versions apps) list and create/edit these records through the generic catalog screens; the status-changing actions are done from the web portal or mobile app.
+**Where:** web portal and mobile app have full screens including the action buttons. The four desktop apps (Python, Java, C++/Qt, C#/WPF) list, create and edit these records through the generic catalog screens and have an **Actions** menu on the selected row (confirm, deliver, approve, resolve ...; defined per record type under `actions` in `shared/catalog.json`). The mobile-versions apps (Ionic, React Native, Flutter, MAUI) carry the same catalog but have no action menu yet.
 
 **Working-core limits:** no automatic stock movement or general-ledger posting from orders, deliveries, claims or subscription invoices, and no payroll link for expense payments.
 

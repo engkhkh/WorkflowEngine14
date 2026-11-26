@@ -53,6 +53,7 @@ final class Pages2 {
         private final Ui.DataTable table = new Ui.DataTable(t("erp.code"), t("erp.name"), t("erp.status"), t("erp.company"));
         private final JLabel msg = Ui.label("", "dim");
         private final javax.swing.JButton btnNew = Ui.button("+ " + t("erp.new"), this::create, null);
+        private final javax.swing.JButton btnAct = Ui.button(t("erp.actions"), this::actMenu, "ghost");
         private Map<String, Object> module, kind;
         private List<Map<String, Object>> rows = new ArrayList<>();
 
@@ -83,7 +84,7 @@ final class Pages2 {
             searchRow.add(search, BorderLayout.CENTER);
             searchRow.add(mid, BorderLayout.EAST);
             top.add(searchRow, BorderLayout.CENTER);
-            top.add(Ui.row(btnNew, Ui.button("🖨", this::printReport, "ghost"), Ui.button(t("common.refresh"), this::load, "ghost")), BorderLayout.EAST);
+            top.add(Ui.row(btnNew, btnAct, Ui.button("🖨", this::printReport, "ghost"), Ui.button(t("common.refresh"), this::load, "ghost")), BorderLayout.EAST);
             JPanel north = new JPanel(new BorderLayout(0, 6));
             north.add(head, BorderLayout.NORTH);
             north.add(top, BorderLayout.CENTER);
@@ -97,6 +98,7 @@ final class Pages2 {
             });
             table.onOpen(this::edit);
             btnNew.setEnabled(false);
+            btnAct.setVisible(false);
             if (I18n.visibleModules().isEmpty()) msg.setText(t("erp.noModules"));
             JSplitPane split = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, Ui.scroll(tree), right);
             split.setDividerLocation(230);
@@ -132,6 +134,7 @@ final class Pages2 {
             module = node.module; kind = node.kind;
             head.setText("<html>" + I18n.name(module) + " › " + I18n.name(kind) + "</html>");
             btnNew.setEnabled(Api.I.can(Json.str(kind.get("manage"))) && !Boolean.TRUE.equals(kind.get("readOnly")));
+            btnAct.setVisible(!Json.arr(kind.get("actions")).isEmpty());
             quiet = true; search.setText(""); status.setSelectedIndex(0); quiet = false;
             loadFilters();
             load();
@@ -251,6 +254,50 @@ final class Pages2 {
         private void edit() {
             Map<String, Object> r = (Map<String, Object>) table.selected();
             if (r != null && new RecordDialog(this, module, kind, r).showAndResult()) load();
+        }
+
+
+        // ---- workflow actions of the newer modules (sales orders, helpdesk, subscriptions, expenses, quality, fleet)
+        @SuppressWarnings("unchecked")
+        private void actMenu() {
+            Map<String, Object> r = (Map<String, Object>) table.selected();
+            if (r == null || kind == null) return;
+            String st = Json.str(r.get("status"));
+            javax.swing.JPopupMenu menu = new javax.swing.JPopupMenu();
+            for (Object o : Json.arr(kind.get("actions"))) {
+                Map<String, Object> a = Json.obj(o);
+                if (!Json.arr(a.get("when")).contains(st) || !Api.I.can(Json.str(a.get("priv")))) continue;
+                javax.swing.JMenuItem mi = new javax.swing.JMenuItem(I18n.name(a));
+                mi.addActionListener(e -> runAct(r, a));
+                menu.add(mi);
+            }
+            if (menu.getComponentCount() == 0) { Ui.warn(this, t("erp.noActions")); return; }
+            menu.show(btnAct, 0, btnAct.getHeight());
+        }
+
+        private void runAct(Map<String, Object> r, Map<String, Object> a) {
+            Map<String, Object> body = new LinkedHashMap<>();
+            List<Object> fields = Json.arr(a.get("ask"));
+            if (!fields.isEmpty()) {
+                JPanel form = new JPanel(new GridLayout(0, 2, 6, 6));
+                Map<String, JTextField> edits = new LinkedHashMap<>();
+                for (Object f : fields) {
+                    String k = Json.str(f);
+                    String title = k.equals("note") ? Json.str(a.get(I18n.rtl() ? "noteAr" : "noteEn")) : "";
+                    if (title.isEmpty()) title = t(k.equals("note") ? "erp.note" : k.equals("user") ? "erp.actUser" : k.equals("method") ? "erp.actMethod" : k.equals("amount") ? "erp.actHours" : "erp.actCost");
+                    JTextField tf = new JTextField(k.equals("method") ? "Transfer" : (k.equals("amount") || k.equals("cost")) ? "0" : "");
+                    edits.put(k, tf);
+                    form.add(new JLabel(title)); form.add(tf);
+                }
+                if (javax.swing.JOptionPane.showConfirmDialog(this, form, I18n.name(a), javax.swing.JOptionPane.OK_CANCEL_OPTION) != javax.swing.JOptionPane.OK_OPTION) return;
+                for (Map.Entry<String, JTextField> en : edits.entrySet()) {
+                    String v = en.getValue().getText().trim();
+                    if (en.getKey().equals("amount") || en.getKey().equals("cost")) { try { body.put(en.getKey(), Double.parseDouble(v.isEmpty() ? "0" : v)); } catch (NumberFormatException ex) { body.put(en.getKey(), 0.0); } }
+                    else if (!v.isEmpty()) body.put(en.getKey(), v);
+                }
+            } else if (Boolean.TRUE.equals(a.get("danger")) && !Ui.ask(this, I18n.name(a) + "?", t("common.yes"), t("common.no"))) return;
+            String m = Json.str(module.get("id")), k = Json.str(kind.get("kind")), id = Json.str(r.get("id")), op = Json.str(a.get("op"));
+            Ui.async(() -> { Api.I.bizAction(m, k, id, op, body); return Boolean.TRUE; }, ok -> load(), err -> Ui.warn(this, err));
         }
 
         @Override public void reload() { if (kind != null) load(); }
