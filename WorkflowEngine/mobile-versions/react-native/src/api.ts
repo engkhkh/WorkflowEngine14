@@ -69,6 +69,7 @@ export async function refreshMe() {
   } catch { /* keep the cached privileges */ }
 }
 
+export const bizAction = (module: string, kind: string, id: string, op: string, body: unknown) => call('POST', `/erp/${module}/bizact/${kind}/${id}/${op}`, body);
 export const tasks = () => call<WfTask[]>('GET', '/tasks');
 export const completeTask = (id: string, decision: string, comment: string) => call('POST', `/tasks/${id}/complete`, { decision, formData: {}, comment });
 export const instances = () => call<WfInstance[]>('GET', '/instances');

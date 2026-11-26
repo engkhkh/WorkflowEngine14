@@ -132,6 +132,36 @@ public class ErpFormPage : ContentPage
                 BuildFields();
             }, ghost: true));
         }
+        // workflow actions of the newer modules (sales orders, helpdesk, subscriptions, expenses, quality, fleet)
+        var acts = rec == null ? new List<CatalogAction>() : k.Actions.Where(a => a.When.Contains(rec.Status ?? "") && Api.I.Can(a.Priv)).ToList();
+        if (acts.Count > 0)
+        {
+            var extra = new Dictionary<string, Entry>();
+            foreach (var key in acts.SelectMany(a => a.Ask).Distinct())
+            {
+                var e = Ui.Input(Loc.T(key == "note" ? "erp.note" : key == "user" ? "erp.actUser" : key == "method" ? "erp.actMethod" : key == "amount" ? "erp.actHours" : "erp.actCost"),
+                    key == "method" ? "Transfer" : key == "amount" || key == "cost" ? "0" : "");
+                extra[key] = e;
+                stack.Children.Add(Ui.Labeled(Loc.T(key == "note" ? "erp.note" : key == "user" ? "erp.actUser" : key == "method" ? "erp.actMethod" : key == "amount" ? "erp.actHours" : "erp.actCost"), e));
+            }
+            foreach (var a in acts)
+            {
+                var act = a;
+                stack.Children.Add(Ui.Btn(act.Name(Loc.Rtl), async () =>
+                {
+                    if (act.Danger && !await DisplayAlert(act.Name(Loc.Rtl) + "?", "", act.Name(Loc.Rtl), Loc.T("common.cancel"))) return;
+                    var body = new JsonObject();
+                    foreach (var key in act.Ask)
+                    {
+                        var v = (extra[key].Text ?? "").Trim();
+                        if (key == "amount" || key == "cost") body[key] = double.TryParse(v, System.Globalization.NumberStyles.Float, System.Globalization.CultureInfo.InvariantCulture, out var d) ? d : 0;
+                        else if (v.Length > 0) body[key] = v;
+                    }
+                    try { await Api.I.BizAction(_m.Id, _k.Kind, rec!.Id, act.Op, body); await Navigation.PopAsync(); }
+                    catch (Exception ex) { _err.Text = ex.Message; }
+                }, ghost: true));
+            }
+        }
         stack.Children.Add(_err);
         if (Editable) stack.Children.Add(Ui.Btn(Loc.T("erp.save"), Save));
         if (Editable && rec != null) stack.Children.Add(Ui.Btn(Loc.T("erp.delete"), Delete, danger: true));

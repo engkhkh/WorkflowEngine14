@@ -75,6 +75,20 @@ public class CatalogKind
     public string View { get; set; } = "";
     public string Manage { get; set; } = "";
     public bool ReadOnly { get; set; }
+    public List<CatalogAction> Actions { get; set; } = new();
+    public string Name(bool ar) => ar ? Ar : En;
+}
+
+/// <summary>A workflow action of a record type (confirm, approve, ...): POST erp/{module}/bizact/{kind}/{id}/{op}.</summary>
+public class CatalogAction
+{
+    public string Op { get; set; } = "";
+    public string En { get; set; } = "";
+    public string Ar { get; set; } = "";
+    public List<string> When { get; set; } = new();
+    public string Priv { get; set; } = "";
+    public List<string> Ask { get; set; } = new();
+    public bool Danger { get; set; }
     public string Name(bool ar) => ar ? Ar : En;
 }
 

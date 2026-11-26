@@ -170,6 +170,7 @@ class Api {
 
   List<Map<String, dynamic>> _list(dynamic v) => (v as List? ?? []).map((e) => Map<String, dynamic>.from(e as Map)).toList();
 
+  Future<void> bizAction(String module, String kind, String id, String op, Map<String, dynamic> body) => _call('POST', '/erp/$module/bizact/$kind/$id/$op', body);
   Future<List<WfTask>> tasks() async => _list(await _call('GET', '/tasks')).map(WfTask.fromJson).toList();
   Future<void> completeTask(String id, String decision, String comment) => _call('POST', '/tasks/$id/complete', {'decision': decision, 'formData': {}, 'comment': comment});
   Future<List<WfInstance>> instances() async => _list(await _call('GET', '/instances')).map(WfInstance.fromJson).toList();

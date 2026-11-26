@@ -5,9 +5,11 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'api.dart';
 
 class CatalogKind {
-  CatalogKind(this.kind, this.en, this.ar, this.view, this.manage, this.readOnly);
+  CatalogKind(this.kind, this.en, this.ar, this.view, this.manage, this.readOnly, [this.actions = const []]);
   final String kind, en, ar, view, manage;
   final bool readOnly;
+  /// workflow actions (confirm, approve, ...): {op, en, ar, when[], priv, ask[], danger, noteEn, noteAr}
+  final List<Map<String, dynamic>> actions;
   String name(bool ar_) => ar_ ? ar : en;
 }
 
@@ -36,7 +38,7 @@ class AppState extends ChangeNotifier {
       final mm = m as Map<String, dynamic>;
       return CatalogModule(mm['id'] as String, mm['en'] as String, mm['ar'] as String, (mm['kinds'] as List).map((k) {
         final kk = k as Map<String, dynamic>;
-        return CatalogKind(kk['kind'] as String, kk['en'] as String, kk['ar'] as String, kk['view'] as String, kk['manage'] as String, (kk['readOnly'] ?? false) as bool);
+        return CatalogKind(kk['kind'] as String, kk['en'] as String, kk['ar'] as String, kk['view'] as String, kk['manage'] as String, (kk['readOnly'] ?? false) as bool, ((kk['actions'] ?? []) as List).map((x) => Map<String, dynamic>.from(x as Map)).toList());
       }).toList());
     }).toList();
     try {

@@ -167,6 +167,36 @@ class _ErpFormScreenState extends State<ErpFormScreen> {
     }
   }
 
+  // workflow actions of the newer modules (sales orders, helpdesk, subscriptions, expenses, quality, fleet)
+  final Map<String, TextEditingController> extra = {};
+  List<Map<String, dynamic>> get _acts => widget.rec == null ? [] : widget.kind.actions.where((a) => (a['when'] as List).contains(widget.rec!.status ?? '') && Api.I.can(a['priv'] as String)).toList();
+  TextEditingController _x(String k) => extra.putIfAbsent(k, () => TextEditingController(text: k == 'method' ? 'Transfer' : (k == 'amount' || k == 'cost') ? '0' : ''));
+
+  Future<void> _runAct(Map<String, dynamic> a) async {
+    final st = context.read<AppState>();
+    final label = st.rtl ? a['ar'] as String : a['en'] as String;
+    if (a['danger'] == true) {
+      final sure = await showDialog<bool>(context: context, builder: (c) => AlertDialog(title: Text('$label?'), actions: [
+        TextButton(onPressed: () => Navigator.pop(c, false), child: Text(st.t('common.cancel'))),
+        TextButton(onPressed: () => Navigator.pop(c, true), child: Text(label))]));
+      if (sure != true) return;
+    }
+    final body = <String, dynamic>{};
+    for (final k in ((a['ask'] ?? []) as List).cast<String>()) {
+      final v = _x(k).text.trim();
+      if (k == 'amount' || k == 'cost') { body[k] = num.tryParse(v) ?? 0; } else if (v.isNotEmpty) { body[k] = v; }
+    }
+    setState(() { busy = true; err = ''; });
+    try {
+      await Api.I.bizAction(widget.module.id, widget.kind.kind, widget.rec!.id, a['op'] as String, body);
+      if (mounted) Navigator.pop(context, true);
+    } catch (e) {
+      setState(() { err = e.toString(); busy = false; });
+    }
+  }
+
+  String _askLabel(AppState st, String k) => st.t(k == 'note' ? 'erp.note' : k == 'user' ? 'erp.actUser' : k == 'method' ? 'erp.actMethod' : k == 'amount' ? 'erp.actHours' : 'erp.actCost');
+
   Future<void> _delete() async {
     final st = context.read<AppState>();
     final sure = await showDialog<bool>(context: context, builder: (c) => AlertDialog(title: Text(st.t('erp.confirmDelete')), actions: [
@@ -219,6 +249,14 @@ class _ErpFormScreenState extends State<ErpFormScreen> {
                     : null,
                 child: Text(st.t('erp.addField'))),
           ]),
+        if (_acts.isNotEmpty) ...[
+          const SizedBox(height: 8),
+          Text(st.t('erp.actions'), style: const TextStyle(fontWeight: FontWeight.w600)),
+          for (final k in {for (final a in _acts) ...((a['ask'] ?? []) as List).cast<String>()})
+            Padding(padding: const EdgeInsets.only(top: 8), child: TextField(controller: _x(k), keyboardType: (k == 'amount' || k == 'cost') ? TextInputType.number : TextInputType.text, decoration: InputDecoration(labelText: _askLabel(st, k)))),
+          for (final a in _acts)
+            Padding(padding: const EdgeInsets.only(top: 8), child: OutlinedButton(onPressed: busy ? null : () => _runAct(a), child: Text(st.rtl ? a['ar'] as String : a['en'] as String))),
+        ],
         if (err.isNotEmpty) Padding(padding: const EdgeInsets.only(top: 8), child: Text(err, style: const TextStyle(color: kDanger))),
         const SizedBox(height: 12),
         if (editable) FilledButton(onPressed: busy ? null : _save, child: Text(st.t('erp.save'))),

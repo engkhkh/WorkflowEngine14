@@ -90,6 +90,7 @@ public sealed class Api
     private async Task<List<T>> List<T>(string path) => (await Call(HttpMethod.Get, path))?.Deserialize<List<T>>(Json) ?? new();
 
     public Task<List<WfTask>> Tasks() => List<WfTask>("/tasks");
+    public Task BizAction(string module, string kind, string id, string op, JsonObject body) => Call(HttpMethod.Post, $"/erp/{module}/bizact/{kind}/{id}/{op}", body);
     public Task CompleteTask(string id, string decision, string comment) => Call(HttpMethod.Post, $"/tasks/{id}/complete", new { decision, formData = new { }, comment });
     public Task<List<WfInstance>> Instances() => List<WfInstance>("/instances");
     public async Task<WfInstance?> Instance(string id) => (await Call(HttpMethod.Get, $"/instances/{id}"))?.Deserialize<WfInstance>(Json);

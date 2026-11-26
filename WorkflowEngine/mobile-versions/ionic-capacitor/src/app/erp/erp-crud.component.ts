@@ -15,7 +15,7 @@ import { SavedViewsComponent } from '../shared/saved-views.component';
 import { ReportColumn, ReportDesignerComponent } from '../shared/report-designer.component';
 import { CollabService } from '../core/collab.service';
 
-export interface LineCol { key: string; label: string; type?: 'text' | 'number' | 'select'; options?: () => { value: string; label: string }[]; def?: any; width?: string; }
+export interface LineCol { key: string; label: string; type?: 'text' | 'number' | 'select' | 'date' | 'bool'; options?: () => { value: string; label: string }[]; def?: any; width?: string; }
 export interface ErpField {
   key: string;
   label: string;                                   // i18n key
@@ -112,6 +112,8 @@ export interface ErpAction { label: string; show: (r: ErpRec) => boolean; run: (
                       <select *ngIf="c.type === 'select'" [(ngModel)]="l[c.key]" (ngModelChange)="f.onChange?.(form)" [disabled]="readOnly"><option value="">—</option><option *ngFor="let o of c.options!()" [value]="o.value">{{ o.label }}</option></select>
                       <input *ngIf="c.type === 'number'" type="number" step="any" [(ngModel)]="l[c.key]" (ngModelChange)="f.onChange?.(form)" [disabled]="readOnly" />
                       <input *ngIf="!c.type || c.type === 'text'" [(ngModel)]="l[c.key]" [disabled]="readOnly" />
+                      <input *ngIf="c.type === 'date'" type="date" [(ngModel)]="l[c.key]" [disabled]="readOnly" />
+                      <input *ngIf="c.type === 'bool'" type="checkbox" [(ngModel)]="l[c.key]" [disabled]="readOnly" />
                     </td>
                     <td><button class="ghost sm danger-i" type="button" *ngIf="!readOnly" (click)="form[f.key].splice(i, 1); f.onChange?.(form)"><app-icon name="x" [size]="14"></app-icon></button></td></tr></tbody></table>
                 <button class="sm" type="button" *ngIf="!readOnly" (click)="addLine(f)"><app-icon name="plus" [size]="13"></app-icon>{{ 'erp.addLine' | translate }}</button>
@@ -300,7 +302,7 @@ export class ErpCrudComponent implements OnInit, OnChanges {
 
   addLine(f: ErpField) {
     const l: Record<string, any> = {};
-    for (const c of f.cols ?? []) l[c.key] = c.def ?? (c.type === 'number' ? 0 : '');
+    for (const c of f.cols ?? []) l[c.key] = c.def ?? (c.type === 'number' ? 0 : c.type === 'bool' ? false : '');
     (this.form![f.key] as any[]).push(l);
     f.onChange?.(this.form!);
   }

@@ -1,7 +1,7 @@
 import React, { useCallback, useMemo, useState } from 'react';
 import { Alert, FlatList, RefreshControl, ScrollView, Switch, Text, View } from 'react-native';
 import { useFocusEffect } from '@react-navigation/native';
-import { ErpRec, can, createRecord, deleteRecord, records, updateRecord } from '../api';
+import { ErpRec, bizAction, can, createRecord, deleteRecord, records, updateRecord } from '../api';
 import { useApp } from '../ctx';
 import { Btn, Card, Chip, Empty, ErrorText, Field, Screen, colors, statusColor } from '../ui';
 import catalog from '../data/catalog.json';
@@ -111,6 +111,24 @@ export function ErpForm({ route, navigation }: any) {
       navigation.goBack();
     } catch (e: any) { setErr(String(e?.message ?? t('common.error'))); setBusy(false); }
   };
+  // workflow actions of the newer modules (sales orders, helpdesk, subscriptions, expenses, quality, fleet)
+  const [extra, setExtra] = useState<Record<string, string>>({});
+  const acts = ((k as any).actions ?? []).filter((a: any) => rec && (a.when as string[]).includes(rec.status ?? '') && can(a.priv)) as any[];
+  const askKeys = Array.from(new Set(acts.flatMap(a => (a.ask ?? []) as string[])));
+  const askLabel = (key: string) => key === 'note' ? t('erp.note') : key === 'user' ? t('erp.actUser') : key === 'method' ? t('erp.actMethod') : key === 'amount' ? t('erp.actHours') : t('erp.actCost');
+  const runAct = (a: any) => {
+    const go = async () => {
+      setBusy(true); setErr('');
+      const body: Record<string, any> = {};
+      for (const key of (a.ask ?? []) as string[]) {
+        const v = (extra[key] ?? (key === 'method' ? 'Transfer' : '')).trim();
+        if (key === 'amount' || key === 'cost') body[key] = Number(v) || 0; else if (v) body[key] = v;
+      }
+      try { await bizAction(module, kind, rec!.id, a.op, body); navigation.goBack(); }
+      catch (e: any) { setErr(String(e?.message ?? t('common.error'))); setBusy(false); }
+    };
+    if (a.danger) Alert.alert(nameOf(a, lang) + '?', '', [{ text: t('common.cancel'), style: 'cancel' }, { text: nameOf(a, lang), style: 'destructive', onPress: go }]); else go();
+  };
   const del = () => Alert.alert(t('erp.confirmDelete'), '', [
     { text: t('common.cancel'), style: 'cancel' },
     { text: t('erp.delete'), style: 'destructive', onPress: async () => { try { await deleteRecord(module, kind, rec!.id); navigation.goBack(); } catch (e: any) { setErr(String(e?.message ?? t('common.error'))); } } }]);
@@ -137,6 +155,10 @@ export function ErpForm({ route, navigation }: any) {
             <Btn title={t('erp.addField')} kind="ghost" disabled={!/^[A-Za-z]\w*$/.test(newKey) || newKey in data} onPress={() => { setData({ ...data, [newKey]: '' }); setNewKey(''); }} />
           </View>
         ) : null}
+        {askKeys.length ? <Text style={{ fontWeight: '600', marginVertical: 8, color: colors.text }}>{t('erp.actions')}</Text> : null}
+        {askKeys.map(key => <Field key={key} label={askLabel(key)} value={extra[key] ?? (key === 'method' ? 'Transfer' : '')} onChangeText={v => setExtra({ ...extra, [key]: v })}
+          keyboardType={key === 'amount' || key === 'cost' ? 'numeric' : 'default'} />)}
+        {acts.map(a => <Btn key={a.op} title={nameOf(a, lang)} kind={a.danger ? 'danger' : 'ghost'} disabled={busy} onPress={() => runAct(a)} />)}
         <ErrorText text={err} />
         {editable ? <Btn title={t('erp.save')} onPress={save} disabled={busy} /> : null}
         {editable && rec ? <Btn title={t('erp.delete')} kind="danger" onPress={del} /> : null}

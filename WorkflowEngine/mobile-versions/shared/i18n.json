@@ -77,7 +77,14 @@
   "chat.send": "Send",
   "chat.greet": "Hello! Ask me what is waiting for you, to list or count records, or to find a record by its number (for example PO-0001).",
   "chat.thinking": "Thinking…",
-  "chat.error": "The assistant could not be reached. Check the connection and your permission."
+  "chat.error": "The assistant could not be reached. Check the connection and your permission.",
+  "erp.actions": "Actions",
+  "erp.noActions": "No actions are available for this record.",
+  "erp.actUser": "User",
+  "erp.actMethod": "Payment method",
+  "erp.actHours": "Hours",
+  "erp.actCost": "Cost",
+  "erp.note": "Note"
  },
  "ar": {
   "app.name": "نظام سير العمل",
@@ -157,6 +164,13 @@
   "chat.send": "إرسال",
   "chat.greet": "مرحبًا! اسألني عمّا ينتظرك، أو اطلب عدّ السجلات وعرضها، أو ابحث عن سجل برقمه (مثل PO-0001).",
   "chat.thinking": "جارٍ التفكير…",
-  "chat.error": "تعذّر الوصول إلى المساعد. تحقق من الاتصال ومن صلاحيتك."
+  "chat.error": "تعذّر الوصول إلى المساعد. تحقق من الاتصال ومن صلاحيتك.",
+  "erp.actions": "إجراءات",
+  "erp.noActions": "لا توجد إجراءات متاحة لهذا السجل.",
+  "erp.actUser": "المستخدم",
+  "erp.actMethod": "طريقة الدفع",
+  "erp.actHours": "الساعات",
+  "erp.actCost": "التكلفة",
+  "erp.note": "ملاحظة"
  }
 }

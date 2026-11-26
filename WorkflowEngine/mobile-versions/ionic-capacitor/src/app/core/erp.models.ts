@@ -2,7 +2,7 @@
  * Manufacturing, Projects and CRM data model (mirrors backend/.../Models/Modules.cs and Controllers/ModulesController.cs).
  * Every row is an ErpRec: Module / Kind / Code / Company / Branch / Status / Ref are columns, the rest is in `data`.
  */
-export type ErpModule = 'mfg' | 'prj' | 'crm' | 'proc' | 'scm' | 'wh' | 'ast' | 'pay' | 'epm' | 'bpm' | 'int' | 'bi' | 'arc' | 're' | 'gov';
+export type ErpModule = 'mfg' | 'prj' | 'crm' | 'proc' | 'scm' | 'wh' | 'ast' | 'pay' | 'epm' | 'bpm' | 'int' | 'bi' | 'arc' | 're' | 'gov' | 'so' | 'hd' | 'sub' | 'exp' | 'qa' | 'flt';
 
 export type ErpKind =
   | 'bom' | 'workcenter' | 'machine' | 'workorder' | 'inspection' | 'maintenance' | 'plan'
@@ -13,6 +13,7 @@ export type ErpKind =
   | 'category' | 'incoming' | 'outgoing' | 'document' | 'appointment' | 'visitor' | 'todo'
   | 'property' | 'unit' | 'owner' | 'tenant' | 'lease' | 'installment' | 'sale' | 'request'
   | 'audit' | 'rule' | 'approval' | 'delegation' | 'customfield' | 'lot' | 'trackrule'
+  | 'pricelist' | 'order' | 'delivery' | 'sla' | 'ticket' | 'visit' | 'subscription' | 'invoice' | 'claim' | 'ncr' | 'vehicle' | 'driver' | 'fuel' | 'service'
   | 'setting';
 
 export interface ErpRec<D = Record<string, any>> {
@@ -118,6 +119,48 @@ export const ERP_MODULES: Record<ErpModule, ErpModuleDef> = {
       n('lock', 'clock', ['gov.lock.manage'], 'gov'), n('tax', 'file', ['gov.vat.view', 'gov.zatca.manage'], 'gov'),
     ],
     any: ['gov.view', 'gov.audit.view', 'gov.rules.manage', 'gov.approvals.admin', 'gov.delegate', 'gov.fields.manage', 'gov.lock.manage', 'gov.zatca.manage', 'gov.vat.view'],
+  },
+  so: {
+    id: 'so', route: '/sales-orders', icon: 'clipboard', color: '#0d9488', titleKey: 'module.so', subKey: 'so.sub',
+    nav: [
+      n('overview', 'bar-chart', ['so.reports.view'], 'so'), n('orders', 'clipboard', ['so.view'], 'so'), n('deliveries', 'send', ['so.view'], 'so'), n('pricelists', 'wallet', ['so.setup'], 'so'),
+    ],
+    any: ['so.view', 'so.orders.manage', 'so.orders.approve', 'so.reports.view', 'so.setup'],
+  },
+  hd: {
+    id: 'hd', route: '/helpdesk', icon: 'message', color: '#7c3aed', titleKey: 'module.hd', subKey: 'hd.sub',
+    nav: [
+      n('overview', 'bar-chart', ['hd.reports.view'], 'hd'), n('tickets', 'message', ['hd.view'], 'hd'), n('visits', 'wrench', ['hd.view'], 'hd'), n('contracts', 'file', ['hd.view'], 'hd'), n('sla', 'clock', ['hd.setup'], 'hd'),
+    ],
+    any: ['hd.view', 'hd.tickets.manage', 'hd.visits.manage', 'hd.contracts.manage', 'hd.reports.view', 'hd.setup'],
+  },
+  sub: {
+    id: 'sub', route: '/subscriptions', icon: 'refresh', color: '#db2777', titleKey: 'module.sub', subKey: 'sub.sub',
+    nav: [
+      n('overview', 'bar-chart', ['sub.reports.view'], 'sub'), n('subscriptions', 'refresh', ['sub.view'], 'sub'), n('invoices', 'wallet', ['sub.view'], 'sub'), n('plans', 'layers', ['sub.setup'], 'sub'),
+    ],
+    any: ['sub.view', 'sub.manage', 'sub.billing.manage', 'sub.reports.view', 'sub.setup'],
+  },
+  exp: {
+    id: 'exp', route: '/expenses', icon: 'credit-card', color: '#ea580c', titleKey: 'module.exp', subKey: 'exp.sub',
+    nav: [
+      n('overview', 'bar-chart', ['exp.reports.view'], 'exp'), n('claims', 'credit-card', ['exp.view'], 'exp'), n('categories', 'layers', ['exp.setup'], 'exp'),
+    ],
+    any: ['exp.view', 'exp.claims.manage', 'exp.approve', 'exp.pay', 'exp.reports.view', 'exp.setup'],
+  },
+  qa: {
+    id: 'qa', route: '/quality', icon: 'shield', color: '#16a34a', titleKey: 'module.qa', subKey: 'qa.sub',
+    nav: [
+      n('overview', 'bar-chart', ['qa.reports.view'], 'qa'), n('inspections', 'check-square', ['qa.view'], 'qa'), n('ncr', 'alert', ['qa.view'], 'qa'), n('plans', 'clipboard', ['qa.setup'], 'qa'),
+    ],
+    any: ['qa.view', 'qa.inspections.manage', 'qa.ncr.manage', 'qa.ncr.approve', 'qa.reports.view', 'qa.setup'],
+  },
+  flt: {
+    id: 'flt', route: '/fleet', icon: 'box', color: '#0369a1', titleKey: 'module.flt', subKey: 'flt.sub',
+    nav: [
+      n('overview', 'bar-chart', ['flt.reports.view'], 'flt'), n('vehicles', 'box', ['flt.view'], 'flt'), n('drivers', 'users', ['flt.view'], 'flt'), n('fuel', 'trending-up', ['flt.view'], 'flt'), n('service', 'wrench', ['flt.view'], 'flt'),
+    ],
+    any: ['flt.view', 'flt.vehicles.manage', 'flt.drivers.manage', 'flt.logs.manage', 'flt.service.manage', 'flt.reports.view', 'flt.setup'],
   },
   mfg: {
     id: 'mfg', route: '/mfg', icon: 'factory', color: '#f97316', titleKey: 'module.mfg', subKey: 'mfg.sub',

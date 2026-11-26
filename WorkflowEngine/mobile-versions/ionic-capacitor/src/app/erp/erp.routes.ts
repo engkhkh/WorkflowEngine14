@@ -7,6 +7,9 @@ const page: Loader = () => import('./erp-page.component').then(m => m.ErpPageCom
 const ex = (n: string): Loader => () => import('./erp-extras.component').then((m: any) => m[n]);
 const overview: Loader = () => import('./erp-overview.component').then(m => m.ErpOverviewComponent);
 const setup: Loader = () => import('./erp-setup.component').then(m => m.ErpSetupComponent);
+/** Sales orders, Helpdesk, Subscriptions, Expenses, Quality and Fleet share one config-driven page */
+const biz: Loader = () => import('./biz-page.component').then(m => m.BizPageComponent);
+const BIZ = new Set(['so', 'hd', 'sub', 'exp', 'qa', 'flt']);
 
 /** pages that are not the generic list page */
 const SPECIAL: Record<string, Loader> = {
@@ -29,7 +32,7 @@ export const ERP_ROUTES: Routes = (Object.keys(ERP_MODULES) as ErpModule[]).map(
       { path: '', pathMatch: 'full', data: { module: id }, loadComponent: () => import('./erp-shell.component').then(m => m.ErpHomeComponent) },
       ...def.nav.map(n => ({
         path: n.path, canActivate: [permGuard(...n.any)], data: { module: id, page: n.path },
-        loadComponent: n.path === 'overview' ? overview : n.path === 'setup' ? setup : SPECIAL[`${id}/${n.path}`] ?? page,
+        loadComponent: n.path === 'overview' ? overview : n.path === 'setup' ? setup : SPECIAL[`${id}/${n.path}`] ?? (BIZ.has(id) ? biz : page),
       })),
     ],
   };
